@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+ul.pager {
+    z-index:100;
+}
+
+/**/
+#war_situation_map td[style*="cornsilk"],
+#war_situation_map span[style*="cornsilk"] {
+	  background-color: #333 !important;
+}
+
+#ig_battle_report_mid input[type=radio] {//ラジオボタン大きく
+		-webkit-transform-origin: centert middle;
+		-webkit-transform: scale( 1.5 , 1.5 );
+}
+table.table_waigintunit input[type=checkbox] {//チェックボタン大きく
+		-webkit-transform-origin: centert middle;
+		-webkit-transform: scale( 1.5 , 1.5 );
+}
+div.new_worldmap_merge_setting input[type=radio] {//ラジオボタン大きく
+		-webkit-transform-origin: centert middle;
+		-webkit-transform: scale( 1.2 , 1.2 );
+}
+div.new_worldmap_merge_setting input[type=checkbox] {//チェックボタン大きく
+		-webkit-transform-origin: centert middle;
+		-webkit-transform: scale( 1.2 , 1.2 );
+}
+
+
+
+table[id^="moko_candidate"] td span.skill_F,
+table[id^="moko_candidate"] td span.skill_E,
+table[id^="moko_candidate"] td span.skill_D,
+table[id^="moko_candidate"] td span.skill_C,
+table[id^="moko_candidate"] td span.skill_B,
+table[id^="moko_candidate"] td span.skill_A,
+table[id^="moko_candidate"] td span.skill_S {background:#000;padding:1px 3px 0;}
+
+table[id^="moko_candidate"] td span.skill_F{color:#8D6793;}
+table[id^="moko_candidate"] td span.skill_E{color:#4B90D3;}
+table[id^="moko_candidate"] td span.skill_D{color:#56B2F6;}
+table[id^="moko_candidate"] td span.skill_C{color:#FFFB74;}
+table[id^="moko_candidate"] td span.skill_B{color:#FD8F4D;}
+table[id^="moko_candidate"] td span.skill_A{color:#FD2524;}
+table[id^="moko_candidate"] td span.skill_S{color:#D9C434;}

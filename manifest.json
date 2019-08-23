@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "IxaMoko",
+  "author": "nameless",
+  "version": "10.17.2500.21",
+  "description": "Tool of Sengoku-ixa",
+
+  "content_scripts": [
+     {
+      "all_frames": true,
+      "run_at": "document_start",
+      "matches": [ "https://*.sengokuixa.jp/world/*" ],
+      "js": [
+        "contents/ixa-login.user.js"
+      ]
+    },
+    {
+      "all_frames": true,
+      "run_at": "document_start",
+      "matches": [ "https://*.sengokuixa.jp/*" ],
+       "exclude_matches": [
+         "https://sengokuixa.jp/*",
+         "https://cache.sengokuixa.jp/*",
+         "http://h.sengokuixa.jp/*",
+         "https://m.sengokuixa.jp/*",
+         "https://*.sengokuixa.jp/world/*",
+         "https://*.sengokuixa.jp/false/*",
+         "https://*.sengokuixa.jp/maintenance/"
+       ],
+      "js": [
+        "contents/ixa-moko.user.js",
+        "contents/ixa-training.user.js"
+      ],
+      "css": [
+        "css/main.css"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "https://*.sengokuixa.jp/*"
+  ]
+}
