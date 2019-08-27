@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.17.2500.21
+// @version      10.17.2500.22
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -14,11 +14,11 @@
 // ==/UserScript==
 
 // 改修履歴
-// 2019.08.23
-// 10.17.2500.20をベースに、
+// 2019.08.27
+// 10.17.2500.21をベースに、
 // 戦国IXA ツールスレPart42
 // http://jbbs.shitaraba.net/bbs/read.cgi/netgame/15829/1551588756/
-// の、>>952の修正を適用、及び>>919の適用内容を修正(同盟陣貼りはchocolate色に)
+// の、>>970の修正を適用
 
 // 音楽：魔王魂
 
@@ -27,7 +27,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.17.2500.21";
+  var VERSION_NAME = "ver 10.17.2500.22";
 
 // === Plugin ===
 
@@ -274,7 +274,7 @@ function MokoMain($) {
       15: { 1:"足利家", 2:"北条家", 3: "尼子家", 4: "安東家", 5: "蒲生家", 6: "本願寺家", 7: "小田家", 8: "村上家", 9: "松永家", 10: "長宗我部家", 11: "相良家", 12: "豊臣家" },
       16: { 1:"織田家", 2:"徳川家", 3: "羽柴家", 4: "上杉家", 5: "柴田家", 6: "北条家", 7: "毛利家", 8: "伊東家", 9: "武田家", 10: "里見家", 11: "最上家", 12: "宇喜多家"},
       17: { 1:"毛利家", 2:"今川家", 3: "細川家", 4: "蘆名家", 5: "織田家", 6: "松平家", 7: "斎藤家", 8: "伊達家", 9: "尼子家", 10: "北条家", 11: "朝倉家", 12: "島津家"},
-	  18: { 1:"石田家", 2:"黒田家", 3: "加藤家", 4: "直江家", 5: "太田家", 6: "真田家", 7: "松平家", 8: "大谷家", 9: "松永家", 10: "村上家", 11: "立花家", 12: "鍋島家" }
+      18: { 1:"石田家", 2:"黒田家", 3: "加藤家", 4: "直江家", 5: "太田家", 6: "真田家", 7: "松平家", 8: "大谷家", 9: "松永家", 10: "村上家", 11: "立花家", 12: "鍋島家" }
     }[login_data.chapter];
 
     function COUNTRY() { return $.extend({}, data); }
@@ -3390,16 +3390,16 @@ function MokoMain($) {
     $('#open_setting').css('margin-right', '4px');
     // @start
     // 15章 合流指定の変更、拠点変更の無効化
-	//$(".js-open_meeting_dialog").each(function(){
-	  //$(this).attr('href', $(this).attr('href').replace(/&select_village_id=[0-9]+/, ''));
-	//});
-	//$('.new_worldmap_mappanel_body input[name=is_merge_starter]').prop('checked', true);
-	
-	// 17章 拠点プルダウンのリンク修正、全て内政モードに
-	//$('#gM01 > a').attr('href', '/village.php');
-	//$('#gM01 > ul > li > a').each(function(){
-	  //$(this).attr('href', $(this).attr('href').replace('&redirect=detail', ''));
-	//});
+    //$(".js-open_meeting_dialog").each(function(){
+      //$(this).attr('href', $(this).attr('href').replace(/&select_village_id=[0-9]+/, ''));
+    //});
+    //$('.new_worldmap_mappanel_body input[name=is_merge_starter]').prop('checked', true);
+    
+    // 17章 拠点プルダウンのリンク修正、全て内政モードに
+    //$('#gM01 > a').attr('href', '/village.php');
+    //$('#gM01 > ul > li > a').each(function(){
+      //$(this).attr('href', $(this).attr('href').replace('&redirect=detail', ''));
+    //});
     
     // @end
   }
@@ -13231,9 +13231,16 @@ $('#btn_change_' + cid).on('click', function() {
       var $td = $html.find('tr.now td');
       
       // ↓変更点(一戦撃破・防衛)
-      data.crushing = $td.eq(10).text().trim();
-      data.defense = $td.eq(11).text().trim();
-      setStorage('ixamoko_target_data', data);
+// 戦国IXA ツールスレPart42
+// http://jbbs.shitaraba.net/bbs/read.cgi/netgame/15829/1551588756/
+// の、>>970の修正を適用
+// ここから
+//      data.crushing = $td.eq(10).text().trim();
+//      data.defense = $td.eq(11).text().trim();
+      data.crushing = $td.eq(12).text().trim(); 
+      data.defense = $td.eq(13).text().trim(); 
+// ここまで
+setStorage('ixamoko_target_data', data);
       return createInfoPower(data);
     });
   }
@@ -18134,7 +18141,7 @@ var FightunitTitle = $('div.ig_fightunit_title2');
         var json = null;
         $.ajax({
           //url: '/map.php',
-url: '/map_if.php',
+          url: '/map_if.php',
           type: 'get',
           dataType: 'JSON',
           data: {
