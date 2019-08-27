@@ -9,6 +9,10 @@
 // @grant        none
 // ==/UserScript==
 
+// 改修履歴
+// 2019.08.27
+// 18章対応のみ。バージョンは10.17.2500.14としました。
+
 // MokoLogin
 function MokoLogin($) {
   console.debug('Load... MokoLogin');
