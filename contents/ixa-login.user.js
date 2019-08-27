@@ -1,17 +1,13 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         IxaMokoLogin
 // @description  戦国IXA用ツール ログイン
-// @version      10.17.2500.14
+// @version      10.18.2500.01
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/world/*
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
-
-// 改修履歴
-// 2019.08.27
-// 18章対応のみ。バージョンは10.17.2500.14としました。
 
 // MokoLogin
 function MokoLogin($) {
@@ -36,10 +32,11 @@ function MokoLogin($) {
     var season_num = $(this).find('span[class^="flag_"] img').attr('src').match(/flag_\w(\d+).gif/)[1];
     var world = title.replace('ワールド', '');
     var chapter = {
-    1: '16',
-    2: '17',
-    3: '18'
-    }[chapter_num];    
+      1: '16',
+      2: '17',
+      3: '18'
+    }[chapter_num];
+    
     var season = parseFloat(season_num).toString(10);
     
     if (!chapter) {

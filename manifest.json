@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "IxaMoko",
-  "author": "nameless",
-  "version": "10.17.2500.22",
+  "author": "hoge",
+  "version": "10.18.2500.01",
   "description": "Tool of Sengoku-ixa",
 
   "content_scripts": [

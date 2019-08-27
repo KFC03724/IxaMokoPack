@@ -1,7 +1,7 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         IxaTraining
 // @description  戦国IXA用ツール 一括兵士訓練
-// @version      10.17.2500.13
+// @version      10.18.2500.01
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
@@ -13,6 +13,9 @@
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
+
+// https://github.com/metameta/sengokuixa-meta
+// meta【一括兵士訓練】上記を参考にしました
 
 (function () {
 
@@ -812,7 +815,7 @@
         $li.each(function (index, el) {
           list.push({
             id: $(this).data('village_id'),
-            name: $(this).children().eq(0).text(),
+            name: $(this).children().not(".sidebox_badge_icon").eq(0).text(),
             x: $(this).data('village_x'),
             y: $(this).data('village_y'),
             country: $(this).data('village_c')
