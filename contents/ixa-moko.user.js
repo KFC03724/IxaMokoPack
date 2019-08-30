@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.01
+// @version      10.18.2500.03
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.01";
+  var VERSION_NAME = "ver 10.18.2500.03";
 
 // === Plugin ===
 
@@ -71,7 +71,6 @@ function MokoMain($) {
   $.fn.counter = function(params) {var self = this;self.display = $(this);self.hour = params.hour ? params.hour : "0";self.min = params.min ? params.min : "0";self.sec = params.sec ? params.sec : "0";self.hour_end = params.hour_end ? params.hour_end : "0";self.min_end = params.min_end ? params.min_end : "0";self.sec_end = params.sec_end ? params.sec_end : "0";self.message = params.message ? params.message : "-----";self.delimiter = params.delimiter ? params.delimiter : ":";self.return_url = params.return_url ? params.return_url : "";self.interval = params.interval ? params.interval * 1000 : "1000";self.iteration = params.iteration ? params.iteration : "1";self.direction = params.direction ? params.direction : "down";self.timestamp = (self.hour * 60 * 60) + (self.min * 60) + (self.sec * 1);self.timestamp_end = (self.hour_end * 60 * 60) + (self.min_end * 60) + (self.sec_end * 1);self.onTick = params.onTick ? params.onTick : function() {return true;};self.onFinish = params.onFinish ? params.onFinish : function() {return true;};self._getCounterFromTimestamp = function(t) {var hours = 0;var minutes = 0;var seconds = 0;if (t > 0) {hours = Math.floor(t / 3600);minutes = Math.floor((t / 3600 - hours) * 60);seconds = Math.round((((t / 3600 - hours) * 60) - minutes) * 60);}if (seconds == 60) {seconds = 0;}if (seconds === 0) {if (hours !== 0) {minutes = minutes / 1 + 1;}}if (minutes < 10) {if (minutes < 0) {minutes = 0;}minutes = '0' + minutes;}if (seconds < 10) {if (seconds < 0) {seconds = 0;}seconds = '0' + seconds;}if (hours < 10) {if (hours < 0) {hours = 0;}hours = '0' + hours;}if (hours > 0) {return hours + self.delimiter + minutes + self.delimiter + seconds;} else {return minutes + self.delimiter + seconds;}};self._tick = function() {if (self.timestamp > 0 && self.timestamp != self.timestamp_end) {var counter = self._getCounterFromTimestamp(self.timestamp);self.display.html(counter);if (self.direction == "down") {self.timestamp = self.timestamp * 1 - self.iteration * 1;} else if (self.direction == "up") {self.timestamp = self.timestamp * 1 + self.iteration * 1;} else {return;}} else {window.clearInterval(self._interval);if (!self.onFinish(self.display)) {return;}self.display.html(self.message);if (self.return_url !== "") {window.location.href = self.return_url;}return;}};self._tick();self._interval = window.setInterval(self._tick, self.interval);return this;};
 
 // ^ Plugin
-
 // === Storage ===
   var changeKeys = function(key) {
     
@@ -99,6 +98,12 @@ function MokoMain($) {
   var groups_set = getStorage({}, 'ixamoko_groups_set');
   var each_setting = getStorage({}, 'ixamoko_each_setting');
   var login_data = getStorage({}, 'ixamoko_login_data');
+
+// 2019/08/30 所領横のバルーンの表示/非表示チェック項目化
+// ここから
+  if(options.no_balloon)
+  $('span.sidebox_badge_icon').remove();
+// ここまで
 
   // storage key の変更
   (function chengeStorageKeys() {
@@ -1181,6 +1186,11 @@ function MokoMain($) {
       warskil_summary_init: {tag: 'all', caption: 'サマリー機能を使用する[合戦報告書(城主)][格付(同盟)]'},
       war_list_2pane: {tag: 'all', caption: '合戦報告書を2ペイン表示にする'},
       ar_point_cmp: {tag: 'all', caption: '同盟ポイント比較機能を使用する'},
+
+// 2019/08/30 所領横のバルーンの表示/非表示チェック項目化
+// ここから
+      no_balloon: {tag: 'all', caption: 'バルーンを非表示にする'},
+// ここまで
       
       // 全般2
       menu_reversal: {tag: 'all2', caption: '資源バーの位置を変更する'},
