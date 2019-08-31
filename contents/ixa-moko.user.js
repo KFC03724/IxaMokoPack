@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.05
+// @version      10.18.2500.06
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.05";
+  var VERSION_NAME = "ver 10.18.2500.06";
 
 // === Plugin ===
 
@@ -17068,14 +17068,15 @@ function MokoMain($) {
     $.post('/facility/unit_status.php?dmo=all', function(html) {
       var FightBotbox = $('div.ig_decksection_innermid').find('div.ig_fight_dotbox');
       var FightunitTitle = $('div.ig_fightunit_title2');
-      // 2019/08/31 強襲にもここへ部隊配置ボタンが出るのを防ぐ
+      // 2019/08/31 強襲にもここへ部隊配置ボタンが出るのを防ぐ & 位置の微調整
       // ここから
       var style = ' left: 300px;';
       if (FightunitTitle.find('h3 span').text().indexOf('強襲') != -1) {
       style = ' left: 550px;';
       }
       // $('<span id="enemyMenu" style="margin-top: 2px; left: 300px;">' +
-      $('<span id="enemyMenu" style="margin-top: 2px;' + style + '">' +
+      // $('<span id="enemyMenu" style="margin-top: 2px;' + style + '">' +
+      $('<span id="enemyMenu" style="margin-top: 2px; left: 150px;">' +
       // ここまで
         '<div class="view" style="-webkit-appearance: push-button; color: buttontext; width: auto;">ここへ部隊配置</div>' +
         '<ul>' +
