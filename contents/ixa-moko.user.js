@@ -17068,7 +17068,7 @@ function MokoMain($) {
     $.post('/facility/unit_status.php?dmo=all', function(html) {
       var FightBotbox = $('div.ig_decksection_innermid').find('div.ig_fight_dotbox');
       var FightunitTitle = $('div.ig_fightunit_title2');
-      // 2019/08/31 強襲にもここへ部隊配置ボタンが出るのを防ぐ & 位置の微調整
+      // 2019/08/31 敵襲時の「ここへ部隊配置」ボタンの位置を微調整
       // ここから
       var style = ' left: 300px;';
       if (FightunitTitle.find('h3 span').text().indexOf('強襲') != -1) {
@@ -17076,7 +17076,8 @@ function MokoMain($) {
       }
       // $('<span id="enemyMenu" style="margin-top: 2px; left: 300px;">' +
       // $('<span id="enemyMenu" style="margin-top: 2px;' + style + '">' +
-      $('<span id="enemyMenu" style="margin-top: 2px; left: 320px;">' +
+      // $('<span id="enemyMenu" style="margin-top: 2px; left: 320px;">' +
+      $('<span id="enemyMenu" style="margin:-25px 0 0 0;">' +
       // ここまで
         '<div class="view" style="-webkit-appearance: push-button; color: buttontext; width: auto;">ここへ部隊配置</div>' +
         '<ul>' +
