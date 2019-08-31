@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.03
+// @version      10.18.2500.04
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.03";
+  var VERSION_NAME = "ver 10.18.2500.04";
 
 // === Plugin ===
 
@@ -19391,7 +19391,10 @@ function MokoMain($) {
             '<img src="' + imgSrc + '" alt="白くじ連続引き" title="白くじ連続引き" />' +
           '</a>' +
         '</div>';
-
+// 2019/08/31 スキル強化ページでも白くじカウントを見える様に
+// ここから
+      tmpl +=`<div style="text-align: center;">今日引ける枚数: ${whiteLottery.count}/1000</div>`;
+// ここまで
       if (location.pathname == '/union/levelup.php') {
         tmpl += '<input type="button" id="set_card_stock" value="表示中カードから最大セット" />';
       }
