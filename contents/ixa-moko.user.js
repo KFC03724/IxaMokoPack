@@ -17077,7 +17077,8 @@ function MokoMain($) {
       // $('<span id="enemyMenu" style="margin-top: 2px; left: 300px;">' +
       // $('<span id="enemyMenu" style="margin-top: 2px;' + style + '">' +
       // $('<span id="enemyMenu" style="margin-top: 2px; left: 320px;">' +
-      $('<span id="enemyMenu" style="margin:-25px 0 0 0;">' +
+      // $('<span id="enemyMenu" style="margin:-25px 0 0 0;">' +
+      $('<span id="enemyMenu" style="margin: 39px 0px 0 -25px;">' +
       // ここまで
         '<div class="view" style="-webkit-appearance: push-button; color: buttontext; width: auto;">ここへ部隊配置</div>' +
         '<ul>' +
