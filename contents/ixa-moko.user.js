@@ -17068,7 +17068,7 @@ function MokoMain($) {
     $.post('/facility/unit_status.php?dmo=all', function(html) {
       var FightBotbox = $('div.ig_decksection_innermid').find('div.ig_fight_dotbox');
       var FightunitTitle = $('div.ig_fightunit_title2');
-      // 2019/08/31 敵襲時の「ここへ部隊配置」ボタンの位置を微調整
+      // 2019/09/01 敵襲時の「ここへ部隊配置」ボタンの位置を微調整
       // ここから
       var style = ' left: 300px;';
       if (FightunitTitle.find('h3 span').text().indexOf('強襲') != -1) {
