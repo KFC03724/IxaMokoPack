@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.06
+// @version      10.18.2500.07
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.06";
+  var VERSION_NAME = "ver 10.18.2500.07";
 
 // === Plugin ===
 
@@ -13371,18 +13371,21 @@ function MokoMain($) {
       return;
     }
     
-    $('#control_toggle_btn').removeClass('close');
-    $('.map_detail_log').css('min-height', '100px');
-    $('.base_btn_toggle:not(.action_log) div.log_title .new_worldmap_mappanel_body').toggle();
-    var $toggleItem = $('.base_btn_toggle div.log_title');
-    $toggleItem.find("p.title").append('<a class="accordion_btn"></a>');
-    $toggleItem.find("p.title").append('<span> (<span class="count"></span>件</span>)</span>');
-    $toggleItem.find("p.title span.count").each(function(){
-      $(this).text($(this).parents('div.log_title').find('ul>li').length);
-    });
-    $toggleItem.on('click', function(){
-      $(this).find('.new_worldmap_mappanel_body').toggle();
-    });
+    // 2019/09/01 拠点の詳細で「警告・敵襲の履歴」を開いている状態をデフォルトにする
+    // ここから
+    // $('#control_toggle_btn').removeClass('close');
+    // $('.map_detail_log').css('min-height', '100px');
+    // $('.base_btn_toggle:not(.action_log) div.log_title .new_worldmap_mappanel_body').toggle();
+    // var $toggleItem = $('.base_btn_toggle div.log_title');
+    // $toggleItem.find("p.title").append('<a class="accordion_btn"></a>');
+    // $toggleItem.find("p.title").append('<span> (<span class="count"></span>件</span>)</span>');
+    // $toggleItem.find("p.title span.count").each(function(){
+      // $(this).text($(this).parents('div.log_title').find('ul>li').length);
+    // });
+    // $toggleItem.on('click', function(){
+      // $(this).find('.new_worldmap_mappanel_body').toggle();
+    // });
+    // ここまで
     
     // 空き地戦力表示覧
     var $moko_material =  $('<div id="moko_material" />')
