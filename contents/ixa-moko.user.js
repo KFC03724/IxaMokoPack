@@ -19153,7 +19153,6 @@ function MokoMain($) {
     }
     });
 
-    var possible_num = shirokuji_possible_num($('#ig_boxInner')),
 // ここまで
     
     var possible_num = shirokuji_possible_num($('#ig_boxInner')),
