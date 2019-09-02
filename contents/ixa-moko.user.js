@@ -19583,6 +19583,33 @@ function MokoMain($) {
     }
   }
 
+// 2019/09/03 くじ周りの改善
+// ここから
+  function whiteCount()
+  {
+    if(location.pathname !='/senkuji/senkuji_result.php')
+    {
+      return;
+    }
+    if(!location.href.match(/got_type=0/))
+    {
+      return;
+    }
+
+    var Dt = new Date();
+    var now = Dt.getFullYear() + '/' + (Dt.getMonth() + 1) + '/' + Dt.getDate();
+    var whiteLottery = getStorage({}, 'ixamoko_white_lottery');
+    if(whiteLottery.date !== now){
+      whiteLottery = {date: now, count: 0};
+    }
+    whiteLottery.count++;
+
+    var html=`<dt>今日引ける枚数</dt><dd>${whiteLottery.count}/1000枚</dd>`;
+    setStorage('ixamoko_white_lottery', whiteLottery);
+
+    $('.lot_information').append(html);
+}// ここまで
+
 // ^ 戦国くじ
 
 // === プレゼント ===
@@ -22077,6 +22104,10 @@ function MokoMain($) {
   senkujiResult(); // senkuji/senkuji_result
 // ここまで
   senkujiSummary();             // senkuji/senkuji_history
+// 2019/09/03 くじ周りの改善
+// ここから
+  whiteCount();                 // senkuji/senkuji_result.php
+// ここまで
   syntheticWhiteLottery();      // union/levelup.php && union/result
   setCardToRankup();            // union/special_result.php
   setCardToSpecial();           // union/rankup_result.php
