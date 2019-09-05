@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.09
+// @version      10.18.2500.10
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.09";
+  var VERSION_NAME = "ver 10.18.2500.10";
 
 // === Plugin ===
 
@@ -2840,8 +2840,16 @@ function MokoMain($) {
     target.find('span.ig_skill_desc').each(function() {
       var add_flag = false,
         time_flag = false;
-      if ($(this).text().indexOf('速：') != -1) {
-        if ($(this).text().indexOf('低下') != -1) {
+// 2019/09/05 スキル「天香山命」の速度効果だけが加算されていない不具合の対応
+// ここから
+//        if ($(this).text().indexOf('速：') != -1) {
+        if ($(this).text().indexOf('速：') != -1 || $(this).text().indexOf('速度：') != -1) {
+// ここまで
+// 2019/09/05 スキル「天香山命」の速度効果だけが加算されていない不具合の対応
+// ここから
+//      if ($(this).text().indexOf('低下') != -1) {
+        if ($(this).text().indexOf('%低下') != -1) {
+// ここから
           add_flag = true;
         }
         if ($(this).text().indexOf('20時～翌02時まで限定') != -1) {
@@ -2851,9 +2859,24 @@ function MokoMain($) {
             time_flag = true;
           }
         }
-        var targetType = $(this).find('font').text(),
+// 2019/09/05 スキル「天香山命」の速度効果だけが加算されていない不具合の対応
+// ここから
+//        var targetType = $(this).find('font').text(),
+//        str = $(this).text().match(/速：\d+(\.\d+)?/g)[0],
+//        rate = parseFloat(str.replace(/速：/, ''));
+        var targetType = $(this).find('font').text();
+        var str,rate;
+        if($(this).text().indexOf('速：') != -1)
+        {
           str = $(this).text().match(/速：\d+(\.\d+)?/g)[0],
           rate = parseFloat(str.replace(/速：/, ''));
+        }
+        else if($(this).text().indexOf('速度：') != -1)
+        {
+          str = $(this).text().match(/速度：\d+(\.\d+)?/g)[0],
+          rate = parseFloat(str.replace(/速度：/, ''));
+        }
+// ここまで
         if (add_flag) {
           if (!o[targetType]) {
             o[targetType] = -rate;
@@ -6790,7 +6813,11 @@ function MokoMain($) {
       num = slow_move + slow_move * (effect / 100);
       movement = floatFormat(num, 2);  // 小数2桁まで返す
     }
-    var sec_per_sq = 3600 / 2 / movement + 15;
+// 2019/09/05 速度計算式の修正
+// ここから
+//    var sec_per_sq = 3600 / 2 / movement + 15;
+      var sec_per_sq = 900 / movement + 30;
+// ここまで
     var sps_min = Math.floor(sec_per_sq / 60);
     var sps_sec = Math.floor(sec_per_sq % 60);
     if (sps_min < 10) {
