@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.10
+// @version      10.18.2500.11
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.10";
+  var VERSION_NAME = "ver 10.18.2500.11";
 
 // === Plugin ===
 
@@ -2868,8 +2868,13 @@ function MokoMain($) {
         var str,rate;
         if($(this).text().indexOf('速：') != -1)
         {
-          str = $(this).text().match(/速：\d+(\.\d+)?/g)[0],
-          rate = parseFloat(str.replace(/速：/, ''));
+// 2019/09/07 「速度」の判定式を修正
+// ここから
+//          str = $(this).text().match(/速：\d+(\.\d+)?/g)[0],
+//          rate = parseFloat(str.replace(/速：/, ''));
+          str = $(this).text().match(/速度?：\d+(\.\d+)?/g)[0],
+          rate = parseFloat(str.replace(/速度?：/, ''));
+// ここまで
         }
         else if($(this).text().indexOf('速度：') != -1)
         {
