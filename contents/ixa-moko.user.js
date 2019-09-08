@@ -22589,11 +22589,15 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_03 { background: url("/img/deck/btn_category.png") no-repeat -30px -60px; }' +
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
-    '#normal_unit_state_head { width: 300px; }' +
-// 2019/09/08 「お気に入り登録」のリンク横位置をずらす
+// 2019/09/08 「お気に入り登録」のリンク横位置の微調整
+// ここから
+//    '#normal_unit_state_head { width: 300px; }' +
+    '#normal_unit_state_head { width: 260px; }' + // 「お気に入り登録」表示開始位置
+// ここまで
+// 2019/09/08 「お気に入り登録」のリンク横位置の微調整
 // ここから
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -43px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -157px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 2px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
 // ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
