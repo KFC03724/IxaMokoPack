@@ -22593,7 +22593,7 @@ window.addEventListener('DOMContentLoaded', function() {
 // 2019/09/08 「お気に入り登録」のリンク横位置をずらす
 // ここから
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -43px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -53px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -157px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
 // ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
