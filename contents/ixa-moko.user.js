@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.14
+// @version      10.18.2500.15
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.14";
+  var VERSION_NAME = "ver 10.18.2500.15";
 
 // === Plugin ===
 
@@ -24284,7 +24284,10 @@ window.addEventListener('DOMContentLoaded', function() {
     '#mapSubmenu .context_box.thumbnail_right > #territory_thumbnail { top: -151px; left: 170px;}' +
     'span.moko_sub_menu_small { display: none; position: absolute; left: 170px; margin-top: -27px; width: 160px; border-bottom: 1px solid #8e7425;}' +
     '.timeLeft > span { display: inline !important;}' +
-
+// 2019/09/13 所領横のバルーンの表示/非表示チェック項目化
+// ここから
+    '.base_other_infomation { text-align: right; }' +
+// ここまで
   ''; // ^ style.innerHTML
   document.head.appendChild(style);
 
