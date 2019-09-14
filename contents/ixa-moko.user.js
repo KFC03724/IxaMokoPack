@@ -24289,9 +24289,9 @@ window.addEventListener('DOMContentLoaded', function() {
     '#mapSubmenu .context_box.thumbnail_right > #territory_thumbnail { top: -151px; left: 170px;}' +
     'span.moko_sub_menu_small { display: none; position: absolute; left: 170px; margin-top: -27px; width: 160px; border-bottom: 1px solid #8e7425;}' +
     '.timeLeft > span { display: inline !important;}' +
-// 2019/09/14 拠点のレベルアップ情報を左寄せに
+// 2019/09/14 拠点のレベルアップ情報を中央寄せに
 // ここから
-    '.base_other_infomation { text-align: left; }' +
+    '.base_other_infomation { text-align: center; }' +
 // ここまで
   ''; // ^ style.innerHTML
   document.head.appendChild(style);
