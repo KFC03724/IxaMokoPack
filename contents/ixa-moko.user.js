@@ -9767,7 +9767,7 @@ function MokoMain($) {
         unit_title = '<span class="moko_butai_type_' + data[key].filter + '" />' + data[key].img;
       }
 
-// 2019/09/14 拠点のレベルアップ情報を中央寄せに
+// 2019/09/14 [お気に入り]部隊の登録部隊配置で部隊と部隊の間の隙間を解消
 // ここから
 //        tmp += '<tr id="unit_tr_' + key + '">' +
 //        '<td>' +
