@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.15
+// @version      10.18.2500.16
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.15";
+  var VERSION_NAME = "ver 10.18.2500.16";
 
 // === Plugin ===
 
@@ -9972,7 +9972,12 @@ function MokoMain($) {
           '<table class="imk_table" width="100%">' +
             '<thead>' +
               '<tr>' +
-                '<th style="width: 242px;">登録部隊</th>' +
+// 2019/09/14 [お気に入り]部隊の登録部隊配置で部隊と部隊の間の隙間を無くす
+// ここから
+
+//                '<th style="width: 242px;">登録部隊</th>' +
+                '<th>登録部隊</th>' +
+// ここまで
                 '<th><div style="width: 126px;">部隊長</div></th>' +
                 '<th><div style="width: 126px;">小隊長1</div></th>' +
                 '<th><div style="width: 126px;">小隊長2</div></th>' +
