@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.16
+// @version      10.18.2500.17
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.16";
+  var VERSION_NAME = "ver 10.18.2500.17";
 
 // === Plugin ===
 
@@ -23834,10 +23834,10 @@ window.addEventListener('DOMContentLoaded', function() {
 //    '#normal_unit_state_head { width: 300px; }' +
     '#normal_unit_state_head { width: 262px; }' + // 「お気に入り登録」表示開始位置
 // ここまで
-// 2019/09/09 「お気に入り登録」のリンク横位置の微調整
+// 2019/09/14 「お気に入り登録」のリンク横位置の微調整
 // ここから
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -43px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 128px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
 // ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
