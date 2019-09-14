@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.18
+// @version      10.18.2500.19
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.18";
+  var VERSION_NAME = "ver 10.18.2500.19";
 
 // === Plugin ===
 
@@ -9767,18 +9767,35 @@ function MokoMain($) {
         unit_title = '<span class="moko_butai_type_' + data[key].filter + '" />' + data[key].img;
       }
 
-      tmp += '<tr id="unit_tr_' + key + '">' +
+// 2019/09/14 拠点のレベルアップ情報を中央寄せに
+// ここから
+//        tmp += '<tr id="unit_tr_' + key + '">' +
+//        '<td>' +
+//        '<div>' +
+//        '<div class="mk_elite_title">' + unit_title + '</div>' +
+//        '<div class="mk_elite_cost"><img src="/img/deck/elite/elite_unit_state_cost.png"><span class="unit_cost">' + data[key].cost + '</span></div>' +
+//        '</div>' +
+//        '<div style="clear: left;">' +
+//        '<div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_attack.png"><span class="mk_elite_attack"/></div>' +
+//        '<div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_deffense.png"><span class="mk_elite_defense"/></div>' +
+//        '<div class="mk_elite_move"><img src="/img/deck/elite/elite_unit_state_speed.png"><span class="mk_elite_speed"/></div>' +
+//        '</div>' +
+//        '</td>';
+        tmp += '<tr id="unit_tr_' + key + '">' +
         '<td>' +
-        '<div>' +
-        '<div class="mk_elite_title">' + unit_title + '</div>' +
-        '<div class="mk_elite_cost"><img src="/img/deck/elite/elite_unit_state_cost.png"><span class="unit_cost">' + data[key].cost + '</span></div>' +
-        '</div>' +
-        '<div style="clear: left;">' +
-        '<div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_attack.png"><span class="mk_elite_attack"/></div>' +
-        '<div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_deffense.png"><span class="mk_elite_defense"/></div>' +
-        '<div class="mk_elite_move"><img src="/img/deck/elite/elite_unit_state_speed.png"><span class="mk_elite_speed"/></div>' +
-        '</div>' +
+        ' <table style="border: none; white-space: nowrap;">' +
+        ' <tr>' +
+        ' <td colspan="2" style="border: none;"><div class="mk_elite_title">' + unit_title + '</div></td>' +
+        ' <td style="border: none;"><div class="mk_elite_cost"><img src="/img/deck/elite/elite_unit_state_cost.png"><span class="unit_cost">' + data[key].cost + '</span></div></td>' +
+        ' </tr>' +
+        ' <tr>' +
+        ' <td style="border: none;"><div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_attack.png"><span class="mk_elite_attack"/></div></td>' +
+        ' <td style="border: none;"><div class="mk_elite_power"><img src="/img/deck/elite/elite_unit_state_deffense.png"><span class="mk_elite_defense"/></div></td>' +
+        ' <td style="border: none;"><div class="mk_elite_move"><img src="/img/deck/elite/elite_unit_state_speed.png"><span class="mk_elite_speed"/></div></td>' +
+        ' </tr>' +
+        ' </table>' +
         '</td>';
+// ここまで
 
       for (var i = 0; i < 4; i++) {
         var unit = data[key].unit;
