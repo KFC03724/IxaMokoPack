@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.20
+// @version      10.18.2500.21
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.20";
+  var VERSION_NAME = "ver 10.18.2500.21";
 
 // === Plugin ===
 
@@ -4033,6 +4033,10 @@ function MokoMain($) {
       name_list = [],
       lv_list = [],
       str;
+// 2019/09/29 追加合成画面でスロットに素材カードをセットする前段階でスキル一覧が見られない現象の対応
+// ここから
+    if ( !$div.length ) { $div = target.find('div.parameta_area_back div.ig_skill_box') }
+// ここまで
     for (var i = 0, len = $div.length; i < len; i++) {
       str = $div.eq(i).find('span[class$="ig_skill_name"]').text().trim();
       if (!str) {
