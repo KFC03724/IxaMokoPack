@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.21
+// @version      10.18.2500.22
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.21";
+  var VERSION_NAME = "ver 10.18.2500.22";
 
 // === Plugin ===
 
@@ -6582,6 +6582,10 @@ function MokoMain($) {
     // 拠点選択のデフォを現在の選択拠点に
     if($('#myselect').val() == '' || $('#myselect').val() == '0'){
       $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
+// 2019/10/03 精鋭部隊のセットができなくなった問題の対応
+// ここから
+      + jQuery('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
+// ここまで
     }
 
     // 選択中の配置拠点にアンダーライン
