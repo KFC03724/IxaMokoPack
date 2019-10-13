@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.23
+// @version      10.18.2500.24
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.23";
+  var VERSION_NAME = "ver 10.18.2500.24";
 
 // === Plugin ===
 
@@ -23809,14 +23809,25 @@ window.addEventListener('DOMContentLoaded', function() {
     '.middle-state { background-color: dimgray !important; }' +
     'img.group_icon { position: absolute; z-index: 5; }' +
     
-    /* 部隊編成:ワイド表示(4列) */
-    '#deck_file.four_col { position: absolute; z-index: 220; margin-left: -48px; width: 998px; }' +
+// 2019/10/13 武将をワイド表示にした場合の隙間を解消
+// ここから
+//    /* 部隊編成:ワイド表示(4列) */
+//    '#deck_file.four_col { position: absolute; z-index: 220; margin-left: -48px; width: 998px; }' +
     
-    /* 部隊編成:ワイド表示(5列) */
-    '#deck_file.five_col { position: absolute; z-index: 220; margin-left: -170px; width: 1246px; }' +
+//    /* 部隊編成:ワイド表示(5列) */
+//    '#deck_file.five_col { position: absolute; z-index: 220; margin-left: -170px; width: 1246px; }' +
     
     /*部隊編成:ワイド表示(6列) */
-    '#deck_file.six_col { position: absolute; z-index: 220; margin-left: -295px; width: 1494px; }' +
+//    '#deck_file.six_col { position: absolute; z-index: 220; margin-left: -295px; width: 1494px; }' +
+    /* 部隊編成:ワイド表示(4列) */
+    '#deck_file.four_col { position: absolute; z-index: 220; margin-left: -48px; width: 1005px; }' + // width(幅)修正
+
+    /* 部隊編成:ワイド表示(5列) */
+    '#deck_file.five_col { position: absolute; z-index: 220; margin-left: -170px; width: 1255px; }' + // width(幅)修正
+
+    /*部隊編成:ワイド表示(6列) */
+    '#deck_file.six_col { position: absolute; z-index: 220; margin-left: -295px; width: 1505px; }' + // width(幅)修正
+// ここまで
     
     /* 部隊編成:ワイド表示 */
     '.width_mod #ig_decksection3 { width: 100%; margin-bottom: 50px; padding-bottom: 10px; background-image: none; background-color: black; border: 4px solid #77692F; }' +
