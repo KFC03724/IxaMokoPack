@@ -4616,11 +4616,10 @@ function MokoMain($) {
     // 即帰還
 // 2019/10/21 無課金モードで、ランクアップが、レベルアップを参照してる問題の修正
 // ここから
-//    if(location.pathname == '/map.php' || location.pathname == '/facility/unit_status.php') {
-//    $('span.icon_gold').remove();
-//    }
     if(location.pathname == '/map.php' || location.pathname == '/facility/unit_status.php') {
+//  - $('span.icon_gold').remove();
     style('span.icon_gold { display: none; }');
+    }
 // ここまで
     // 探索キャンセル
     if(location.pathname == '/facility/dungeon.php') {
@@ -4641,7 +4640,6 @@ function MokoMain($) {
     }
 // ここまで
     }
-  // ここまで
   
   // 設定ボタン
   function mokoSettingButton() {
