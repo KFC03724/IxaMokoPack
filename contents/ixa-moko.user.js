@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.24
+// @version      10.18.2500.25
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.24";
+  var VERSION_NAME = "ver 10.18.2500.25";
 
 // === Plugin ===
 
@@ -4614,9 +4614,14 @@ function MokoMain($) {
     $('#deck_cost_add_btn_img').remove();
     }
     // 即帰還
+// 2019/10/21 無課金モードで、ランクアップが、レベルアップを参照してる問題の修正
+// ここから
+//    if(location.pathname == '/map.php' || location.pathname == '/facility/unit_status.php') {
+//    $('span.icon_gold').remove();
+//    }
     if(location.pathname == '/map.php' || location.pathname == '/facility/unit_status.php') {
-    $('span.icon_gold').remove();
-    }
+    style('span.icon_gold { display: none; }');
+// ここまで
     // 探索キャンセル
     if(location.pathname == '/facility/dungeon.php') {
     $('div.dungeon_cancel_btn').remove();
@@ -4626,9 +4631,15 @@ function MokoMain($) {
     $('a.new_union_btn_money.ml10').remove();
     }
     // ランクアップ
-    if(location.pathname == '/union/levelup.php') {
+// 2019/10/21 無課金モードで、ランクアップが、レベルアップを参照してる問題の修正
+// ここから
+//    if(location.pathname == '/union/levelup.php') {
+//    $('div.union_rankup_execbtn_table:nth-child(2)').remove();
+//    }
+    if(location.pathname == '/union/rankup.php') {
     $('div.union_rankup_execbtn_table:nth-child(2)').remove();
     }
+// ここまで
     }
   // ここまで
   
@@ -20087,10 +20098,17 @@ function MokoMain($) {
         return;
       }
 
+// 2019/10/21 秘境大殿の報告書を見ると、座標の取得でこけてサイドバーの表示が崩れる不具合の修正
+// ここから
+      var $a = $('table.commontable').eq(0).find('td a').eq(2);
+      if($('table.commontable').eq(0).find('td a').eq(2).length === 0){
+      return;
+      }
       var potential_data = getStorage([], 'ixamoko_potential_data'),
-        $a =  $('table.commontable').eq(0).find('td a').eq(2),
-        text = $a.text(),
-        code = $a.attr('href').match(/-?\d+/g);
+//      - $a = $('table.commontable').eq(0).find('td a').eq(2),      
+// ここまで
+      text = $a.text(),
+      code = $a.attr('href').match(/-?\d+/g);
 
       if (text.indexOf('空き地') == -1) {
         return;
