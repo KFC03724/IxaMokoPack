@@ -4639,7 +4639,7 @@ function MokoMain($) {
     $('div.union_rankup_execbtn_table:nth-child(2)').remove();
     }
 // ここまで
-    }
+  }
   
   // 設定ボタン
   function mokoSettingButton() {
