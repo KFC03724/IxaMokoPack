@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.25
+// @version      10.18.2500.26
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.25";
+  var VERSION_NAME = "ver 10.18.2500.26";
 
 // === Plugin ===
 
@@ -18515,6 +18515,17 @@ function MokoMain($) {
     });
   }
   
+// 2019/11/01 城主切替ボタンを押した時にタイムアウトまでの予想時間を3時間にする様対応
+// ここから
+  function changeUser() {
+    $('.btn_change_orner').on('click', function() {
+    var new_time = ~~(new Date() / 1000);
+    login_data.time = new_time;
+    setStorage('ixamoko_login_data', login_data);
+    });
+  }
+// ここまで
+
   // 城主プロフィール
   function userCheck() {
     if (location.pathname != '/user/' && location.pathname != '/user/index.php') {
@@ -23399,7 +23410,10 @@ function MokoMain($) {
   userCheck();                  // user
   teamLvCheck();                // user
   coordinateRecord();           // user && /war
-
+// 2019/11/01 城主切替ボタン押した時にタイムアウトまでの予想時間を3時間にする様対応
+// ここから
+  changeUser();                 // 影城主へ切り替え
+// ここまで
   dungeonCheck();               // facility/dungeon
   dungeonSoldiers();            // facility/dungeon
   dungeonTroops();              // facility/dungeon
