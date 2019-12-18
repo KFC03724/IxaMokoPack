@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.28
+// @version      10.18.2500.29
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.28";
+  var VERSION_NAME = "ver 10.18.2500.29";
 
 // === Plugin ===
 
@@ -20833,8 +20833,11 @@ function MokoMain($) {
       imgSrc = CACHE_PASS + '/img/lot/lot_icon/img_lot_white_icon.jpg',
       token =  $html.find('input[name="senkuji_token"]').val(),
       set_material = $('div.common_box1bottom').find('a.thickbox'),
-      new_send_num = send_num - set_material.length;
-
+// 2019/12/18 スキル強化画面のn枚引きで、所持最大まで引けない場合があったので計算式修正
+// ここから
+//    new_send_num = send_num - set_material.length;
+      new_send_num = Math.min(max_num - set_material.length, possible_num);
+// ここまで
       $('#moko_senkuji_container').remove();
 
       var tmpl = '' +
