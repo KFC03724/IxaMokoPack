@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.18.2500.29
+// @version      10.18.2500.30
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.18.2500.29";
+  var VERSION_NAME = "ver 10.18.2500.30";
 
 // === Plugin ===
 
@@ -1498,6 +1498,11 @@ function MokoMain($) {
 "攻.小藩外交.D": ["攻.弓隊奇襲.E","攻.気丈な覚悟.D","攻.小藩外交.D","攻.賢王訓戒.B","攻.船団爆雷.B"],
 
 "-.桶狭間の饗宴.-": ["防.退き佐久間.E","防.比類なき忠功.D","防.暁.B","防.幽冥主宰大神.SS","-"],
+// ここまで
+
+// 2019/12/27 復刻 直虎に対応
+// ここから
+"防.波乱ノ虎.S": ["特.戦陣 破軍.A","特.無双英傑.SS","防.波乱ノ虎.S","防.覇獄竜王.SS","特.騒速ノ神撃.SS"],
 // ここまで
 
 };
