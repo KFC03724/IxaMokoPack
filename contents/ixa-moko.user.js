@@ -1560,8 +1560,6 @@ function MokoMain($) {
   // 国
   var COUNTRY = (function() {
     var data = {
-      17: { 1:"毛利家", 2:"今川家", 3: "細川家", 4: "蘆名家", 5: "織田家", 6: "松平家", 7: "斎藤家", 8: "伊達家", 9: "尼子家", 10: "北条家", 11: "朝倉家", 12: "島津家"},
-      18: { 1:"石田家", 2:"黒田家", 3: "加藤家", 4: "直江家", 5: "太田家", 6: "真田家", 7: "松平家", 8: "大谷家", 9: "松永家", 10: "村上家", 11: "立花家", 12: "鍋島家" },
       19: { 1:"蘆名家", 2:"尼子家", 3: "上杉家", 4: "武田家", 5: "北条家", 6: "北畠家", 7: "今川家", 8: "六角家", 9: "一条家", 10: "島津家", 11: "大友家", 12: "龍造寺家"},
     }[login_data.chapter];
 
@@ -2013,7 +2011,7 @@ function MokoMain($) {
 // 2020/02/15 ミニマップの所暫定
 // ここから
 var FORTCOORD = (function () {
-  return (login_data.chapter > 18 || (login_data.chapter == 18 && login_data.world == 'a000'))
+  return (login_data.chapter > 18)
   ? [
   [0,0],
   [17,52],[52,17],[17,87],[52,52],[87,17],[17,122],[52,87],[87,52],[122,17],
@@ -2030,9 +2028,9 @@ var FORTCOORD = (function () {
   ];
   })();
   
-  var CRITE = (login_data.chapter > 18 || (login_data.chapter == 18 && login_data.world == 'a000')) ? 210 : 170; // 基準数値
+  var CRITE = (login_data.chapter > 18) ? 210 : 170; // 基準数値
   
-  var MM_MAGNI = (login_data.chapter > 18 || (login_data.chapter == 18 && login_data.world == 'a000')) ? 0.75 : 1; // ミニマップ 表示倍率
+  var MM_MAGNI = (login_data.chapter > 18) ? 0.75 : 1; // ミニマップ 表示倍率
 // ここまで
 
 var BOOKMARK_COLOR = {
@@ -2817,8 +2815,6 @@ var BOOKMARK_COLOR = {
             switch (key) {
               case 'chapter_change_mod':
                 var stage = {
-                  '17': '日ノ本燎原～下天に棲む勇胆の将～',
-                  '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
                 };
                 setting_list += '<li><label>' + this.optionsKeys[key].caption + ':</label>&nbsp;' +
