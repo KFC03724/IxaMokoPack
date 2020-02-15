@@ -2018,9 +2018,9 @@ var FORTCOORD = (function () {
   [157,157],[192,122],[157,192],[192,157],[192,192]
   ];
   })();
-  var CRITE = (login_data.chapter > 18 || (login_data.chapter == 18 && login_data.world == 'a000')) ? 210 : 170; // 基準数値
+  var CRITE = 210; // 基準数値
 
-  var MM_MAGNI = (login_data.chapter > 18 || (login_data.chapter == 18 && login_data.world == 'a000')) ? 0.75 : 1; // ミニマップ 表示倍率
+  var MM_MAGNI =  0.75; // ミニマップ 表示倍率
 // ここまで
 
 var BOOKMARK_COLOR = {
