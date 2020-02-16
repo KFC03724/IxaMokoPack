@@ -33,6 +33,8 @@ function MokoLogin($) {
     var world = title.replace('ワールド', '');
     var chapter = {
       1: '19',
+      2: '20',
+      3: '21',
     }[chapter_num];
     
     var season = parseFloat(season_num).toString(10);
