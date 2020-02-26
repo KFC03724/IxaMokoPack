@@ -15591,11 +15591,11 @@ function MokoMain($) {
       enterArrivalTime();                         // チャットへ座標と時間を入力
       unitMoveLink();                             // デッキ・兵士編成へのリンク生成
 
-      $('img[alt="確認画面へ"]').attr('alt', '選択した部隊で出陣');
+//      $('img[alt="確認画面へ"]').attr('alt', '選択した部隊で出陣');
 
-      var $img = $('img[alt="選択した部隊で出陣"]').on('click', function() {
-        $(document).on('ajaxStop', loadCheck);
-      });
+//      var $img = $('img[alt="選択した部隊で出陣"]').on('click', function() {
+//        $(document).on('ajaxStop', loadCheck);
+//      });
 
       $('li[class^="btn_change_"]').on('click', function() {
         if ($(this).text() == '-') {
