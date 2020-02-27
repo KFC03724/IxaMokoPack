@@ -15673,7 +15673,7 @@ function MokoMain($) {
           $(this).find('tr').css('background-color', '');
         }
       }, 'table.table_waigintunit');
-    },
+    }
     
     // 地図
     draggableUpdate = function() {
