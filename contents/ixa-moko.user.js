@@ -15650,7 +15650,10 @@ function MokoMain($) {
       
       var $h3 = $('#send_troop_panel_wrap').find('h3.in_send_troop_base:last');
       if ( $h3.text().indexOf('精鋭部隊') != -1 ) {
-        $h3.before( $('ul.btn_control').clone().css('padding-top', '10px') );
+// 2020.02.28 全出陣の微調整
+// ここから
+//        $h3.before( $('ul.btn_control').clone().css('padding-top', '10px') );
+// ここまで
         $('li.moko_btn_list a').eq(0).attr('id', 'mk-all-submit_btn2');
         // 全出陣 実行２
         $('#mk-all-submit_btn2').on('click', conf_all_troop);
