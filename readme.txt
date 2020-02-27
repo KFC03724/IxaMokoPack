@@ -28,7 +28,7 @@
 【更新履歴】
 IxaMokoPack ver 10.19.2002.23 Chrome版
 2020/02/27
-　・出陣機能の微調整
+　・全出陣機能の微調整
 
 IxaMokoPack ver 10.19.2002.22 Chrome版
 2020/02/27
