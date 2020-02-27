@@ -15582,12 +15582,12 @@ function MokoMain($) {
         }
         create_menu($radio_move, $(this), mode_flag);
       },
-// 2020.02.27 全出陣機能の微調整
+// 2020.02.28 全出陣の微調整
 // ここから
 //      all_send = '<li class="moko_btn_list"><a id="mk-all-submit_btn" href="javascript:void(0);">' +
       all_send = '<li class="moko_btn_list"><a class="mk-all-submit_btn" href="javascript:void(0);">' +
-// ここまで      
-              '<img src="' + IMAGES.all_attack + '" title="全出陣！" alt="全出陣！" />' +
+// ここまで
+      '<img src="' + IMAGES.all_attack + '" title="全出陣！" alt="全出陣！" />' +
             '</a></li>';
 
       write_potential(getMaterialData());
@@ -15595,11 +15595,11 @@ function MokoMain($) {
       enterArrivalTime();                         // チャットへ座標と時間を入力
       unitMoveLink();                             // デッキ・兵士編成へのリンク生成
 
-//      $('img[alt="確認画面へ"]').attr('alt', '選択した部隊で出陣');
+      $('img[alt="確認画面へ"]').attr('alt', '選択した部隊で出陣');
 
-//      var $img = $('img[alt="選択した部隊で出陣"]').on('click', function() {
-//        $(document).on('ajaxStop', loadCheck);
-//      });
+      var $img = $('img[alt="選択した部隊で出陣"]').on('click', function() {
+        $(document).on('ajaxStop', loadCheck);
+      });
 
       $('li[class^="btn_change_"]').on('click', function() {
         if ($(this).text() == '-') {
@@ -15620,11 +15620,11 @@ function MokoMain($) {
         $('img[alt="選択した部隊で出陣"]').trigger('click');
       });
 
-// 2020.02.27 全出陣機能の微調整
+// 2020.02.28 全出陣の微調整
 // ここから
-//        if (options.all_send_troop && !$('#mk-all-submit_btn').length) {
+//      if (options.all_send_troop && !$('#mk-all-submit_btn').length) {
         if (options.all_send_troop && !$('.mk-all-submit_btn').length) {
-// ここまで      
+// ここまで
         var normal_flag = $('th.waitingunittitle').length;
         var $moko_btn_list = $(all_send).insertAfter($img.closest('li'));
         if (!normal_flag || !$('#normal_attack').prop('checked')) {
@@ -15641,12 +15641,13 @@ function MokoMain($) {
         });
         
         // 全出陣 実行
-// 2020.02.27 全出陣機能の微調整
-// ここから        
+// 2020.02.28 全出陣の微調整
+// ここから
 //        $('#mk-all-submit_btn').on('click', conf_all_troop);
         $('.mk-all-submit_btn').on('click', conf_all_troop);
-// ここまで        
-        }
+// ここまで
+      }
+      
       var $h3 = $('#send_troop_panel_wrap').find('h3.in_send_troop_base:last');
       if ( $h3.text().indexOf('精鋭部隊') != -1 ) {
         $h3.before( $('ul.btn_control').clone().css('padding-top', '10px') );
