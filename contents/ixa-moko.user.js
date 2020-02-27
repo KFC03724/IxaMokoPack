@@ -15585,7 +15585,7 @@ function MokoMain($) {
 // 2020.02.27 出陣機能の微調整
 // ここから      
 //      all_send = '<li class="moko_btn_list"><a id="mk-all-submit_btn" href="javascript:void(0);">' +
-      + all_send = '<li class="moko_btn_list"><a class="mk-all-submit_btn" href="javascript:void(0);">' +
+        all_send = '<li class="moko_btn_list"><a class="mk-all-submit_btn" href="javascript:void(0);">' +
 // ここまで      
               '<img src="' + IMAGES.all_attack + '" title="全出陣！" alt="全出陣！" />' +
             '</a></li>';
