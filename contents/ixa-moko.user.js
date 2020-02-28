@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.2002.23
+// @version      10.19.2002.24
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.2002.23";
+  var VERSION_NAME = "ver 10.19.2002.24";
 
 // === Plugin ===
 
@@ -2075,7 +2075,7 @@ function MokoMain($) {
     return $('#btnLordName > a > img').attr('src').split('/img')[0];
   }();
 
-// ^ 定数
+// 定数
 
 // === Global ===
 
@@ -23994,7 +23994,11 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
     '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 15px; }' +
+// 2020.02.29 お気に入り登録とデッキコスト増加の文字が重なってる現象の対応
+// ここから
+//    '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 15px; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 0px; }' +
+// ここまで
     '#deck_cost_add_btn_img { display: none; }' + /* デッキコスト課金ボタン隠す */
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
