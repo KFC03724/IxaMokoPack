@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.2002.24
+// @version      10.19.2002.25
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.2002.24";
+  var VERSION_NAME = "ver 10.19.2002.25";
 
 // === Plugin ===
 
@@ -14779,20 +14779,23 @@ function MokoMain($) {
       return;
     }
 
-    //機能選択を最初から開く　ここから
-    $('#control_toggle_btn').removeClass('close');
-    $('.map_detail_log').css('min-height', '100px');
-    $('.base_btn_toggle:not(.action_log) div.log_title .new_worldmap_mappanel_body').toggle();
-    var $toggleItem = $('.base_btn_toggle div.log_title');
-    $toggleItem.find("p.title").append('<a class="accordion_btn"></a>');
-    $toggleItem.find("p.title").append('<span> (<span class="count"></span>件</span>)</span>');
-    $toggleItem.find("p.title span.count").each(function(){
-      $(this).text($(this).parents('div.log_title').find('ul>li').length);
-    });
-    $toggleItem.on('click', function(){
-      $(this).find('.new_worldmap_mappanel_body').toggle();
-    });
+// 2020.03.01 機能選択と復活が被っているので、機能選択はデフォルトで閉じている様修正
+// ここから
+//    //機能選択を最初から開く　ここから
+//    $('#control_toggle_btn').removeClass('close');
+//    $('.map_detail_log').css('min-height', '100px');
+//    $('.base_btn_toggle:not(.action_log) div.log_title .new_worldmap_mappanel_body').toggle();
+//    var $toggleItem = $('.base_btn_toggle div.log_title');
+//    $toggleItem.find("p.title").append('<a class="accordion_btn"></a>');
+//    $toggleItem.find("p.title").append('<span> (<span class="count"></span>件</span>)</span>');
+//    $toggleItem.find("p.title span.count").each(function(){
+//      $(this).text($(this).parents('div.log_title').find('ul>li').length);
+//    });
+//    $toggleItem.on('click', function(){
+//      $(this).find('.new_worldmap_mappanel_body').toggle();
+//    });
     //機能選択を最初から開く　ここまで
+// ここまで
     
     // 空き地戦力表示覧
     var $moko_material =  $('<div id="moko_material" />')
