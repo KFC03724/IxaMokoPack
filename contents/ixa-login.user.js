@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMokoLogin
 // @description  戦国IXA用ツール ログイン
-// @version      10.19.2002.19
+// @version      10.19.202003.0
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/world/*
@@ -32,9 +32,7 @@ function MokoLogin($) {
     var season_num = $(this).find('span[class^="flag_"] img').attr('src').match(/flag_\w(\d+).gif/)[1];
     var world = title.replace('ワールド', '');
     var chapter = {
-      1: '19',
-      2: '20',
-      3: '21',
+      1: '19'
     }[chapter_num];
     
     var season = parseFloat(season_num).toString(10);
