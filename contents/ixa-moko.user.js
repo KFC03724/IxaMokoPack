@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202004.3
+// @version      10.19.202004.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202004.3";
+  var VERSION_NAME = "ver 10.19.202004.4";
 
 // === Plugin ===
 
@@ -20622,7 +20622,11 @@ function MokoMain($) {
       }
       $.ajax({
         type: 'post',
-        url: '/senkuji/senkuji.php',
+// 2020.05.01 白くじ連引きの修正
+// ここから
+//        url: '/senkuji/senkuji.php',
+        url: '/senkuji/play_senkuji.php',
+// ここまで
         data: data,
         beforeSend: xrwStatusText
       }).then(function(html) {
@@ -20988,7 +20992,11 @@ function MokoMain($) {
 
       $.ajax({
         type: 'post',
-        url: '/senkuji/senkuji.php',
+// 2020.05.01 自動強化の修正
+// ここから
+//        url: '/senkuji/senkuji.php',
+        url: '/senkuji/play_senkuji.php',
+// ここまで
         data: {
           send: 'send',
           got_type: '0',
