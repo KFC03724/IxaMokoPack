@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202004.5
+// @version      10.19.202004.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202004.5";
+  var VERSION_NAME = "ver 10.19.202004.6";
 
 // === Plugin ===
 
@@ -5397,7 +5397,11 @@ function MokoMain($) {
     var getAllianceNmae = function() {
       var html = $.ajax({
         url: $('#gnavi li.gMenu07 > a').attr('href'),
-        async: false
+        async: false,
+// 2020.05.02 不具合修正
+// ここから
+        beforeSend: xrwStatusText
+// ここまで
       }).responseText;
       var $html = $(html).find('#ig_mainareabox');
       var obj = {
@@ -12591,7 +12595,11 @@ function MokoMain($) {
     $.ajax({
       type: 'post',
       url: '/facility/set_unit_list.php?show_num=' + object.show_num + '&select_card_group=' + object.scg,
-      data: data
+      data: data,
+// 2020.05.02 不具合修正
+// ここから
+      beforeSend: xrwStatusText
+// ここまで
     })
     .then(function(html) {
       var $html = $(html).find('#box'),
@@ -17281,7 +17289,7 @@ function MokoMain($) {
 
     // 陣屋の収容可能数の取得
     function get_vacancy() {
-// 訓練施設の画面で収容人数の取得と、その後の施設Lvアップの必要資源着色(足りている資源は緑色)に失敗していたので修正
+// 2020.05.01 訓練施設の画面で収容人数の取得と、その後の施設Lvアップの必要資源着色(足りている資源は緑色)に失敗していたので修正
 // ここから
 //      var html = $.ajax({
         var html = j$.ajax({
@@ -21415,7 +21423,11 @@ function MokoMain($) {
         union_type: 5,
         btn_change_flg: 1,
         p: page
-      }
+// 2020.05.02 不具合修正
+// ここから
+      },
+      beforeSend: xrwStatusText
+// ここまで
     }).then(function(html) {
       var $html = $(html);
       var max_page = html_max_page($html);
