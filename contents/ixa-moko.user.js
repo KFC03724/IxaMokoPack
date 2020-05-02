@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202005.2
+// @version      10.19.202005.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202005.2";
+  var VERSION_NAME = "ver 10.19.202005.3";
 
 // === Plugin ===
 
@@ -14201,25 +14201,38 @@ beforeSend: xrwStatusText
   }
   
   //出陣 デッキ・兵士編成へのリンクを追加
+// 2020.05.02 不具合修正
+// ここから
+  // function unitMoveLink() {
+  //   var move_link = function(unit_name, id_num) {
+  //     $.post('/facility/unit_status.php?dmo=all').then(function(html) {
+  //       var $div = $(html).find('div[class^="ig_fightunit_title"], div.ig_dungeonunit_title');
+  //       $div.each(function() {
+  //         var ano = $(this).find('a').attr('href').match(/\d+/g)[0];
+  //         var url;
+  //         if ($(this).children('h3').text().indexOf(unit_name) != -1) {
+  //           if (id_num) {
+  //             url = '/facility/set_unit_list.php?unit_assign_id=' + id_num + '&ano=' + ano + '&p=1';
+  //           } else {
+  //             url = '/card/deck.php?ano=' + ano;
+  //           }
+  //           location.href = url;
+  //           return;
+  //         }
+  //       });
+  //     });
+  //   };
   function unitMoveLink() {
     var move_link = function(unit_name, id_num) {
-      $.post('/facility/unit_status.php?dmo=all').then(function(html) {
-        var $div = $(html).find('div[class^="ig_fightunit_title"], div.ig_dungeonunit_title');
-        $div.each(function() {
-          var ano = $(this).find('a').attr('href').match(/\d+/g)[0];
-          var url;
-          if ($(this).children('h3').text().indexOf(unit_name) != -1) {
-            if (id_num) {
-              url = '/facility/set_unit_list.php?unit_assign_id=' + id_num + '&ano=' + ano + '&p=1';
-            } else {
-              url = '/card/deck.php?ano=' + ano;
-            }
-            location.href = url;
-            return;
-          }
-        });
-      });
-    };
+    // $.post('/facility/unit_status.php?dmo=all').then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: '/facility/unit_status.php?dmo=all',
+    beforeSend: xrwStatusText,
+    })
+    .then(function(html) {
+    var $div = $(html).find('div[class^="ig_fightunit_title"], div.ig_dungeonunit_title');
+// ここまで
 
     var $table, unit_name, unit_id, html;
     $('th[class^="waitingunittitle"]:not(:has(.mk_organize_link))').each(function() {
@@ -19723,16 +19736,32 @@ beforeSend: xrwStatusText
     */
   },
   getWarReport = function($a) {
-    $.post($a.attr('href'))
-    .then(function(html) {
+// 2020.05.02 合戦報告書の修正
+// ここから
+    // $.post($a.attr('href'))
+    // .then(function(html) {
+    //   var $report_mid = $(html).find('#ig_battle_report_mid');
+    //   $report_mid.find('div.clearfix.mb10, table.ig_battle_table').remove();
+    //   $('#warlist_screen').html($report_mid);
+    //   $('tr.tr_selected').removeClass('tr_selected');
+    //   $a.closest('tr').addClass('tr_selected');
+    //   return warReportLayout();
+    // }, null);
+    j$.ajax({
+      type: 'get',
+      url: $a.attr('href'),
+      cache: false,
+      success: function(html){
       var $report_mid = $(html).find('#ig_battle_report_mid');
       $report_mid.find('div.clearfix.mb10, table.ig_battle_table').remove();
       $('#warlist_screen').html($report_mid);
       $('tr.tr_selected').removeClass('tr_selected');
       $a.closest('tr').addClass('tr_selected');
       return warReportLayout();
-    }, null);
+      }
+      });
   },
+// ここまで
   
   // 合戦報告書 2ペイン表示
   war2paneLayout = function() {
