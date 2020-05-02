@@ -9832,7 +9832,12 @@ function MokoMain($) {
         ng_flag = false,
         data;
 
-      $.post(search, function(html) {
+$.ajax({
+type: 'post',
+url: search,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
         var $html = $(html).find('#box');
         $html.find('div[id^="cardWindow_"]').each(function(i) {
           data = get_card_data($(this));
@@ -12533,7 +12538,12 @@ function MokoMain($) {
           var ano = $('#select_assign_no').val(),
           c = data.length,
           post_query = function() {
-            $.post('/facility/set_unit_list_if.php', data[i]).then(function(html) {
+$.ajax({
+type: 'post',
+url: '/facility/set_unit_list_if.php',
+beforeSend: xrwStatusText
+})
+.then(function(html) {
               c--;
               if (c === 0) {
                 location.href = '/facility/set_unit_list.php?&ano=' + ano;
@@ -14503,7 +14513,12 @@ function MokoMain($) {
       clearRect();
     }
     var search = '/war/war_ranking.php?m=&c=' + data.country_id + '&find_rank=&find_name=' + data.user_name;
-    $.post(search, function(html) {
+$.ajax({
+type: 'post',
+url: search,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
       var $html = $(html).find('table.ig_battle_table');
       if (BATTLE_MODE == '天下統一戦中') {
         var $tr = $html.find('tr.ig_rank_you');
@@ -14526,7 +14541,12 @@ function MokoMain($) {
 
   function getCrushingDefense(data) {
     var search = '/user/ranking.php?m=attack_score&find_rank=&find_name=' + data.user_name + '&c=' + data.country_id;
-    $.post(search, function(html) {
+$.ajax({
+type: 'post',
+url: search,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
       var $html = $(html).find('table.common_table1');
       var $td = $html.find('tr.now td');
       
@@ -14759,7 +14779,12 @@ function MokoMain($) {
     }
 
     var post_query = function(obj) {
-      $.post('/user/?user_id=' + obj.user_id, function(html) {
+$.ajax({
+type: 'post',
+url: '/user/?user_id=' + obj.user_id,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
         var $html = $(html).find('div.common_box3bottom').eq(0),
         data = userProfileData($html);
         if (!data.position.match(/^盟主/)) {
@@ -15112,7 +15137,12 @@ function MokoMain($) {
               var url = $(this).attr('url');
               
               // j$
-              $.post(array.land_href, function(html) {
+$.ajax({
+type: 'post',
+url: array.land_href,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
                 location.href = url;
               });
               return false;
@@ -15817,11 +15847,21 @@ function MokoMain($) {
       data.comment = $(html).find('textarea.profile_edit').val();
       data[keys] = new_name;
       data.btn_preview = '確認';
-      $.post(href + hash, data).then(function(html) {
+$.ajax({
+type: 'post',
+url: href + hash,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
         delete data.btn_preview;
         data.btn_send = '更新';
         data.ssid = $(html).find('input[name="ssid"]').val();
-        $.post(href + hash, data).then(function(html) {
+$.ajax({
+type: 'post',
+url: href + hash,
+beforeSend: xrwStatusText
+})
+.then(function(html) {
           location.href = location.pathname + location.search;
         });
       });
@@ -16076,7 +16116,12 @@ function MokoMain($) {
       if (!confirm('この部隊を帰還させてよろしいですか？')) {
         return;
       }
-      $.post(getFeedbackUrl($(this).attr('ano')), function(html) {
+$.ajax({
+type: 'post',
+url: getFeedbackUrl($(this).attr('ano')),
+beforeSend: xrwStatusText
+})
+.then(function(html) {
         location.href = location.pathname + location.search;
       });
       return false;
@@ -16182,7 +16227,12 @@ function MokoMain($) {
         }
         var troops_div = $(this).closest('div.mt_troops'),
           ano = troops_div.attr('name');
-        $.post(getFeedbackUrl(ano), function(html) {
+$.ajax({
+type: 'post',
+url: getFeedbackUrl(ano),
+beforeSend: xrwStatusText
+})
+.then(function(html) {
           location.href = location.pathname + location.search;
         });
         return false;
@@ -18508,7 +18558,12 @@ function MokoMain($) {
         $a.attr('href', change);
       }
     });
-    $.post('/facility/unit_status.php?dmo=all', function(html) {
+$.ajax({
+type: 'post',
+url: '/facility/unit_status.php?dmo=all',
+beforeSend: xrwStatusText
+})
+.then(function(html) {
       var FightBotbox = $('div.ig_decksection_innermid').find('div.ig_fight_dotbox');
       /*43スレ 155修整 */
       var FightunitTitle = $('div.ig_fightunit_title2');
@@ -19038,7 +19093,12 @@ function MokoMain($) {
         $('div.dungeon_boxbottom').prepend(html);
       },
       list = [];
-    $.post('/facility/unit_status.php?dmo=all', function(html) {
+$.ajax({
+type: 'post',
+url: '/facility/unit_status.php?dmo=all',
+beforeSend: xrwStatusText
+})
+.then(function(html) {
       var $img = $(html).find('img[src$="mode_wait.png"]');
       $img.each(function() {
         var $fight_dotbox = $(this).closest('div.ig_fight_dotbox');
