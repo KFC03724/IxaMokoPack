@@ -12538,12 +12538,14 @@ beforeSend: xrwStatusText
           var ano = $('#select_assign_no').val(),
           c = data.length,
           post_query = function() {
-$.ajax({
-type: 'post',
-url: '/facility/set_unit_list_if.php',
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+//          $.post('/facility/set_unit_list_if.php', data[i]).then(function(html) {
+            $.ajax({
+            type: 'post',
+            url: '/facility/set_unit_list_if.php',
+            data: data[i],
+            beforeSend: xrwStatusText
+            })
+            .then(function(html) {
               c--;
               if (c === 0) {
                 location.href = '/facility/set_unit_list.php?&ano=' + ano;
