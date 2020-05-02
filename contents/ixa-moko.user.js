@@ -14686,7 +14686,11 @@ function MokoMain($) {
       type: 'get',
       dataType: 'JSON',
       async: false,
-      data: o
+      data: o,
+// 2020.05.02 不具合修正
+// ここから
+      beforeSend: xrwStatusText
+// ここまで
     }).responseJSON;
     return json;
   }
