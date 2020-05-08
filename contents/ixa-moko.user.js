@@ -15857,12 +15857,12 @@ beforeSend: xrwStatusText
     var hash = '#ptop';
 // 2020.05.09 拠点名称変更の修正
 // ここから
-//    $.post(href).then(function(html) {
-      $.ajax({
-      type: 'post',
-      url: href,
-      beforeSend: xrwStatusText,
-      })
+//  $.post(href).then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: href,
+    beforeSend: xrwStatusText,
+    })
 // ここまで
     var $table = $(html).find('table.common_table1');
     var $input, new_name, old_name, keys;
