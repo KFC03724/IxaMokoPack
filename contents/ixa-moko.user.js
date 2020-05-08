@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202005.4
+// @version      10.19.202005.5
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202005.4";
+  var VERSION_NAME = "ver 10.19.202005.5";
 
 // === Plugin ===
 
@@ -3449,6 +3449,16 @@ function MokoMain($) {
   var xrwStatusText = function(xhr) {
     return xhr.setRequestHeader('X-Requested-With', 'statusText');
   };
+
+// 2020.05.09 戦国IXA ツールスレPart44 >>557の修正を適用
+// ここから
+  $.ajaxSetup({
+    beforeSend: xrwStatusText,
+    dataFilter: function(data, type) {
+    return data;
+    }
+    });
+// ここまで
 
   j$.ajaxSetup({
     beforeSend: xrwStatusText,
@@ -14522,12 +14532,12 @@ beforeSend: xrwStatusText
       clearRect();
     }
     var search = '/war/war_ranking.php?m=&c=' + data.country_id + '&find_rank=&find_name=' + data.user_name;
-$.ajax({
-type: 'post',
-url: search,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: search,
+    beforeSend: xrwStatusText
+    })
+    .then(function(html) {
       var $html = $(html).find('table.ig_battle_table');
       if (BATTLE_MODE == '天下統一戦中') {
         var $tr = $html.find('tr.ig_rank_you');
@@ -14550,12 +14560,12 @@ beforeSend: xrwStatusText
 
   function getCrushingDefense(data) {
     var search = '/user/ranking.php?m=attack_score&find_rank=&find_name=' + data.user_name + '&c=' + data.country_id;
-$.ajax({
-type: 'post',
-url: search,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: search,
+    beforeSend: xrwStatusText
+    })
+    .then(function(html) {
       var $html = $(html).find('table.common_table1');
       var $td = $html.find('tr.now td');
       
@@ -15470,7 +15480,11 @@ beforeSend: xrwStatusText
           }).then(function(html) {
             c--;
             if (c === 0) {
-              return addMapUnitStatus();
+// 2020.05.09 「全部隊キャンセル」で画面が切り替わらない件の修正
+// ここから
+              location.reload();
+//              return addMapUnitStatus();
+// ここまで
             }
           });
         };
@@ -15542,7 +15556,12 @@ beforeSend: xrwStatusText
           }).then(function(html) {
             c--;
             if (c === 0) {
-              return addMapUnitStatus();
+// 2020.05.09 「全出陣」で画面が切り替わらない件の修正
+// ここから
+              var coord = location.href.match(/\?[^#]*/)[0];
+              location.href = '/map.php#/unit_status' + coord;
+//              return addMapUnitStatus();
+// ここまで
             }
           });
         };
@@ -15836,7 +15855,15 @@ beforeSend: xrwStatusText
     var data = {};
     var href = '/user/change/change.php';
     var hash = '#ptop';
-    $.post(href).then(function(html) {
+// 2020.05.09 拠点名称変更の修正
+// ここから
+//    $.post(href).then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: href,
+      beforeSend: xrwStatusText,
+      })
+// ここまで
       var $table = $(html).find('table.common_table1');
       var $input, new_name, old_name, keys;
       $table.find('a').each(function() {
@@ -20008,7 +20035,16 @@ beforeSend: xrwStatusText
       }
     }
 
-    $.post('/war/' + back_query).then(function(html) {
+// 2020.05.09 合戦報告書 詳細の前後リンクの修正
+// ここから
+//    $.post('/war/' + back_query).then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: '/war/' + back_query,
+      beforeSend: xrwStatusText
+      }).
+      then(function(html) {
+// ここまで
       var $html = $(html).find('#ig_battle_report_mid');
       var $a = $html.find('A[href^="detail.php"]');
       var $li = $html.find('div.ig_battle_pagelist ul li:has(span)');
@@ -20155,7 +20191,16 @@ beforeSend: xrwStatusText
           '糧': 0
         },
         gettreger = '';
-      $.post('/report/list.php?m=dungeon').then(function(html) {
+// 2020.05.09 【秘境】戦利品と加入兵　ボタンの挙動修正
+// ここから        
+//      $.post('/report/list.php?m=dungeon').then(function(html) {
+        $.ajax({
+        type: 'post',
+        url: '/report/list.php?m=dungeon',
+        beforeSend: xrwStatusText
+        }).
+        then(function(html) {
+// ここまで
         var $pager = $(html).find('ul.pager'),
           max_page;
         if ($pager.length) {
@@ -24112,8 +24157,13 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_03 { background: url("/img/deck/btn_category.png") no-repeat -30px -60px; }' +
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
-    '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+// 2020.05.09 お気に入りボタンの微調整
+// ここから
+//    '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
+//    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+    '#normal_unit_state_head { width: 292px; }' + // 「お気に入り登録」表示開始位置（chrome,iron）
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -43px; line-height: 1.5; font-size: 8px; color: #66ccff; font-weight: normal; }' +
+// ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
     '#new_troops_container p span { margin-right: 1em; color: red; }'+
