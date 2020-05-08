@@ -15864,15 +15864,15 @@ beforeSend: xrwStatusText
       beforeSend: xrwStatusText,
       })
 // ここまで
-      var $table = $(html).find('table.common_table1');
-      var $input, new_name, old_name, keys;
-      $table.find('a').each(function() {
-        $input = $(this).closest('tr').find('input[name^="new_name"]');
-        if ($(this).attr('href') == '/map/detail.php?' + url) {
-          old_name = $input.val();
-          new_name = prompt(old_name, old_name);
-          keys = $input.attr('name');
-        }
+    var $table = $(html).find('table.common_table1');
+    var $input, new_name, old_name, keys;
+    $table.find('a').each(function() {
+    $input = $(this).closest('tr').find('input[name^="new_name"]');
+      if ($(this).attr('href') == '/map/detail.php?' + url) {
+        old_name = $input.val();
+        new_name = prompt(old_name, old_name);
+        keys = $input.attr('name');
+      }
       });
       if (!new_name) {
         return false;
@@ -15883,27 +15883,26 @@ beforeSend: xrwStatusText
       data.comment = $(html).find('textarea.profile_edit').val();
       data[keys] = new_name;
       data.btn_preview = '確認';
-$.ajax({
-type: 'post',
-url: href + hash,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: href + hash,
+      beforeSend: xrwStatusText
+      })
+      .then(function(html) {
         delete data.btn_preview;
         data.btn_send = '更新';
         data.ssid = $(html).find('input[name="ssid"]').val();
-$.ajax({
-type: 'post',
-url: href + hash,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: href + hash,
+      beforeSend: xrwStatusText
+      })
+      .then(function(html) {
           location.href = location.pathname + location.search;
         });
       });
-    });
   }
-  
+    
   // 国移動プルダウンメニュー
   function countryChange() {
     if (location.pathname != '/map.php') {
