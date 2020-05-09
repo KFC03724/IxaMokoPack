@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202005.5
+// @version      10.19.202005.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202005.5";
+  var VERSION_NAME = "ver 10.19.202005.6";
 
 // === Plugin ===
 
@@ -3450,16 +3450,6 @@ function MokoMain($) {
     return xhr.setRequestHeader('X-Requested-With', 'statusText');
   };
 
-// 2020.05.09 戦国IXA ツールスレPart44 >>557の修正を適用
-// ここから
-  $.ajaxSetup({
-    beforeSend: xrwStatusText,
-    dataFilter: function(data, type) {
-    return data;
-    }
-    });
-// ここまで
-
   j$.ajaxSetup({
     beforeSend: xrwStatusText,
     dataFilter: function(data, type) {
@@ -5224,7 +5214,8 @@ function MokoMain($) {
       cache: true,
       async: false,
       timeout: 2000,
-      dataType: 'text'
+      dataType: 'text',
+      beforeSend: xrwStatusText
     }).responseText;
     $(html).find('dl.OwnWin a').each(function() {
       countrycode.push($(this).attr('href').match(/c=\d+/)[0].replace('c=', ''));
@@ -5783,6 +5774,7 @@ function MokoMain($) {
       j$.ajax({
         type: 'post',
         url: '/facility/unit_status.php?dmo=enemy',
+        beforeSend: xrwStatusText,
         cache: false,
         success: function(html) {
           $html = $(html).find('div.ig_decksection_mid');
@@ -9691,7 +9683,8 @@ function MokoMain($) {
 
     $.ajax({
       type: 'post',
-      url: '/facility/unit_status.php?dmo=enemy'
+      url: '/facility/unit_status.php?dmo=enemy',
+      beforeSend: xrwStatusText
     })
     .then(function(html) {
       $(html).find('div.ig_decksection_mid').find('a').each(function() {
@@ -9841,13 +9834,12 @@ function MokoMain($) {
         this_card = [],
         ng_flag = false,
         data;
-
-$.ajax({
-type: 'post',
-url: search,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+        $.ajax({
+        type: 'post',
+        url: search,
+        beforeSend: xrwStatusText
+        })
+        .then(function(html) {
         var $html = $(html).find('#box');
         $html.find('div[id^="cardWindow_"]').each(function(i) {
           data = get_card_data($(this));
@@ -14437,6 +14429,7 @@ beforeSend: xrwStatusText
     $.ajax({
       type: 'post',
       url: '/user/?user_id=' + data.user_id,
+      beforeSend: xrwStatusText
     })
     .then(function(html) {
       var $html = $(html),
@@ -14493,7 +14486,8 @@ beforeSend: xrwStatusText
     var target_data = getStorage(null, 'ixamoko_target_data');
     $.ajax({
       type: 'post',
-      url: '/user/?user_id=' + id
+      url: '/user/?user_id=' + id,
+      beforeSend: xrwStatusText
     })
     .then(function(html) {
       var array = [];
@@ -14798,12 +14792,12 @@ beforeSend: xrwStatusText
     }
 
     var post_query = function(obj) {
-$.ajax({
-type: 'post',
-url: '/user/?user_id=' + obj.user_id,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: '/user/?user_id=' + obj.user_id,
+    beforeSend: xrwStatusText
+    })
+    .then(function(html) {
         var $html = $(html).find('div.common_box3bottom').eq(0),
         data = userProfileData($html);
         if (!data.position.match(/^盟主/)) {
@@ -15156,12 +15150,12 @@ beforeSend: xrwStatusText
               var url = $(this).attr('url');
               
               // j$
-$.ajax({
-type: 'post',
-url: array.land_href,
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+            $.ajax({
+              type: 'post',
+              url: array.land_href,
+              beforeSend: xrwStatusText
+            })
+            .then(function(html) {
                 location.href = url;
               });
               return false;
@@ -15476,7 +15470,8 @@ beforeSend: xrwStatusText
             url: '/facility/unit_status_if.php',
             data: {
               cancel: data
-            }
+            },
+            beforeSend: xrwStatusText
           }).then(function(html) {
             c--;
             if (c === 0) {
@@ -16141,7 +16136,8 @@ beforeSend: xrwStatusText
         url: '/facility/unit_status_if.php',
         data: {
           cancel: url
-        }
+        },
+        beforeSend: xrwStatusText
       });
       return false;
     });
@@ -16151,12 +16147,12 @@ beforeSend: xrwStatusText
       if (!confirm('この部隊を帰還させてよろしいですか？')) {
         return;
       }
-$.ajax({
-type: 'post',
-url: getFeedbackUrl($(this).attr('ano')),
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: getFeedbackUrl($(this).attr('ano')),
+      beforeSend: xrwStatusText
+      })
+      .then(function(html) {
         location.href = location.pathname + location.search;
       });
       return false;
@@ -16262,12 +16258,12 @@ beforeSend: xrwStatusText
         }
         var troops_div = $(this).closest('div.mt_troops'),
           ano = troops_div.attr('name');
-$.ajax({
-type: 'post',
-url: getFeedbackUrl(ano),
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+          $.ajax({
+          type: 'post',
+          url: getFeedbackUrl(ano),
+          beforeSend: xrwStatusText
+          })
+          .then(function(html) {
           location.href = location.pathname + location.search;
         });
         return false;
@@ -17352,7 +17348,8 @@ beforeSend: xrwStatusText
       var html = $.ajax({
         type: 'post',
         url: '/alliance/alliance_gold_mine.php',
-        async: false
+        async: false,
+        beforeSend: xrwStatusText
       }).responseText;
       $(html).find('div[id^="conditionWindow"] dd').each(function() {
         if ($(this).text() == '「宝物を発掘していないため、ご利益はありません」') {
@@ -17385,7 +17382,8 @@ beforeSend: xrwStatusText
 // ここまで
         type: 'post',
         async: false,
-        url: '/facility/unit_list.php'
+        url: '/facility/unit_list.php',
+        beforeSend: xrwStatusText
       }).responseText;
       var source = $(html).find('#ig_deckbox div.ig_solder_commentarea').eq(0).text().match(/\d+/g);
       var now = parseInt(source[0]);
@@ -18225,7 +18223,8 @@ beforeSend: xrwStatusText
         type:'get',
         async: false,
         url: '/village_change.php',
-        data: { village_id: vid }
+        data: { village_id: vid },
+        beforeSend: xrwStatusText
       });
     }
     
@@ -18234,7 +18233,8 @@ beforeSend: xrwStatusText
       $.ajax({
         type: 'get',
         async: false,
-        url: getSelectBaseData().url
+        url: getSelectBaseData().url,
+        beforeSend: xrwStatusText
       }).then(function(html) {
         location.reload();
       });
@@ -18257,7 +18257,8 @@ beforeSend: xrwStatusText
             'tc': torihiki[i].Val,
             'tt_id': torihiki[i].InCode,
             'change_btn': true,
-          }
+          },
+          beforeSend: xrwStatusText
         });
       }
       return selectBaseReturn();
@@ -18560,7 +18561,8 @@ beforeSend: xrwStatusText
         post_query = function(data) {
           $.ajax({
             type: 'post',
-            url: data
+            url: data,
+            beforeSend: xrwStatusText
           }).then(function(html) {
             c--;
             if (c === 0) {
@@ -18593,12 +18595,12 @@ beforeSend: xrwStatusText
         $a.attr('href', change);
       }
     });
-$.ajax({
-type: 'post',
-url: '/facility/unit_status.php?dmo=all',
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+    $.ajax({
+    type: 'post',
+    url: '/facility/unit_status.php?dmo=all',
+    beforeSend: xrwStatusText
+    })
+    .then(function(html) {
       var FightBotbox = $('div.ig_decksection_innermid').find('div.ig_fight_dotbox');
       /*43スレ 155修整 */
       var FightunitTitle = $('div.ig_fightunit_title2');
@@ -19128,12 +19130,12 @@ beforeSend: xrwStatusText
         $('div.dungeon_boxbottom').prepend(html);
       },
       list = [];
-$.ajax({
-type: 'post',
-url: '/facility/unit_status.php?dmo=all',
-beforeSend: xrwStatusText
-})
-.then(function(html) {
+      $.ajax({
+      type: 'post',
+      url: '/facility/unit_status.php?dmo=all',
+      beforeSend: xrwStatusText
+      })
+      .then(function(html) {
       var $img = $(html).find('img[src$="mode_wait.png"]');
       $img.each(function() {
         var $fight_dotbox = $(this).closest('div.ig_fight_dotbox');
@@ -19367,7 +19369,8 @@ beforeSend: xrwStatusText
             x: param.x,
             y: param.y,
             c: param.c
-          }
+          },
+          beforeSend: xrwStatusText
         })
         .then(function(data) {
           json = (function() {
