@@ -9723,7 +9723,7 @@ function MokoMain($) {
       return;
     }
     var select_card_group = $('#select_card_group').val(),
-      html = '<a href="javascript:void(0);" id="record_favorites_troops">お気に入り登録 </a>';
+      html = '<a href="javascript:void(0);" id="record_favorites_troops">お気に入り登録</a>';
     $('#normal_unit_state_head').after(html);
 
     $('#record_favorites_troops').on('click', function() {
@@ -24172,7 +24172,7 @@ window.addEventListener('DOMContentLoaded', function() {
 //    '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
     '#normal_unit_state_head { width: 292px; }' + // 「お気に入り登録」表示開始位置（chrome,iron）
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; color: #66ccff; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -23px; line-height: 1.5; font-size: 8px; color: #66ccff; font-weight: normal; }' +
 // ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
