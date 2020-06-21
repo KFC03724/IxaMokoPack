@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "IxaMoko",
   "author": "hoge",
-  "version": "10.19.202006.1",
+  "version": "10.19.202006.2",
   "description": "Tool of Sengoku-ixa",
 
   "content_scripts": [

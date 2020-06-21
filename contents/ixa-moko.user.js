@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202006.1
+// @version      10.19.202006.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202006.1";
+  var VERSION_NAME = "ver 10.19.202006.2";
 
 // === Plugin ===
 
@@ -1579,6 +1579,7 @@ function MokoMain($) {
   "特.野太刀.C":["-","-","-","特.戦陣 凱旋.A","-"],
   "防.幽冥主宰大神.SS":["-","-","-","防.幽冥主宰大神.SS","-"],
   "特.布都御魂ノ鬨.SS":["-","-","-","特.布都御魂ノ鬨.SS","-"],
+  "防.茅纒之矟ノ煌.SS":["-","-","-","防.茅纒之矟ノ煌.SS","-"],
 
   };
 
