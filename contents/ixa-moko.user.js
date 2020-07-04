@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.19.202006.3
+// @version      10.19.202007.1
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.19.202006.3";
+  var VERSION_NAME = "ver 10.19.202007.1";
 
 // === Plugin ===
 
@@ -1581,6 +1581,17 @@ function MokoMain($) {
   "特.布都御魂ノ鬨.SS":["-","-","-","特.布都御魂ノ鬨.SS","-"],
   "防.茅纒之矟ノ煌.SS":["-","-","-","防.茅纒之矟ノ煌.SS","-"],
 
+  // 2020年7月新武将スキルデータ
+  "特.覇龍千架砲.S":["特.布都御魂ノ鬨.SS","特.覇龍千架砲.S","攻.神光征軍.SS","特.高津姫神.SS","特.布都御魂ノ鬨.SS"],
+  "防.天つ輝ノ片喰.S":["防.天つ輝ノ片喰.S","防.幽冥主宰大神.SS","防.天弓星宿陣.SS","防.覇龍滅破陣.SS","特.布都御魂ノ鬨.SS"],
+  "防.虚朧陽焔.S":["防.茅纒之矟ノ煌.SS","防.虚朧陽焔.S","防.天弓星宿陣.SS","防.覇龍滅破陣.SS","特.布都御魂ノ鬨.SS"],
+  "特.界.A":["攻.焔弓 轟攻陣.A","特.鉄砲商人.A","特.武装商船.A","防.根来鉄砲衆.A","攻.鼓腹撃壌.A"],
+  "防.六死八活.A":["防.六死八活.A","防.洞察.B","特.戦陣 轟砲.A","防.戦陣 龍馬.A","特.戦陣 凱旋.A"],
+  "攻.深閑六連結陣.B":["攻.深閑六連結陣.B","攻.槍隊突撃.F","攻.カムイトクイ.D","特.仁将無双.B","攻.戦陣 一閃.A"],
+  "防.鬼門ノ憤将.B":["防.鬼門ノ憤将.B","防.槍隊堅陣.F","防.開運ノ狼煙.D","防.不退ノ防戦.B","防.今子龍.D"],
+  "特.曼珠沙華.D":["特.野太刀.C","特.曼珠沙華.D","特.惜別ノ叛逆.D","特.虎嘯.B","特.暁光.D"],
+  "攻.二死一生.D":["攻.二死一生.D","攻.弓隊襲撃.F","攻.征略策.D","攻.黒母衣衆.D","攻.降魔の残兵.B"],
+  "防.墨髪突貫.D":["防.墨髪突貫.D","防.騎馬隊布陣.E","防.逆虎落.D","防.不退ノ防戦.B","防.天手力男.D"],
   };
 
   var SKILL_CANDIDATE2 = {
@@ -24196,7 +24207,7 @@ window.addEventListener('DOMContentLoaded', function() {
 //    '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
     '#normal_unit_state_head { width: 292px; }' + // 「お気に入り登録」表示開始位置（chrome,iron）
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -38px; line-height: 1.5; font-size: 8px; color: #66ccff; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: -38px; line-height: 1.5; font-size: 7px; color: #66ccff; font-weight: normal; }' +
 // ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
