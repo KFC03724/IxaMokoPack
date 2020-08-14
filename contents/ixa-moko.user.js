@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.1
+// @version      10.20.202008.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.1";
+  var VERSION_NAME = "ver 10.20.202008.2";
 
 // === Plugin ===
 
@@ -3035,7 +3035,10 @@ function MokoMain($) {
       lv_list = [],
       str;
     for (var i = 0, len = $div.length; i < len; i++) {
-      str = $div.eq(i).find('span[class$="ig_skill_name"]').text().trim();
+// 2020.08.14 武将スキル表示不具合を修正 ここから
+//      str = $div.eq(i).find('span[class$="ig_skill_name"]').text().trim();
+      str = $div.eq(i).find('span.ig_skill_name').text().trim();
+// 2020.08.14 武将スキル表示不具合を修正 ここまで
       if (!str) {
         continue;
       }
