@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMokoLogin
 // @description  戦国IXA用ツール ログイン
-// @version      10.19.202003.0
+// @version      10.20.202008.0
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/world/*
@@ -31,9 +31,13 @@ function MokoLogin($) {
     var chapter_num = $(this).attr('class').match(/\d+/g)[0];
     var season_num = $(this).find('span[class^="flag_"] img').attr('src').match(/flag_\w(\d+).gif/)[1];
     var world = title.replace('ワールド', '');
-    var chapter = {
-      1: '19'
-    }[chapter_num];
+    // var chapter = {
+    //   1: '19'
+    // }[chapter_num];
+    // メンテナンス終了は17:00なので、UTCとの時差は考慮しない
+    var chapter = ((new Date()).toISOString().substr(0,10) < "2020-08-14")
+      ? '19'
+      : '20';
     
     var season = parseFloat(season_num).toString(10);
     
