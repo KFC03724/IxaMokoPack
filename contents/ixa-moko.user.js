@@ -6244,8 +6244,8 @@ function MokoMain($) {
           $('#quick_set').hide();
           $unit_cnt_text.val(1);
           $unit_id_select.val($(this).attr('value'));
+          changeNum(cid);
 // 2020.08.16 兵数設定プルダウンの復活 ここから
-//          changeNum(cid);
 //          return false; // !!
           return changeNum(cid);
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
@@ -11062,7 +11062,7 @@ function MokoMain($) {
     // 簡易編成行単位ループ
 // 2020.08.16 兵数設定プルダウンの復活 ここから
 //    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
-    var $tr = $('#table.busho_info').find('tr.tr_gradient:visible').slice(1);
+    var $tr = $('table.busho_info').find('tr.tr_gradient:visible').slice(1);
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
     
     // 対象をフィルター
@@ -11342,7 +11342,7 @@ function MokoMain($) {
 
 // 2020.08.16 兵数設定プルダウンの復活 ここから
 //      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
-      var $tr = $('#table.busho_info').find('tr.tr_gradient').slice(1),
+      var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1),
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
       
       // 兵種変更の指揮兵数があれば全て0にする
@@ -12111,7 +12111,7 @@ function MokoMain($) {
     // 実行
 // 2020.08.16 兵数設定プルダウンの復活 ここから
 //    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
-    var elem = $('#table.busho_info').find('TR.tr_gradient').slice(1).hide(),
+    var elem = $('table.busho_info').find('TR.tr_gradient').slice(1).hide(),
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
     text = $('#category_filter_menu').find('SPAN.now_branch').text(),
     type = $('#type_filter_menu').find('SPAN.now_branch').text();
@@ -12364,7 +12364,7 @@ function MokoMain($) {
         type = $('#grp_default').val();
 // 2020.08.16 兵数設定プルダウンの復活 ここから
 //        $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
-        $('#table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+        $('table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
@@ -20754,7 +20754,7 @@ function MokoMain($) {
       } else {
 // 2020.08.16 兵数設定プルダウンの復活 ここから
 //        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
-        var $tr = $('#table.busho_info').find('tr.tr_gradient').slice(1);
+        var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1);
 // 2020.08.16 兵数設定プルダウンの復活 ここまで
         if (target.hasClass('deck_leader')) {
           var select_base = '',
