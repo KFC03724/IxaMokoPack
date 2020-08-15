@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.2
+// @version      10.20.202008.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.2";
+  var VERSION_NAME = "ver 10.20.202008.3";
 
 // === Plugin ===
 
@@ -10794,13 +10794,19 @@ function MokoMain($) {
     if (flag == 2) {
       $('<a href="javascript:void(0);"><img src="/img/deck/box03_btn_breakup_w.png" alt="解散" style="margin: 0 0 5px 4px;" /></a>')
       .on('click', function() {
-        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+//        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
+        var unitname = $('table.busho_info').find('a.busho_name').eq(0).text();
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
         if (!confirm('【' + unitname + '部隊】を解散させてよろしいですか？')) {
           return;
         }
         var data = {
           select_assign_no: $('#select_assign_no').val(),
-          unit_assign_id: $('#unit_assign_id').val(),
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+//          unit_assign_id: $('#unit_assign_id').val(),
+          unit_assign_id: $('#unit_assign_ids').val(),
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
           unset_card_id: $('#card_id_arr_0').val(),
           change_unit_squad_id: '',
           p: '1',
@@ -10812,7 +10818,10 @@ function MokoMain($) {
           data: data,
           beforeSend: xrwStatusText,
         }).then(function(html) {
-          var len = $('#frame_00_spacer div.clearfix').find('div[class^="tab_left_"]').length;
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+//          var len = $('#frame_00_spacer div.clearfix').find('div[class^="tab_left_"]').length;
+          var len = $('#frame_00_spacer').find('div.set_unit_tab').length;
+// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
           var idx = 1;
           if (len <= 2) {
             idx = 0;
