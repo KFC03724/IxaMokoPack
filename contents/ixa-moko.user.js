@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.4
+// @version      10.20.202008.5
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.4";
+  var VERSION_NAME = "ver 10.20.202008.5";
 
 // === Plugin ===
 
@@ -10818,10 +10818,10 @@ function MokoMain($) {
     if (flag == 2) {
       $('<a href="javascript:void(0);"><img src="/img/deck/box03_btn_breakup_w.png" alt="解散" style="margin: 0 0 5px 4px;" /></a>')
       .on('click', function() {
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+// 2020.08.16 兵士編成からの武将解散の不具合を修正 ここから
 //        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
         var unitname = $('table.busho_info').find('a.busho_name').eq(0).text();
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
+// 2020.08.16 兵士編成からの武将解散の不具合を修正 ここまで
         if (!confirm('【' + unitname + '部隊】を解散させてよろしいですか？')) {
           return;
         }
@@ -11054,7 +11054,10 @@ function MokoMain($) {
     var select_set_num = $('#select_set_num').val();
     
     // 簡易編成行単位ループ
-    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
+    var $tr = $('#table.busho_info').find('tr.tr_gradient:visible').slice(1);
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
     
     // 対象をフィルター
     // 兵数
@@ -11331,7 +11334,10 @@ function MokoMain($) {
         pool_unit[type] = parseInt($(this).text()); // 数値
       });
 
-      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
+      var $tr = $('#table.busho_info').find('tr.tr_gradient').slice(1),
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
       
       // 兵種変更の指揮兵数があれば全て0にする
       numReduction = function(keys) {
@@ -12097,9 +12103,12 @@ function MokoMain($) {
     };
     
     // 実行
-    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
-      text = $('#category_filter_menu').find('SPAN.now_branch').text(),
-      type = $('#type_filter_menu').find('SPAN.now_branch').text();
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
+    var elem = $('#table.busho_info').find('TR.tr_gradient').slice(1).hide(),
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
+    text = $('#category_filter_menu').find('SPAN.now_branch').text(),
+    type = $('#type_filter_menu').find('SPAN.now_branch').text();
 
     if (mode === 0) {
       return groups_filter(elem);
@@ -12347,7 +12356,10 @@ function MokoMain($) {
     $('#grp_default_set').on('click', function() {
       var group = $('#grp_img').attr('group'),
         type = $('#grp_default').val();
-      $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//        $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+        $('#table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
       });
@@ -20734,7 +20746,10 @@ function MokoMain($) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
         $tooltip.append(toolMenu);
       } else {
-        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
+        var $tr = $('#table.busho_info').find('tr.tr_gradient').slice(1);
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
         if (target.hasClass('deck_leader')) {
           var select_base = '',
             base_list = '';
