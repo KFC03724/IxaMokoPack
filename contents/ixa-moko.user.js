@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.3
+// @version      10.20.202008.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.3";
+  var VERSION_NAME = "ver 10.20.202008.4";
 
 // === Plugin ===
 
@@ -2734,7 +2734,11 @@ function MokoMain($) {
         html += '<li><a href="/card/deck.php?select_card_group=' + GROUPS_MENU[i][0] + filter + '">部隊編成' + GROUPS_MENU[i][1] + '</a></li>';
       }
       html += '<li><a href="/facility/unit_list.php">待機兵士一覧</a></li>' +
-              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
+// 2020.08.15 部隊メニュープルダウンに本丸防御陣形を追加 ここから
+//      '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
+      +'<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
+      +'<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
+// 2020.08.15 部隊メニュープルダウンに本丸防御陣形を追加 ここまで
       menu02.find('li').remove();
       menu02.find('ul').append(html);
       menu07.find('ul').append('<li><a href="/alliance/alliance_gold_mine_history.php">発掘履歴</a></li>');
