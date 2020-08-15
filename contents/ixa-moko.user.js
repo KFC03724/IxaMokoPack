@@ -6192,8 +6192,11 @@ function MokoMain($) {
     // event
     function type_set(data) {
       var cid = data.id,
-        $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
-        $unit_id_select = $('select[id="unit_id_select_' + cid + '"]');
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
+      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]');
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
+      $unit_id_select = $('select[id="unit_id_select_' + cid + '"]');
       
       // 他兵種リスト
       $('#type_info').on('click', function() {
@@ -6241,8 +6244,11 @@ function MokoMain($) {
           $('#quick_set').hide();
           $unit_cnt_text.val(1);
           $unit_id_select.val($(this).attr('value'));
-          changeNum(cid);
-          return false; // !!
+// 2020.08.16 兵数設定プルダウンの復活 ここから
+//          changeNum(cid);
+//          return false; // !!
+          return changeNum(cid);
+// 2020.08.16 兵数設定プルダウンの復活 ここまで
         });
       });
     }
