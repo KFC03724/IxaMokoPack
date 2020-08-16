@@ -14201,7 +14201,11 @@ function MokoMain($) {
 
       html += '<li class="moko_menu" id="deck_place_menu" style="display: none;">' +
                 '<a href="javascript:void(0);" class="moko_tree_menu">ここへ部隊を配置<span>&#9658;</span></a>' +
-                '<span class="' + menu_sub_class + '">';
+// 2020.08.16 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように ここから
+//                '<span class="' + menu_sub_class + '">';
+              '<span class="' + menu_sub_class + '">' +
+              '<a href="/card/defense_formation_deck.php">本丸防御陣形</a>';
+// 2020.08.16 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように ここまで                
       var i, len;
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         html += '<a href="javascript:void(0);" id="groups_' + GROUPS_MENU[i][0]+ '">' +  GROUPS_MENU[i][1]+ 'から配置</a>';
