@@ -5118,9 +5118,14 @@ function MokoMain($) {
   
   // デッキ 使用状態の取得
   function get_deck_status(html, select_assign_no) {
-    var $ig_unitchoice = $(html).find('#ig_unitchoice');
-    var $ig_unitchoice_reinforce = $(html).find('#ig_unitchoice_reinforce');
-    var $ig_unitchoice_assault = $(html).find('#ig_unitchoice_assault');
+// 2020.08.16 強襲部隊に配置される不具合の修正 ここから
+//    var $ig_unitchoice = $(html).find('#ig_unitchoice');
+//    var $ig_unitchoice_reinforce = $(html).find('#ig_unitchoice_reinforce');
+//    var $ig_unitchoice_assault = $(html).find('#ig_unitchoice_assault');
+    var $ig_unitchoice = $(html).find('ul.unit_normal');
+    var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
+    var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
+// 2020.08.16 強襲部隊に配置される不具合の修正 ここまで    
     var free_deck;  // 空き数
     var start_deck; // 配置開始
     var use_deck;   // 使用数
