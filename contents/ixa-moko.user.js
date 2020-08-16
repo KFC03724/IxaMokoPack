@@ -6197,10 +6197,7 @@ function MokoMain($) {
     // event
     function type_set(data) {
       var cid = data.id,
-// 2020.08.16 兵数設定プルダウンの復活 ここから
-//      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
-      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]');
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
       $unit_id_select = $('select[id="unit_id_select_' + cid + '"]');
       
       // 他兵種リスト
@@ -6250,10 +6247,7 @@ function MokoMain($) {
           $unit_cnt_text.val(1);
           $unit_id_select.val($(this).attr('value'));
           changeNum(cid);
-// 2020.08.16 兵数設定プルダウンの復活 ここから
-//          return false; // !!
-          return changeNum(cid);
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+          return false; // !!
         });
       });
     }
@@ -10829,19 +10823,19 @@ function MokoMain($) {
     if (flag == 2) {
       $('<a href="javascript:void(0);"><img src="/img/deck/box03_btn_breakup_w.png" alt="解散" style="margin: 0 0 5px 4px;" /></a>')
       .on('click', function() {
-// 2020.08.16 兵士編成からの武将解散の不具合を修正 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
         var unitname = $('table.busho_info').find('a.busho_name').eq(0).text();
-// 2020.08.16 兵士編成からの武将解散の不具合を修正 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
         if (!confirm('【' + unitname + '部隊】を解散させてよろしいですか？')) {
           return;
         }
         var data = {
           select_assign_no: $('#select_assign_no').val(),
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+// 2020.08.15 一括配置でセットする場所の不具合修正 ここから
 //          unit_assign_id: $('#unit_assign_id').val(),
           unit_assign_id: $('#unit_assign_ids').val(),
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
+// 2020.08.15 一括配置でセットする場所の不具合修正 ここまで
           unset_card_id: $('#card_id_arr_0').val(),
           change_unit_squad_id: '',
           p: '1',
@@ -10853,10 +10847,10 @@ function MokoMain($) {
           data: data,
           beforeSend: xrwStatusText,
         }).then(function(html) {
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここから
+// 2020.08.15 一括配置でセットする場所の不具合修正 ここから
 //          var len = $('#frame_00_spacer div.clearfix').find('div[class^="tab_left_"]').length;
           var len = $('#frame_00_spacer').find('div.set_unit_tab').length;
-// 2020.08.15 兵士編成からの武将解散の不具合を修正 ここまで
+// 2020.08.15 一括配置でセットする場所の不具合修正 ここまで
           var idx = 1;
           if (len <= 2) {
             idx = 0;
@@ -11065,10 +11059,10 @@ function MokoMain($) {
     var select_set_num = $('#select_set_num').val();
     
     // 簡易編成行単位ループ
-// 2020.08.16 兵数設定プルダウンの復活 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
     var $tr = $('table.busho_info').find('tr.tr_gradient:visible').slice(1);
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
     
     // 対象をフィルター
     // 兵数
@@ -11345,10 +11339,10 @@ function MokoMain($) {
         pool_unit[type] = parseInt($(this).text()); // 数値
       });
 
-// 2020.08.16 兵数設定プルダウンの復活 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
       var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1),
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
       
       // 兵種変更の指揮兵数があれば全て0にする
       numReduction = function(keys) {
@@ -12114,10 +12108,10 @@ function MokoMain($) {
     };
     
     // 実行
-// 2020.08.16 兵数設定プルダウンの復活 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
     var elem = $('table.busho_info').find('TR.tr_gradient').slice(1).hide(),
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
     text = $('#category_filter_menu').find('SPAN.now_branch').text(),
     type = $('#type_filter_menu').find('SPAN.now_branch').text();
 
@@ -12367,10 +12361,10 @@ function MokoMain($) {
     $('#grp_default_set').on('click', function() {
       var group = $('#grp_img').attr('group'),
         type = $('#grp_default').val();
-// 2020.08.16 兵数設定プルダウンの復活 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //        $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
         $('table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
       });
@@ -20757,10 +20751,10 @@ function MokoMain($) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
         $tooltip.append(toolMenu);
       } else {
-// 2020.08.16 兵数設定プルダウンの復活 ここから
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここから
 //        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
         var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1);
-// 2020.08.16 兵数設定プルダウンの復活 ここまで
+// 2020.08.16 一括配置でセットする場所の不具合修正 ここまで
         if (target.hasClass('deck_leader')) {
           var select_base = '',
             base_list = '';
