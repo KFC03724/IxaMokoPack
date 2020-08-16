@@ -7718,9 +7718,13 @@ function MokoMain($) {
             }
           }
           if ((deck_cost.free - t_cost) >= ccost && tnum > 0) {
-            var array = sQuotesMatch($(this).attr('onClick'));
-            var set_assign_id = array[0];
-            var set_card_id = array[1];
+// 2020.08.16 全部隊配置ボタンの修正 ここから            
+//            var array = sQuotesMatch($(this).attr('onClick'));
+//            var set_assign_id = array[0];
+//            var set_card_id = array[1];
+            var set_assign_id = "";
+            var set_card_id = $(this).data("card_id");
+// 2020.08.16 全部隊配置ボタンの修正 ここまで
             list.push({
               vid: vid,
               sid: set_assign_id,
@@ -8207,6 +8211,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
+// 2020.08.16 全部隊配置ボタンの修正 ここから
+          async: false,
+// 2020.08.16 全部隊配置ボタンの修正 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           var $html = $(html).find('#ig_deckbox'),
@@ -8215,7 +8222,10 @@ function MokoMain($) {
           Info.count((deck_cost.count ? deck_cost.now + '/' + deck_cost.max + '　' : '') + deck_status.use + '部隊');
           remain--;
           if (remain === 0) {
-            var $parameta = $($html).find('div[id^="ig_deck_subcardarea_out"] div.parameta_area');
+// 2020.08.16 全部隊配置ボタンの修正 ここから
+//            var $parameta = $($html).find('div[id^="ig_deck_subcardarea_out"] div.parameta_area');
+            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
+// 2020.08.16 全部隊配置ボタンの修正 ここまで
             if (list.length > $parameta.length) {
               var set = [],
                 card_name, failure,
