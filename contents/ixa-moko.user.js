@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.5
+// @version      10.20.202008.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.5";
+  var VERSION_NAME = "ver 10.20.202008.6";
 
 // === Plugin ===
 
@@ -22497,8 +22497,11 @@ function MokoMain($) {
     if (!dungeon_step) {
       return;
     }
-    var free_deck = $('#ig_unitchoice')
-      .find('li:contains("[---新規部隊を作成---]")').length;
+// 2020.08.16 Uキーバインドの不具合修正 ここから
+//    var free_deck = $('#ig_unitchoice')
+    var free_deck = $('ul.unit_normal')
+// 2020.08.16 Uキーバインドの不具合修正 ここまで
+    .find('li:contains("[---新規部隊を作成---]")').length;
     if (free_deck != 6 && dungeon_step == 1) {
       setStorage('ixamoko_dungeon_step', 2);
       return allTroopsDissolution('0', '1');
