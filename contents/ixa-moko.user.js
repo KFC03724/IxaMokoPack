@@ -19767,8 +19767,12 @@ function MokoMain($) {
     
     /* 43スレ200修正 */
     var $lottery = $('input[value="戦国くじ【白】を引く"]');
-    var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, *'(.*)'\)/)[1];
-    if(alertString === undefined || alertString.length === 0) {
+// 2020.08.16 白くじn枚引き完了のお知らせ音を追加 ここから
+//      var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, *'(.*)'\)/)[1];
+//      if(alertString === undefined || alertString.length === 0) {
+      var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, '(.*)'\)/);
+      if(Array.isArray(alertString) && alertString[1].length === 0){
+// 2020.08.16 白くじn枚引き完了のお知らせ音を追加 ここまで
       $lottery.parents('form').on('submit', function(e){
         return false;
       });

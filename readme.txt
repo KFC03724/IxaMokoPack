@@ -29,6 +29,7 @@
 IxaMokoPack ver 10.20.202008.7 Chrome版
 2020/08/16
 　・Uキーバインドの不具合修正
+　・白くじn枚引き完了のお知らせ音を追加
 
 IxaMokoPack ver 10.20.202008.6 Chrome版
 2020/08/16
