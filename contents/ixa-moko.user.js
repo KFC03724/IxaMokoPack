@@ -1709,6 +1709,9 @@ function MokoMain($) {
                   '17': '日ノ本燎原～下天に棲む勇胆の将～',
                   '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
+// 2020.08.16 MOKO設定画面で20章をちゃんと表示できない不具合を修正 ここから                  
+                  '20': '驚天宿星～蘇りし神将～',
+// 2020.08.16 MOKO設定画面で20章をちゃんと表示できない不具合を修正 ここまで
                 };
                 setting_list += '<li><label>' + this.optionsKeys[key].caption + ':</label>&nbsp;' +
                   '<select class="ixamoko_setting" key="' + key + '">' +
