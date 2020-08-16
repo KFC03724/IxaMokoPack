@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.6
+// @version      10.20.202008.7
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.6";
+  var VERSION_NAME = "ver 10.20.202008.7";
 
 // === Plugin ===
 
@@ -7734,7 +7734,7 @@ function MokoMain($) {
 //            var array = sQuotesMatch($(this).attr('onClick'));
 //            var set_assign_id = array[0];
 //            var set_card_id = array[1];
-            var set_assign_id = "";
+            var set_assign_id = $img.length ? sQuotesMatch( $img.parent().attr('onClick') )[0] : '';
             var set_card_id = $(this).data("card_id");
 // 2020.08.16 全部隊配置ボタンの修正 ここまで
             list.push({
