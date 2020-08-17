@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.7
+// @version      10.20.202008.8
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.7";
+  var VERSION_NAME = "ver 10.20.202008.8";
 
 // === Plugin ===
 
@@ -7209,17 +7209,11 @@ function MokoMain($) {
 
   // グループ順 ソート
   var groups_sort = function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    var $target = $('#busho_info' tr').eq(0),
-    var $target = $('table.busho_info tr').eq(0),
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+  var $target = $('#busho_info tr').eq(0),
       i = Object.keys(groups_img_data).length - 1,
       $tr_gradient;
     for (;i > 0; --i) {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $tr_gradient = $('#busho_info img[id^="ixamoko_grp_' + i + '_"]').closest('tr.tr_gradient');
-      $tr_gradient = $('table.busho_info img[id^="ixamoko_grp_' + i + '_"]').closest('tr.tr_gradient');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      $tr_gradient = $('#busho_info img[id^="ixamoko_grp_' + i + '_"]').closest('tr.tr_gradient');
       $target.after($tr_gradient);
     }
   },
@@ -7306,10 +7300,7 @@ function MokoMain($) {
 
     var array = [],
       target = (location.pathname == '/card/deck.php') ?
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
-      $('#ig_deck_smallcardarea_out') : $('table.busho_info > TBODY');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
 
     $('DIV[id^="cardWindow_"]').each(function(idx) {
       var cid = $(this).attr('id').match(/\d+/g)[0],
@@ -8273,7 +8264,7 @@ function MokoMain($) {
 
     for (var i = 0, len = list.length; i < len; i++) {
       var set_assign_id = assign || list[i].sid,
-        data = deckInsertQuery();
+      data = deckInsertQuery();
       data.select_assign_no = start;
       data.set_assign_id = set_assign_id;
       data.set_card_id = list[i].cid;
@@ -9675,17 +9666,11 @@ function MokoMain($) {
              var $input = $html.find('input[id^="card_id_arr"]');
             addUnionGroupImgView($input);
           }
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//          var $table = $html.find('#busho_info');
-          var $table = $html.find('table.busho_info');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで          
+           var $table = $html.find('#busho_info');
            var $tr_gradient = $table.find('tr.tr_gradient').slice(1);
            var $space = $table.find('tr:has(td.tb_space)').eq(0).clone();
            var $cardWindow = $html.find('div[id^="cardWindow_"]');
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//           $('#busho_info > tbody').append($tr_gradient);
-           $('table.busho_info > tbody').append($tr_gradient);
-// 2020.08.16 兵数設定プルダウンを復活 ここまで           
+          $('#busho_info > tbody').append($tr_gradient);
           $tr_gradient.before($space);
           $('div[id^="cardWindow_"]:last').after($cardWindow);
           btnImgeUpdate();
@@ -11491,10 +11476,7 @@ function MokoMain($) {
         '</select>' +
       '</div>';
 
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $('#busho_info').before(html);
-      $('table.busho_info').before(html);
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    $('#busho_info').before(html);
 
     // 部隊長と同兵種
     $('#same_kind').on('click', function () {
@@ -11584,16 +11566,10 @@ function MokoMain($) {
     })
     .then(function(html) {
       var $html = $(html).find('#box'),
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
-      $tr = $html.find('table.busho_info > tbody > tr.tr_gradient').slice(1),
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
         $card = $html.children('div[id^="cardWindow"]');
       $tr.each(trGradientCheck);
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $('#busho_info > tbody').append($tr);
-      $('table.busho_info > tbody').append($tr);
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      $('#busho_info > tbody').append($tr);
       $('#lump_sum').before($card);
       $tr = null;
       $card = null;
@@ -11819,10 +11795,7 @@ function MokoMain($) {
     if (!options.off_face) {
       return;
     }
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    style('#busho_info div[class^="icon_rarity_"] { left: 10px; } #busho_info .img_face { width: 36px; background-image: none !important; } #busho_info .icon_protect { left: 13px; }');
-    style('table.busho_info div[class^="icon_rarity_"] { left: 10px; } table.busho_info .img_face { width: 36px; background-image: none !important; } table.busho_info .icon_protect { left: 13px; }');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    style('#busho_info div[class^="icon_rarity_"] { left: 10px; } #busho_info .img_face { width: 36px; background-image: none !important; } #busho_info .icon_protect { left: 13px; }');
   }
   
   // 基本兵種 兵種メニューの更新
@@ -12204,19 +12177,13 @@ function MokoMain($) {
       return;
     }
     var busho_info = function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      return $('#busho_info');
-      return $('table.busho_info');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      return $('#busho_info');
     },
     tr_gradient = function() {
       return busho_info().find('tr.tr_gradient').slice(1);
     };
 
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    $('#busho_info').after(
-    $('table.busho_info').after(
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    $('#busho_info').after(
       '<div id="unit_list_bar">' +
         '<label class="set_unit_mode"><input type="radio" name="set_mode" id="set_default" checked />通常</label>' +
         '<label class="set_unit_mode"><input type="radio" name="set_mode" id="set_deck" />簡易配置</label>' +
@@ -12345,10 +12312,7 @@ function MokoMain($) {
       }
     };
 
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    $('body').on('click', '#busho_info tr.tr_gradient', function(e) {
-    $('body').on('click', 'table.busho_info tr.tr_gradient', function(e) {
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    $('body').on('click', '#busho_info tr.tr_gradient', function(e) {
       if (e.target.tagName == 'A' || e.target.tagName == 'IMG' || e.target.tagName == 'SELECT' ||
         e.target.tagName == 'INPUT' || e.target.tagName == 'OPTION' || e.target.tagName == 'TH' ||
         e.target.tagName == 'SPAN' && e.target.className != 'rank_glay' || e.target.className == 'force_type') {
@@ -12426,10 +12390,7 @@ function MokoMain($) {
       .appendTo('#unit_filter_menu');
 
     $('input[name="icon_view"]').on('change', function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      $('#busho_info img[id^="ixamoko_grp"]')
-      $('table.busho_info img[id^="ixamoko_grp"]')
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      $('#busho_info img[id^="ixamoko_grp"]')
       .css('opacity', $(this).val());
     });
   }
@@ -12553,10 +12514,7 @@ function MokoMain($) {
     if ($('#bar_card_elite').length) {
       return;
     }
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    var $img = $('#busho_info img[id^="ixamoko_grp"]'),
-    var $img = $('table.busho_info img[id^="ixamoko_grp"]'),
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    var $img = $('#busho_info img[id^="ixamoko_grp"]'),
     $content = $('#groups_img_content'),
       grp_type = [],
       html = '<span id="bar_grps_all">全</span>',
@@ -12617,10 +12575,7 @@ function MokoMain($) {
     setUnitGroupsChange();
     unitListDefault();    // 基本兵種
     add_event_unit_set(); // 兵1・定数セット イベント
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    var $busho_info = $('#busho_info');
-    var $busho_info = $('table.busho_info');
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    var $busho_info = $('#busho_info');
     
     // スペース用のTRを削除
     var notTR = $busho_info.find('tr:has(td.tb_space)');
@@ -20495,10 +20450,7 @@ function MokoMain($) {
             '<div class="tab_spacer_off_reinforce" onclick="return btn_selectassignno_click(' + start_deck + ');">' + list.cname + '<br />部隊</div>' +
             '<div class="tab_right_off_reinforce" />';
           $('#frame_00_spacer:eq(0) div[class^="tab_right"]:last').after(tmp);
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//          $('#busho_info tr.deck_leader').remove();
-          $('table.busho_info tr.deck_leader').remove();
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+          $('#busho_info tr.deck_leader').remove();
           return mbsTable();
         } else {
           moko_alert('【' + list.cname + '】は配置できません');
@@ -20509,10 +20461,7 @@ function MokoMain($) {
 
   function createPlatoonList(assign, select_assign_no, select_card_group) {
     var list = [];
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    $('#busho_info tr.deck_platoon').each(function() {
-    $('table.busho_info tr.deck_platoon').each(function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    $('#busho_info tr.deck_platoon').each(function() {
       var cid = $(this).find('input[id^="card_id_arr_"]').val(),
         cname = $(this).find('a.busho_name').text();
       list.push({
@@ -20602,10 +20551,7 @@ function MokoMain($) {
     }).then(function(html) {
       var $html = $(html);
       var max_page = html_max_page($html);
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//      var $tr = $html.find('#busho_info tr.tr_gradient').slice(1);
-      var $tr = $html.find('table.busho_info tr.tr_gradient').slice(1);
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+      var $tr = $html.find('#busho_info tr.tr_gradient').slice(1);
       $tr.each(function(index, el) {
         var comment = $(this).find('td.skill_effect_comment').text();
         var cid = $(this).find('input[id^="card_id_arr"]').val();
@@ -23267,10 +23213,7 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_elite_cost { float: right; width: 64px; margin: 5px 2px 0; border-bottom: 1px solid #5A5A59; }' +
     'div.mk_elite_power img, div.mk_elite_cost img, div.mk_elite_move img { vertical-align: sub; }' +
     'div.mk_elite_power span, div.mk_elite_cost span, div.mk_elite_move span { margin-left: 3px; font-size: 1.4em; letter-spacing: -0.1em; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    '#busho_info' .elite_mark, span.elite_mark { color: khaki; }' +
-    'table.busho_info .elite_mark, span.elite_mark { color: khaki; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    '#busho_info .elite_mark, span.elite_mark { color: khaki; }' +
     '.same_name_card { color: gold; }' +
     '.same_id_card, .imk_table td.same_id_card { color: darkorange; }' +
     'div.elite_busho_info a.busho_name { white-space: nowrap; }' +
@@ -23331,12 +23274,8 @@ window.addEventListener('DOMContentLoaded', function() {
     
     /* 兵士編成 */
     'div[class^="icon_rarity_"] > img { cursor: pointer; margin: -3px 0 0 -3px; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    '#busho_info' div[class^="icon_rarity_"] { top: 4px; }' +
-//    '#busho_info' .icon_protect { top: 30px; }' +
-    'table.busho_info div[class^="icon_rarity_"] { top: 4px; }' +
-    'table.busho_info .icon_protect { top: 30px; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    '#busho_info div[class^="icon_rarity_"] { top: 4px; }' +
+    '#busho_info .icon_protect { top: 30px; }' +
     '.elite_busho_info .force_type2 { width: 110px; }' +
     '#bulk_set_panel { margin: 7px 0 -9px; padding: 5px; width: 707px; text-align: center; color: white; background-color: #272521; border: 1px solid dimGray; border-radius: 4px; }' +
     '#bulk_set_panel span { margin: 0 7px; font-family: "ＭＳ Ｐ明朝","細明朝体","ヒラギノ明朝 Pro W3", serif; font-size: 14px; }' +
@@ -23352,14 +23291,9 @@ window.addEventListener('DOMContentLoaded', function() {
     'ul#deck_navi li { float: left; margin-right: 2px; }' +
     'li.dummy { height: 18px; background: linear-gradient(to bottom, rgba(178,178,178,1) 0%, rgba(127,127,127,1) 36%, rgba(38,38,38,1) 100%); opacity: 0.6; }' +
     'ul#deck_navi li > a { display: block; text-decoration: none; padding: 3px 0; text-align: center; color: white; font-family: "ＭＳ Ｐ明朝","細明朝体","ヒラギノ明朝 Pro W3", serif; text-shadow: 1px 1px 3px black; background: linear-gradient(to bottom, rgba(178,178,178,1) 0%, rgba(127,127,127,1) 36%, rgba(38,38,38,1) 100%); opacity: 0.6;}' +
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    '#busho_info' input.force_size, .elite_busho_info .force_size { width: 5em; }' +
-//    '#busho_info' div.force_type, .elite_busho_info .force_type { margin: -5px -1px 7px; padding: 4px 0px; }' +
-//    '#busho_info' td.icon_rank, .elite_busho_info .icon_rank { width: 30px; background-color: transparent; }' +
-    'table.busho_info input.force_size, .elite_busho_info .force_size { width: 5em; }' +
-    'table.busho_info div.force_type, .elite_busho_info .force_type { margin: -5px -1px 7px; padding: 4px 0px; }' +
-    'table.busho_info td.icon_rank, .elite_busho_info .icon_rank { width: 30px; background-color: transparent; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    '#busho_info input.force_size, .elite_busho_info .force_size { width: 5em; }' +
+    '#busho_info div.force_type, .elite_busho_info .force_type { margin: -5px -1px 7px; padding: 4px 0px; }' +
+    '#busho_info td.icon_rank, .elite_busho_info .icon_rank { width: 30px; background-color: transparent; }' +
     'span[id^="one_set_link_"] { cursor:pointer; color:#BA8BE5; }' +
     'span[id^="constant_set"] { cursor:pointer; margin-left: 5px; color:#BA8BE5; }' +
     '#constant_list { position: absolute; z-index: 10; margin: 2px 0 0 35px; color: white; background-color: black; border: 1px solid white; }' +
@@ -23427,10 +23361,7 @@ window.addEventListener('DOMContentLoaded', function() {
     /* 兵種データ表示 */
     'td.point { padding: 1px 0 2px; background-color: black; }' +
     'tr[id^="preview_"] table { width:100%; border-spacing: 2px; border: 2px solid white; background-color: rgb(90, 90, 90); }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここから
-//    'tr[id^="preview_"] table th, #busho_info' tr[id^="preview_"] table td { padding: 3px; text-align: center; border: none; text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); border: none !important; }' +
-    'tr[id^="preview_"] table th, table.busho_info tr[id^="preview_"] table td { padding: 3px; text-align: center; border: none; text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); border: none !important; }' +
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+    'tr[id^="preview_"] table th, #busho_info tr[id^="preview_"] table td { padding: 3px; text-align: center; border: none; text-shadow: 0 0 2px rgba(0, 0, 0, 0.5); border: none !important; }' +
     'tr[id^="preview_"] table th { color: silver !important }' +
     'tr[id^="preview_"] table td.soltype { background-color: black; }' +
     'tr[id^="preview_"] table td.cost_average { color: silver; }' +
