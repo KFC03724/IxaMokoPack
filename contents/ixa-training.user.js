@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaTraining
 // @description  戦国IXA用ツール 一括兵士訓練
-// @version      10.20.202008.0
+// @version      10.20.202008.11
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
@@ -865,9 +865,14 @@
             village = Util.getVillageByName(name);
           $tr.slice(1).each(function () {
             var $td = $(this).find('TD'),
-              type = Soldier.getType($td.eq(0).find('IMG').attr('alt')),
-              num = $td.eq(1).text().toInt(),
-              finish = $td.eq(3).text().getTime();
+// 2020.08.17 兵士一括訓練の修正(ixa-training.user.jsの修正) ここから
+//              type = Soldier.getType($td.eq(0).find('IMG').attr('alt')),
+//              num = $td.eq(1).text().toInt(),
+//              finish = $td.eq(3).text().getTime();
+              type = Soldier.getType($td.eq(1).find('IMG').attr('alt')),
+              num = $td.eq(2).text().toInt(),
+              finish = $td.eq(4).text().getTime();
+// 2020.08.17 兵士一括訓練の修正(ixa-training.user.jsの修正) ここまで              
             data.training.push({
               id: village.id,
               type: type,
