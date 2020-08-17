@@ -11465,10 +11465,15 @@ function MokoMain($) {
       return;
     }
     var html = '' +
-      '<div id="soldierset">' +
-        '<input id="same_kind" type="button" value="同兵種セット" />' +
-        '<select id="constant">' +
-          '<option value>同兵数セット</option>' +
+// 2020.08.18 同兵種/同兵数セットの修正 ここから
+//    '<div id="soldierset">' +
+//        '<input id="same_kind" type="button" value="同兵種セット" />' +
+//        '<select id="constant">' +
+      '<div class="soldierset">' +
+      '<input class="same_kind" type="button" value="同兵種セット" />' +
+      '<select class="constant">' +
+// 2020.08.18 同兵種/同兵数セットの修正 ここまで
+        '<option value>同兵数セット</option>' +
           '<option value="1">1</option>';
     for (var i = 0, len = CONSTANT_VALUE.length; i < len; i++) {
       html += '<option value="' + CONSTANT_VALUE[i] + '">' + CONSTANT_VALUE[i] + '</option>';
@@ -11481,19 +11486,28 @@ function MokoMain($) {
 
 // 2020.08.17 部隊長と同兵種ボタンの復活 ここから
 //    $('#busho_info').before(html);
-    $('table.busho_info').before(html);
+//    $('table.busho_info').before(html);
+    $('.same_kind').on('click', function () {
 // 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
 
     // 部隊長と同兵種
-    $('#same_kind').on('click', function () {
+// 2020.08.18 同兵種/同兵数セットの修正 ここから    
+//    $('#same_kind').on('click', function () {
+// 2020.08.18 同兵種/同兵数セットの修正 ここまで
       var value;
-      $('select[id^="unit_id_select_"]').each(function (i, el) {
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+//      $('select[id^="unit_id_select_"]').each(function (i, el) {
+        $(this).closest('div.soldierset').next('table').find('select[id^="unit_id_select_"]').each(function (i, el) {
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
         i === 0 ? value = $(this).val() : $(this).val(value);
       });
     });
 
     // 同兵数セット
-    $('#constant').on('change', function() {
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+//    $('#constant').on('change', function() {
+      $('.constant').on('change', function() {
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
       var all_constant = function(data) {
           var ano = $('#select_assign_no').val(),
           c = data.length,
@@ -11516,7 +11530,10 @@ function MokoMain($) {
             post_query(data[i]);
           }
         },
-        $card_id_arr = $('input[id^="card_id_arr_"]'),
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+//        $card_id_arr = $('input[id^="card_id_arr_"]'),
+        $card_id_arr = $(this).closest('div.soldierset').next('table').find('input[id^="card_id_arr_"]'),
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
         quantity = $(this).val(),
         c_num = $('#unit_cnt_text_0').val(),
         list = [],
@@ -23352,9 +23369,13 @@ window.addEventListener('DOMContentLoaded', function() {
     '#unit_list_bar span#bar_grps_all:hover, img.bar_grps_img:hover { opacity: 1; }' +
     
     /* 兵セット */
-    '#soldierset { float: right;margin: 4px 24px 0 0; }' +
-    '#constant { width: 120px; margin: 0 10px 0 35px; }' +
-    
+    // 2020.08.18 同兵種/同兵数セットの修正 ここから
+    // '#soldierset { float: right;margin: 4px 24px 0 0; }' +
+    // '#constant { width: 120px; margin: 0 10px 0 35px; }' +
+    '.soldierset { float: right;margin: 4px 24px 0 0; }' +
+    '.constant { width: 120px; margin: 0 10px 0 35px; }' +    
+    // 2020.08.18 同兵種/同兵数セットの修正 ここまで
+
     /* 兵数表示(サイドボックス) */
     '#detail_table { background: #F3F2DE; font-size: inherit !important; }' +
     '#detail_table tbody td { text-align: right; line-height: 1.4; }' +
