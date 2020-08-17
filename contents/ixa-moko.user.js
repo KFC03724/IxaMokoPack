@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.8
+// @version      10.20.202008.9
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.8";
+  var VERSION_NAME = "ver 10.20.202008.9";
 
 // === Plugin ===
 
@@ -11476,7 +11476,10 @@ function MokoMain($) {
         '</select>' +
       '</div>';
 
-    $('#busho_info').before(html);
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+//    $('#busho_info').before(html);
+    $('table.busho_info').before(html);
+// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
 
     // 部隊長と同兵種
     $('#same_kind').on('click', function () {
