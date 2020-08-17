@@ -11469,12 +11469,12 @@ function MokoMain($) {
 //    '<div id="soldierset">' +
 //        '<input id="same_kind" type="button" value="同兵種セット" />' +
 //        '<select id="constant">' +
-      '<div class="soldierset">' +
-      '<input class="same_kind" type="button" value="同兵種セット" />' +
-      '<select class="constant">' +
+        '<div class="soldierset">' +
+        '<input class="same_kind" type="button" value="同兵種セット" />' +
+        '<select class="constant">' +
 // 2020.08.18 同兵種/同兵数セットの修正 ここまで
         '<option value>同兵数セット</option>' +
-          '<option value="1">1</option>';
+        '<option value="1">1</option>';
     for (var i = 0, len = CONSTANT_VALUE.length; i < len; i++) {
       html += '<option value="' + CONSTANT_VALUE[i] + '">' + CONSTANT_VALUE[i] + '</option>';
     }
@@ -11486,13 +11486,13 @@ function MokoMain($) {
 
 // 2020.08.17 部隊長と同兵種ボタンの復活 ここから
 //    $('#busho_info').before(html);
-//    $('table.busho_info').before(html);
-    $('.same_kind').on('click', function () {
+    $('table.busho_info').before(html);
 // 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
 
     // 部隊長と同兵種
 // 2020.08.18 同兵種/同兵数セットの修正 ここから    
 //    $('#same_kind').on('click', function () {
+    $('.same_kind').on('click', function () {
 // 2020.08.18 同兵種/同兵数セットの修正 ここまで
       var value;
 // 2020.08.17 部隊長と同兵種ボタンの復活 ここから
