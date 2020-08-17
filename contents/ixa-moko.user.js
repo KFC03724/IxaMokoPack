@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.9
+// @version      10.20.202008.10
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.9";
+  var VERSION_NAME = "ver 10.20.202008.10";
 
 // === Plugin ===
 
@@ -4981,7 +4981,10 @@ function MokoMain($) {
     $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
     $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
       if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
-        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここから
+//        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+        $('#ranking_table td:nth-child(n+5)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここまで
       }
       if (location.pathname === '/war/war_alliance_ranking.php' || location.pathname === '/war/war_ranking.php') {
         var $td = ($('#ig_battle_report_top').text().indexOf('天下統一戦') === -1)
