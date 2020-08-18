@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.11
+// @version      10.20.202008.12
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.11";
+  var VERSION_NAME = "ver 10.20.202008.12";
 
 // === Plugin ===
 
@@ -11543,7 +11543,10 @@ function MokoMain($) {
       }
       for (var i = 0, len = $card_id_arr.length; i < len; i++) {
         card_id = $card_id_arr.eq(i).val();
-        set_type = $('#unit_id_select_' + i).val();
+// 2020.08.18 本丸防御陣形の修正 ここから
+//        set_type = $('#unit_id_select_' + i).val();
+        set_type = $card_id_arr.eq(i).closest('tr.tr_gradient').find('select[id^="unit_id_select_"]').val();
+// 2020.08.18 本丸防御陣形の修正 ここまで
         data = get_card_data($('#cardWindow_' + card_id));
         if (quantity == 'captain') {
           set_count = c_num;
