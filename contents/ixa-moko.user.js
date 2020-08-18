@@ -5636,7 +5636,10 @@ function MokoMain($) {
     if($('#myselect').val() == '' || $('#myselect').val() == '0'){
       /* 43スレ 354修整 */
       //      $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
-      jQuery('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
+// 2020.08.19 精鋭部隊の[部隊にセット]ボタンが有効にならない不具合の対応 ここから
+//      jQuery('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
+      $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
+// 2020.08.19 精鋭部隊の[部隊にセット]ボタンが有効にならない不具合の対応 ここまで
     }
 
     // 選択中の配置拠点にアンダーライン
@@ -7853,6 +7856,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
+// 2020.08.19 小隊長を外す時に1武将しか外れない不具合の対応 ここから
+          async: false,
+// 2020.08.19 小隊長を外す時に1武将しか外れない不具合の対応 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           remain--;
