@@ -1477,7 +1477,10 @@ function MokoMain($) {
       facility_tool: {tag: 'vill', caption: '右クリックでツールチップを表示する'},
       facility_tool_mod: {tag: 'vill', caption: 'ツールチップにダブルアップ操作を追加'},
       remove_bushodrama: {tag: 'vill', caption: '大殿のアニメーションを無効にする'},
-      
+// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+      operation_method_19: {tag: 'vill', caption: '19章の操作方法にする'},
+// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
+
       // 施設
       facility_favorites: {tag: 'faci', caption: 'お気に入り施設を使用する'},
       facility_stuff_text_color: {tag: 'faci', caption: '足りている資源のテキスト色を変更する'},
@@ -1582,7 +1585,10 @@ function MokoMain($) {
             || key == 'distance_caution'
             || key == 'no_charge'
             || key == 'no_balloon'
-          ){
+// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+            || key == 'operation_method_19'
+// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
+            ){
             options[key] = false;
           } else if (key.indexOf('_mod') !== -1) {
             options[key] = '0';
@@ -15982,6 +15988,19 @@ function MokoMain($) {
       return createTooltip(e, data, title, href);
     });
   }
+// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+// 内政 操作方法
+  function operationMethod() {
+    if (!options.operation_method_19 || location.pathname != '/village.php') {
+    return;
+    }
+    $('#mapOverlayMap area[onclick]').each(function(){
+    $(this)
+    .attr('href', $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim())
+    .removeAttr('onclick');
+    });
+  }
+// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
 // ^ 内政
 
 // === 施設 ===
@@ -22669,6 +22688,9 @@ function MokoMain($) {
   getFacilitys();               // village
   villageCheck();               // village
   facilityTool();               // village
+// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+  operationMethod();            // village
+// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
   hermes();                     // village && facility/facility
 
   facilityPaneLreverse();       // facility/facility
