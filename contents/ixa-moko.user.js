@@ -4985,22 +4985,24 @@ function MokoMain($) {
     
     // 変更点 銅銭・金に桁上がり(カンマ)を追加
     $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
-    $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
-      if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
-// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここから
-//        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-        $('#ranking_table td:nth-child(n+5)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここまで
-      }
-      if (location.pathname === '/war/war_alliance_ranking.php' || location.pathname === '/war/war_ranking.php') {
-        var $td = ($('#ig_battle_report_top').text().indexOf('天下統一戦') === -1)
-          ? $('#ig_battle_table td:nth-child(n+4)')
-          : $('.ig_battle_table tr:nth-child(2n+4)>td:nth-child(n+5), .ig_battle_table tr:nth-child(2n+5)>td');
-        $td.each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-      }
-      if (location.pathname === '/country/country_ranking.php') {
-        $('.common_table1 td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-      }
+// 2020.08.20 全体格付けで存在しない城主or同盟ですと表示される不具合の対応 ここから
+//    $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
+//      if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
+//// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここから
+////        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+//        $('#ranking_table td:nth-child(n+5)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+//// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここまで
+//      }
+//      if (location.pathname === '/war/war_alliance_ranking.php' || location.pathname === '/war/war_ranking.php') {
+//        var $td = ($('#ig_battle_report_top').text().indexOf('天下統一戦') === -1)
+//          ? $('#ig_battle_table td:nth-child(n+4)')
+//          : $('.ig_battle_table tr:nth-child(2n+4)>td:nth-child(n+5), .ig_battle_table tr:nth-child(2n+5)>td');
+//        $td.each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+//      }
+//      if (location.pathname === '/country/country_ranking.php') {
+//        $('.common_table1 td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+//      }
+// 2020.08.20 全体格付けで存在しない城主or同盟ですと表示される不具合の対応 ここまで
 
     function commentListSelecter() {
       var id_num = each_setting.header_info;
