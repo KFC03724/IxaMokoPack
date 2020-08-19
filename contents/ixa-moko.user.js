@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.13
+// @version      10.20.202008.14
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.13";
+  var VERSION_NAME = "ver 10.20.202008.14";
 
 // === Plugin ===
 
@@ -23210,14 +23210,20 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
     '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
-    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここから
+//    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
+    '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 0px; }' +
+// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
     '#new_troops_container p span { margin-right: 1em; color: red; }'+
     'input[name="troops_save"] { margin-right: 10px; }'+
     'a[id^="favorites_id_"] { cursor: pointer; color: aqua; text-decoration: underline; line-height: inherit; }' +
     'a[id^="favorites_id_"]:hover { text-decoration: none; }' +
-    '#deck_cost_add_btn_img { position: inherit; right: -40px; }' +
+// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここから
+//    '#deck_cost_add_btn_img { position: inherit; right: -40px; }' +
+    '#deck_cost_add_btn_img { display: none; }' + /* デッキコスト課金ボタン隠す */
+// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここまで
     
     /* 登録部隊配置 */
     '#moko_virtual_grouping { height: 20px; width: 721px; margin: 0 auto 7px; }' +
