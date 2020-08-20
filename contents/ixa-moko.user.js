@@ -9684,11 +9684,17 @@ function MokoMain($) {
              var $input = $html.find('input[id^="card_id_arr"]');
             addUnionGroupImgView($input);
           }
-          var $table = $html.find('#busho_info');
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
+//          var $table = $html.find('#busho_info');
+          var $table = $html.find('table.busho_info');
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
           var $tr_gradient = $table.find('tr.tr_gradient').slice(1);
           var $space = $table.find('tr:has(td.tb_space)').eq(0).clone();
           var $cardWindow = $html.find('div[id^="cardWindow_"]');
-          $('#busho_info > tbody').append($tr_gradient);
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
+//          $('#busho_info > tbody').append($tr_gradient);
+          $('table.busho_info > tbody').append($tr_gradient);
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
           $tr_gradient.before($space);
           $('div[id^="cardWindow_"]:last').after($cardWindow);
           btnImgeUpdate();
