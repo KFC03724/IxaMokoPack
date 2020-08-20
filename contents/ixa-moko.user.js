@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.15
+// @version      10.20.202008.16
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.15";
+  var VERSION_NAME = "ver 10.20.202008.16";
 
 // === Plugin ===
 
@@ -11604,10 +11604,16 @@ function MokoMain($) {
     })
     .then(function(html) {
       var $html = $(html).find('#box'),
-      $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
-        $card = $html.children('div[id^="cardWindow"]');
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
+//      $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
+      $tr = $html.find('table.busho_info > tbody > tr.tr_gradient').slice(1),
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
+      $card = $html.children('div[id^="cardWindow"]');
       $tr.each(trGradientCheck);
-      $('#busho_info > tbody').append($tr);
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
+//      $('#busho_info > tbody').append($tr);
+      $('table.busho_info > tbody').append($tr);
+// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
       $('#lump_sum').before($card);
       $tr = null;
       $card = null;
