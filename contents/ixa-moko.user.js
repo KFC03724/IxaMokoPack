@@ -402,7 +402,17 @@ function MokoMain($) {
   "攻.戦銛.D":["攻.戦銛.D","攻.槍隊突撃.F","攻.筋違い角.D","特.諸刃ノ蛇行剣.D","攻.黒鬼刺.D"],
   "特.針薬方.E":["特.針薬方.E","防.槍隊備え.F","防.弓隊備え.F","特.惜別ノ叛逆.D","特.二葉心.D"],
   "特.雷雲黎明.F":["特.戦陣 破軍.A","攻.覇王征軍.SS","-","-","-"],
-  //20章新天
+
+  // 2020.08.21 20章新天及び合成専用スキルの追加 ここから
+  // 合成専用
+  "特.鬼滅刺.A":["..","..","..","特.布都御魂ノ鬨.SS",".."],
+  "攻.騎聖.A":["..","..","..","攻.八目鳴鏑ノ奏.SS",".."],
+  "防.籠城の妙技.A":["..","..","..","防.三千世界神将.SS",".."],
+  ".拾年ノ大御礼.":["特.戦陣 破軍.A","攻.神光征軍.SS","攻.覇王征軍.SS","攻.天焉相克.SS",".."],
+  "防.天衣無縫神戒.SS":["-","-","-","防.天衣無縫神戒.SS","-"],
+  "攻.破軍星 皇.SS":["-","-","-","攻.破軍星 皇.SS","-"],
+
+//20章新天
   "特.冥界ノ覇神.SSS":["特.布都御魂ノ鬨.SS","特.八重言代主神.SS","特.神屋楯比売命.SS","特.高津姫神.SS","防.天衣無縫神戒.SS"],
   "防.豊国大明神.SSS":["防.覇龍滅破陣.SS","防.覇獄竜王.SS","防.天弓星宿陣.SS","防.幽冥主宰大神.SS","防.三千世界神将.SS"],
   "攻.破軍十六神将.SSS":["攻.天香山命.SS","特.布都御魂ノ鬨.SS","攻.八目鳴鏑ノ奏.SS","攻.天岩戸ノ神域.SS","攻.破軍星 皇.SS"],
@@ -415,13 +425,7 @@ function MokoMain($) {
   "防.夜叉殺界.S":["特.式神ノ冥王.SS","防.覇獄竜王.SS","防.覇龍滅破陣.SS","特.布都御魂ノ鬨.SS","防.籠城の妙技.A"],
   "防.四神砲雷火.S":["防.四神砲雷火.S","特.式神ノ冥王.SS","特.無双英傑.SS","攻.天之瓊矛ノ雫.SS","特.鬼滅刺.A"],
   "攻.天謀ノ星約.S":["攻.天謀ノ星約.S","攻.覇王征軍.SS","攻.神光征軍.SS","攻.八目鳴鏑ノ奏.SS","攻.騎聖.A"],
-  // 合成専用
-  "特.鬼滅刺.A":["..","..","..","特.布都御魂ノ鬨.SS",".."],
-  "攻.騎聖.A":["..","..","..","攻.八目鳴鏑ノ奏.SS",".."],
-  "防.籠城の妙技.A":["..","..","..","防.三千世界神将.SS",".."],
-  ".拾年ノ大御礼.":["特.戦陣 破軍.A","攻.神光征軍.SS","攻.覇王征軍.SS","攻.天焉相克.SS",".."],
-  "防.天衣無縫神戒.SS":["-","-","-","防.天衣無縫神戒.SS","-"],
-  "攻.破軍星 皇.SS":["-","-","-","攻.破軍星 皇.SS","-"],
+  // 2020.08.21 20章新天及び合成専用スキルの追加 ここまで
 
   };
 
@@ -566,7 +570,9 @@ function MokoMain($) {
     // NPC "章_期"
     var npc_data = {
       "19_19": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
-        // "20_20": [],
+// 2020.08.21 空き地戦力の表示 ここから
+      "20_20": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
+// 2020.08.21 空き地戦力の表示 ここまで
     };
 
     // NPC "期"
@@ -591,7 +597,9 @@ function MokoMain($) {
       "17": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }], // 17期
       "18": [], // 18期
       "19": [], // 19期
-      "20": [], // 20期暫定
+// 2020.08.21 空き地戦力の表示 ここから
+      "20": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }], // 20期暫定
+// 2020.08.21 空き地戦力の表示 ここまで
     };
     npc_data_old["9"] = npc_data_old["8"] = npc_data_old["7"] = npc_data_old["6"]; // 6期と同じ
     npc_data_old["16"] = npc_data_old["15"]; // 15期と同じ
@@ -1477,10 +1485,10 @@ function MokoMain($) {
       facility_tool: {tag: 'vill', caption: '右クリックでツールチップを表示する'},
       facility_tool_mod: {tag: 'vill', caption: 'ツールチップにダブルアップ操作を追加'},
       remove_bushodrama: {tag: 'vill', caption: '大殿のアニメーションを無効にする'},
-// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+// 2020.08.21 内政の19章化 ここから
       operation_method_19: {tag: 'vill', caption: '19章の操作方法にする'},
-// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
-
+// 2020.08.21 内政の19章化 ここまで
+      
       // 施設
       facility_favorites: {tag: 'faci', caption: 'お気に入り施設を使用する'},
       facility_stuff_text_color: {tag: 'faci', caption: '足りている資源のテキスト色を変更する'},
@@ -1585,10 +1593,10 @@ function MokoMain($) {
             || key == 'distance_caution'
             || key == 'no_charge'
             || key == 'no_balloon'
-// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+// 2020.08.21 内政の19章化 ここから
             || key == 'operation_method_19'
-// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
-            ){
+// 2020.08.21 内政の19章化 ここまで
+          ){
             options[key] = false;
           } else if (key.indexOf('_mod') !== -1) {
             options[key] = '0';
@@ -1715,9 +1723,9 @@ function MokoMain($) {
                   '17': '日ノ本燎原～下天に棲む勇胆の将～',
                   '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
-// 2020.08.16 MOKO設定画面で20章をちゃんと表示できない不具合を修正 ここから                  
+// 2020.08.21 MOKOが20章を正しく表示できる様設定 ここから
                   '20': '驚天宿星～蘇りし神将～',
-// 2020.08.16 MOKO設定画面で20章をちゃんと表示できない不具合を修正 ここまで
+// 2020.08.21 MOKOが20章を正しく表示できる様設定 ここまで
                 };
                 setting_list += '<li><label>' + this.optionsKeys[key].caption + ':</label>&nbsp;' +
                   '<select class="ixamoko_setting" key="' + key + '">' +
@@ -2763,11 +2771,11 @@ function MokoMain($) {
         html += '<li><a href="/card/deck.php?select_card_group=' + GROUPS_MENU[i][0] + filter + '">部隊編成' + GROUPS_MENU[i][1] + '</a></li>';
       }
       html += '<li><a href="/facility/unit_list.php">待機兵士一覧</a></li>' +
-// 2020.08.15 本丸防御陣形を追加 ここから
-//      '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
-      '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
-      '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
-// 2020.08.15 本丸防御陣形を追加 ここまで
+// 2020.08.21 部隊メニュープルダウンに本丸防御陣形を追加 ここから
+//              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
+              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
+              '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
+// 2020.08.21 部隊メニュープルダウンに本丸防御陣形を追加 ここまで
       menu02.find('li').remove();
       menu02.find('ul').append(html);
       menu07.find('ul').append('<li><a href="/alliance/alliance_gold_mine_history.php">発掘履歴</a></li>');
@@ -3068,10 +3076,10 @@ function MokoMain($) {
       lv_list = [],
       str;
     for (var i = 0, len = $div.length; i < len; i++) {
-// 2020.08.14 武将スキル表示不具合を修正 ここから
+// 2020.08.21 武将スキルが表示されない不具合の修正2020.08.21 武将スキルが表示されない不具合の修正 ここから
 //      str = $div.eq(i).find('span[class$="ig_skill_name"]').text().trim();
       str = $div.eq(i).find('span.ig_skill_name').text().trim();
-// 2020.08.14 武将スキル表示不具合を修正 ここまで
+// 2020.08.21 武将スキルが表示されない不具合の修正2020.08.21 武将スキルが表示されない不具合の修正 ここまで
       if (!str) {
         continue;
       }
@@ -3599,7 +3607,7 @@ function MokoMain($) {
     if (!options.input_css) {
       return;
     }
-    style(':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select, input[type="checkbox"], input[type="radio"] {-webkit-appearance: none;-webkit-user-select: none;background-image: -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);border: 1px solid rgba(0, 0, 0, 0.35);border-radius: 2px;box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);color: #444; text-shadow: 0 1px 0 #F0F0F0; font: inherit; font-weight: normal; font-size: 12px; }' + ':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button) {-webkit-padding-end: 5px;-webkit-padding-start: 5px;}' + ':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select {min-height: 1.8em;min-width: 3em;}' + ':enabled:hover:-webkit-any(select,input[type="checkbox"],input[type="radio"],:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {background-image: -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);border-color: rgba(0, 0, 0, 0.45);box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95);color: black;}' + ':enabled:active:-webkit-any(select,input[type="checkbox"],input[type="radio"],:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {background-image: -webkit-linear-gradient(#E0E0E0, #E0E0E0 38%, #D0D0D0);border-color: #4D90FE;box-shadow: 0 1px 0 rgba(0, 0, 0, 0.20), inset 0 1px 2px rgba(255, 255, 255, 0.95);color: black;}' + 'input[type="checkbox"] {height: 13px; vertical-align: middle;width: 13px;}' + 'input[type="checkbox"]:checked::before {-webkit-user-select: none;background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjQ3OTIzNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjQ3OTIzNUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4TU+XQAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjNEN0Y4OUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjNEN0Y4OEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6+GQ+pAAAA60lEQVQ4y2P4//8/Ay0wA00NpgC4AXEksgA1DNYA4vVAvBnZcEoNFgLihVBDNyMbTonBLEDchWYo3HBKDM7BYSgIZ5JrsBseQxuBmIkcg5EjCx1PBmJufGHsBMQFQMxORGTB8BIglsCXKmSBeA1U8RQgliMistYBsTq+dAxy4TQ0TSBLnPFE1iYgdkAPL3SDC/BECi4cjS0i0A12RgoGYnAxEDMSYzAIyGMJDmy4B4jZcCUdXKmCnUCwzAVifnxpklA6xhY0K4BYgVBiJyaDgIJmKtTQjUBsTEwuIjbnwYLGi9jsSZ8aZEgZDACI3DQYaeTU0AAAAABJRU5ErkJggg==") 2x);background-size: 100% 100%;content: "";display: block;height: 100%;width: 100%;}}' + ':enabled:hover:-webkit-any(select) {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);}' + 'select {font-weight: normal;font-size: 12px;-webkit-appearance: none;-webkit-padding-end: 20px;-webkit-padding-start: 5px;background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);background-position: right center;background-repeat: no-repeat;}' + ':enabled:focus:-webkit-any(select,input[type="checkbox"],input[type="password"],input[type="radio"],input[type="search"],input[type="text"],input[type="url"],input:not([type]),:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {-webkit-transition: border-color 200ms;border-color: #4D90FE;outline: none;}' + ':enabled:hover:-webkit-any(select) {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);}' + 'input[type="radio"] {border-radius: 100%;bottom: 2px;height: 15px;position: relative;vertical-align: middle;width: 15px;}' + 'input[type="radio"]:checked::before {background-color: #444;border-radius: 100%;bottom: 3px;content: "";display: block;left: 3px;position: absolute;right: 3px;top: 3px;}' + 'input[type="password"], input[type="search"], input[type="text"], input[type="url"], input:not([type]), textarea {border: 1px solid #A6A6A6;border-radius: 2px;box-sizing: border-box;color: #444;min-height: 1.8em;padding: 0 3px; }' + ':disabled:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select:disabled {background-image: -webkit-linear-gradient(#F1F1F1, #F1F1F1 38%, #E6E6E6);border-color: rgba(80, 80, 80, 0.2);box-shadow: 0 1px 0 rgba(80, 80, 80, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);color: #AAA;}' + 'select:disabled {background-image: -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);  border-color: rgba(80, 80, 80, 0.2);  box-shadow: 0 1px 0 rgba(80, 80, 80, 0.08),      inset 0 1px 2px rgba(255, 255, 255, 0.75);  color: #aaa;}' + 'select:disabled {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzhFNzM0Q0I3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0Qzg4NDhDOEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7ugNWSAAAAWklEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEIGhoa/uPCIHmiDQNihQULFizEZhBIHCRPijexGggzCCpPvGHoBiIbRJZhMAPfvn3bhGwQ2YZBNbJiEcPAAIgGZrTRc1ZLAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAQCAYAAAB6Hg0eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0Qzk2NTVCM0I3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0Qzk2NTVCMkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz63FC5wAAAAcUlEQVRIx+3VsQ7AIAgE0LPpfwNfTpdOTZsCRxOTepOD0RdFHO6OGbNh0uzRiWamAITcz0REu09MARiDOtf45CqruBSqWmNZXBrFFH8UV0Kxr/INV0Z1tIsnHIXq6mNXHI1K9bEA7m5czlhf0oL9FXYAgk8aKx7YdN4AAAAASUVORK5CYII=") 2x),      -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);}' + 'input:disabled:-webkit-any([type="checkbox"], [type="radio"]) { opacity: 0.6; }' + 'input:disabled:-webkit-any([type="password"], [type="search"], [type="text"], [type="url"], :not([type])) { color: #999; }' + '#ig_deck_unititle > P > select, #ig_deck_unititle > P > input { margin: 0 4px;}' + '.paneltable_blue select, .paneltable_red select { -webkit-padding-end: 20px; -webkit-padding-start: 6px; }' + 'div.job_s { padding-top: 6px; }' + '#comment_str { border: none; }' + 'table.busho_info .force_type2, .elite_busho_info .force_type2 { -webkit-padding-start: 5px; -webkit-padding-end: 15px; font-size: 12px; }');
+    style(':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select, input[type="checkbox"], input[type="radio"] {-webkit-appearance: none;-webkit-user-select: none;background-image: -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);border: 1px solid rgba(0, 0, 0, 0.35);border-radius: 2px;box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);color: #444; text-shadow: 0 1px 0 #F0F0F0; font: inherit; font-weight: normal; font-size: 12px; }' + ':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button) {-webkit-padding-end: 5px;-webkit-padding-start: 5px;}' + ':-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select {min-height: 1.8em;min-width: 3em;}' + ':enabled:hover:-webkit-any(select,input[type="checkbox"],input[type="radio"],:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {background-image: -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);border-color: rgba(0, 0, 0, 0.45);box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95);color: black;}' + ':enabled:active:-webkit-any(select,input[type="checkbox"],input[type="radio"],:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {background-image: -webkit-linear-gradient(#E0E0E0, #E0E0E0 38%, #D0D0D0);border-color: #4D90FE;box-shadow: 0 1px 0 rgba(0, 0, 0, 0.20), inset 0 1px 2px rgba(255, 255, 255, 0.95);color: black;}' + 'input[type="checkbox"] {height: 13px; vertical-align: middle;width: 13px;}' + 'input[type="checkbox"]:checked::before {-webkit-user-select: none;background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjQ3OTIzNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjQ3OTIzNUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4TU+XQAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QjNEN0Y4OUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QjNEN0Y4OEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6+GQ+pAAAA60lEQVQ4y2P4//8/Ay0wA00NpgC4AXEksgA1DNYA4vVAvBnZcEoNFgLihVBDNyMbTonBLEDchWYo3HBKDM7BYSgIZ5JrsBseQxuBmIkcg5EjCx1PBmJufGHsBMQFQMxORGTB8BIglsCXKmSBeA1U8RQgliMistYBsTq+dAxy4TQ0TSBLnPFE1iYgdkAPL3SDC/BECi4cjS0i0A12RgoGYnAxEDMSYzAIyGMJDmy4B4jZcCUdXKmCnUCwzAVifnxpklA6xhY0K4BYgVBiJyaDgIJmKtTQjUBsTEwuIjbnwYLGi9jsSZ8aZEgZDACI3DQYaeTU0AAAAABJRU5ErkJggg==") 2x);background-size: 100% 100%;content: "";display: block;height: 100%;width: 100%;}}' + ':enabled:hover:-webkit-any(select) {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);}' + 'select {font-weight: normal;font-size: 12px;-webkit-appearance: none;-webkit-padding-end: 20px;-webkit-padding-start: 5px;background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);background-position: right center;background-repeat: no-repeat;}' + ':enabled:focus:-webkit-any(select,input[type="checkbox"],input[type="password"],input[type="radio"],input[type="search"],input[type="text"],input[type="url"],input:not([type]),:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button)) {-webkit-transition: border-color 200ms;border-color: #4D90FE;outline: none;}' + ':enabled:hover:-webkit-any(select) {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzU0RURENUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzU0RURENEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LmQFgAAAAaUlEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEImJmZvwE1/UfHIHGQPNGGAbHCggULFrKxsf1ENgjEB4mD5EnxJoaByAZB5Yk3DNlAPj6+L8gGkWUYzMC3b982IRtEtmFQjaxYxDAwAGi4TwMYKNLfAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAQCAYAAACV3GYgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzREM0NBNkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0QzQ3OEVGQUI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79QSb2AAAAZ0lEQVRIx+3VywrAIAxE0Zsvr375dFNKX2INqKUk68AcCExMEl8dC9wInJklYHFmZUmpJw7AA8xAar2SB9cKzNs+o3BvgTtsNK4GPMFm4ErAG2wW7gp8hM3EcQAV66IrLj5E4P6OWwG5oVbhNofsEQAAAABJRU5ErkJggg==") 2x), -webkit-linear-gradient(#F0F0F0, #F0F0F0 38%, #E0E0E0);}' + 'input[type="radio"] {border-radius: 100%;bottom: 2px;height: 15px;position: relative;vertical-align: middle;width: 15px;}' + 'input[type="radio"]:checked::before {background-color: #444;border-radius: 100%;bottom: 3px;content: "";display: block;left: 3px;position: absolute;right: 3px;top: 3px;}' + 'input[type="password"], input[type="search"], input[type="text"], input[type="url"], input:not([type]), textarea {border: 1px solid #A6A6A6;border-radius: 2px;box-sizing: border-box;color: #444;min-height: 1.8em;padding: 0 3px; }' + ':disabled:-webkit-any(button,input[type="button"],input[type="submit"]):not(.custom-appearance):not(.link-button), select:disabled {background-image: -webkit-linear-gradient(#F1F1F1, #F1F1F1 38%, #E6E6E6);border-color: rgba(80, 80, 80, 0.2);box-shadow: 0 1px 0 rgba(80, 80, 80, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.75);color: #AAA;}' + 'select:disabled {background-image: -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);  border-color: rgba(80, 80, 80, 0.2);  box-shadow: 0 1px 0 rgba(80, 80, 80, 0.08),      inset 0 1px 2px rgba(255, 255, 255, 0.75);  color: #aaa;}' + 'select:disabled {background-image: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0QzhFNzM0Q0I3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0Qzg4NDhDOEI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7ugNWSAAAAWklEQVQoz2P4//8/A7UwdkEGhiggTsODo4g2LBEIGhoa/uPCIHmiDQNihQULFizEZhBIHCRPijexGggzCCpPvGHoBiIbRJZhMAPfvn3bhGwQ2YZBNbJiEcPAAIgGZrTRc1ZLAAAAAElFTkSuQmCC") 1x, url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAQCAYAAAB6Hg0eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODIyQUNDRTE5M0FEN0FEQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0Qzk2NTVCM0I3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0Qzk2NTVCMkI3NEQxMUUxODVFM0E5RkQzRkE4MDc5QiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjkwRTAxMTQxMjIwNjgxMTgwODNEQUM5MDc1RTIzMkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgyMkFDQ0UxOTNBRDdBREMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz63FC5wAAAAcUlEQVRIx+3VsQ7AIAgE0LPpfwNfTpdOTZsCRxOTepOD0RdFHO6OGbNh0uzRiWamAITcz0REu09MARiDOtf45CqruBSqWmNZXBrFFH8UV0Kxr/INV0Z1tIsnHIXq6mNXHI1K9bEA7m5czlhf0oL9FXYAgk8aKx7YdN4AAAAASUVORK5CYII=") 2x),      -webkit-linear-gradient(#f1f1f1, #f1f1f1 38%, #e6e6e6);}' + 'input:disabled:-webkit-any([type="checkbox"], [type="radio"]) { opacity: 0.6; }' + 'input:disabled:-webkit-any([type="password"], [type="search"], [type="text"], [type="url"], :not([type])) { color: #999; }' + '#ig_deck_unititle > P > select, #ig_deck_unititle > P > input { margin: 0 4px;}' + '.paneltable_blue select, .paneltable_red select { -webkit-padding-end: 20px; -webkit-padding-start: 6px; }' + 'div.job_s { padding-top: 6px; }' + '#comment_str { border: none; }' + '#busho_info .force_type2, .elite_busho_info .force_type2 { -webkit-padding-start: 5px; -webkit-padding-end: 15px; font-size: 12px; }');
   }
   
   /*43スレ 232追加*/
@@ -4987,10 +4995,10 @@ function MokoMain($) {
     $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
     $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
       if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
-// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここから
+// 2020.08.21 全体格付から同盟・城主へのリンクが死んでいる問題の対応 ここから
 //        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-        $('#ranking_table td:nth-child(n+5)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-// 2020.08.17 全体格付からのリンクが死んでいる不具合の対応 ここまで
+        $('#ranking_table td:nth-child(n+5)').each(function(){$(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g,'$1,'));});
+// 2020.08.21 全体格付から同盟・城主へのリンクが死んでいる問題の対応 ここまで
       }
       if (location.pathname === '/war/war_alliance_ranking.php' || location.pathname === '/war/war_ranking.php') {
         var $td = ($('#ig_battle_report_top').text().indexOf('天下統一戦') === -1)
@@ -5130,14 +5138,14 @@ function MokoMain($) {
   
   // デッキ 使用状態の取得
   function get_deck_status(html, select_assign_no) {
-// 2020.08.16 強襲部隊に配置される不具合の修正 ここから
+// 2020.08.21 一括配置でセットされる場所を修正 ここから
 //    var $ig_unitchoice = $(html).find('#ig_unitchoice');
 //    var $ig_unitchoice_reinforce = $(html).find('#ig_unitchoice_reinforce');
 //    var $ig_unitchoice_assault = $(html).find('#ig_unitchoice_assault');
     var $ig_unitchoice = $(html).find('ul.unit_normal');
     var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
     var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
-// 2020.08.16 強襲部隊に配置される不具合の修正 ここまで    
+// // 2020.08.21 一括配置でセットされる場所を修正 ここまで
     var free_deck;  // 空き数
     var start_deck; // 配置開始
     var use_deck;   // 使用数
@@ -5636,10 +5644,10 @@ function MokoMain($) {
     if($('#myselect').val() == '' || $('#myselect').val() == '0'){
       /* 43スレ 354修整 */
       //      $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
-// 2020.08.19 精鋭部隊の[部隊にセット]ボタンが有効にならない不具合の対応 ここから
+// 2020.08.21 精鋭部隊の「部隊にセット」ボタンが有効になっていない不具合の対応 ここから
 //      jQuery('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
       $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
-// 2020.08.19 精鋭部隊の[部隊にセット]ボタンが有効にならない不具合の対応 ここまで
+// 2020.08.21 精鋭部隊の「部隊にセット」ボタンが有効になっていない不具合の対応 ここまで
     }
 
     // 選択中の配置拠点にアンダーライン
@@ -6212,8 +6220,8 @@ function MokoMain($) {
     // event
     function type_set(data) {
       var cid = data.id,
-      $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
-      $unit_id_select = $('select[id="unit_id_select_' + cid + '"]');
+        $unit_cnt_text = $('input[id="unit_cnt_text_' + cid + '"]'),
+        $unit_id_select = $('select[id="unit_id_select_' + cid + '"]');
       
       // 他兵種リスト
       $('#type_info').on('click', function() {
@@ -7221,7 +7229,7 @@ function MokoMain($) {
 
   // グループ順 ソート
   var groups_sort = function() {
-  var $target = $('#busho_info tr').eq(0),
+    var $target = $('#busho_info tr').eq(0),
       i = Object.keys(groups_img_data).length - 1,
       $tr_gradient;
     for (;i > 0; --i) {
@@ -7312,7 +7320,7 @@ function MokoMain($) {
 
     var array = [],
       target = (location.pathname == '/card/deck.php') ?
-      $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
+            $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
 
     $('DIV[id^="cardWindow_"]').each(function(idx) {
       var cid = $(this).attr('id').match(/\d+/g)[0],
@@ -7733,13 +7741,14 @@ function MokoMain($) {
             }
           }
           if ((deck_cost.free - t_cost) >= ccost && tnum > 0) {
-// 2020.08.16 全部隊配置ボタンの修正 ここから            
+// 2020.08.21 全部隊配置の修正 ここから
 //            var array = sQuotesMatch($(this).attr('onClick'));
 //            var set_assign_id = array[0];
 //            var set_card_id = array[1];
-            var set_assign_id = $img.length ? sQuotesMatch( $img.parent().attr('onClick') )[0] : '';
-            var set_card_id = $(this).data("card_id");
-// 2020.08.16 全部隊配置ボタンの修正 ここまで
+              var set_assign_id = "";
+              var set_card_id = $(this).data("card_id");
+              var set_assign_id = $img.length ? sQuotesMatch( $img.parent().attr('onClick') )[0] : '';
+// 2020.08.21 全部隊配置の修正 ここまで
             list.push({
               vid: vid,
               sid: set_assign_id,
@@ -7856,9 +7865,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
-// 2020.08.19 小隊長を外す時に1武将しか外れない不具合の対応 ここから
+// 2020.08.21 小隊長をはずす際に1武将しか外れない不具合の対応 ここから
           async: false,
-// 2020.08.19 小隊長を外す時に1武将しか外れない不具合の対応 ここまで
+// 2020.08.21 小隊長をはずす際に1武将しか外れない不具合の対応 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           remain--;
@@ -8229,9 +8238,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
-// 2020.08.16 全部隊配置ボタンの修正 ここから
+// 2020.08.21 全部隊配置の修正 ここから
           async: false,
-// 2020.08.16 全部隊配置ボタンの修正 ここまで
+// 2020.08.21 全部隊配置の修正 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           var $html = $(html).find('#ig_deckbox'),
@@ -8240,10 +8249,10 @@ function MokoMain($) {
           Info.count((deck_cost.count ? deck_cost.now + '/' + deck_cost.max + '　' : '') + deck_status.use + '部隊');
           remain--;
           if (remain === 0) {
-// 2020.08.16 全部隊配置ボタンの修正 ここから
+// 2020.08.21 全部隊配置の修正 ここから
 //            var $parameta = $($html).find('div[id^="ig_deck_subcardarea_out"] div.parameta_area');
             var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
-// 2020.08.16 全部隊配置ボタンの修正 ここまで
+// 2020.08.21 全部隊配置の修正 ここまで
             if (list.length > $parameta.length) {
               var set = [],
                 card_name, failure,
@@ -8279,7 +8288,7 @@ function MokoMain($) {
 
     for (var i = 0, len = list.length; i < len; i++) {
       var set_assign_id = assign || list[i].sid,
-      data = deckInsertQuery();
+        data = deckInsertQuery();
       data.select_assign_no = start;
       data.set_assign_id = set_assign_id;
       data.set_card_id = list[i].cid;
@@ -9659,9 +9668,6 @@ function MokoMain($) {
         type: 'post',
         url: location.pathname,
         data: data,
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
-        async: false,
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
         beforeSend: xrwStatusText,
       })
       .then(function(html) {
@@ -9684,17 +9690,11 @@ function MokoMain($) {
              var $input = $html.find('input[id^="card_id_arr"]');
             addUnionGroupImgView($input);
           }
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
-//          var $table = $html.find('#busho_info');
-          var $table = $html.find('table.busho_info');
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
-          var $tr_gradient = $table.find('tr.tr_gradient').slice(1);
-          var $space = $table.find('tr:has(td.tb_space)').eq(0).clone();
-          var $cardWindow = $html.find('div[id^="cardWindow_"]');
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
-//          $('#busho_info > tbody').append($tr_gradient);
-          $('table.busho_info > tbody').append($tr_gradient);
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
+           var $table = $html.find('#busho_info');
+           var $tr_gradient = $table.find('tr.tr_gradient').slice(1);
+           var $space = $table.find('tr:has(td.tb_space)').eq(0).clone();
+           var $cardWindow = $html.find('div[id^="cardWindow_"]');
+          $('#busho_info > tbody').append($tr_gradient);
           $tr_gradient.before($space);
           $('div[id^="cardWindow_"]:last').after($cardWindow);
           btnImgeUpdate();
@@ -10860,19 +10860,19 @@ function MokoMain($) {
     if (flag == 2) {
       $('<a href="javascript:void(0);"><img src="/img/deck/box03_btn_breakup_w.png" alt="解散" style="margin: 0 0 5px 4px;" /></a>')
       .on('click', function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
 //        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
         var unitname = $('table.busho_info').find('a.busho_name').eq(0).text();
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
         if (!confirm('【' + unitname + '部隊】を解散させてよろしいですか？')) {
           return;
         }
         var data = {
           select_assign_no: $('#select_assign_no').val(),
-// 2020.08.15 一括配置でセットする場所の不具合修正 ここから
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
 //          unit_assign_id: $('#unit_assign_id').val(),
           unit_assign_id: $('#unit_assign_ids').val(),
-// 2020.08.15 一括配置でセットする場所の不具合修正 ここまで
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
           unset_card_id: $('#card_id_arr_0').val(),
           change_unit_squad_id: '',
           p: '1',
@@ -10884,10 +10884,10 @@ function MokoMain($) {
           data: data,
           beforeSend: xrwStatusText,
         }).then(function(html) {
-// 2020.08.15 一括配置でセットする場所の不具合修正 ここから
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
 //          var len = $('#frame_00_spacer div.clearfix').find('div[class^="tab_left_"]').length;
           var len = $('#frame_00_spacer').find('div.set_unit_tab').length;
-// 2020.08.15 一括配置でセットする場所の不具合修正 ここまで
+// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
           var idx = 1;
           if (len <= 2) {
             idx = 0;
@@ -11096,10 +11096,10 @@ function MokoMain($) {
     var select_set_num = $('#select_set_num').val();
     
     // 簡易編成行単位ループ
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここから
 //    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
     var $tr = $('table.busho_info').find('tr.tr_gradient:visible').slice(1);
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+// 2020.08.21 オートページャーの修正 ここまで
     
     // 対象をフィルター
     // 兵数
@@ -11376,10 +11376,10 @@ function MokoMain($) {
         pool_unit[type] = parseInt($(this).text()); // 数値
       });
 
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここから
 //      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
       var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1),
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+// 2020.08.21 オートページャーの修正 ここまで
       
       // 兵種変更の指揮兵数があれば全て0にする
       numReduction = function(keys) {
@@ -11486,16 +11486,16 @@ function MokoMain($) {
       return;
     }
     var html = '' +
-// 2020.08.18 同兵種/同兵数セットの修正 ここから
-//    '<div id="soldierset">' +
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+//      '<div id="soldierset">' +
 //        '<input id="same_kind" type="button" value="同兵種セット" />' +
 //        '<select id="constant">' +
-        '<div class="soldierset">' +
+      '<div class="soldierset">' +
         '<input class="same_kind" type="button" value="同兵種セット" />' +
         '<select class="constant">' +
-// 2020.08.18 同兵種/同兵数セットの修正 ここまで
-        '<option value>同兵数セット</option>' +
-        '<option value="1">1</option>';
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+          '<option value>同兵数セット</option>' +
+          '<option value="1">1</option>';
     for (var i = 0, len = CONSTANT_VALUE.length; i < len; i++) {
       html += '<option value="' + CONSTANT_VALUE[i] + '">' + CONSTANT_VALUE[i] + '</option>';
     }
@@ -11505,30 +11505,27 @@ function MokoMain($) {
         '</select>' +
       '</div>';
 
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
-//    $('#busho_info').before(html);
-    $('table.busho_info').before(html);
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
+// 2020.08.21 部隊長と同兵種ボタンの復活 ここから
+//      $('#busho_info').before(html);
+      $('table.busho_info').before(html);
+// 2020.08.21 部隊長と同兵種ボタンの復活 ここまで
 
     // 部隊長と同兵種
-// 2020.08.18 同兵種/同兵数セットの修正 ここから    
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
 //    $('#same_kind').on('click', function () {
     $('.same_kind').on('click', function () {
-// 2020.08.18 同兵種/同兵数セットの修正 ここまで
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
       var value;
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
-//      $('select[id^="unit_id_select_"]').each(function (i, el) {
-        $(this).closest('div.soldierset').next('table').find('select[id^="unit_id_select_"]').each(function (i, el) {
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
+      $('select[id^="unit_id_select_"]').each(function (i, el) {
         i === 0 ? value = $(this).val() : $(this).val(value);
       });
     });
 
     // 同兵数セット
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
 //    $('#constant').on('change', function() {
-      $('.constant').on('change', function() {
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
+    $('.constant').on('change', function() {
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
       var all_constant = function(data) {
           var ano = $('#select_assign_no').val(),
           c = data.length,
@@ -11551,10 +11548,10 @@ function MokoMain($) {
             post_query(data[i]);
           }
         },
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここから
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
 //        $card_id_arr = $('input[id^="card_id_arr_"]'),
         $card_id_arr = $(this).closest('div.soldierset').next('table').find('input[id^="card_id_arr_"]'),
-// 2020.08.17 部隊長と同兵種ボタンの復活 ここまで
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
         quantity = $(this).val(),
         c_num = $('#unit_cnt_text_0').val(),
         list = [],
@@ -11564,10 +11561,10 @@ function MokoMain($) {
       }
       for (var i = 0, len = $card_id_arr.length; i < len; i++) {
         card_id = $card_id_arr.eq(i).val();
-// 2020.08.18 本丸防御陣形の修正 ここから
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
 //        set_type = $('#unit_id_select_' + i).val();
         set_type = $card_id_arr.eq(i).closest('tr.tr_gradient').find('select[id^="unit_id_select_"]').val();
-// 2020.08.18 本丸防御陣形の修正 ここまで
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
         data = get_card_data($('#cardWindow_' + card_id));
         if (quantity == 'captain') {
           set_count = c_num;
@@ -11613,16 +11610,16 @@ function MokoMain($) {
     })
     .then(function(html) {
       var $html = $(html).find('#box'),
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
-//      $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
-      $tr = $html.find('table.busho_info > tbody > tr.tr_gradient').slice(1),
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
-      $card = $html.children('div[id^="cardWindow"]');
+// 2020.08.21 兵士編成のオートページャーの不具合対応 ここから
+//        $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
+        $tr = $html.find('table.busho_info > tbody > tr.tr_gradient').slice(1),
+// 2020.08.21 兵士編成のオートページャーの不具合対応 ここまで
+        $card = $html.children('div[id^="cardWindow"]');
       $tr.each(trGradientCheck);
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここから
+// 2020.08.21 兵士編成のオートページャーの不具合対応 ここから
 //      $('#busho_info > tbody').append($tr);
       $('table.busho_info > tbody').append($tr);
-// 2020.08.21 兵士編成のオートページャーの不具合の対応 ここまで
+// 2020.08.21 兵士編成のオートページャーの不具合対応 ここまで
       $('#lump_sum').before($card);
       $tr = null;
       $card = null;
@@ -12174,12 +12171,12 @@ function MokoMain($) {
     };
     
     // 実行
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここから
 //    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
     var elem = $('table.busho_info').find('TR.tr_gradient').slice(1).hide(),
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
-    text = $('#category_filter_menu').find('SPAN.now_branch').text(),
-    type = $('#type_filter_menu').find('SPAN.now_branch').text();
+// 2020.08.21 オートページャーの修正 ここまで
+      text = $('#category_filter_menu').find('SPAN.now_branch').text(),
+      type = $('#type_filter_menu').find('SPAN.now_branch').text();
 
     if (mode === 0) {
       return groups_filter(elem);
@@ -12427,10 +12424,10 @@ function MokoMain($) {
     $('#grp_default_set').on('click', function() {
       var group = $('#grp_img').attr('group'),
         type = $('#grp_default').val();
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここから
 //        $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
         $('table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
-// 2020.08.16 兵数設定プルダウンを復活 ここまで
+// 2020.08.21 オートページャーの修正 ここまで
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
       });
@@ -12444,7 +12441,7 @@ function MokoMain($) {
 
     $('input[name="icon_view"]').on('change', function() {
       $('#busho_info img[id^="ixamoko_grp"]')
-      .css('opacity', $(this).val());
+        .css('opacity', $(this).val());
     });
   }
   
@@ -12568,7 +12565,7 @@ function MokoMain($) {
       return;
     }
     var $img = $('#busho_info img[id^="ixamoko_grp"]'),
-    $content = $('#groups_img_content'),
+      $content = $('#groups_img_content'),
       grp_type = [],
       html = '<span id="bar_grps_all">全</span>',
       num,
@@ -12628,7 +12625,13 @@ function MokoMain($) {
     setUnitGroupsChange();
     unitListDefault();    // 基本兵種
     add_event_unit_set(); // 兵1・定数セット イベント
-    var $busho_info = $('#busho_info');
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+//    var $busho_info = $('#busho_info');
+    var $busho_info_array = $('table.busho_info');
+
+    $busho_info_array.each(function(){
+    let $busho_info = $(this);
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
     
     // スペース用のTRを削除
     var notTR = $busho_info.find('tr:has(td.tb_space)');
@@ -12646,7 +12649,9 @@ function MokoMain($) {
     
     // loop
     $busho_info.find('tr.tr_gradient').slice(1).each(trGradientCheck);
-    
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+    });
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで    
     // end
     setUnitGroupsFilter(); // グループフィルター
   }
@@ -14254,11 +14259,11 @@ function MokoMain($) {
 
       html += '<li class="moko_menu" id="deck_place_menu" style="display: none;">' +
                 '<a href="javascript:void(0);" class="moko_tree_menu">ここへ部隊を配置<span>&#9658;</span></a>' +
-// 2020.08.16 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように ここから
+// 2020.08.21 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように対応 ここから
 //                '<span class="' + menu_sub_class + '">';
-              '<span class="' + menu_sub_class + '">' +
-              '<a href="/card/defense_formation_deck.php">本丸防御陣形</a>';
-// 2020.08.16 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように ここまで                
+                '<span class="' + menu_sub_class + '">' +
+                '<a href="/card/defense_formation_deck.php">本丸防御陣形</a>';
+// 2020.08.21 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように対応 ここまで
       var i, len;
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         html += '<a href="javascript:void(0);" id="groups_' + GROUPS_MENU[i][0]+ '">' +  GROUPS_MENU[i][1]+ 'から配置</a>';
@@ -16002,18 +16007,20 @@ function MokoMain($) {
       }
       var href = (login_data.chapter < 20)
           ? '/' + $(this).attr('href')
+// 2020.08.21 内政パネル右クリック修正 ここから
 //          : '/' + $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim(),
         : $(this).attr('href') ? '/' + $(this).attr('href') : '/' + $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim(),
+// 2020.08.21 内政パネル右クリック修正 ここまで
         title = $(this).attr('title'),
         data = getFacilityStatus(href);
       return createTooltip(e, data, title, href);
     });
   }
-// 2020.08.18 19章の操作方法にするオプションを追加 ここから
-// 内政 操作方法
+// 2020.08.21 内政の19章化 ここから
+  // 内政 操作方法
   function operationMethod() {
     if (!options.operation_method_19 || location.pathname != '/village.php') {
-    return;
+      return;
     }
     $('#mapOverlayMap area[onclick]').each(function(){
     $(this)
@@ -16021,7 +16028,8 @@ function MokoMain($) {
     .removeAttr('onclick');
     });
   }
-// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
+// 2020.08.21 内政の19章化 ここまで
+
 // ^ 内政
 
 // === 施設 ===
@@ -19788,12 +19796,12 @@ function MokoMain($) {
     
     /* 43スレ200修正 */
     var $lottery = $('input[value="戦国くじ【白】を引く"]');
-// 2020.08.16 白くじn枚引き完了のお知らせ音を追加 ここから
-//      var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, *'(.*)'\)/)[1];
-//      if(alertString === undefined || alertString.length === 0) {
+// 2020.08.21 白くじn枚引き完了のお知らせ音を追加 ここから
+//    var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, *'(.*)'\)/)[1];
+//    if(alertString === undefined || alertString.length === 0) {
       var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, '(.*)'\)/);
       if(Array.isArray(alertString) && alertString[1].length === 0){
-// 2020.08.16 白くじn枚引き完了のお知らせ音を追加 ここまで
+// 2020.08.21 白くじn枚引き完了のお知らせ音を追加 ここまで
       $lottery.parents('form').on('submit', function(e){
         return false;
       });
@@ -20838,10 +20846,10 @@ function MokoMain($) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
         $tooltip.append(toolMenu);
       } else {
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここから
 //        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
         var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1);
-// 2020.08.16 兵数設定プルダウンを復活 ここから
+// 2020.08.21 オートページャーの修正 ここまで
         if (target.hasClass('deck_leader')) {
           var select_base = '',
             base_list = '';
@@ -22571,11 +22579,11 @@ function MokoMain($) {
     if (!dungeon_step) {
       return;
     }
-// 2020.08.16 Uキーバインドの不具合修正 ここから
+// 2020.08.21 Uキーバインドの修正 ここから
 //    var free_deck = $('#ig_unitchoice')
     var free_deck = $('ul.unit_normal')
-// 2020.08.16 Uキーバインドの不具合修正 ここまで
-    .find('li:contains("[---新規部隊を作成---]")').length;
+// 2020.08.21 Uキーバインドの修正 ここまで
+      .find('li:contains("[---新規部隊を作成---]")').length;
     if (free_deck != 6 && dungeon_step == 1) {
       setStorage('ixamoko_dungeon_step', 2);
       return allTroopsDissolution('0', '1');
@@ -22709,9 +22717,9 @@ function MokoMain($) {
   getFacilitys();               // village
   villageCheck();               // village
   facilityTool();               // village
-// 2020.08.18 19章の操作方法にするオプションを追加 ここから
+  // 2020.08.21 内政の19章化 ここから
   operationMethod();            // village
-// 2020.08.18 19章の操作方法にするオプションを追加 ここまで
+  // 2020.08.21 内政の19章化 ここまで
   hermes();                     // village && facility/facility
 
   facilityPaneLreverse();       // facility/facility
@@ -23225,20 +23233,20 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
     '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
-// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここから
+// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここから
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
     '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 0px; }' +
-// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここまで
+// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
     '#new_troops_container p span { margin-right: 1em; color: red; }'+
     'input[name="troops_save"] { margin-right: 10px; }'+
     'a[id^="favorites_id_"] { cursor: pointer; color: aqua; text-decoration: underline; line-height: inherit; }' +
     'a[id^="favorites_id_"]:hover { text-decoration: none; }' +
-// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここから
+// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここから
 //    '#deck_cost_add_btn_img { position: inherit; right: -40px; }' +
     '#deck_cost_add_btn_img { display: none; }' + /* デッキコスト課金ボタン隠す */
-// 2020.08.19 「お気に入り登録」の文字列の修正＆デッキコスト課金ボタン隠す対応 ここまで
+// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここまで
     
     /* 登録部隊配置 */
     '#moko_virtual_grouping { height: 20px; width: 721px; margin: 0 auto 7px; }' +
@@ -23421,13 +23429,13 @@ window.addEventListener('DOMContentLoaded', function() {
     '#unit_list_bar span#bar_grps_all:hover, img.bar_grps_img:hover { opacity: 1; }' +
     
     /* 兵セット */
-    // 2020.08.18 同兵種/同兵数セットの修正 ここから
-    // '#soldierset { float: right;margin: 4px 24px 0 0; }' +
-    // '#constant { width: 120px; margin: 0 10px 0 35px; }' +
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+//    '#soldierset { float: right;margin: 4px 24px 0 0; }' +
+//    '#constant { width: 120px; margin: 0 10px 0 35px; }' +
     '.soldierset { float: right;margin: 4px 24px 0 0; }' +
-    '.constant { width: 120px; margin: 0 10px 0 35px; }' +    
-    // 2020.08.18 同兵種/同兵数セットの修正 ここまで
-
+    '.constant { width: 120px; margin: 0 10px 0 35px; }' +
+// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+    
     /* 兵数表示(サイドボックス) */
     '#detail_table { background: #F3F2DE; font-size: inherit !important; }' +
     '#detail_table tbody td { text-align: right; line-height: 1.4; }' +
