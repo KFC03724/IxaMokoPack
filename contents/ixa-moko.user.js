@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.16
+// @version      10.20.202008.17
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.16";
+  var VERSION_NAME = "ver 10.20.202008.17";
 
 // === Plugin ===
 
@@ -22096,12 +22096,18 @@ function MokoMain($) {
         $td, $img, type, num;
       for (var i = 0, len = $tr.length; i < len; i++) {
         $td = $tr.eq(i).find('td');
-        $img = $td.eq(0).find('img');
+// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここから
+//        $img = $td.eq(0).find('img');
+        $img = $td.eq(1).find('img');
+// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここまで
         if (!$img.length) {
           continue;
         }
         type = $img.attr('alt');
-        num = parseInt($td.eq(1).text());
+// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここから
+//        num = parseInt($td.eq(1).text());
+        num = parseInt($td.eq(2).text());
+// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここまで
         for (var key in list) {
           if (key == type) {
             num += list[key];
