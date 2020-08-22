@@ -7731,9 +7731,9 @@ function MokoMain($) {
           command = data.num,
           cname = data.name,
           ccost = data.cost;
-            if (command === 0 || unit_flg === '0' || ccost === 0) {
 // 2020.08.22 全部隊配置の微修正 ここから
-//            if (command === 0 || unit_flg === '0') {
+//        if (command === 0 || unit_flg === '0' || ccost === 0) {
+        if (command === 0 || unit_flg === '0' || ccost < 0.5) {
 // 2020.08.22 全部隊配置の微修正 ここまで
           return true;
         } else {
