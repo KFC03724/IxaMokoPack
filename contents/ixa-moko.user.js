@@ -7731,10 +7731,10 @@ function MokoMain($) {
           command = data.num,
           cname = data.name,
           ccost = data.cost;
-// 2020.08.22 全部隊配置の微修正 ここから
+// 2020.08.23 全部隊配置の微修正('祝', '雅', '化', '童'等のカードをセットしない様対応) ここから
 //        if (command === 0 || unit_flg === '0' || ccost === 0) {
-        if (command === 0 || unit_flg === '0' || ccost < 0.5) {
-// 2020.08.22 全部隊配置の微修正 ここまで
+  if (command === 0 || unit_flg === '0' || $.inArray(data.rare, ['祝', '雅', '化', '童']) >= 0 || data.no === '3720') {
+// 2020.08.23 全部隊配置の微修正('祝', '雅', '化', '童'等のカードをセットしない様対応) ここまで
           return true;
         } else {
           for (var i = 0, len = name_list.length; i < len; i++) {
