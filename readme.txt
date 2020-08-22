@@ -29,7 +29,7 @@
 IxaMokoPack ver 10.20.202008.18 Chrome版
 2020/08/22
 　・全部隊配置の微修正
-　※戦国IXA ツールスレPart45 352 までの改修点を反映済
+　※戦国IXA ツールスレPart45 355 までの改修点を反映済
 
 IxaMokoPack ver 10.20.202008.17 Chrome版
 2020/08/21
