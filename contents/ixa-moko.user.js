@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.18
+// @version      10.20.202008.19
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.18";
+  var VERSION_NAME = "ver 10.20.202008.19";
 
 // === Plugin ===
 
@@ -7731,10 +7731,10 @@ function MokoMain($) {
           command = data.num,
           cname = data.name,
           ccost = data.cost;
-// 2020.08.23 全部隊配置の微修正('祝', '雅', '化', '童'等のカードをセットしない様対応) ここから
+// 2020.08.23 全部隊配置の微修正('童'のカードをセットしない様対応) ここから
 //        if (command === 0 || unit_flg === '0' || ccost === 0) {
-  if (command === 0 || unit_flg === '0' || $.inArray(data.rare, ['祝', '雅', '化', '童']) >= 0 || data.no === '3720') {
-// 2020.08.23 全部隊配置の微修正('祝', '雅', '化', '童'等のカードをセットしない様対応) ここまで
+        if (command === 0 || unit_flg === '0' || data.rare === '童' || data.no === '3720') {
+// 2020.08.23 全部隊配置の微修正('童'のカードをセットしない様対応) ここまで
           return true;
         } else {
           for (var i = 0, len = name_list.length; i < len; i++) {
