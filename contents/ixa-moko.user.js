@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.19
+// @version      10.20.202008.20
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.19";
+  var VERSION_NAME = "ver 10.20.202008.20";
 
 // === Plugin ===
 
@@ -11554,7 +11554,10 @@ function MokoMain($) {
         $card_id_arr = $(this).closest('div.soldierset').next('table').find('input[id^="card_id_arr_"]'),
 // 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
         quantity = $(this).val(),
-        c_num = $('#unit_cnt_text_0').val(),
+// 2020.08.23 部隊長と同数の修正 ここから
+//        c_num = $('#unit_cnt_text_0').val(),
+        c_num = $card_id_arr.eq(0).closest('tr.tr_gradient').find('input[id^="unit_cnt_text_"]').val(),
+// 2020.08.23 部隊長と同数の修正 ここまで
         list = [],
         card_id, set_type, data, set_count;
       if (!quantity) {
