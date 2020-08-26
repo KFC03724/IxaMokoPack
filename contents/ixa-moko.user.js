@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.20
+// @version      10.20.202008.21
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.20";
+  var VERSION_NAME = "ver 10.20.202008.21";
 
 // === Plugin ===
 
@@ -16088,7 +16088,10 @@ function MokoMain($) {
     for (vid in facilitys) {
       for (key in facilitys[vid]) {
         if (key == '市') {
-          obj = facilitys[vid][key];
+// 2020.08.26 最後に建てた所領の市情報が使われていた不具合の修正 ここから
+//          obj = facilitys[vid][key];
+          obj = ((obj.lv ?? 0) < facilitys[vid][key].lv) ? facilitys[vid][key] : obj;
+// 2020.08.26 最後に建てた所領の市情報が使われていた不具合の修正 ここまで
           break;
         }
       }
