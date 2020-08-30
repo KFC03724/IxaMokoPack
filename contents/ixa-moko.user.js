@@ -7866,9 +7866,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
-// 2020.08.21 小隊長をはずす際に1武将しか外れない不具合の対応 ここから
-          async: false,
-// 2020.08.21 小隊長をはずす際に1武将しか外れない不具合の対応 ここまで
+// 2020.08.31 部隊配置失敗の不具合の修正 ここから
+//          async: false,
+// 2020.08.31 部隊配置失敗の不具合の修正 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           remain--;
@@ -8239,9 +8239,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
-// 2020.08.21 全部隊配置の修正 ここから
-          async: false,
-// 2020.08.21 全部隊配置の修正 ここまで
+// 2020.08.31 部隊配置失敗の不具合の修正 ここから
+//          async: false,
+// 2020.08.31 部隊配置失敗の不具合の修正 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           var $html = $(html).find('#ig_deckbox'),
@@ -16088,10 +16088,12 @@ function MokoMain($) {
     for (vid in facilitys) {
       for (key in facilitys[vid]) {
         if (key == '市') {
-// 2020.08.26 最後に建てた所領の市情報が使われていた不具合の修正 ここから
+// 2020.08.31 最後に建てた所領の市情報が使われていた不具合の再修正 ここから
 //          obj = facilitys[vid][key];
-          obj = ((obj.lv ?? 0) < facilitys[vid][key].lv) ? facilitys[vid][key] : obj;
-// 2020.08.26 最後に建てた所領の市情報が使われていた不具合の修正 ここまで
+          let obj_lv = (obj.lv === undefined) ? 0 : obj.lv;
+          let facility_lv = facilitys[vid][key].lv;
+          obj = (obj_lv < facility_lv) ? facilitys[vid][key] : obj;
+// 2020.08.31 最後に建てた所領の市情報が使われていた不具合の再修正 ここまで
           break;
         }
       }
@@ -23697,9 +23699,12 @@ window.addEventListener('DOMContentLoaded', function() {
     '.ig_skill_desc { letter-spacing: -1px; }' +
     
     // 部隊編成初期メニュー消去
-    // '#deck #ig_deckbackgroundmenu { display: none; }' +
-    '#deck #ig_deckbackgroundmenu { position: absolute; top: 10px; right: 70px; width: initial; background: initial; }' +
-    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
+// 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここから
+//    '#deck #ig_deckbackgroundmenu { display: none; }' +
+//    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
+    '#deck #ig_deckbackgroundmenu { position: absolute; top: -6px; right: 110px; width: initial; background: initial; }' +
+    '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
+// 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここまで
     
     // 出陣時距離強調
     '.distance_long:before { content: "●"; font-size: 120%; text-decoration: none; color: #ff0000; margin-right: 5px; }' +
