@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.22
+// @version      10.20.202008.23
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.22";
+  var VERSION_NAME = "ver 10.20.202008.23";
 
 // === Plugin ===
 
@@ -23416,7 +23416,10 @@ window.addEventListener('DOMContentLoaded', function() {
     'li[class^="movedeck_"]:hover { box-shadow: 0 2px 0px #8D7225; }' +
     
     /* 兵士詳細 */
-    '#soldier_details { position: absolute; top: 5px; right: 10px; z-index: 1; }' +
+// 2020.09.01 レイアウトの調整 ここから
+//    '#soldier_details { position: absolute; top: 5px; right: 10px; z-index: 1; }' +
+    '#soldier_details { position: absolute; top: 1px; right: 500px; z-index: 1; }' +
+// 2020.09.01 レイアウトの調整 ここまで
     '#detail_view { cursor: pointer; width: 8em; text-align: center; line-height: 2.2; background: #F3F2DE; border: 1px solid #76601d; }' +
     '#detail_view:hover { background-color: #F9DEA1; }' +
     'div.sub_box { display: inline-block; padding-right: 10px; }' +
@@ -23570,8 +23573,12 @@ window.addEventListener('DOMContentLoaded', function() {
     '#missive_keyword { width: 20em; }' +
   
   /* button */
+// 2020.09.01 レイアウトの調整 ここから
+//    '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
+//    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
     '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
-    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
+    '#dech_button_box { position: absolute; top: 25px; left: 4px; }' +
+// 2020.09.01 レイアウトの調整 ここまで
     '#dech_button_box span { visibility: hidden; min-width: 110px; padding: 6px 0; margin-right: 10px; }' +
     '.moko_btn { cursor: pointer; text-align: center; font-size: 12px; font-family: Arial; font-weight: normal; border-radius: 3px; border:1px solid rgba(255, 255, 255, 0.9); text-decoration: none; display: inline-block; text-shadow: 0 0 4px dimgray; box-shadow:inset 0 0 1px 0 white, 0 0 3px rgba(0, 0, 0, 0.9); }' +
     '.btn_diss { color:white; background: linear-gradient(to bottom, #3c7b9f 5%, #28526b 100%); }' +
@@ -23702,7 +23709,10 @@ window.addEventListener('DOMContentLoaded', function() {
 // 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここから
 //    '#deck #ig_deckbackgroundmenu { display: none; }' +
 //    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
-    '#deck #ig_deckbackgroundmenu { position: absolute; top: -6px; right: 110px; width: initial; background: initial; }' +
+// 2020.09.01 レイアウトの調整 ここから
+//    '#deck #ig_deckbackgroundmenu { position: absolute; top: -6px; right: 110px; width: initial; background: initial; }' +
+    '#deck #ig_deckbackgroundmenu { position: absolute; top: -4px; right: 50px; width: initial; background: initial; }' +
+// 2020.09.01 レイアウトの調整 ここまで
     '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
 // 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここまで
     
