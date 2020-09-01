@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.25
+// @version      10.20.202008.26
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.25";
+  var VERSION_NAME = "ver 10.20.202008.26";
 
 // === Plugin ===
 
@@ -3728,7 +3728,10 @@ function MokoMain($) {
     var $status = $('#status');
     var $gnavi = $('#gnavi');
     if (options.menu_reversal_mod == '0') {
-      $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
+// 2020.09.01 メニューの背景位置の修正 ここから
+//      $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
+      $gnavi.css('background-position', '0 50px').prepend($status.css('margin-bottom', '4px'));
+// 2020.09.01 メニューの背景位置の修正 ここまで
     } else {
       $gnavi.css('height', '34px');
       $status.css({
