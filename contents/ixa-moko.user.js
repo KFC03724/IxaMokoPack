@@ -17553,7 +17553,24 @@ function MokoMain($) {
       var $div = $(this).find('tr').eq(0).find('td div[class^="icon_"]');
       $div.each(function(idx) {
         var need = parseInt($(this).text().match(/\d+/)[0], 10);
-        var stock = parseInt($('#status_left').find('span.normal').eq(idx).text(), 10);
+// 2020.09.01 施設の資源が足りていてもボタンがライム色にならない不具合の修正 ここから
+//        var stock = parseInt($('#status_left').find('span.normal').eq(idx).text(), 10);
+        if (idx == 0) {
+          var stock = parseInt($('#status_left').find('#wood').text().replace(/,/g, ''),10);
+        }
+        if (idx == 1) {
+          var stock = parseInt($('#status_left').find('#stone').text().replace(/,/g, ''),10);
+        }
+        if (idx == 2) {
+          var stock = parseInt($('#status_left').find('#iron').text().replace(/,/g, ''),10);
+        }
+        if (idx == 3) {
+          var stock = parseInt($('#status_left').find('#rice').text().replace(/,/g, ''),10);
+        }
+        if (need <= stock) {
+          $(this).css('color', 'lime');
+        }
+// 2020.09.01 施設の資源が足りていてもボタンがライム色にならない不具合の修正 ここまで
         if (need <= stock) {
           $(this).css('color', 'lime');
         }
