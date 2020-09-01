@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.27
+// @version      10.20.202008.28
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.27";
+  var VERSION_NAME = "ver 10.20.202008.28";
 
 // === Plugin ===
 
@@ -17506,7 +17506,10 @@ function MokoMain($) {
       average = [];
       for (var i = 0, len = kind.length; i < len; i++) {
         need[i] = parseInt(need[i]);
-        stock[i] = parseInt($('#' + kind[i]).text());
+// 2020.09.01 市を使って建築する際に在庫が取れていない不具合の修正 ここから
+//        stock[i] = parseInt($('#' + kind[i]).text());
+        stock[i] = parseInt($('#' + kind[i]).text().replace(/,/g, ''));
+// 2020.09.01 市を使って建築する際に在庫が取れていない不具合の修正 ここまで
         average[i] = parseInt($('#output_' + kind[i]).text());
       }
       syushi.need = need;
