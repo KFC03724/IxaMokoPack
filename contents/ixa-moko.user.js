@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.23
+// @version      10.20.202008.24
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.23";
+  var VERSION_NAME = "ver 10.20.202008.24";
 
 // === Plugin ===
 
@@ -23416,10 +23416,10 @@ window.addEventListener('DOMContentLoaded', function() {
     'li[class^="movedeck_"]:hover { box-shadow: 0 2px 0px #8D7225; }' +
     
     /* 兵士詳細 */
-// 2020.09.01 レイアウトの調整 ここから
+// 2020.09.01 レイアウトの調整(カード収容数の移動) ここから
 //    '#soldier_details { position: absolute; top: 5px; right: 10px; z-index: 1; }' +
-    '#soldier_details { position: absolute; top: 1px; right: 500px; z-index: 1; }' +
-// 2020.09.01 レイアウトの調整 ここまで
+    '#soldier_details { position: absolute; top: 10px; right: 600px; z-index: 1; }' +
+// 2020.09.01 レイアウトの調整(カード収容数の移動) ここまで
     '#detail_view { cursor: pointer; width: 8em; text-align: center; line-height: 2.2; background: #F3F2DE; border: 1px solid #76601d; }' +
     '#detail_view:hover { background-color: #F9DEA1; }' +
     'div.sub_box { display: inline-block; padding-right: 10px; }' +
