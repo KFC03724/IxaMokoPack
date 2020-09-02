@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.28
+// @version      10.20.202008.29
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.28";
+  var VERSION_NAME = "ver 10.20.202008.29";
 
 // === Plugin ===
 
@@ -4664,7 +4664,10 @@ function MokoMain($) {
     if (!options.remove_bushodrama) {
       return;
     }
-    if ($('.rightF').length) { // 初期チュートリアル時は無効
+// 2020.09.02 所領を押すと大殿のアニメーションが出てくる不具合の修正 ここから
+//    if ($('.rightF').length) { // 初期チュートリアル時は無効
+      if ($('div.uranai img').length) { // 初期チュートリアル時は無効
+// 2020.09.02 所領を押すと大殿のアニメーションが出てくる不具合の修正 ここまで
       $('#BushoDrama').remove();
     }
   }
