@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaTraining
 // @description  戦国IXA用ツール 一括兵士訓練
-// @version      10.20.202008.0
+// @version      10.20.202008.1
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
@@ -859,7 +859,11 @@
             pool = $this.next().text().toInt();
           data.pool[type] = pool;
         });
-        $table.eq(1).find('.table_fightlist2').each(function () {
+// 2020.09.02 一括兵士訓練で総合情報取得中に停止する不具合の対応 ここから
+//         $table.eq(1).find('.table_fightlist2').each(function () {
+          var $training_table = $html.find('h3:contains("訓練中の兵士")').closest('div.ig_fight_statusarea').find('.ig_fight_dotbox');
+          $training_table.find('.table_fightlist2').each(function () {
+// 2020.09.02 一括兵士訓練で総合情報取得中に停止する不具合の対応 ここまで
           var $tr = $(this).find('TR'),
             name = $tr.first().find('A').text(),
             village = Util.getVillageByName(name);
