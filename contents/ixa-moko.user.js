@@ -3731,10 +3731,10 @@ function MokoMain($) {
     var $status = $('#status');
     var $gnavi = $('#gnavi');
     if (options.menu_reversal_mod == '0') {
-// 2020.09.01 メニューの背景位置の再修正 ここから
-//      $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
-      $gnavi.css('background-position', '0 50px').prepend($status.css('margin-bottom', '0px'));
-// 2020.09.01 メニューの背景位置の再修正 ここまで
+// 2020.09.02 部隊メニューの表示ズレの修正 ここから
+//    $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
+    $gnavi.css('background-position', '0 54px').prepend($status.css('margin-bottom', '4px'));
+// 2020.09.02 部隊メニューの表示ズレの修正 ここまで
     } else {
       $gnavi.css('height', '34px');
       $status.css({
@@ -3742,11 +3742,18 @@ function MokoMain($) {
         'top': '22px',
         'width': '922px'
       });
-      $('p.profile_head').css('top', '54px');
-      $('#lordNameBox').css('top', '82px');
-      $('#commentBox').css('top', '48px');
-      $('#header').css({
-        'height':'140px'
+// 2020.09.02 部隊メニューの表示ズレの修正 ここから
+//      $('p.profile_head').css('top', '54px');
+//      $('#lordNameBox').css('top', '82px');
+//      $('#commentBox').css('top', '48px');
+//      $('#header').css({
+//        'height':'140px'
+        $('div.other_owner_block').css('top', '72px');
+        $('#lordNameBox').css('top', '118px');
+        $('#commentBox').css('top', '68px');
+        $('#header').css({
+          'height':'173px'
+// 2020.09.02 部隊メニューの表示ズレの修正 ここまで
       }).prepend($status);
     }
   }
