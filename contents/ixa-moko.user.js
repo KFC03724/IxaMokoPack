@@ -10905,10 +10905,11 @@ function MokoMain($) {
         }
         var data = {
           select_assign_no: $('#select_assign_no').val(),
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
+// 2020.09.03 兵士編成からの解散の不具合の修正 ここから
 //          unit_assign_id: $('#unit_assign_id').val(),
-          unit_assign_id: $('#unit_assign_ids').val(),
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
+//          unit_assign_id: $('#unit_assign_ids').val(),
+          unit_assign_id: $('input[name="unit_assign_ids[]"]').val(),
+// 2020.09.03 兵士編成からの解散の不具合の修正 ここまで
           unset_card_id: $('#card_id_arr_0').val(),
           change_unit_squad_id: '',
           p: '1',
