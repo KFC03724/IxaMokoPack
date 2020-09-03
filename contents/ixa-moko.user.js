@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202008.32
+// @version      10.20.202008.33
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202008.32";
+  var VERSION_NAME = "ver 10.20.202008.33";
 
 // === Plugin ===
 
@@ -1435,10 +1435,11 @@ function MokoMain($) {
       status_display: {tag: 'all2', caption: '資源バーの表示を変更変更する'},
       status_display_mod: {tag: 'all2', caption: '資源バーの表示内容の変更'},
       pulldown_right_click: {tag: 'all2', caption: 'プルダウンメニューを右クリック表示にする'},
-// 2020.09.02 砦座標をマップボックスに表示「する」、の誤表記を「しない」に修正 ここから
+// 2020.09.04 砦座標をマップボックスに表示「する」に表記を再修正 ここから
 //      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示する'},
-      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示しない'}, // 誤表記修正
-// 2020.09.02 砦座標をマップボックスに表示「する」、の誤表記を「しない」に修正 ここまで
+//      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示しない'}, // 誤表記修正
+      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示する (メニュープルダウン無)'}, // 表記修正
+// 2020.09.04 砦座標をマップボックスに表示「する」に表記を再修正 ここまで
       hide_animation: {tag: 'all2', caption: 'メニューのアニメーションを非表示にする'},
       hide_animation_mod: {tag: 'all2', caption: 'アニメーション非表示の選択'},
       timeout_countdown: {tag: 'all2', caption: 'タイムアウトまでの予想時間をカウント表示する'},
@@ -11601,7 +11602,7 @@ function MokoMain($) {
       }
       for (var i = 0, len = $card_id_arr.length; i < len; i++) {
         card_id = $card_id_arr.eq(i).val();
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
 //        set_type = $('#unit_id_select_' + i).val();
         set_type = $card_id_arr.eq(i).closest('tr.tr_gradient').find('select[id^="unit_id_select_"]').val();
 // 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
@@ -11624,6 +11625,15 @@ function MokoMain($) {
       }
       all_constant(list);
     });
+// 2020.09.04 本丸防御陣形で兵1を設定できる様対応 ここから
+    $('#deck_file').find('h3:eq(0)').before(
+      '<input id="constant_all" type="button" value="全武将を兵数１にする" />');
+      $('#constant_all').css({'margin': '8px 50px 0px 0px', 'float':'right'}).on('click', function() {
+        $('select.constant').each(function(){
+          $(this).find('option:eq(1)').attr('selected', true ).change();
+      });
+  });
+// 2020.09.04 本丸防御陣形で兵1を設定できる様対応 ここまで
   }
   
   // 兵士編成 ページ読み込み
@@ -21512,10 +21522,11 @@ function MokoMain($) {
       if (!checked) {
         return $('#area_dummy span.grid_line').remove();
       } else {
-// 2020.09.02 19章～グリッドスケール修正 ここから
+// 2020.09.04 19章～グリッドスケール再修正 ここから
 //        var grid_scale = 28.5 * AM_MAGNI,
-        var grid_scale = 35.5 * AM_MAGNI, // 19章～グリッドスケール修正
-// 2020.09.02 19章～グリッドスケール修正 ここまで
+//        var grid_scale = 35.5 * AM_MAGNI, // 19章～グリッドスケール修正
+        var grid_scale = 35 * AM_MAGNI, // 19章～グリッドスケール修正
+// 2020.09.04 19章～グリッドスケール再修正 ここまで
         punctuation = Math.ceil(AM_SCALE / grid_scale),
         fraction = ((AM_SCALE - 1) / 2) % grid_scale,
         cssNum = 0,
@@ -21523,7 +21534,10 @@ function MokoMain($) {
         increment, borderC;
         for (var i = 0; i < punctuation; i++) {
           increment = (i === 0) ? fraction : grid_scale;
-          borderC = (i === 5) ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+// 2020.09.04 19章～グリッドスケール再修正 ここから
+//          borderC = (i === 5) ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+          borderC = (i === 6) ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+// 2020.09.04 19章～グリッドスケール再修正 ここまで
           cssNum += increment;
           html += '<span class="grid_line" style="position:absolute; top:' + cssNum + 'px; width: ' + AM_SCALE + 'px; border-bottom: 1px solid ' + borderC + ';" />' +
           '<span class="grid_line" style="position:absolute; left:' + cssNum + 'px; height: ' + AM_SCALE + 'px; border-right: 1px solid ' + borderC + ';" />';
