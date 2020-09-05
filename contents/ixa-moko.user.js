@@ -3876,9 +3876,9 @@ function MokoMain($) {
     var i, len;
     var html = '' +
       
-      '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
+      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
 
-      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
+      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
@@ -3886,9 +3886,9 @@ function MokoMain($) {
         '</div>' +
       '</li>' +
       
-      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
+      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
       
-      '<li id="全編成" class="mk_sub_menu">' +
+      '<li id="全編成" style="padding-top:12px" class="mk_sub_menu">' +
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
           '&select_card_group=0&select_filter_num=0">編成</a>' +
         '<div>';
@@ -3907,15 +3907,15 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
         
-        '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
         
-        '<li><a href="/war/village_search.php">探</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/village_search.php">探</a></li>' +
 
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>';
+        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>';
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
 
-    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
+    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
           '<a href="/card/exhibit_list.php">出品中</a>' +
