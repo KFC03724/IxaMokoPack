@@ -29,6 +29,7 @@
 IxaMokoPack ver 10.20.202009.01 Chrome版
 2020/09/05
 　・戦国IXA ツールスレPart45 660 のレイアウトを取り込み
+　・資源バー横に本丸防御の直リン追加
 　※戦国IXA ツールスレPart45 690 までの改修点を反映済
 
 IxaMokoPack ver 10.20.202008.33 Chrome版
