@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.01
+// @version      10.20.202009.02
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.01";
+  var VERSION_NAME = "ver 10.20.202009.02";
 
 // === Plugin ===
 
@@ -3876,9 +3876,9 @@ function MokoMain($) {
     var i, len;
     var html = '' +
       
-      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
+      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1">敵</font></a></li>' +
 
-      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
+      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1">部隊</a>' +
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
@@ -3886,11 +3886,11 @@ function MokoMain($) {
         '</div>' +
       '</li>' +
       
-      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
+      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1">合流</font></a></li>' +
       
       '<li id="全編成" style="padding-top:12px" class="mk_sub_menu">' +
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
-          '&select_card_group=0&select_filter_num=0">編成</a>' +
+          '&select_card_group=0&select_filter_num=0"><font size="1">編成</a>' +
         '<div>';
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         if (i == 1) {
@@ -3907,15 +3907,15 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
         
-        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse" font size="1">順</a></li>' +
         
-        '<li style="padding-top:12px"><a href="/war/village_search.php">探</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/village_search.php"><font size="1">探</a></li>' +
 
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>';
+        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red" font size="1">本丸</a>';
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
 
-    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
+    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1">くじ他</a>' +
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
           '<a href="/card/exhibit_list.php">出品中</a>' +
