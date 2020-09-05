@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.1
+// @version      10.20.202009.01
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.1";
+  var VERSION_NAME = "ver 10.20.202009.01";
 
 // === Plugin ===
 
@@ -3870,24 +3870,25 @@ function MokoMain($) {
   }
   
   // 資源バーにリンクを追加
+// 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここから
   function statusLeftMenu() {
     $('#status_left').width('870px');
     var i, len;
     var html = '' +
       
-      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet"><width="100px">敵</font></a></li>' +
+      '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
 
-      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><width="100px">部隊</a>' +
+      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
         '<div>' +
-          '<a id="friendly" href="/facility/unit_status.php?dmo=help"><width="100px">友軍</a>' +
-          '<a href="/facility/unit_status.php?dmo=recieve_reinforcement"><width="100px">加勢</a>' +
+          '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
+          '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
           '<a href="/facility/unit_list.php">待機兵士一覧</a>' +
         '</div>' +
       '</li>' +
       
-      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
+      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
       
-      '<li id="全編成" style="padding-top:12px" class="mk_sub_menu">' +
+      '<li id="全編成" class="mk_sub_menu">' +
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
           '&select_card_group=0&select_filter_num=0">編成</a>' +
         '<div>';
@@ -3906,14 +3907,27 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
         
-        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse"><width="100px">順</a></li>' +
+        '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
         
-        '<li style="padding-top:12px"><a href="/war/village_search.php">探</a></li>' +
-// 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red"><width="100px">本丸</a>' +
+        '<li><a href="/war/village_search.php">探</a></li>';
+
+
+    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
+        '<div>' +
+          '<a href="/card/trade.php">取引</a>' +
+          '<a href="/card/exhibit_list.php">出品中</a>' +
+          '<a href="/card/bid_list.php">入札中</a>' +
+          '<a href="/card/trade_card.php">出品</a>' +
+          '<a href="javascript:void(0);" id="comp_1">合成【スキル強化】</a>' +
+          '<a href="javascript:void(0);" id="comp_2">合成【スキル追加】</a>' +
+          '<a href="javascript:void(0);" id="comp_3">合成【スキル削除】</a>' +
+          '<a href="javascript:void(0);" id="comp_4">合成【ランクアップ】</a>' +
+          '<a href="javascript:void(0);" id="comp_5">合成【特殊合成】</a>' +
+          '<a href="/union/union_history.php">合成履歴</a>' +
+          '<a href="/card/card_album.php">カードアルバム</a>' +
         '</div>' +
-        '</li>';
-// 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
+      '</li>';
+// 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここまで
 
 // 2020.09.05 戦国くじの表記の修正 ここから
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
