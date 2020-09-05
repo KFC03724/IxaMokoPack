@@ -3929,25 +3929,6 @@ function MokoMain($) {
       '</li>';
 // 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここまで
 
-// 2020.09.05 戦国くじの表記の修正 ここから
-//    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
-    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><width="100px">戦国くじ</a>' +
-// 2020.09.05 戦国くじの表記の修正 ここまで
-        '<div>' +
-          '<a href="/card/trade.php">取引</a>' +
-          '<a href="/card/exhibit_list.php">出品中</a>' +
-          '<a href="/card/bid_list.php">入札中</a>' +
-          '<a href="/card/trade_card.php">出品</a>' +
-          '<a href="javascript:void(0);" id="comp_1">合成【スキル強化】</a>' +
-          '<a href="javascript:void(0);" id="comp_2">合成【スキル追加】</a>' +
-          '<a href="javascript:void(0);" id="comp_3">合成【スキル削除】</a>' +
-          '<a href="javascript:void(0);" id="comp_4">合成【ランクアップ】</a>' +
-          '<a href="javascript:void(0);" id="comp_5">合成【特殊合成】</a>' +
-          '<a href="/union/union_history.php">合成履歴</a>' +
-          '<a href="/card/card_album.php">カードアルバム</a>' +
-        '</div>' +
-      '</li>';
-
     $('#status_left ul').append(html);
 
     if (options.trade_auxiliary) {
