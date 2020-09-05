@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.03
+// @version      10.20.202009.04
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.03";
+  var VERSION_NAME = "ver 10.20.202009.04";
 
 // === Plugin ===
 
@@ -3872,13 +3872,16 @@ function MokoMain($) {
   // 資源バーにリンクを追加
 // 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここから
   function statusLeftMenu() {
-    $('#status_left').width('870px');
+// 2020.09.06 資源バー横が縦書きにならない様改善 ここから
+//    $('#status_left').width('870px');
+    $('#status_left').width('1000px');
+// 2020.09.06 資源バー横が縦書きにならない様改善 ここまで
     var i, len;
     var html = '' +
       
-      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="2">敵</font></a></li>' +
 
-      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
+      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="2">部隊</a>' +
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
@@ -3886,11 +3889,11 @@ function MokoMain($) {
         '</div>' +
       '</li>' +
       
-      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
+      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="2">合流</font></a></li>' +
       
       '<li id="全編成" style="padding-top:12px" class="mk_sub_menu">' +
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
-          '&select_card_group=0&select_filter_num=0"><font size="1.5">編成</a>' +
+          '&select_card_group=0&select_filter_num=0"><font size="2">編成</a>' +
         '<div>';
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         if (i == 1) {
@@ -3907,15 +3910,15 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
         
-        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse" font size="2">順</a></li>' +
         
-        '<li style="padding-top:12px"><a href="/war/village_search.php"><font size="1.5">探</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/village_search.php"><font size="2">探</a></li>' +
 
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red" font size="1.5">本丸</a>';
+        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red" font size="2">本丸</a>';
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
 
-    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
+    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="2">くじ他</a>' +
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
           '<a href="/card/exhibit_list.php">出品中</a>' +
