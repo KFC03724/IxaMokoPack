@@ -3917,7 +3917,7 @@ function MokoMain($) {
 
 // 2020.09.05 戦国くじの表記の修正 ここから
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
-      html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ</a>' +
+    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">戦国くじ</a>' +
 // 2020.09.05 戦国くじの表記の修正 ここまで
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
