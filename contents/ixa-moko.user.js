@@ -3875,12 +3875,12 @@ function MokoMain($) {
     var i, len;
     var html = '' +
       
-      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
+      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet"><width="100px">敵</font></a></li>' +
 
-      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
+      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><width="100px">部隊</a>' +
         '<div>' +
-          '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
-          '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
+          '<a id="friendly" href="/facility/unit_status.php?dmo=help"><width="100px">友軍</a>' +
+          '<a href="/facility/unit_status.php?dmo=recieve_reinforcement"><width="100px">加勢</a>' +
           '<a href="/facility/unit_list.php">待機兵士一覧</a>' +
         '</div>' +
       '</li>' +
@@ -3906,18 +3906,18 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
         
-        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
+        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse"><width="100px">順</a></li>' +
         
         '<li style="padding-top:12px"><a href="/war/village_search.php">探</a></li>' +
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>' +
+        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red"><width="100px">本丸</a>' +
         '</div>' +
         '</li>';
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
 
 // 2020.09.05 戦国くじの表記の修正 ここから
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
-    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php">戦国くじ</a>' +
+    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><width="100px">戦国くじ</a>' +
 // 2020.09.05 戦国くじの表記の修正 ここまで
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
