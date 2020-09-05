@@ -3909,7 +3909,7 @@ function MokoMain($) {
         
         '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
         
-        '<li><a href="/war/village_search.php">探</a></li>';
+        '<li><a href="/war/village_search.php">探</a></li>' +
 
 // 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
         '<li><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>';
