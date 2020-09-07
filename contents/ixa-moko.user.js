@@ -1802,13 +1802,18 @@ function MokoMain($) {
                 setting_list += this.createList(key, '', list, mod);
                 break;
               case 'status_display':
-                mod = options.status_display_mod;
                 list = {
-                  0: '保有量(％)',
-                  1: '残り時間表示'
+//                  0: '保有量(％)',
+//                  1: '残り時間表示'
+// 2020.09.07 資源バーのいい所取りに対応 ここから
+                   0: '残り時間 / 保有量(％)表示',
+                   1: '残り時間表示（moko方式）',
+                   2: '保有量(％)表示（moko方式）'
+// 2020.09.07 資源バーのいい所取りに対応 ここまで
                 };
                 setting_list += this.createList(key, '', list, mod);
                 break;
+// 2020.09.07 資源バーの表示アイテムの改善 ここまで
               case 'hide_animation':
                 mod = options.hide_animation_mod;
                 list = {
@@ -3776,11 +3781,26 @@ function MokoMain($) {
     if (!options.status_display) {
       return;
     }
+// 2020.09.07 資源バーのいい所取りに対応 ここから
+    if (options.status_display_mod === '0') {
+      $('#status_left').find('#wood').after($('#wood_popup .count_down')).after('<BR>');
+      $('#status_left').find('#stone').after($('#stone_popup .count_down')).after('<BR>');
+      $('#status_left').find('#iron').after($('#iron_popup .count_down')).after('<BR>');
+      $('#status_left').find('#rice').after($('#rice_popup .count_down')).after('<BR>');
+      $('#status_left').find('#wood_popup').remove();
+      $('#status_left').find('#stone_popup').remove();
+      $('#status_left').find('#iron_popup').remove();
+      $('#status_left').find('#rice_popup').remove();
+    } else {
+// 2020.09.07 資源バーのいい所取りに対応 ここまで
     var kind = ['wood', 'stone', 'iron', 'rice'],
       max = parseInt($('#' + kind[0] + '_max').text()),
       $li = $('#status_left li'),
       $slice = $li.slice(0, 4),
-      $img = $slice.find('img'),
+// 2020.09.07 資源バーの残り時間表示の改善 ここから
+//      $img = $slice.find('img'),
+      $img = $slice.find('div.resource_count img'),
+// 2020.09.07 資源バーの残り時間表示の改善 ここまで
       stock = [],
       rate = [],
       poss = [],
@@ -3790,7 +3810,10 @@ function MokoMain($) {
     
     // 数値の取得
     for (i = 0; i < len; i++) {
-      str = $('#' + kind[i]).text();
+// 2020.09.07 資源バーの残り時間表示の改善 ここから
+//      str = $('#' + kind[i]).text();
+      str = $('#' + kind[i]).text().replace(/,/g, '');
+// 2020.09.07 資源バーの残り時間表示の改善 ここまで
       num = parseInt(str);
       stock[i] = addFigure(str); // 貯蓄量
       rate[i] = parseInt($('#output_' + kind[i]).text()); // 1h生産量
@@ -3806,18 +3829,39 @@ function MokoMain($) {
     }
     
     // アイテムの追加
-    var html = '';
-    for (i = 0; i < len; i++) {
-      html += '<li>' + $img.eq(i)[0].outerHTML + '&nbsp;' +
-            '<span class="normal" id="' + kind[i] + '_store">' + stock[i] + '</span>&nbsp;/&nbsp;' +
-            '<span class="normal" id="' + kind[i] + '_rate">' + param[i] + unit + '</span>' +
-            '<div class="groove"><span id="' + kind[i] + '_advance" /></div>' +
-          '</li>';
-    }
-    html += '<li><span title="蔵容量">' + addFigure(max) + '</span></li>';
+// 2020.09.07 資源バーの表示アイテムの改善 ここから
+/*
+// アイテムの追加
+var html = '';
+（中略）
+// 名声値
+var $fame_groove = $('<div id="fame_groove" />')
+.appendTo($('img[alt="名声"]').parent('li'));
+if (fame() <= 5) {
+$fame_groove.css('background-color', 'red');
+*/
+// 2020.09.07 資源バーの表示アイテムの改善 ここまで
 
+// 2020.09.07 資源バーの残り時間表示の改善 ここから
+//    html += '<li><span title="蔵容量">' + addFigure(max) + '</span></li>';
+    html += '<li class="resource">' + $('div.resource_count img').eq(4)[0].outerHTML +
+    '&nbsp;<span title="蔵容量">' + addFigure(max) + '</span></li>';
+// 2020.09.07 資源バーの残り時間表示の改善 ここまで
     $slice.hide();
     $li.last().before(html);
+// 2020.09.07 資源バーの残り時間表示の改善 ここから
+    $li.eq(4).css('display', 'none');
+    var $count = $('div.resource_count');
+    $count.find('p').css({'display': 'block', 'margin': '-3.5px 0px 0.5px -4px'});
+    style('#status_left { width: 1000px !important; }' +
+    '#status_left ul li:nth-child(n+13) a { text-decoration: none; }');
+
+    $('li.stock, li.resource').find('img').css({'display': 'block', 'margin-top': '-2px'});
+    $('li.stock, li.resource').find('div.groove').css({'margin-top': '4px'});
+    $count.css({'display': 'block'}).find('img').css({'top': '-4px'});
+    $count.find('p').css({'display': 'block', 'margin': '-3px 0px 0px 0px'});
+    style('#status_left ul li:nth-child(n+13) { padding-top: 14px; }');
+// 2020.09.07 資源バーの残り時間表示の改善 ここまで
 
     var $store, $rate, $advance;
     setInterval(function() {
@@ -3828,7 +3872,10 @@ function MokoMain($) {
         $li = $advance.closest('li');
         
         // 数値の取得
-        str = $('#' + kind[i]).text();
+// 2020.09.07 資源バーの残り時間表示の改善 ここから
+//        str = $('#' + kind[i]).text();
+        str = $('#' + kind[i]).text().replace(/,/g, '');
+// 2020.09.07 資源バーの残り時間表示の改善 ここまで
         num = parseInt(str); //貯蓄量
         poss = Math.floor((num / max) * 100); //保有率
         rema = Math.floor((max - num) / rate[i]); //残り時間
@@ -3867,6 +3914,9 @@ function MokoMain($) {
     if (fame() <= 5) {
       $fame_groove.css('background-color', 'red');
     }
+// 2020.09.07 資源バーのいい所取りに対応 ここから
+    }
+// 2020.09.07 資源バーのいい所取りに対応 ここまで
   }
   
   // 資源バーにリンクを追加
@@ -5146,6 +5196,14 @@ function MokoMain($) {
       str = source ? source[0] : numstr;
       now = source ? parseFloat(source[1]) : 0;
       free = max - now;
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      nomal_deck = 5;
+      now = parseFloat(html.find('span.deck_cost_current').text());
+      max = parseFloat(html.find('span.deck_cost_add_total').text());
+      str = now + '/' + max;
+      free = max - now;
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
     } else {
       source = $(html).find('div.deckcost p').text().match(/(\d+\.?\d?)\/(\d+\.?\d?)/);
       str = source[0];
@@ -5171,6 +5229,17 @@ function MokoMain($) {
     var solnum = $td.eq(3).text().replace(/,/, '') || 0;
     var allcost = $td.eq(2).text() || 0;
     var unitnum = $(html).find('#ig_deckboxInner').find('div.battlegage').length;
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      var $div = $('#deck_bg').find('div.home_defense_formation_line');
+      $div.each(function() {
+      unitnum = $(this).find('div.home_defense_formation_card_space_target a').length;
+      if ( unitnum < 4 ) {
+      return false;
+    }
+    });
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
     return {
       num: unitnum,
       cost: parseFloat(allcost),
@@ -5201,6 +5270,14 @@ function MokoMain($) {
       free_deck = $ig_unitchoice_assault.find('li:contains("[---新規部隊を作成---]")').length;
       start_deck = 8;
       use_deck = 1 - free_deck;
+// 2020.08.21 一括配置でセットされる場所を修正 ここから
+    } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      nomal_deck = 5;
+      assault = 6;
+      use_deck = html.find('div[data-sort="0"] a').length;
+      free_deck = 5 - use_deck;
+      start_deck = 5 - free_deck;
+// 2020.08.21 一括配置でセットされる場所を修正 ここまで
     } else {
       free_deck = $ig_unitchoice.find('li:contains("[---新規部隊を作成---]")').length;
       start_deck = 6 - free_deck;
@@ -5671,7 +5748,10 @@ function MokoMain($) {
   
   // デッキ総合
   function deckCheck() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
     
@@ -5770,6 +5850,24 @@ function MokoMain($) {
       $(this).empty();
     });
 
+// 2020.09.07 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様改善 ここから
+// 強化版組分けボタンにプルダウンメニューpart37スレ364＆精鋭部隊種類変更対応
+    $('li[class^="btn_category_06"]').on('contextmenu', function(e) {
+      e.preventDefault();
+      var html = '<div class="menu_list">' +
+      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(1);">攻撃</a>' +
+      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(2);">防御</a>' +
+      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(4);">加勢</a>' +
+      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(5);">強襲</a>' +
+      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(0);">全部隊</a>' +
+      '</div>';
+      $(this).append(html);
+      $(this).find('div').slideDown('fast');
+    }).hover(null, function() {
+      $(this).empty();
+    });
+// 2020.09.07 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様改善 ここまで
+
     // フィルター設定右クリックで兵士編成へ
     $('li[class^="btn_setting_filter"]').on('contextmenu', function(e) {
       e.preventDefault();
@@ -5823,7 +5921,10 @@ function MokoMain($) {
   
   // スクロールダウンメニュー
   function deck_fix_menu() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
 
@@ -5844,6 +5945,13 @@ function MokoMain($) {
     var dack_cost = get_deck_cost($('#box')),
       deck_unit = get_deck_unit($('#box')),
       now_deck = $('li.now').text();
+
+// 2020.09.074 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      $base = '本丸防御陣形';
+      now_deck = 'デッキ選択なし';
+    }
+// 2020.09.074 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
 
     var DeckFix = $('<div id="deck_fixmenu">' +
       '<div id="fixmenu_top">' +
@@ -6111,7 +6219,10 @@ function MokoMain($) {
       }
     }
 
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/deck_card_delete.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
       
       // 出品中カードを暗色表示
@@ -6161,7 +6272,11 @@ function MokoMain($) {
   
   // 待機武将一覧 兵1/定数/最大 補充
   function deck_quick_set() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' &&
+      location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
 
@@ -6873,7 +6988,10 @@ function MokoMain($) {
       $('#elite_bulk_set').click(elite_bulk);
     });
 
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
 
@@ -6961,9 +7079,20 @@ function MokoMain($) {
   
   // 精鋭部隊 一括配置 データ送信
   function bulk_elite_set(san, svi) {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      var href = '/card/defense_formation_deck.php';
+      var url = href;
+    } else {
+      var href = '/card/deck.php';
+      var url = href + '?ano=' + (san - 1) + '&select_card_group=6';
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
     if (!$('div.elite_selected').length) {
       Info.log('-----');
-      var url = '/card/deck.php?ano=' + (san - 1) + '&select_card_group=6';
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//      var url = '/card/deck.php?ano=' + (san - 1) + '&select_card_group=6';
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return Info.title('完了', url);
     }
     var target = $('div.elite_selected').eq(0),
@@ -6992,7 +7121,10 @@ function MokoMain($) {
     Info.log('[' + unit_name + ']部隊を登録中...');
     $.ajax({
       type: 'post',
-      url: '/card/deck.php',
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//      url: '/card/deck.php',
+      url: href,
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       data: data,
       beforeSend: xrwStatusText,
     }).then(function(html) {
@@ -7004,16 +7136,29 @@ function MokoMain($) {
   
   // 精鋭部隊 一括配置
   function bulk_elite_check() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
     $('#placement').replaceWith('<li id="elite_placement">選択部隊を一括配置</li>');
     $('#fixmenu_top li').slice(3).remove();
     $('#unit_filter_menu').css('visibility', 'hidden');
     $('#captain').remove();
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      var select_assign_no = 9,
+      deck_status = get_deck_status( $('#deck_bg'), select_assign_no ),
+      deck_cost = get_deck_cost( $('#deck_bg') );
+    } else {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
     var select_assign_no = $('#select_assign_no').val(),
       deck_status = get_deck_status($('#box'), select_assign_no),
       deck_cost = get_deck_cost($('#box'));
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
     $('div[id^="elite_info_action_area_"]').on('click', function(e) {
       var $parent = $(this).parent(),
         img_off = $(this).find('img[src$="set_elite_off.png"]'),
@@ -7692,7 +7837,10 @@ function MokoMain($) {
   
   // 待機武将一覧 フィルターlayout
   function deckCardFilter() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
     installMenulist();
@@ -8205,9 +8353,20 @@ function MokoMain($) {
     $('#moko_info_dialog_content').empty();
     Info.log('[' + param.cname + ']を登録中...');
 
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      var href = '/card/defense_formation_deck.php';
+    } else {
+      var href = '/card/deck.php?ano=' + start;
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+
     $.ajax({
       type: 'post',
-      url: '/card/deck.php',
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//      url: '/card/deck.php',
+      url: href,
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       data: data,
       beforeSend: xrwStatusText,
     })
@@ -8217,9 +8376,21 @@ function MokoMain($) {
         deck_status = get_deck_status($html, start),
         $img = $html.find('img[alt="解散"]'),
         url;
-      if ($img.length) {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+        if ( location.pathname == '/card/defense_formation_deck.php' ) {
+           $img = $html.find('img[alt="解散"]').eq(start);
+        }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+        if ($img.length) {
         Info.count((deck_cost.count ? deck_cost.now + '/' + deck_cost.max + '　' : '') + deck_status.use + '部隊');
-        var assign = $img.parent().attr('onClick').match(/\d+/g)[0];
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//        var assign = $img.parent().attr('onClick').match(/\d+/g)[0];
+        if ( location.pathname == '/card/defense_formation_deck.php' ) {
+          var assign = $img.parent().attr('data-unit_assign_id');
+        } else {
+          var assign = $img.parent().attr('onClick').match(/\d+/g)[0];
+        }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         if (list.length) {
           return platoonRegistration(type, list, start, assign, scg, page, t_cost);
         } else {
@@ -8238,7 +8409,14 @@ function MokoMain($) {
             
             // 一括配置の処理
             var san = $('#select_assign_no').val();
-            url = '/card/deck.php?ano=' + san + '&select_card_group=' + scg;
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//            url = '/card/deck.php?ano=' + san + '&select_card_group=' + scg;
+            if ( location.pathname == '/card/defense_formation_deck.php' ) {
+              url = '/card/defense_formation_deck.php';
+            } else {
+              url = '/card/deck.php?ano=' + san + '&select_card_group=' + scg;
+            }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
             return Info.title('完了', url);
           }
         }
@@ -8281,7 +8459,11 @@ function MokoMain($) {
       post_query = function(data) {
         $.ajax({
           type: 'post',
-          url: '/card/deck.php',
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//          url: '/card/deck.php',
+          url: href,
+          async: async_flag,
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
           data: data,
 // 2020.08.31 部隊配置失敗の不具合の修正 ここから
 //          async: false,
@@ -8296,8 +8478,17 @@ function MokoMain($) {
           if (remain === 0) {
 // 2020.08.21 全部隊配置の修正 ここから
 //            var $parameta = $($html).find('div[id^="ig_deck_subcardarea_out"] div.parameta_area');
-            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
 // 2020.08.21 全部隊配置の修正 ここまで
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+          if ( location.pathname == '/card/defense_formation_deck.php' ) {
+            var $parameta = $($html).find('div[id^="NewcardWindow_"] div.parameta_area');
+          } else {
+            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
+          }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
             if (list.length > $parameta.length) {
               var set = [],
                 card_name, failure,
@@ -8331,6 +8522,13 @@ function MokoMain($) {
         });
       };
 
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    var async_flag = true;
+    if ( location.pathname == '/card/defense_formation_deck.php' && type == 'usually' ) {
+      async_flag = false;
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+
     for (var i = 0, len = list.length; i < len; i++) {
       var set_assign_id = assign || list[i].sid,
         data = deckInsertQuery();
@@ -8340,13 +8538,23 @@ function MokoMain($) {
       data.p = page;
       data.select_card_group = scg;
       Info.log('[' + list[i].cname + ']を登録中...');
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+       var href = '/card/defense_formation_deck.php';
+    } else {
+      var href = '/card/deck.php?ano=' + start;
+    }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       post_query(data);
     }
   }
   
   // デッキ一括配置モード
   function platoonPlacement() {
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname != '/card/deck.php') {
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       return;
     }
 
@@ -8408,6 +8616,11 @@ function MokoMain($) {
       if ($('#captain').hasClass('mk_captain_mood')) {
       
       // 部隊長モードのチェック
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        deck_unit = get_deck_unit( $html );
+      }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         if (deck_unit.num === 0) {
           if ($(this).hasClass('mk_keep_captain')) {
             $(this).removeClass('mk_keep_captain');
@@ -8455,6 +8668,11 @@ function MokoMain($) {
       } else {
       
       // 通常部隊モードのチェック
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+        if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        deck_unit = get_deck_unit( $html );
+        }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         if (deck_unit.num === 0) {
           if ($(this).hasClass('mk_keep_leader')) {
             $(this).removeClass('mk_keep_leader');
@@ -8613,7 +8831,14 @@ function MokoMain($) {
           
           // 追加配置の場合
           start_deck = select_assign_no;
-          var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//          var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
+          if ( location.pathname == '/card/defense_formation_deck.php' ) {
+            var set_assign_id = '';
+          } else {
+            var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
+          }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
           platoonRegistration('usually', list, start_deck, set_assign_id, select_card_group, page);
         }
 
@@ -8630,7 +8855,10 @@ function MokoMain($) {
     var post_query = function(data) {
       $.ajax({
         type: 'post',
-        url: '/card/deck.php',
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//        url: '/card/deck.php',
+        url: href,
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         data: data,
         beforeSend: xrwStatusText,
       }).then(function(html) {
@@ -8644,7 +8872,10 @@ function MokoMain($) {
           start_deck++;
         }
         if (count === 0) {
-          return Info.title('完了', '/card/deck.php?ano=' + (start_deck - 1) + '&select_card_group=' + select_card_group);
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//          return Info.title('完了', '/card/deck.php?ano=' + (start_deck - 1) + '&select_card_group=' + select_card_group);
+          return Info.title('完了', href + '?ano=' + (start_deck - 1) + '&select_card_group=' + select_card_group);
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         }
       });
     };
@@ -8666,6 +8897,13 @@ function MokoMain($) {
         select_card_group: select_card_group
       };
       Info.log('[' + cname + ']を登録中...');
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        var href = '/card/defense_formation_deck.php';
+      } else {
+        var href = '/card/deck.php';
+      }
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       post_query(data);
     }
   }
@@ -20867,7 +21105,10 @@ function MokoMain($) {
 
     var target = null,
       select_card_group = $('#select_card_group').val();
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
       if (select_card_group != 6) {
         target = $('div.ig_deck_smallcardarea');
       } else {
@@ -20924,6 +21165,9 @@ function MokoMain($) {
     }
 
     if (location.pathname == '/card/deck.php' || location.pathname == '/facility/set_unit_list.php' ||
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+        location.pathname == '/card/defense_formation_deck.php' ||
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         location.pathname == '/union/levelup.php' || location.pathname == '/union/additional.php' || location.pathname == '/union/learn.php') {
       if (reality.indexOf('bake') != -1) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
@@ -20971,7 +21215,11 @@ function MokoMain($) {
           var $area;
           if (location.pathname == '/facility/set_unit_list.php') {
             $area = target.find('td').slice(1, 3);
-          } else if (location.pathname == '/card/deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+//          } else if (location.pathname == '/card/deck.php') {
+          } else if (location.pathname == '/card/deck.php' ||
+            location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
             if (select_card_group != 6) {
               $area = target.closest('div.ig_deck_smallcardarea').find('div.ig_deck_smallcardtitle');
             } else {
@@ -21032,6 +21280,9 @@ function MokoMain($) {
         }
 
         if (location.pathname == '/card/deck.php' || location.pathname == '/facility/set_unit_list.php' ||
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+            location.pathname == '/card/defense_formation_deck.php' ||
+// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
             location.pathname == '/union/levelup.php' || location.pathname == '/union/additional.php' || location.pathname == '/union/learn.php') {
 
           var conf_rankup = '/card/lead_info.php?cid=' + data.card_id + '&p=0&ano=0',
