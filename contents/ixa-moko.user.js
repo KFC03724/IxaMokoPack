@@ -23330,12 +23330,10 @@ window.addEventListener('DOMContentLoaded', function() {
     'background-position: top center,bottom center,center center, center center;' +
     '}' +
 // 2020.09.05 資源バーの改修 ここまで
-// 2020.09.02 施設の表示のズレの解消 ここから
 // 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここから
-    '#status { height: 50px; }' +
-// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここまで
+//    '#status { height: 50px; }' +
 //    '#status_left ul li div.groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: #6B5C50; }' +
-// 2020.09.02 施設の表示のズレの解消 ここまで
+// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここまで
     '#status_left span[id$="_advance"] { display: block; width: 0; height: 2px; background-color: cadetblue; }' +
     '#status_left ul li div#fame_groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: transparent; }' +
     
