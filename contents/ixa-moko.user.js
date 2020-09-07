@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.04
+// @version      10.20.202009.05
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.04";
+  var VERSION_NAME = "ver 10.20.202009.05";
 
 // === Plugin ===
 
@@ -23331,7 +23331,9 @@ window.addEventListener('DOMContentLoaded', function() {
     '}' +
 // 2020.09.05 資源バーの改修 ここまで
 // 2020.09.02 施設の表示のズレの解消 ここから
-//    '#status { height: 35px; }' +
+// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここから
+    '#status { height: 50px; }' +
+// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここまで
 //    '#status_left ul li div.groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: #6B5C50; }' +
 // 2020.09.02 施設の表示のズレの解消 ここまで
     '#status_left span[id$="_advance"] { display: block; width: 0; height: 2px; background-color: cadetblue; }' +
