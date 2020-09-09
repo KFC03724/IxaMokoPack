@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.05
+// @version      10.20.202009.06
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.05";
+  var VERSION_NAME = "ver 10.20.202009.06";
 
 // === Plugin ===
 
@@ -15137,6 +15137,9 @@ $fame_groove.css('background-color', 'red');
     .on('click', 'img[alt="戻る"]', ajaxStopUpdate)
     .on('click', 'img[alt="ここへ部隊出陣"]', ajaxStopUpdate)
     .on('click', 'img[alt="この拠点に部隊を出陣"]', ajaxStopUpdate)
+// 2020.09.10 領地への全出陣ボタンの追加 ここから
+    .on('click', 'img[alt="この拠点に攻撃出陣"]', ajaxStopUpdate)
+// 2020.09.10 領地への全出陣ボタンの追加 ここまで
     .on('click', 'img[alt="この拠点に加勢出陣"]', ajaxStopUpdate)
     .on('change', 'select[name="select_village_id"]', ajaxStopUpdate)
     .on('click', 'img[alt="出陣！"]', addMapUnitStatus)
@@ -18100,6 +18103,13 @@ $fame_groove.css('background-color', 'red');
       login_data.time = new_time;
       setStorage('ixamoko_login_data', login_data);
     });
+// 2020.09.10 報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここから
+    $('.btn_alert').on('click', function() {
+      var new_time = ~~(new Date() / 1000);
+      login_data.time = new_time;
+      setStorage('ixamoko_login_data', login_data);
+    });
+// 2020.09.10 報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここまで
   }
   
   // 城主プロフィール
