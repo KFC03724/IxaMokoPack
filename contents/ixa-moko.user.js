@@ -5924,7 +5924,7 @@ $fame_groove.css('background-color', 'red');
       };
       return $(document).on('ajaxStop', sendIdnum);
     });
-// 2020.09.11 本丸デッキの精鋭部隊を登録できるよう対応 ここから
+// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここから
     elite_category();
     function elite_category() {
       if ( location.pathname == '/card/defense_formation_deck.php' ) {
@@ -5949,7 +5949,7 @@ $fame_groove.css('background-color', 'red');
       });
       }
       }
-// 2020.09.11 本丸デッキの精鋭部隊を登録できるよう対応 ここまで
+// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここまで
   }
 
   function getUnitAtt() {
@@ -11232,6 +11232,24 @@ $fame_groove.css('background-color', 'red');
     }).hover(null, function() {
       $(this).empty();
     });
+
+// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここから
+// 強化版組分けボタンにプルダウンメニューpart37スレ364＆精鋭部隊種類変更対応
+    $('li[class^="btn_category_06"]').on('contextmenu', function(e) {
+    e.preventDefault();
+    var html = '<div class="menu_list">' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(1);">攻撃</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(2);">防御</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(4);">加勢</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(5);">強襲</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(0);">全部隊</a>' +
+    '</div>';
+    $(this).append(html);
+    $(this).find('div').slideDown('fast');
+    }).hover(null, function() {
+    $(this).empty();
+    });
+// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここまで
 
     // 解散ボタンを追加
     var flag = $('#deck_file').find('img.iepngfix.mb5').length;
