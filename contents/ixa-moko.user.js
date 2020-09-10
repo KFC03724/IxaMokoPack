@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.06
+// @version      10.20.202009.07
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.06";
+  var VERSION_NAME = "ver 10.20.202009.07";
 
 // === Plugin ===
 
@@ -5403,7 +5403,10 @@ $fame_groove.css('background-color', 'red');
 
     $pager.eq(0).data('next_page', next_page);
 
-    if (location.pathname != '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname != '/card/deck.php') {
+      if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       $('ul.pager').css('padding', '6px 0');
       $('ul.pager li').css('margin', '0 1px');
     }
@@ -5421,7 +5424,10 @@ $fame_groove.css('background-color', 'red');
       return;
     }
 
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       $('#bar_card .pager').css({
         'top': '14px',
         'width': '400px',
@@ -5477,6 +5483,9 @@ $fame_groove.css('background-color', 'red');
   // ページャーをAjaxに
   function ajaxPagerLink() {
     if (location.pathname != '/card/deck.php' && location.pathname != '/union/levelup.php' &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+        location.pathname != '/card/defense_formation_deck.php' &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
         location.pathname != '/union/learn.php' && location.pathname != '/union/rankup.php' && location.pathname != '/union/remove.php') {
       return;
     }
@@ -5503,7 +5512,10 @@ $fame_groove.css('background-color', 'red');
 
       var page = $(this).attr('title'),
         data;
-      if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//      if (location.pathname == '/card/deck.php') {
+      if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
         data = PostData.deck(page);
       } else if (location.pathname == '/union/levelup.php' || location.pathname == '/union/rankup.php' || location.pathname == '/union/learn.php') {
         data = PostData.levelup(page);
@@ -5529,7 +5541,10 @@ $fame_groove.css('background-color', 'red');
           $deck_file = null;
           $('input[name="p"]').val(page);
 
-          if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//          if (location.pathname == '/card/deck.php') {
+          if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
             $('div[id^="cardWindow_"]').remove();
             $('#sidebar').before(new_cardWindow);
           }
@@ -6219,12 +6234,20 @@ $fame_groove.css('background-color', 'red');
       }
     }
 
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-//    if (location.pathname == '/card/deck.php') {
-    if (location.pathname == '/card/deck.php' || location.pathname == '/card/deck_card_delete.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
-      var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
-      
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// // 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// //    if (location.pathname == '/card/deck.php') {
+//     if (location.pathname == '/card/deck.php' || location.pathname == '/card/deck_card_delete.php') {
+// // 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+//       var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
+      if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+        if (location.pathname == '/card/deck.php') {
+          var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
+        } else {
+          var exclusion_flag = $this.find('img[alt="兵編成"]').length || $this.find('img[alt="本丸防御陣形へ"]').length;
+        }
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで      
+
       // 出品中カードを暗色表示
       if (!exclusion_flag) {
         $this.addClass('exclusion');
@@ -6260,7 +6283,10 @@ $fame_groove.css('background-color', 'red');
       name = 'six_col';
     }
     $deck_file.addClass('width_mod ' + name);
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       $('div.ig_decksection_top').remove();
     }
     if (location.pathname == '/union/remove.php') {
@@ -6688,7 +6714,11 @@ $fame_groove.css('background-color', 'red');
       },
       html;
 
-      if (location.pathname == '/card/deck.php' &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//      if (location.pathname == '/card/deck.php' &&
+      if ((location.pathname == '/card/deck.php' ||
+        location.pathname == '/card/defense_formation_deck.php') &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
         !$cardWindow.find('#tb_one_set_link_' + cid).length) {
         var $table = $cardWindow.find('#table_posi');
 
@@ -7508,13 +7538,22 @@ $fame_groove.css('background-color', 'red');
     }
 
     var array = [],
-      target = (location.pathname == '/card/deck.php') ?
-            $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//      target = (location.pathname == '/card/deck.php') ?
+//      $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
+      target = (location.pathname == '/card/deck.php' ||
+      location.pathname == '/card/defense_formation_deck.php') ?
+      $('#ig_deck_smallcardarea_out') : $('table.busho_info > TBODY');
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
 
     $('DIV[id^="cardWindow_"]').each(function(idx) {
       var cid = $(this).attr('id').match(/\d+/g)[0],
         data = get_card_data($(this)),
-        elements = (location.pathname == '/card/deck.php') ?
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//        elements = (location.pathname == '/card/deck.php') ?
+        elements = (location.pathname == '/card/deck.php' ||
+        location.pathname == '/card/defense_formation_deck.php') ?
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
               $('#unit_group_type_' + cid).closest('DIV.ig_deck_smallcardarea'):
               $('#unit_group_type_' + cid).closest('TR.tr_gradient');
       var value;
@@ -7558,7 +7597,11 @@ $fame_groove.css('background-color', 'red');
   },
   seekOffsetTop = function() {
     var top;
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' ||
+      location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       top = $('#deck_file').find('#ig_decksection3').offset().top - $('#deck_fixmenu').outerHeight();
     } else {
       top = $('#frame_01_top').offset().top;
@@ -7607,7 +7650,11 @@ $fame_groove.css('background-color', 'red');
       $li.children('DIV').hide();
       if ($ul.attr('id') == 'mk_sort_menu') {
         return cardSortOrder(true);
-      } else if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//      } else if (location.pathname == '/card/deck.php') {
+      } else if (location.pathname == '/card/deck.php' ||
+      location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
         return deckCategoryFilter(getActive());
       } else {
         return setUnitCategoryFilter(getActive());
@@ -7615,7 +7662,11 @@ $fame_groove.css('background-color', 'red');
     });
 
     $('BODY').on('click', 'SPAN.menu', function() {
-      if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//      if (location.pathname == '/card/deck.php') {
+      if (location.pathname == '/card/deck.php' ||
+        location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
         return scrollView(seekOffsetTop());
       } else {
         if ($(window).scrollTop() > $('#bar_card').offset().top + 7) {
@@ -9836,7 +9887,11 @@ $fame_groove.css('background-color', 'red');
   
   // 次ページ追加モード
   function quickAddCard() {
-    if (!options.pager_ajax || options.pager_ajax_mod !== '0' || location.pathname != '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (!options.pager_ajax || options.pager_ajax_mod !== '0' || location.pathname != '/card/deck.php') {
+    if (!options.pager_ajax || options.pager_ajax_mod !== '0' ||
+      (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php')) {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       return;
     }
     if (!$('ul.pager').length) {
@@ -9849,7 +9904,10 @@ $fame_groove.css('background-color', 'red');
       'span.add_now { background-color: #725E1E; color: lime; }'
     );
 
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       style('div.add_box { position: absolute; top: 9px; left: 50px; padding: 4px 12px; background-color: beige; }');
       $('div.maisuu').before('<div class="add_box" />');
     }
@@ -9936,7 +9994,11 @@ $fame_groove.css('background-color', 'red');
     var $common_box3 = $('#deck_file').find('div.common_box3');
     var data = getFormValue(page);
 
-    if (location.pathname == '/card/deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//    if (location.pathname == '/card/deck.php') {
+    if (location.pathname == '/card/deck.php' ||
+      location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
       data.ano = data.select_assign_no;
       data.myselect = $('#myselect').val();
       delete data.select_assign_no;
@@ -9956,8 +10018,11 @@ $fame_groove.css('background-color', 'red');
       .then(function(html) {
         readNextPage.flag = true;
         var $html = $(html).find('#box');
-        if (location.pathname == '/card/deck.php') {
-
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//        if (location.pathname == '/card/deck.php') {
+        if (location.pathname == '/card/deck.php' ||
+          location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
           var $cardWindow = $html.find('div[id^="cardWindow_"]');
           var $smallcardarea = $html.find('#ig_deck_smallcardarea_out > div.ig_deck_smallcardarea');
           $smallcardarea.each(smallcardarea_check);
@@ -10007,7 +10072,11 @@ $fame_groove.css('background-color', 'red');
         // 敵襲有り && デッキ画面 && 全武将を選択
         // ※自動で読み込みを停止
         // フィルター対象が最終ページにしか存在しないケースだと全ページを読み込むため
-        if (location.pathname == '/card/deck.php' &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+//        if (location.pathname == '/card/deck.php' &&
+        if ((location.pathname == '/card/deck.php' ||
+          location.pathname == '/card/defense_formation_deck.php') &&
+// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
           $('#select_card_group').val() === '0' && STATE_ENEMY.length) {
           return;
         }
