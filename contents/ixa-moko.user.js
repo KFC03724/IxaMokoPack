@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.07
+// @version      10.20.202009.08
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.07";
+  var VERSION_NAME = "ver 10.20.202009.08";
 
 // === Plugin ===
 
@@ -5924,6 +5924,32 @@ $fame_groove.css('background-color', 'red');
       };
       return $(document).on('ajaxStop', sendIdnum);
     });
+// 2020.09.11 本丸デッキの精鋭部隊を登録できるよう対応 ここから
+    elite_category();
+    function elite_category() {
+      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+      if ( !$('a.elite_category').length ) {
+      $('td.home_defense_formation_data_btn_wrap a.unit_edit').each(function(){
+      var add_elite = '' +
+      '<a href="javascript:void(0);" class="elite_category" onclick="registElite(' +
+      $(this).attr('data-unit_assign_id') + ')">精鋭登録</a>';
+      
+      $(this).before(add_elite);
+      $('td.home_defense_formation_data_btn_wrap')
+      .find('a.elite_category').css({'float': 'left', 'margin': '9px 0px 0px 12px'});
+      });
+      }
+      
+      $('body').on('mousedown', '#deck_bg div.bg_yellow a', function() {
+      var draw = function() {
+      elite_category();
+      return $(document).off('ajaxStop', draw);
+      };
+      return $(document).on('ajaxStop', draw);
+      });
+      }
+      }
+// 2020.09.11 本丸デッキの精鋭部隊を登録できるよう対応 ここまで
   }
 
   function getUnitAtt() {
