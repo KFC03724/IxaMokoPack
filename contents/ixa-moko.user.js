@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.11
+// @version      10.20.202009.12
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.11";
+  var VERSION_NAME = "ver 10.20.202009.12";
 
 // === Plugin ===
 
@@ -4195,8 +4195,12 @@ function MokoMain($) {
   
   // 座標っぽい文字列からリンクを生成
   function stringsChangeLink(target) {
-    var coordReg = new RegExp(/[ー－‐―\-]?[０-９\d]+[,，.．、､]\s?[ー－‐―\-]?[０-９\d]+/g);
-    var urlReg = new RegExp(/https?:\/\/[a-zA-Z0-9\-_\.:@!~*'\(\);/?&=\+$,%#]+/g);
+// 2020.09.15 運営からのSPAM書状(2020.09.14)を整形して読める様対応 ここから
+//    var coordReg = new RegExp(/[ー－‐―\-]?[０-９\d]+[,，.．、､]\s?[ー－‐―\-]?[０-９\d]+/g);
+//    var urlReg = new RegExp(/https?:\/\/[a-zA-Z0-9\-_\.:@!~*'\(\);/?&=\+$,%#]+/g);
+    var coordReg = new RegExp(/(?:[0０](?![0０])|[ー－‐―\-]?[１-９1-9][０-９\d]*)[,，.．、､]\s?(?:[0０](?![0０])|[ー－‐―\-]?[１-９1-9][０-９\d]*)/g);
+    var urlReg = new RegExp(/(?<!["'<>])https?:\/\/[a-zA-Z0-9\-_\.:@!~*'\(\);/?&=\+$,%#]+/g);
+// 2020.09.15 運営からのSPAM書状(2020.09.14)を整形して読める様対応 ここまで
     var i, len, j;
     target.each(function() {
       stringsChangeLink.flag = false;
@@ -8144,8 +8148,11 @@ function MokoMain($) {
           command = data.num,
           cname = data.name,
           ccost = data.cost;
+// 2020.09.15 コスト0カードをセットしない様対応 ここから
             // if (command === 0 || unit_flg === '0' || ccost === 0) {
-            if (command === 0 || unit_flg === '0') {
+//            if (command === 0 || unit_flg === '0') {
+            if (command === 0 || unit_flg === '0' || data.rare === '童' || data.no === '3720') {
+// 2020.09.15 コスト0カードをセットしない様対応 ここまで
           return true;
         } else {
           for (var i = 0, len = name_list.length; i < len; i++) {
