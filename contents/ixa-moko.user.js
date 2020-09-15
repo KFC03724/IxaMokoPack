@@ -2791,8 +2791,8 @@ function MokoMain($) {
         html += '<li><a href="/card/deck.php?select_card_group=' + GROUPS_MENU[i][0] + filter + '">部隊編成' + GROUPS_MENU[i][1] + '</a></li>';
       }
       html += '<li><a href="/facility/unit_list.php">待機兵士一覧</a></li>' +
-              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
 // 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここから
+//              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
               '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
               '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
 // 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここまで
