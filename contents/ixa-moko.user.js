@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.08
+// @version      10.20.202009.11
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.08";
+  var VERSION_NAME = "ver 10.20.202009.11";
 
 // === Plugin ===
 
@@ -429,7 +429,7 @@ function MokoMain($) {
 
   //「麒麟がくる」特別交流企画 2533 極 明智十兵衛
   "特.四書五経.A":["特.四書五経.A","特.戦陣 破軍.A","特.戦陣 無双.A","攻.冥王神戒.S","特.鬼滅刺.A"],
-
+  
   //2020.09
   "防.士魂奮撃.B": ["防.士魂奮撃.B","防.不退ノ防戦.B","防.凍土ノ女神.B","防.籠城の妙技.A","防.美龍泰天.B"],
   "特.都鄙合体.B": ["特.都鄙合体.B","攻.騎馬隊急襲.F","特.二葉心.D","特.告天子.B","攻.騎聖.A"],
@@ -582,9 +582,11 @@ function MokoMain($) {
     // NPC "章_期"
     var npc_data = {
       "19_19": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
-// 2020.08.21 空き地戦力の表示 ここから
+        // "20_20": [],
+// 2020.09.15 空き地戦力の表示対応 ここから
       "20_20": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
-// 2020.08.21 空き地戦力の表示 ここまで
+      "20_8": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
+// 2020.09.15 空き地戦力の表示対応 ここまで
     };
 
     // NPC "期"
@@ -609,9 +611,7 @@ function MokoMain($) {
       "17": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }], // 17期
       "18": [], // 18期
       "19": [], // 19期
-// 2020.08.21 空き地戦力の表示 ここから
-      "20": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }], // 20期暫定
-// 2020.08.21 空き地戦力の表示 ここまで
+      "20": [], // 20期暫定
     };
     npc_data_old["9"] = npc_data_old["8"] = npc_data_old["7"] = npc_data_old["6"]; // 6期と同じ
     npc_data_old["16"] = npc_data_old["15"]; // 15期と同じ
@@ -1435,11 +1435,10 @@ function MokoMain($) {
       status_display: {tag: 'all2', caption: '資源バーの表示を変更変更する'},
       status_display_mod: {tag: 'all2', caption: '資源バーの表示内容の変更'},
       pulldown_right_click: {tag: 'all2', caption: 'プルダウンメニューを右クリック表示にする'},
-// 2020.09.04 砦座標をマップボックスに表示「する」に表記を再修正 ここから
+// 2020.09.15 誤表記修正 ここから
 //      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示する'},
-//      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示しない'}, // 誤表記修正
-      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示する (メニュープルダウン無)'}, // 表記修正
-// 2020.09.04 砦座標をマップボックスに表示「する」に表記を再修正 ここまで
+      toride_view: {tag: 'all2', caption: '砦座標をマップボックスに表示しない'},
+// 2020.09.15 誤表記修正 ここまで
       hide_animation: {tag: 'all2', caption: 'メニューのアニメーションを非表示にする'},
       hide_animation_mod: {tag: 'all2', caption: 'アニメーション非表示の選択'},
       timeout_countdown: {tag: 'all2', caption: 'タイムアウトまでの予想時間をカウント表示する'},
@@ -1501,9 +1500,9 @@ function MokoMain($) {
       facility_tool: {tag: 'vill', caption: '右クリックでツールチップを表示する'},
       facility_tool_mod: {tag: 'vill', caption: 'ツールチップにダブルアップ操作を追加'},
       remove_bushodrama: {tag: 'vill', caption: '大殿のアニメーションを無効にする'},
-// 2020.08.21 内政の19章化 ここから
+// 2020.09.15 内政の19章化 ここから
       operation_method_19: {tag: 'vill', caption: '19章の操作方法にする'},
-// 2020.08.21 内政の19章化 ここまで
+// 2020.09.15 内政の19章化 ここまで
       
       // 施設
       facility_favorites: {tag: 'faci', caption: 'お気に入り施設を使用する'},
@@ -1609,9 +1608,9 @@ function MokoMain($) {
             || key == 'distance_caution'
             || key == 'no_charge'
             || key == 'no_balloon'
-// 2020.08.21 内政の19章化 ここから
+// 2020.09.15 内政の19章化 ここから
             || key == 'operation_method_19'
-// 2020.08.21 内政の19章化 ここまで
+// 2020.09.15 内政の19章化 ここまで
           ){
             options[key] = false;
           } else if (key.indexOf('_mod') !== -1) {
@@ -1739,9 +1738,9 @@ function MokoMain($) {
                   '17': '日ノ本燎原～下天に棲む勇胆の将～',
                   '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
-// 2020.08.21 MOKOが20章を正しく表示できる様設定 ここから
+// 2020.09.15 20章表示対応 ここから
                   '20': '驚天宿星～蘇りし神将～',
-// 2020.08.21 MOKOが20章を正しく表示できる様設定 ここまで
+// 2020.09.15 20章表示対応 ここまで
                 };
                 setting_list += '<li><label>' + this.optionsKeys[key].caption + ':</label>&nbsp;' +
                   '<select class="ixamoko_setting" key="' + key + '">' +
@@ -1802,18 +1801,18 @@ function MokoMain($) {
                 setting_list += this.createList(key, '', list, mod);
                 break;
               case 'status_display':
+                mod = options.status_display_mod;
                 list = {
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここから
 //                  0: '保有量(％)',
 //                  1: '残り時間表示'
-// 2020.09.07 資源バーのいい所取りに対応 ここから
-                   0: '残り時間 / 保有量(％)表示',
-                   1: '残り時間表示（moko方式）',
-                   2: '保有量(％)表示（moko方式）'
-// 2020.09.07 資源バーのいい所取りに対応 ここまで
+                  0: '残り時間 / 保有量(％)表示',
+                  1: '残り時間表示（moko方式）',
+                  2: '保有量(％)表示（moko方式）'
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここまで
                 };
                 setting_list += this.createList(key, '', list, mod);
                 break;
-// 2020.09.07 資源バーの表示アイテムの改善 ここまで
               case 'hide_animation':
                 mod = options.hide_animation_mod;
                 list = {
@@ -2792,11 +2791,11 @@ function MokoMain($) {
         html += '<li><a href="/card/deck.php?select_card_group=' + GROUPS_MENU[i][0] + filter + '">部隊編成' + GROUPS_MENU[i][1] + '</a></li>';
       }
       html += '<li><a href="/facility/unit_list.php">待機兵士一覧</a></li>' +
-// 2020.08.21 部隊メニュープルダウンに本丸防御陣形を追加 ここから
-//              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
+              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
+// 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここから
               '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
               '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
-// 2020.08.21 部隊メニュープルダウンに本丸防御陣形を追加 ここまで
+// 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここまで
       menu02.find('li').remove();
       menu02.find('ul').append(html);
       menu07.find('ul').append('<li><a href="/alliance/alliance_gold_mine_history.php">発掘履歴</a></li>');
@@ -3097,10 +3096,10 @@ function MokoMain($) {
       lv_list = [],
       str;
     for (var i = 0, len = $div.length; i < len; i++) {
-// 2020.08.21 武将スキルが表示されない不具合の修正2020.08.21 武将スキルが表示されない不具合の修正 ここから
+// 2020.09.15 武将スキルが表示されない不具合の対応 ここから
 //      str = $div.eq(i).find('span[class$="ig_skill_name"]').text().trim();
       str = $div.eq(i).find('span.ig_skill_name').text().trim();
-// 2020.08.21 武将スキルが表示されない不具合の修正2020.08.21 武将スキルが表示されない不具合の修正 ここまで
+// 2020.09.15 武将スキルが表示されない不具合の対応 ここまで
       if (!str) {
         continue;
       }
@@ -3475,7 +3474,9 @@ function MokoMain($) {
       var html = $.ajax({
         type: 'post',
         url: '/card/deck.php',
-        async: false,
+// 2020.09.15 部隊配置が失敗する不具合の修正 ここから
+//        async: false,
+// 2020.09.15 部隊配置が失敗する不具合の修正 ここまで
         beforeSend: xrwStatusText,
       }).responseText;
       var $a = $(html).find('#us_list_normal li:contains("[---新規部隊を作成---]")').eq(0).children('a'),
@@ -3749,10 +3750,10 @@ function MokoMain($) {
     var $status = $('#status');
     var $gnavi = $('#gnavi');
     if (options.menu_reversal_mod == '0') {
-// 2020.09.02 部隊メニューの表示ズレの修正 ここから
-//    $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
-    $gnavi.css('background-position', '0 54px').prepend($status.css('margin-bottom', '4px'));
-// 2020.09.02 部隊メニューの表示ズレの修正 ここまで
+// 2020.09.15 メニューの背景位置の修正 ここから
+//      $gnavi.css('background-position', '0 35px').prepend($status.css('margin-bottom', '4px'));
+      $gnavi.css('background-position', '0 50px').prepend($status.css('margin-bottom', '0px'));
+// 2020.09.15 メニューの背景位置の修正 ここまで
     } else {
       $gnavi.css('height', '34px');
       $status.css({
@@ -3760,18 +3761,19 @@ function MokoMain($) {
         'top': '22px',
         'width': '922px'
       });
-// 2020.09.02 部隊メニューの表示ズレの修正 ここから
+// 2020.09.15 部隊画面の表示の改善 ここから
 //      $('p.profile_head').css('top', '54px');
 //      $('#lordNameBox').css('top', '82px');
 //      $('#commentBox').css('top', '48px');
-//      $('#header').css({
+      $('div.other_owner_block').css('top', '72px');
+      $('#lordNameBox').css('top', '118px');
+      $('#commentBox').css('top', '68px');
+// 2020.09.15 部隊画面の表示の改善 ここまで
+      $('#header').css({
+// 2020.09.15 部隊画面の表示の改善 ここから
 //        'height':'140px'
-        $('div.other_owner_block').css('top', '72px');
-        $('#lordNameBox').css('top', '118px');
-        $('#commentBox').css('top', '68px');
-        $('#header').css({
-          'height':'173px'
-// 2020.09.02 部隊メニューの表示ズレの修正 ここまで
+        'height':'173px'
+// 2020.09.15 部隊画面の表示の改善 ここから
       }).prepend($status);
     }
   }
@@ -3781,7 +3783,7 @@ function MokoMain($) {
     if (!options.status_display) {
       return;
     }
-// 2020.09.07 資源バーのいい所取りに対応 ここから
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここから
     if (options.status_display_mod === '0') {
       $('#status_left').find('#wood').after($('#wood_popup .count_down')).after('<BR>');
       $('#status_left').find('#stone').after($('#stone_popup .count_down')).after('<BR>');
@@ -3791,16 +3793,31 @@ function MokoMain($) {
       $('#status_left').find('#stone_popup').remove();
       $('#status_left').find('#iron_popup').remove();
       $('#status_left').find('#rice_popup').remove();
+      // 各資源ゲージ色の変更（2020.09.08追加）
+      var kind = ['wood', 'stone', 'iron', 'rice'],
+      i, len = kind.length;
+      for (i = 0; i < len; i++) {
+      rate = parseInt($('#' + kind[i] + '_rate').text()),
+      str = $('#' + kind[i]).text();
+      if (rate == 100) {
+        $('#status_left').find('#' + kind[i] + '_gauge').css({'background-color': '#FF5E00'});
+      } else if (rate >= 90) {
+        $('#status_left').find('#' + kind[i] + '_gauge').css({'background-color': 'red'});
+      } else if (rate >= 80) {
+        $('#status_left').find('#' + kind[i] + '_gauge').css({'background-color': 'gold'});
+      }
+  }
+  // 各資源ゲージ色の変更（2020.09.08追加ここまで）
     } else {
-// 2020.09.07 資源バーのいい所取りに対応 ここまで
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここから
     var kind = ['wood', 'stone', 'iron', 'rice'],
       max = parseInt($('#' + kind[0] + '_max').text()),
       $li = $('#status_left li'),
       $slice = $li.slice(0, 4),
-// 2020.09.07 資源バーの残り時間表示の改善 ここから
+// 2020.09.15 資源バーの残り時間表示 ここから
 //      $img = $slice.find('img'),
       $img = $slice.find('div.resource_count img'),
-// 2020.09.07 資源バーの残り時間表示の改善 ここまで
+// 2020.09.15 資源バーの残り時間表示 ここまで
       stock = [],
       rate = [],
       poss = [],
@@ -3810,10 +3827,10 @@ function MokoMain($) {
     
     // 数値の取得
     for (i = 0; i < len; i++) {
-// 2020.09.07 資源バーの残り時間表示の改善 ここから
+// 2020.09.15 資源バーの残り時間表示 ここから
 //      str = $('#' + kind[i]).text();
       str = $('#' + kind[i]).text().replace(/,/g, '');
-// 2020.09.07 資源バーの残り時間表示の改善 ここまで
+// 2020.09.15 資源バーの残り時間表示 ここまで
       num = parseInt(str);
       stock[i] = addFigure(str); // 貯蓄量
       rate[i] = parseInt($('#output_' + kind[i]).text()); // 1h生産量
@@ -3829,27 +3846,33 @@ function MokoMain($) {
     }
     
     // アイテムの追加
-// 2020.09.07 資源バーの表示アイテムの改善 ここから
+// 2020.09.15 資源バーの残り時間表示 ここから
 /*
-// アイテムの追加
-var html = '';
-（中略）
-// 名声値
-var $fame_groove = $('<div id="fame_groove" />')
-.appendTo($('img[alt="名声"]').parent('li'));
-if (fame() <= 5) {
-$fame_groove.css('background-color', 'red');
-*/
-// 2020.09.07 資源バーの表示アイテムの改善 ここまで
-
-// 2020.09.07 資源バーの残り時間表示の改善 ここから
+// 2020.09.15 資源バーの残り時間表示 ここから
+//    var html = '';
+//    for (i = 0; i < len; i++) {
+//      html += '<li>' + $img.eq(i)[0].outerHTML + '&nbsp;' +
+    var html = '<li style="display: none;"></li>';
+    for (i = 0; i < len; i++) {
+// 2020.09.15 アイコンのズレの修正 ここから
+//      html += '<li class="stock">' + $img.eq(i)[0].outerHTML + '&nbsp;' +
+      html += '<li class="stock">' + $img.eq(i*2+1)[0].outerHTML + '&nbsp;' +
+// 2020.09.15 アイコンのズレの修正 ここまで
+// 2020.09.15 資源バーの残り時間表示 ここまで
+            '<span class="normal" id="' + kind[i] + '_store">' + stock[i] + '</span>&nbsp;/&nbsp;' +
+            '<span class="normal" id="' + kind[i] + '_rate">' + param[i] + unit + '</span>' +
+            '<div class="groove"><span id="' + kind[i] + '_advance" /></div>' +
+          '</li>';
+    }
+// 2020.09.15 資源バーの残り時間表示 ここから
 //    html += '<li><span title="蔵容量">' + addFigure(max) + '</span></li>';
     html += '<li class="resource">' + $('div.resource_count img').eq(4)[0].outerHTML +
     '&nbsp;<span title="蔵容量">' + addFigure(max) + '</span></li>';
-// 2020.09.07 資源バーの残り時間表示の改善 ここまで
+// 2020.09.15 資源バーの残り時間表示 ここまで
+
     $slice.hide();
     $li.last().before(html);
-// 2020.09.07 資源バーの残り時間表示の改善 ここから
+// 2020.09.15 資源バーの残り時間表示 ここから
     $li.eq(4).css('display', 'none');
     var $count = $('div.resource_count');
     $count.find('p').css({'display': 'block', 'margin': '-3.5px 0px 0.5px -4px'});
@@ -3861,7 +3884,7 @@ $fame_groove.css('background-color', 'red');
     $count.css({'display': 'block'}).find('img').css({'top': '-4px'});
     $count.find('p').css({'display': 'block', 'margin': '-3px 0px 0px 0px'});
     style('#status_left ul li:nth-child(n+13) { padding-top: 14px; }');
-// 2020.09.07 資源バーの残り時間表示の改善 ここまで
+// 2020.09.15 資源バーの残り時間表示 ここまで
 
     var $store, $rate, $advance;
     setInterval(function() {
@@ -3872,11 +3895,11 @@ $fame_groove.css('background-color', 'red');
         $li = $advance.closest('li');
         
         // 数値の取得
-// 2020.09.07 資源バーの残り時間表示の改善 ここから
+// 2020.09.15 残り時間表示の改善 ここから
 //        str = $('#' + kind[i]).text();
         str = $('#' + kind[i]).text().replace(/,/g, '');
-// 2020.09.07 資源バーの残り時間表示の改善 ここまで
         num = parseInt(str); //貯蓄量
+// 2020.09.15 残り時間表示の改善 ここまで
         poss = Math.floor((num / max) * 100); //保有率
         rema = Math.floor((max - num) / rate[i]); //残り時間
         
@@ -3914,36 +3937,48 @@ $fame_groove.css('background-color', 'red');
     if (fame() <= 5) {
       $fame_groove.css('background-color', 'red');
     }
-// 2020.09.07 資源バーのいい所取りに対応 ここから
-    }
-// 2020.09.07 資源バーのいい所取りに対応 ここまで
+*/
+// 2020.09.15 資源バーの残り時間表示 ここまで
   }
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここから
+}
+// 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここまで
   
   // 資源バーにリンクを追加
-// 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここから
   function statusLeftMenu() {
-// 2020.09.06 資源バー横が縦書きにならない様改善 ここから
+// 2020.09.15 横書き対応 ここから
 //    $('#status_left').width('870px');
     $('#status_left').width('1000px');
-// 2020.09.06 資源バー横が縦書きにならない様改善 ここまで
+// 2020.09.15 横書き対応 ここまで
     var i, len;
     var html = '' +
       
-      '<li id="敵襲" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+// 2020.09.15 フォントサイズの指定 ここから
+//    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
+    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+// 2020.09.15 フォントサイズの指定 ここまで
 
-      '<li id="全部隊" style="padding-top:12px" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
+// 2020.09.15 フォントサイズの指定 ここから
+//      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
+      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
+// 2020.09.15 フォントサイズの指定 ここまで
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
           '<a href="/facility/unit_list.php">待機兵士一覧</a>' +
         '</div>' +
       '</li>' +
+// 2020.09.15 フォントサイズの指定 ここから
+//      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
+      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
+// 2020.09.15 フォントサイズの指定 ここまで
       
-      '<li id="合流" style="padding-top:12px"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
-      
-      '<li id="全編成" style="padding-top:12px" class="mk_sub_menu">' +
+      '<li id="全編成" class="mk_sub_menu">' +
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
-          '&select_card_group=0&select_filter_num=0"><font size="1.5">編成</a>' +
+// 2020.09.15 フォントサイズの指定 ここから
+//        '&select_card_group=0&select_filter_num=0">編成</a>' +
+        '&select_card_group=0&select_filter_num=0"><font size="1.5">編成</a>' +
+// 2020.09.15 フォントサイズの指定 ここまで
         '<div>';
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         if (i == 1) {
@@ -3959,16 +3994,31 @@ $fame_groove.css('background-color', 'red');
     }
     html += '</div>' +
         '</li>'+
-        
-        '<li style="padding-top:12px"><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
-        
-        '<li style="padding-top:12px"><a href="/war/village_search.php"><font size="1.5">探</a></li>' +
 
-// 2020.09.05 資源バー横に本丸防御の直リン追加 ここから
-        '<li style="padding-top:12px"><a href="/card/defense_formation_deck.php"><font color="red" font size="1.5">本丸</a>';
-// 2020.09.05 資源バー横に本丸防御の直リン追加 ここまで
+// 2020.09.15 フォントサイズの指定 ここから
+//        '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
+        '<li><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
+// 2020.09.15 フォントサイズの指定 ここまで
 
-    html += '<li id="戦国くじ" style="padding-top:12px" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
+// 2020.09.15 フォントサイズの指定 ここから
+//        '<li><a href="/war/village_search.php">探</a></li>';
+        '<li><a href="/war/village_search.php"><font size="1.5">探</a></li>';
+// 2020.09.15 フォントサイズの指定 ここまで
+// 2020.09.15 資源バー横に本丸防御の直リンを追加 ここから
+// 2020.09.15 フォントサイズの指定 ここから
+//    html += '<li id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>' +
+    html += '<li id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red" font size="1.5">本丸</a>' +
+// 2020.09.15 フォントサイズの指定 ここまで
+    '<div>' +
+    '<a href="/facility/set_unit_list.php?ano=9&p=1">本丸兵士編成</a>' +
+    '</div>' +
+    '</li>';
+// 2020.09.15 資源バー横に本丸防御の直リンを追加 ここまで
+
+// 2020.09.15 資源バー横に本丸防御の直リンを追加 ここから
+//    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
+    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
+// 2020.09.15 資源バー横に本丸防御の直リンを追加 ここまで
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
           '<a href="/card/exhibit_list.php">出品中</a>' +
@@ -3983,7 +4033,6 @@ $fame_groove.css('background-color', 'red');
           '<a href="/card/card_album.php">カードアルバム</a>' +
         '</div>' +
       '</li>';
-// 2020.09.05 戦国IXA ツールスレPart45 660 のレイアウトを取り込み ここまで
 
     $('#status_left ul').append(html);
 
@@ -4059,17 +4108,17 @@ $fame_groove.css('background-color', 'red');
   
   // IXA占いlayout
   function fortunesLayout() {
-// 2020.09.01 占いの表示の改善 ここから
+// 2020.09.15 占いがうざい問題の改善 ここから
 //    $('#status div.rightF').each(function() {
     $('.uranai').each(function() {
-// 2020.09.01 占いの表示の改善 ここまで
+// 2020.09.15 占いがうざい問題の改善 ここまで
       $(this).css('margin-top', '2px')
-// 2020.09.01 占いの表示の改善 ここから
+// 2020.09.15 占いがうざい問題の改善 ここから
 //        .find('p:even').remove().end()
 //        .find('p').css('padding', '0').end()
         .find('img:even').remove().end()
         .find('li').css('padding', '0').end()
-// 2020.09.01 占いの表示の改善 ここまで
+// 2020.09.15 占いがうざい問題の改善 ここまで
         .children().wrapAll('<a id="uranai" href="/user/uranai/uranai.php"></a>');
     });
   }
@@ -4742,10 +4791,10 @@ $fame_groove.css('background-color', 'red');
     if (!options.remove_bushodrama) {
       return;
     }
-// 2020.09.02 所領を押すと大殿のアニメーションが出てくる不具合の修正 ここから
+// 2020.09.15 所領を押すと大殿のアニメーションが表示される不具合の対応 ここから
 //    if ($('.rightF').length) { // 初期チュートリアル時は無効
-      if ($('div.uranai img').length) { // 初期チュートリアル時は無効
-// 2020.09.02 所領を押すと大殿のアニメーションが出てくる不具合の修正 ここまで
+    if ($('div.uranai img').length) { // 初期チュートリアル時は無効
+// 2020.09.15 所領を押すと大殿のアニメーションが表示される不具合の対応 ここまで
       $('#BushoDrama').remove();
     }
   }
@@ -5089,10 +5138,10 @@ $fame_groove.css('background-color', 'red');
     $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
     $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
       if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
-// 2020.08.21 全体格付から同盟・城主へのリンクが死んでいる問題の対応 ここから
+// 2020.09.15 全体格付から同盟、城主へのリンクが死んでいる不具合の対応 ここから
 //        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
-        $('#ranking_table td:nth-child(n+5)').each(function(){$(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g,'$1,'));});
-// 2020.08.21 全体格付から同盟・城主へのリンクが死んでいる問題の対応 ここまで
+        $('#ranking_table td:nth-child(n+5)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
+// 2020.09.15 全体格付から同盟、城主へのリンクが死んでいる不具合の対応 ここまで
       }
       if (location.pathname === '/war/war_alliance_ranking.php' || location.pathname === '/war/war_ranking.php') {
         var $td = ($('#ig_battle_report_top').text().indexOf('天下統一戦') === -1)
@@ -5103,7 +5152,6 @@ $fame_groove.css('background-color', 'red');
       if (location.pathname === '/country/country_ranking.php') {
         $('.common_table1 td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
       }
-
     function commentListSelecter() {
       var id_num = each_setting.header_info;
       if (!id_num || !$('#comBtn' + id_num).length) {
@@ -5196,30 +5244,48 @@ $fame_groove.css('background-color', 'red');
       str = source ? source[0] : numstr;
       now = source ? parseFloat(source[1]) : 0;
       free = max - now;
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
       nomal_deck = 5;
       now = parseFloat(html.find('span.deck_cost_current').text());
       max = parseFloat(html.find('span.deck_cost_add_total').text());
       str = now + '/' + max;
       free = max - now;
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
+// 2020.09.15 デッキコストが999になる不具合の対応 ここから
+//    } else {
+//      source = $(html).find('div.deckcost p').text().match(/(\d+\.?\d?)\/(\d+\.?\d?)/);
+//      str = source[0];
+//      now = parseFloat(source[1]);
+//      max = count ? parseFloat(source[2]) : 999;  // 加勢部隊は上限仮想設定
+//      free = max - now;
+//    }
+//
+//    return {
+//      str: str,
+//      now: now,
+//      max: max,
+//      free: free,
+//      count: count
+//    };
     } else {
       source = $(html).find('div.deckcost p').text().match(/(\d+\.?\d?)\/(\d+\.?\d?)/);
       str = source[0];
       now = parseFloat(source[1]);
-      max = count ? parseFloat(source[2]) : 999;  // 加勢部隊は上限仮想設定
+      max = count ? parseFloat(source[2]) : 999; // 加勢部隊は上限仮想設定
       free = max - now;
+    //ここまで
     }
-
-    return {
-      str: str,
-      now: now,
-      max: max,
-      free: free,
-      count: count
-    };
     
+    return {
+    str: str,
+    now: now,
+    max: max,
+    free: free,
+    count: count
+    };
+// 2020.09.15 デッキコストが999になる不具合の対応 ここまで
+
     // Object・表示・現在・最大・空き・コストカウント
   }
   
@@ -5229,17 +5295,17 @@ $fame_groove.css('background-color', 'red');
     var solnum = $td.eq(3).text().replace(/,/, '') || 0;
     var allcost = $td.eq(2).text() || 0;
     var unitnum = $(html).find('#ig_deckboxInner').find('div.battlegage').length;
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     if ( location.pathname == '/card/defense_formation_deck.php' ) {
       var $div = $('#deck_bg').find('div.home_defense_formation_line');
       $div.each(function() {
       unitnum = $(this).find('div.home_defense_formation_card_space_target a').length;
       if ( unitnum < 4 ) {
-      return false;
-    }
+        return false;
+      }
     });
-    }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+  }
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
     return {
       num: unitnum,
       cost: parseFloat(allcost),
@@ -5251,14 +5317,14 @@ $fame_groove.css('background-color', 'red');
   
   // デッキ 使用状態の取得
   function get_deck_status(html, select_assign_no) {
-// 2020.08.21 一括配置でセットされる場所を修正 ここから
+// 2020.09.15 武将一括配置の不具合対応 ここから
 //    var $ig_unitchoice = $(html).find('#ig_unitchoice');
 //    var $ig_unitchoice_reinforce = $(html).find('#ig_unitchoice_reinforce');
 //    var $ig_unitchoice_assault = $(html).find('#ig_unitchoice_assault');
     var $ig_unitchoice = $(html).find('ul.unit_normal');
     var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
     var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
-// // 2020.08.21 一括配置でセットされる場所を修正 ここまで
+// 2020.09.15 武将一括配置の不具合対応 ここまで
     var free_deck;  // 空き数
     var start_deck; // 配置開始
     var use_deck;   // 使用数
@@ -5270,14 +5336,14 @@ $fame_groove.css('background-color', 'red');
       free_deck = $ig_unitchoice_assault.find('li:contains("[---新規部隊を作成---]")').length;
       start_deck = 8;
       use_deck = 1 - free_deck;
-// 2020.08.21 一括配置でセットされる場所を修正 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
       nomal_deck = 5;
       assault = 6;
       use_deck = html.find('div[data-sort="0"] a').length;
       free_deck = 5 - use_deck;
       start_deck = 5 - free_deck;
-// 2020.08.21 一括配置でセットされる場所を修正 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
     } else {
       free_deck = $ig_unitchoice.find('li:contains("[---新規部隊を作成---]")').length;
       start_deck = 6 - free_deck;
@@ -5403,10 +5469,10 @@ $fame_groove.css('background-color', 'red');
 
     $pager.eq(0).data('next_page', next_page);
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname != '/card/deck.php') {
-      if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+    if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       $('ul.pager').css('padding', '6px 0');
       $('ul.pager li').css('margin', '0 1px');
     }
@@ -5424,10 +5490,10 @@ $fame_groove.css('background-color', 'red');
       return;
     }
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       $('#bar_card .pager').css({
         'top': '14px',
         'width': '400px',
@@ -5483,9 +5549,9 @@ $fame_groove.css('background-color', 'red');
   // ページャーをAjaxに
   function ajaxPagerLink() {
     if (location.pathname != '/card/deck.php' && location.pathname != '/union/levelup.php' &&
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
         location.pathname != '/card/defense_formation_deck.php' &&
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
         location.pathname != '/union/learn.php' && location.pathname != '/union/rankup.php' && location.pathname != '/union/remove.php') {
       return;
     }
@@ -5512,10 +5578,10 @@ $fame_groove.css('background-color', 'red');
 
       var page = $(this).attr('title'),
         data;
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //      if (location.pathname == '/card/deck.php') {
       if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
         data = PostData.deck(page);
       } else if (location.pathname == '/union/levelup.php' || location.pathname == '/union/rankup.php' || location.pathname == '/union/learn.php') {
         data = PostData.levelup(page);
@@ -5541,10 +5607,10 @@ $fame_groove.css('background-color', 'red');
           $deck_file = null;
           $('input[name="p"]').val(page);
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //          if (location.pathname == '/card/deck.php') {
           if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
             $('div[id^="cardWindow_"]').remove();
             $('#sidebar').before(new_cardWindow);
           }
@@ -5763,10 +5829,10 @@ $fame_groove.css('background-color', 'red');
   
   // デッキ総合
   function deckCheck() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
     
@@ -5783,10 +5849,10 @@ $fame_groove.css('background-color', 'red');
     if($('#myselect').val() == '' || $('#myselect').val() == '0'){
       /* 43スレ 354修整 */
       //      $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
-// 2020.08.21 精鋭部隊の「部隊にセット」ボタンが有効になっていない不具合の対応 ここから
+// 2020.09.15 通常枠で精鋭部隊設置可能に ここから
 //      jQuery('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
       $('#select_village').val($('#sideboxBottom li.on').data('village_id')).change();
-// 2020.08.21 精鋭部隊の「部隊にセット」ボタンが有効になっていない不具合の対応 ここまで
+// 2020.09.15 通常枠で精鋭部隊設置可能に ここまで
     }
 
     // 選択中の配置拠点にアンダーライン
@@ -5865,23 +5931,23 @@ $fame_groove.css('background-color', 'red');
       $(this).empty();
     });
 
-// 2020.09.07 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様改善 ここから
+// 2020.09.15 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様対応 ここから
 // 強化版組分けボタンにプルダウンメニューpart37スレ364＆精鋭部隊種類変更対応
     $('li[class^="btn_category_06"]').on('contextmenu', function(e) {
-      e.preventDefault();
-      var html = '<div class="menu_list">' +
-      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(1);">攻撃</a>' +
-      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(2);">防御</a>' +
-      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(4);">加勢</a>' +
-      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(5);">強襲</a>' +
-      '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(0);">全部隊</a>' +
-      '</div>';
-      $(this).append(html);
-      $(this).find('div').slideDown('fast');
+    e.preventDefault();
+    var html = '<div class="menu_list">' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(1);">攻撃</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(2);">防御</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(4);">加勢</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(5);">強襲</a>' +
+    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(0);">全部隊</a>' +
+    '</div>';
+    $(this).append(html);
+    $(this).find('div').slideDown('fast');
     }).hover(null, function() {
-      $(this).empty();
+    $(this).empty();
     });
-// 2020.09.07 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様改善 ここまで
+// 2020.09.15 精鋭部隊プルダウンに右クリックで各部隊種に直接アクセスできる様対応 ここまで
 
     // フィルター設定右クリックで兵士編成へ
     $('li[class^="btn_setting_filter"]').on('contextmenu', function(e) {
@@ -5924,33 +5990,106 @@ $fame_groove.css('background-color', 'red');
       };
       return $(document).on('ajaxStop', sendIdnum);
     });
-// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここから
+
+// 2020.09.15 moko設定の「部隊戦力を表示する」にチェックしていた場合に本丸防御陣形デッキにも兵法表示する様対応 ここから
+//// 2020.09.15 本丸デッキの部隊を登録できる様対応 ここから
+//    elite_category();
+//
+//    function elite_category() {
+//      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+//        if ( !$('a.elite_category').length ) {
+//        $('td.home_defense_formation_data_btn_wrap a.unit_edit').each(function(){
+//        var add_elite = '' +
+//        '<a href="javascript:void(0);" class="elite_category" onclick="registElite(' +
+//        $(this).attr('data-unit_assign_id') + ')">精鋭登録</a>';
+//      
+//        $(this).before(add_elite);
+//        $('td.home_defense_formation_data_btn_wrap')
+//        .find('a.elite_category').css({'float': 'left', 'margin': '9px 0px 0px 12px'});
+//        });
+//      }
+//
+//// 2020.09.15 本丸デッキの部隊を登録できる様対応 ここから
+////        $('body').on('mousedown', '#deck_bg div.bg_yellow a', function() {
+//        $('body').on('dragend', '#deck_bg div.home_defense_formation_card_space_target a', function() {
+//// 2020.09.15 本丸デッキの部隊を登録できる様対応 ここまで
+//        var draw = function() {
+//        elite_category();
+//        return $(document).off('ajaxStop', draw);
+//        };
+//        return $(document).on('ajaxStop', draw);
+//        });
+//      }
+//    }
+//// 2020.09.15 本丸デッキの部隊を登録できる様対応 ここまで
     elite_category();
-    function elite_category() {
-      if ( location.pathname == '/card/defense_formation_deck.php' ) {
-      if ( !$('a.elite_category').length ) {
-      $('td.home_defense_formation_data_btn_wrap a.unit_edit').each(function(){
-      var add_elite = '' +
-      '<a href="javascript:void(0);" class="elite_category" onclick="registElite(' +
-      $(this).attr('data-unit_assign_id') + ')">精鋭登録</a>';
-      
-      $(this).before(add_elite);
-      $('td.home_defense_formation_data_btn_wrap')
-      .find('a.elite_category').css({'float': 'left', 'margin': '9px 0px 0px 12px'});
-      });
-      }
-      
-      $('body').on('mousedown', '#deck_bg div.bg_yellow a', function() {
-      var draw = function() {
-      elite_category();
-      return $(document).off('ajaxStop', draw);
-      };
-      return $(document).on('ajaxStop', draw);
-      });
-      }
-      }
-// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここまで
   }
+
+  function elite_category() {
+    if ( location.pathname == '/card/defense_formation_deck.php' ) {
+    if ( !$('#breakup_all_command').length ) { return; }
+    
+    var $deck = $('#deck_bg');
+    if ( !$deck.find('a.elite_category').length ) {
+    $deck.find('td.home_defense_formation_data_btn_wrap a.unit_edit').each(function(){
+    var add_elite = '' +
+    '<a href="javascript:void(0);" class="elite_category" onclick="registElite(' +
+// 2020.09.15 テキストの「精鋭登録」をイメージボタンに変更する対応 ここから
+//    $(this).attr('data-unit_assign_id') + ')">精鋭登録</a>';
+    $(this).attr('data-unit_assign_id') + ')"><img src="../img/deck/elite/add_elite.png" alt="精鋭登録" style="width:77px;height:27px;"></a>';
+    $(this).before(add_elite);
+// 2020.09.15 テキストの「精鋭登録」をイメージボタンに変更する対応 ここまで
+    
+    $(this).before(add_elite);
+// 2020.09.15 テキストの「精鋭登録」をイメージボタンに変更する対応 ここから
+//    $deck.find('td.home_defense_formation_data_btn_wrap')
+//    .find('a.elite_category').css({'float': 'left', 'margin': '9px 0px 0px 12px'});
+// 2020.09.15 テキストの「精鋭登録」をイメージボタンに変更する対応 ここまで
+    });
+    }
+    
+    $('body').on('dragend', '#deck_bg div.home_defense_formation_card_space_target a', function() {
+    var draw = function() {
+    elite_category();
+    return $(document).off('ajaxStop', draw);
+    };
+    return $(document).on('ajaxStop', draw);
+    });
+    
+    //兵士編成・本丸防御陣形リンク
+    if ( !$deck.find('img[alt="兵編成"]').length ) {
+    $deck.find('div.deck_btns').prepend(
+    '<a href="/facility/set_unit_list.php?ano=9">' +
+    '<img src="../img/deck/elite/btn_soldier_edit.png" alt="兵編成"></a>');
+    }
+    
+    if ( !options.troops_strength_display ) { return; }
+    
+    //本丸防御陣形デッキの兵法表示
+    var $div = $deck.find('div.home_defense_formation_line_wrap');
+    if ( $div.find('span.deck_info_out').length ) { return; }
+    
+    $div.each( function() {
+    if ( $(this).find('img[alt="解散"]').length ) {
+    var data_list = [], tactics = 0;
+    
+    $(this).find('div.ig_deck_smallcardimage').each(function(){
+    var card_id = $(this).attr('data-card_id');
+    var target = $('#NewcardWindow_' + card_id),
+    data = get_card_data( target );
+    data_list.push( data );
+    });
+    
+    tactics = tactics_calculation(data_list).toFixed(1);
+    var $td = $(this).find('table.home_defense_formation_data_table').find('tr:eq(1) td');
+    $td.append('<span class="deck_info_out">' +
+    '<span class="deck_info_in" style="padding:4px 10px 3px 11px;">兵法</span>+'
+    + tactics + '%</span>');
+    }
+    });
+    }
+    }
+// 2020.09.15 moko設定の「部隊戦力を表示する」にチェックしていた場合に本丸防御陣形デッキにも兵法表示する様対応 ここまで
 
   function getUnitAtt() {
     return parseFloat($('#deck_info_tbl td').eq(4).text().replace(/,/g, '').match(/\d+/g) || ['0']);
@@ -5962,10 +6101,10 @@ $fame_groove.css('background-color', 'red');
   
   // スクロールダウンメニュー
   function deck_fix_menu() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
 
@@ -5986,13 +6125,12 @@ $fame_groove.css('background-color', 'red');
     var dack_cost = get_deck_cost($('#box')),
       deck_unit = get_deck_unit($('#box')),
       now_deck = $('li.now').text();
-
-// 2020.09.074 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     if ( location.pathname == '/card/defense_formation_deck.php' ) {
       $base = '本丸防御陣形';
       now_deck = 'デッキ選択なし';
     }
-// 2020.09.074 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
 
     var DeckFix = $('<div id="deck_fixmenu">' +
       '<div id="fixmenu_top">' +
@@ -6260,20 +6398,20 @@ $fame_groove.css('background-color', 'red');
       }
     }
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
-// // 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-// //    if (location.pathname == '/card/deck.php') {
-//     if (location.pathname == '/card/deck.php' || location.pathname == '/card/deck_card_delete.php') {
-// // 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
-//       var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
-      if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-        if (location.pathname == '/card/deck.php') {
-          var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
-        } else {
-          var exclusion_flag = $this.find('img[alt="兵編成"]').length || $this.find('img[alt="本丸防御陣形へ"]').length;
-        }
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで      
-
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
+//// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+////    if (location.pathname == '/card/deck.php') {
+//    if (location.pathname == '/card/deck.php' || location.pathname == '/card/deck_card_delete.php') {
+//// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
+//      var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
+    if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
+      if (location.pathname == '/card/deck.php') {
+        var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
+      } else {
+        var exclusion_flag = $this.find('img[alt="兵編成"]').length || $this.find('img[alt="本丸防御陣形へ"]').length;
+      }
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
+      
       // 出品中カードを暗色表示
       if (!exclusion_flag) {
         $this.addClass('exclusion');
@@ -6309,10 +6447,10 @@ $fame_groove.css('background-color', 'red');
       name = 'six_col';
     }
     $deck_file.addClass('width_mod ' + name);
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       $('div.ig_decksection_top').remove();
     }
     if (location.pathname == '/union/remove.php') {
@@ -6324,11 +6462,11 @@ $fame_groove.css('background-color', 'red');
   
   // 待機武将一覧 兵1/定数/最大 補充
   function deck_quick_set() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' &&
       location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
 
@@ -6493,7 +6631,13 @@ $fame_groove.css('background-color', 'red');
     $('body').on({
       'mouseenter': create_box,
       'mouseleave': remove_box
-    }, 'div.ig_deck_smallcardimage');
+// 2020.09.15 本丸防御陣形デッキのエラーの修正 ここから
+//// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+////    }, 'div.ig_deck_smallcardimage');
+//    }, '#deck_file div.ig_deck_smallcardimage');
+    }, '#deck_file div.ig_deck_smallcardimage');
+//// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
+// 2020.09.15 本丸防御陣形デッキのエラーの修正 ここまで
   }
   
   // 合成カード チェック (onload)
@@ -6740,11 +6884,11 @@ $fame_groove.css('background-color', 'red');
       },
       html;
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //      if (location.pathname == '/card/deck.php' &&
       if ((location.pathname == '/card/deck.php' ||
         location.pathname == '/card/defense_formation_deck.php') &&
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
         !$cardWindow.find('#tb_one_set_link_' + cid).length) {
         var $table = $cardWindow.find('#table_posi');
 
@@ -7044,10 +7188,10 @@ $fame_groove.css('background-color', 'red');
       $('#elite_bulk_set').click(elite_bulk);
     });
 
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
 
@@ -7135,7 +7279,7 @@ $fame_groove.css('background-color', 'red');
   
   // 精鋭部隊 一括配置 データ送信
   function bulk_elite_set(san, svi) {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     if ( location.pathname == '/card/defense_formation_deck.php' ) {
       var href = '/card/defense_formation_deck.php';
       var url = href;
@@ -7143,12 +7287,12 @@ $fame_groove.css('background-color', 'red');
       var href = '/card/deck.php';
       var url = href + '?ano=' + (san - 1) + '&select_card_group=6';
     }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
     if (!$('div.elite_selected').length) {
       Info.log('-----');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //      var url = '/card/deck.php?ano=' + (san - 1) + '&select_card_group=6';
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return Info.title('完了', url);
     }
     var target = $('div.elite_selected').eq(0),
@@ -7177,10 +7321,10 @@ $fame_groove.css('background-color', 'red');
     Info.log('[' + unit_name + ']部隊を登録中...');
     $.ajax({
       type: 'post',
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //      url: '/card/deck.php',
       url: href,
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       data: data,
       beforeSend: xrwStatusText,
     }).then(function(html) {
@@ -7192,29 +7336,29 @@ $fame_groove.css('background-color', 'red');
   
   // 精鋭部隊 一括配置
   function bulk_elite_check() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
     $('#placement').replaceWith('<li id="elite_placement">選択部隊を一括配置</li>');
     $('#fixmenu_top li').slice(3).remove();
     $('#unit_filter_menu').css('visibility', 'hidden');
     $('#captain').remove();
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     if ( location.pathname == '/card/defense_formation_deck.php' ) {
       var select_assign_no = 9,
       deck_status = get_deck_status( $('#deck_bg'), select_assign_no ),
       deck_cost = get_deck_cost( $('#deck_bg') );
     } else {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
     var select_assign_no = $('#select_assign_no').val(),
       deck_status = get_deck_status($('#box'), select_assign_no),
       deck_cost = get_deck_cost($('#box'));
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
     $('div[id^="elite_info_action_area_"]').on('click', function(e) {
       var $parent = $(this).parent(),
         img_off = $(this).find('img[src$="set_elite_off.png"]'),
@@ -7564,22 +7708,22 @@ $fame_groove.css('background-color', 'red');
     }
 
     var array = [],
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //      target = (location.pathname == '/card/deck.php') ?
-//      $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
+//            $('#ig_deck_smallcardarea_out') : $('#busho_info > TBODY');
       target = (location.pathname == '/card/deck.php' ||
       location.pathname == '/card/defense_formation_deck.php') ?
-      $('#ig_deck_smallcardarea_out') : $('table.busho_info > TBODY');
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+        $('#ig_deck_smallcardarea_out') : $('table.busho_info > TBODY');
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
 
     $('DIV[id^="cardWindow_"]').each(function(idx) {
       var cid = $(this).attr('id').match(/\d+/g)[0],
         data = get_card_data($(this)),
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //        elements = (location.pathname == '/card/deck.php') ?
         elements = (location.pathname == '/card/deck.php' ||
-        location.pathname == '/card/defense_formation_deck.php') ?
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+          location.pathname == '/card/defense_formation_deck.php') ?
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
               $('#unit_group_type_' + cid).closest('DIV.ig_deck_smallcardarea'):
               $('#unit_group_type_' + cid).closest('TR.tr_gradient');
       var value;
@@ -7623,11 +7767,11 @@ $fame_groove.css('background-color', 'red');
   },
   seekOffsetTop = function() {
     var top;
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' ||
       location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       top = $('#deck_file').find('#ig_decksection3').offset().top - $('#deck_fixmenu').outerHeight();
     } else {
       top = $('#frame_01_top').offset().top;
@@ -7676,11 +7820,11 @@ $fame_groove.css('background-color', 'red');
       $li.children('DIV').hide();
       if ($ul.attr('id') == 'mk_sort_menu') {
         return cardSortOrder(true);
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //      } else if (location.pathname == '/card/deck.php') {
       } else if (location.pathname == '/card/deck.php' ||
-      location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+        location.pathname == '/card/defense_formation_deck.php') {
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
         return deckCategoryFilter(getActive());
       } else {
         return setUnitCategoryFilter(getActive());
@@ -7688,11 +7832,11 @@ $fame_groove.css('background-color', 'red');
     });
 
     $('BODY').on('click', 'SPAN.menu', function() {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //      if (location.pathname == '/card/deck.php') {
       if (location.pathname == '/card/deck.php' ||
         location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
         return scrollView(seekOffsetTop());
       } else {
         if ($(window).scrollTop() > $('#bar_card').offset().top + 7) {
@@ -7914,10 +8058,10 @@ $fame_groove.css('background-color', 'red');
   
   // 待機武将一覧 フィルターlayout
   function deckCardFilter() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
     installMenulist();
@@ -8000,10 +8144,8 @@ $fame_groove.css('background-color', 'red');
           command = data.num,
           cname = data.name,
           ccost = data.cost;
-// 2020.08.23 全部隊配置の微修正('童'のカードをセットしない様対応) ここから
-//        if (command === 0 || unit_flg === '0' || ccost === 0) {
-        if (command === 0 || unit_flg === '0' || data.rare === '童' || data.no === '3720') {
-// 2020.08.23 全部隊配置の微修正('童'のカードをセットしない様対応) ここまで
+            // if (command === 0 || unit_flg === '0' || ccost === 0) {
+            if (command === 0 || unit_flg === '0') {
           return true;
         } else {
           for (var i = 0, len = name_list.length; i < len; i++) {
@@ -8012,13 +8154,14 @@ $fame_groove.css('background-color', 'red');
             }
           }
           if ((deck_cost.free - t_cost) >= ccost && tnum > 0) {
-// 2020.08.21 全部隊配置の修正 ここから
+// 2020.09.15 全部隊配置の不具合修正 ここから
 //            var array = sQuotesMatch($(this).attr('onClick'));
 //            var set_assign_id = array[0];
 //            var set_card_id = array[1];
-            var set_assign_id = $img.length ? sQuotesMatch( $img.parent().attr('onClick') )[0] : '';
+            var set_assign_id = "";
             var set_card_id = $(this).data("card_id");
-// 2020.08.21 全部隊配置の修正 ここまで
+            var set_assign_id = $img.length ? sQuotesMatch( $img.parent().attr('onClick') )[0] : '';
+// 2020.09.15 全部隊配置の不具合修正 ここまで
             list.push({
               vid: vid,
               sid: set_assign_id,
@@ -8135,9 +8278,6 @@ $fame_groove.css('background-color', 'red');
           type: 'post',
           url: '/card/deck.php',
           data: data,
-// 2020.08.31 部隊配置失敗の不具合の修正 ここから
-//          async: false,
-// 2020.08.31 部隊配置失敗の不具合の修正 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           remain--;
@@ -8430,20 +8570,20 @@ $fame_groove.css('background-color', 'red');
     $('#moko_info_dialog_content').empty();
     Info.log('[' + param.cname + ']を登録中...');
 
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
     if ( location.pathname == '/card/defense_formation_deck.php' ) {
       var href = '/card/defense_formation_deck.php';
     } else {
       var href = '/card/deck.php?ano=' + start;
     }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
 
     $.ajax({
       type: 'post',
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //      url: '/card/deck.php',
       url: href,
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       data: data,
       beforeSend: xrwStatusText,
     })
@@ -8453,21 +8593,21 @@ $fame_groove.css('background-color', 'red');
         deck_status = get_deck_status($html, start),
         $img = $html.find('img[alt="解散"]'),
         url;
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-        if ( location.pathname == '/card/defense_formation_deck.php' ) {
-           $img = $html.find('img[alt="解散"]').eq(start);
-        }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
-        if ($img.length) {
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        $img = $html.find('img[alt="解散"]').eq(start);
+      }
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
+      if ($img.length) {
         Info.count((deck_cost.count ? deck_cost.now + '/' + deck_cost.max + '　' : '') + deck_status.use + '部隊');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //        var assign = $img.parent().attr('onClick').match(/\d+/g)[0];
         if ( location.pathname == '/card/defense_formation_deck.php' ) {
           var assign = $img.parent().attr('data-unit_assign_id');
         } else {
           var assign = $img.parent().attr('onClick').match(/\d+/g)[0];
         }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
         if (list.length) {
           return platoonRegistration(type, list, start, assign, scg, page, t_cost);
         } else {
@@ -8486,14 +8626,14 @@ $fame_groove.css('background-color', 'red');
             
             // 一括配置の処理
             var san = $('#select_assign_no').val();
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //            url = '/card/deck.php?ano=' + san + '&select_card_group=' + scg;
             if ( location.pathname == '/card/defense_formation_deck.php' ) {
               url = '/card/defense_formation_deck.php';
             } else {
               url = '/card/deck.php?ano=' + san + '&select_card_group=' + scg;
             }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
             return Info.title('完了', url);
           }
         }
@@ -8536,15 +8676,15 @@ $fame_groove.css('background-color', 'red');
       post_query = function(data) {
         $.ajax({
           type: 'post',
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //          url: '/card/deck.php',
           url: href,
           async: async_flag,
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
           data: data,
-// 2020.08.31 部隊配置失敗の不具合の修正 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //          async: false,
-// 2020.08.31 部隊配置失敗の不具合の修正 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
           var $html = $(html).find('#ig_deckbox'),
@@ -8553,19 +8693,17 @@ $fame_groove.css('background-color', 'red');
           Info.count((deck_cost.count ? deck_cost.now + '/' + deck_cost.max + '　' : '') + deck_status.use + '部隊');
           remain--;
           if (remain === 0) {
-// 2020.08.21 全部隊配置の修正 ここから
+// 2020.09.15 全部隊配置の不具合対応 ここから
 //            var $parameta = $($html).find('div[id^="ig_deck_subcardarea_out"] div.parameta_area');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
-// 2020.08.21 全部隊配置の修正 ここまで
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-          if ( location.pathname == '/card/defense_formation_deck.php' ) {
-            var $parameta = $($html).find('div[id^="NewcardWindow_"] div.parameta_area');
-          } else {
-            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
-          }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+            if ( location.pathname == '/card/defense_formation_deck.php' ) {
+              var $parameta = $($html).find('div[id^="NewcardWindow_"] div.parameta_area');
+            } else {
+              var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
+            }
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
+// 2020.09.15 全部隊配置の不具合対応 ここまで
             if (list.length > $parameta.length) {
               var set = [],
                 card_name, failure,
@@ -8599,12 +8737,12 @@ $fame_groove.css('background-color', 'red');
         });
       };
 
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-    var async_flag = true;
-    if ( location.pathname == '/card/defense_formation_deck.php' && type == 'usually' ) {
-      async_flag = false;
-    }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+      var async_flag = true;
+      if ( location.pathname == '/card/defense_formation_deck.php' && type == 'usually' ) {
+        async_flag = false;
+      }
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
 
     for (var i = 0, len = list.length; i < len; i++) {
       var set_assign_id = assign || list[i].sid,
@@ -8615,23 +8753,23 @@ $fame_groove.css('background-color', 'red');
       data.p = page;
       data.select_card_group = scg;
       Info.log('[' + list[i].cname + ']を登録中...');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-    if ( location.pathname == '/card/defense_formation_deck.php' ) {
-       var href = '/card/defense_formation_deck.php';
-    } else {
-      var href = '/card/deck.php?ano=' + start;
-    }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+      if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        var href = '/card/defense_formation_deck.php';
+      } else {
+        var href = '/card/deck.php?ano=' + start;
+      }
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       post_query(data);
     }
   }
   
   // デッキ一括配置モード
   function platoonPlacement() {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname != '/card/deck.php') {
     if (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       return;
     }
 
@@ -8693,11 +8831,6 @@ $fame_groove.css('background-color', 'red');
       if ($('#captain').hasClass('mk_captain_mood')) {
       
       // 部隊長モードのチェック
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-      if ( location.pathname == '/card/defense_formation_deck.php' ) {
-        deck_unit = get_deck_unit( $html );
-      }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
         if (deck_unit.num === 0) {
           if ($(this).hasClass('mk_keep_captain')) {
             $(this).removeClass('mk_keep_captain');
@@ -8745,11 +8878,11 @@ $fame_groove.css('background-color', 'red');
       } else {
       
       // 通常部隊モードのチェック
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
         if ( location.pathname == '/card/defense_formation_deck.php' ) {
-        deck_unit = get_deck_unit( $html );
+          deck_unit = get_deck_unit( $html );
         }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
         if (deck_unit.num === 0) {
           if ($(this).hasClass('mk_keep_leader')) {
             $(this).removeClass('mk_keep_leader');
@@ -8908,14 +9041,14 @@ $fame_groove.css('background-color', 'red');
           
           // 追加配置の場合
           start_deck = select_assign_no;
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //          var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
           if ( location.pathname == '/card/defense_formation_deck.php' ) {
             var set_assign_id = '';
           } else {
             var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
           }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
           platoonRegistration('usually', list, start_deck, set_assign_id, select_card_group, page);
         }
 
@@ -8932,10 +9065,10 @@ $fame_groove.css('background-color', 'red');
     var post_query = function(data) {
       $.ajax({
         type: 'post',
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //        url: '/card/deck.php',
         url: href,
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
         data: data,
         beforeSend: xrwStatusText,
       }).then(function(html) {
@@ -8949,10 +9082,10 @@ $fame_groove.css('background-color', 'red');
           start_deck++;
         }
         if (count === 0) {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //          return Info.title('完了', '/card/deck.php?ano=' + (start_deck - 1) + '&select_card_group=' + select_card_group);
           return Info.title('完了', href + '?ano=' + (start_deck - 1) + '&select_card_group=' + select_card_group);
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
         }
       });
     };
@@ -8974,13 +9107,13 @@ $fame_groove.css('background-color', 'red');
         select_card_group: select_card_group
       };
       Info.log('[' + cname + ']を登録中...');
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
       if ( location.pathname == '/card/defense_formation_deck.php' ) {
         var href = '/card/defense_formation_deck.php';
       } else {
         var href = '/card/deck.php';
       }
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       post_query(data);
     }
   }
@@ -9913,11 +10046,11 @@ $fame_groove.css('background-color', 'red');
   
   // 次ページ追加モード
   function quickAddCard() {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (!options.pager_ajax || options.pager_ajax_mod !== '0' || location.pathname != '/card/deck.php') {
     if (!options.pager_ajax || options.pager_ajax_mod !== '0' ||
       (location.pathname != '/card/deck.php' && location.pathname != '/card/defense_formation_deck.php')) {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       return;
     }
     if (!$('ul.pager').length) {
@@ -9930,10 +10063,10 @@ $fame_groove.css('background-color', 'red');
       'span.add_now { background-color: #725E1E; color: lime; }'
     );
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       style('div.add_box { position: absolute; top: 9px; left: 50px; padding: 4px 12px; background-color: beige; }');
       $('div.maisuu').before('<div class="add_box" />');
     }
@@ -10020,11 +10153,11 @@ $fame_groove.css('background-color', 'red');
     var $common_box3 = $('#deck_file').find('div.common_box3');
     var data = getFormValue(page);
 
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' ||
       location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
       data.ano = data.select_assign_no;
       data.myselect = $('#myselect').val();
       delete data.select_assign_no;
@@ -10044,11 +10177,12 @@ $fame_groove.css('background-color', 'red');
       .then(function(html) {
         readNextPage.flag = true;
         var $html = $(html).find('#box');
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //        if (location.pathname == '/card/deck.php') {
         if (location.pathname == '/card/deck.php' ||
           location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
+
           var $cardWindow = $html.find('div[id^="cardWindow_"]');
           var $smallcardarea = $html.find('#ig_deck_smallcardarea_out > div.ig_deck_smallcardarea');
           $smallcardarea.each(smallcardarea_check);
@@ -10098,11 +10232,11 @@ $fame_groove.css('background-color', 'red');
         // 敵襲有り && デッキ画面 && 全武将を選択
         // ※自動で読み込みを停止
         // フィルター対象が最終ページにしか存在しないケースだと全ページを読み込むため
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここから
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
 //        if (location.pathname == '/card/deck.php' &&
         if ((location.pathname == '/card/deck.php' ||
           location.pathname == '/card/defense_formation_deck.php') &&
-// 2020.09.10 本丸防御陣形のインターフェースの改善 ここまで
+// 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
           $('#select_card_group').val() === '0' && STATE_ENEMY.length) {
           return;
         }
@@ -11233,43 +11367,25 @@ $fame_groove.css('background-color', 'red');
       $(this).empty();
     });
 
-// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここから
-// 強化版組分けボタンにプルダウンメニューpart37スレ364＆精鋭部隊種類変更対応
-    $('li[class^="btn_category_06"]').on('contextmenu', function(e) {
-    e.preventDefault();
-    var html = '<div class="menu_list">' +
-    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(1);">攻撃</a>' +
-    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(2);">防御</a>' +
-    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(4);">加勢</a>' +
-    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(5);">強襲</a>' +
-    '<a href="javascript:void(0);" class="move_link" onclick="changeEliteFilterTab(0);">全部隊</a>' +
-    '</div>';
-    $(this).append(html);
-    $(this).find('div').slideDown('fast');
-    }).hover(null, function() {
-    $(this).empty();
-    });
-// 2020.09.11 本丸防御陣形で、精鋭部隊プルダウンを右クリックする事で各部隊種に直接アクセスできる様対応 ここまで
-
     // 解散ボタンを追加
     var flag = $('#deck_file').find('img.iepngfix.mb5').length;
     if (flag == 2) {
       $('<a href="javascript:void(0);"><img src="/img/deck/box03_btn_breakup_w.png" alt="解散" style="margin: 0 0 5px 4px;" /></a>')
       .on('click', function() {
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここから
 //        var unitname = $('#busho_info').find('a.busho_name').eq(0).text();
         var unitname = $('table.busho_info').find('a.busho_name').eq(0).text();
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここまで
         if (!confirm('【' + unitname + '部隊】を解散させてよろしいですか？')) {
           return;
         }
         var data = {
           select_assign_no: $('#select_assign_no').val(),
-// 2020.09.03 兵士編成からの解散の不具合の修正 ここから
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここから
 //          unit_assign_id: $('#unit_assign_id').val(),
 //          unit_assign_id: $('#unit_assign_ids').val(),
           unit_assign_id: $('input[name="unit_assign_ids[]"]').val(),
-// 2020.09.03 兵士編成からの解散の不具合の修正 ここまで
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここまで
           unset_card_id: $('#card_id_arr_0').val(),
           change_unit_squad_id: '',
           p: '1',
@@ -11281,10 +11397,10 @@ $fame_groove.css('background-color', 'red');
           data: data,
           beforeSend: xrwStatusText,
         }).then(function(html) {
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここから
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここから
 //          var len = $('#frame_00_spacer div.clearfix').find('div[class^="tab_left_"]').length;
           var len = $('#frame_00_spacer').find('div.set_unit_tab').length;
-// 2020.08.21 兵士編成からの解散の不具合の修正 ここまで
+// 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここまで
           var idx = 1;
           if (len <= 2) {
             idx = 0;
@@ -11493,10 +11609,10 @@ $fame_groove.css('background-color', 'red');
     var select_set_num = $('#select_set_num').val();
     
     // 簡易編成行単位ループ
-// 2020.08.21 オートページャーの修正 ここから
+// 2020.09.15 兵士編成画面にて一括セット時に「該当するカードがありません」と表示される不具合の対応 ここから
 //    var $tr = $('#busho_info').find('tr.tr_gradient:visible').slice(1);
     var $tr = $('table.busho_info').find('tr.tr_gradient:visible').slice(1);
-// 2020.08.21 オートページャーの修正 ここまで
+// 2020.09.15 兵士編成画面にて一括セット時に「該当するカードがありません」と表示される不具合の対応 ここまで
     
     // 対象をフィルター
     // 兵数
@@ -11773,10 +11889,7 @@ $fame_groove.css('background-color', 'red');
         pool_unit[type] = parseInt($(this).text()); // 数値
       });
 
-// 2020.08.21 オートページャーの修正 ここから
-//      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
-      var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1),
-// 2020.08.21 オートページャーの修正 ここまで
+      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
       
       // 兵種変更の指揮兵数があれば全て0にする
       numReduction = function(keys) {
@@ -11883,14 +11996,14 @@ $fame_groove.css('background-color', 'red');
       return;
     }
     var html = '' +
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
 //      '<div id="soldierset">' +
 //        '<input id="same_kind" type="button" value="同兵種セット" />' +
 //        '<select id="constant">' +
       '<div class="soldierset">' +
-        '<input class="same_kind" type="button" value="同兵種セット" />' +
-        '<select class="constant">' +
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+      '<input class="same_kind" type="button" value="同兵種セット" />' +
+      '<select class="constant">' +
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
           '<option value>同兵数セット</option>' +
           '<option value="1">1</option>';
     for (var i = 0, len = CONSTANT_VALUE.length; i < len; i++) {
@@ -11902,27 +12015,30 @@ $fame_groove.css('background-color', 'red');
         '</select>' +
       '</div>';
 
-// 2020.08.21 部隊長と同兵種ボタンの復活 ここから
+// 2020.09.15 部隊長と同兵種ボタンが表示されない不具合の対応 ここから
 //      $('#busho_info').before(html);
       $('table.busho_info').before(html);
-// 2020.08.21 部隊長と同兵種ボタンの復活 ここまで
+// 2020.09.15 部隊長と同兵種ボタンが表示されない不具合の対応 ここまで
 
     // 部隊長と同兵種
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
 //    $('#same_kind').on('click', function () {
     $('.same_kind').on('click', function () {
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
       var value;
-      $('select[id^="unit_id_select_"]').each(function (i, el) {
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
+//      $('select[id^="unit_id_select_"]').each(function (i, el) {
+      $(this).closest('div.soldierset').next('table').find('select[id^="unit_id_select_"]').each(function (i, el) {
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
         i === 0 ? value = $(this).val() : $(this).val(value);
       });
     });
 
     // 同兵数セット
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
 //    $('#constant').on('change', function() {
     $('.constant').on('change', function() {
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
       var all_constant = function(data) {
           var ano = $('#select_assign_no').val(),
           c = data.length,
@@ -11945,15 +12061,14 @@ $fame_groove.css('background-color', 'red');
             post_query(data[i]);
           }
         },
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
-//        $card_id_arr = $('input[id^="card_id_arr_"]'),
-        $card_id_arr = $(this).closest('div.soldierset').next('table').find('input[id^="card_id_arr_"]'),
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
+        $card_id_arr = $('input[id^="card_id_arr_"]'),
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
         quantity = $(this).val(),
-// 2020.08.23 部隊長と同数の修正 ここから
+// 2020.09.15 部隊長と同数の修正 ここから
 //        c_num = $('#unit_cnt_text_0').val(),
         c_num = $card_id_arr.eq(0).closest('tr.tr_gradient').find('input[id^="unit_cnt_text_"]').val(),
-// 2020.08.23 部隊長と同数の修正 ここまで
+// 2020.09.15 部隊長と同数の修正 ここまで
         list = [],
         card_id, set_type, data, set_count;
       if (!quantity) {
@@ -11961,10 +12076,10 @@ $fame_groove.css('background-color', 'red');
       }
       for (var i = 0, len = $card_id_arr.length; i < len; i++) {
         card_id = $card_id_arr.eq(i).val();
-// 2020.09.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
 //        set_type = $('#unit_id_select_' + i).val();
         set_type = $card_id_arr.eq(i).closest('tr.tr_gradient').find('select[id^="unit_id_select_"]').val();
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
         data = get_card_data($('#cardWindow_' + card_id));
         if (quantity == 'captain') {
           set_count = c_num;
@@ -11984,15 +12099,15 @@ $fame_groove.css('background-color', 'red');
       }
       all_constant(list);
     });
-// 2020.09.04 本丸防御陣形で兵1を設定できる様対応 ここから
+// 2020.09.15 本丸防御陣形で兵1対応 ここから
     $('#deck_file').find('h3:eq(0)').before(
-      '<input id="constant_all" type="button" value="全武将を兵数１にする" />');
-      $('#constant_all').css({'margin': '8px 50px 0px 0px', 'float':'right'}).on('click', function() {
-        $('select.constant').each(function(){
-          $(this).find('option:eq(1)').attr('selected', true ).change();
-      });
-  });
-// 2020.09.04 本丸防御陣形で兵1を設定できる様対応 ここまで
+    '<input id="constant_all" type="button" value="全武将を兵数１にする" />');
+    $('#constant_all').css({'margin': '8px 50px 0px 0px', 'float':'right'}).on('click', function() {
+    $('select.constant').each(function(){
+    $(this).find('option:eq(1)').attr('selected', true ).change();
+    });
+    });
+// 2020.09.15 本丸防御陣形で兵1対応 ここまで
   }
   
   // 兵士編成 ページ読み込み
@@ -12019,16 +12134,16 @@ $fame_groove.css('background-color', 'red');
     })
     .then(function(html) {
       var $html = $(html).find('#box'),
-// 2020.08.21 兵士編成のオートページャーの不具合対応 ここから
+// 2020.09.15 兵士編成・カード表示を変更する・全表示モードのオートページャーが機能しない不具合の対応 ここから
 //        $tr = $html.find('#busho_info > tbody > tr.tr_gradient').slice(1),
         $tr = $html.find('table.busho_info > tbody > tr.tr_gradient').slice(1),
-// 2020.08.21 兵士編成のオートページャーの不具合対応 ここまで
+// 2020.09.15 兵士編成・カード表示を変更する・全表示モードのオートページャーが機能しない不具合の対応 ここまで
         $card = $html.children('div[id^="cardWindow"]');
       $tr.each(trGradientCheck);
-// 2020.08.21 兵士編成のオートページャーの不具合対応 ここから
+// 2020.09.15 兵士編成・カード表示を変更する・全表示モードのオートページャーが機能しない不具合の対応 ここから
 //      $('#busho_info > tbody').append($tr);
       $('table.busho_info > tbody').append($tr);
-// 2020.08.21 兵士編成のオートページャーの不具合対応 ここまで
+// 2020.09.15 兵士編成・カード表示を変更する・全表示モードのオートページャーが機能しない不具合の対応 ここまで
       $('#lump_sum').before($card);
       $tr = null;
       $card = null;
@@ -12580,10 +12695,7 @@ $fame_groove.css('background-color', 'red');
     };
     
     // 実行
-// 2020.08.21 オートページャーの修正 ここから
-//    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
-    var elem = $('table.busho_info').find('TR.tr_gradient').slice(1).hide(),
-// 2020.08.21 オートページャーの修正 ここまで
+    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
       text = $('#category_filter_menu').find('SPAN.now_branch').text(),
       type = $('#type_filter_menu').find('SPAN.now_branch').text();
 
@@ -12833,10 +12945,7 @@ $fame_groove.css('background-color', 'red');
     $('#grp_default_set').on('click', function() {
       var group = $('#grp_img').attr('group'),
         type = $('#grp_default').val();
-// 2020.08.21 オートページャーの修正 ここから
-//        $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
-        $('table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
-// 2020.08.21 オートページャーの修正 ここまで
+      $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
       });
@@ -13034,13 +13143,14 @@ $fame_groove.css('background-color', 'red');
     setUnitGroupsChange();
     unitListDefault();    // 基本兵種
     add_event_unit_set(); // 兵1・定数セット イベント
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 本丸防御陣形での表示ズレ不具合の対応 ここから
 //    var $busho_info = $('#busho_info');
+//    var $busho_info = $('table.busho_info');
     var $busho_info_array = $('table.busho_info');
 
     $busho_info_array.each(function(){
     let $busho_info = $(this);
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 本丸防御陣形での表示ズレ不具合の対応 ここまで
     
     // スペース用のTRを削除
     var notTR = $busho_info.find('tr:has(td.tb_space)');
@@ -13058,9 +13168,9 @@ $fame_groove.css('background-color', 'red');
     
     // loop
     $busho_info.find('tr.tr_gradient').slice(1).each(trGradientCheck);
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 本丸防御陣形での表示ズレ不具合の対応 ここから
     });
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで    
+// 本丸防御陣形での表示ズレ不具合の対応 ここまで
     // end
     setUnitGroupsFilter(); // グループフィルター
   }
@@ -14668,11 +14778,11 @@ $fame_groove.css('background-color', 'red');
 
       html += '<li class="moko_menu" id="deck_place_menu" style="display: none;">' +
                 '<a href="javascript:void(0);" class="moko_tree_menu">ここへ部隊を配置<span>&#9658;</span></a>' +
-// 2020.08.21 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように対応 ここから
+// 2020.09.15 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行ける ここから
 //                '<span class="' + menu_sub_class + '">';
                 '<span class="' + menu_sub_class + '">' +
                 '<a href="/card/defense_formation_deck.php">本丸防御陣形</a>';
-// 2020.08.21 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行けるように対応 ここまで
+// 2020.09.15 地図の拠点を右クリックして部隊の配置からも本丸防御陣形にも行ける ここまで
       var i, len;
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
         html += '<a href="javascript:void(0);" id="groups_' + GROUPS_MENU[i][0]+ '">' +  GROUPS_MENU[i][1]+ 'から配置</a>';
@@ -14852,6 +14962,17 @@ $fame_groove.css('background-color', 'red');
     
     // 出陣状況
     mapUnitStatus = function() {
+// 2020.09.15 攻撃の際、出陣状況への画面遷移対応 ここから
+      $('div.home_defense_formation').css('display', 'none');
+      $('div.txt_category').append(
+      '<label style="float: right; margin: 0px 40px 0px 0px;">' +
+      '<input type="checkbox" id="home_defense" style="vertical-align: bottom;" />' +
+      '本丸防御陣形表示</label>');
+
+      $('#home_defense').change( function() {
+      $('div.home_defense_formation').toggle();
+      });
+// 2020.09.15 攻撃の際、出陣状況への画面遷移対応 ここまで
       $('div.ig_fight_statusarea').each(function() {
         
         // 陣張り画像
@@ -15250,9 +15371,9 @@ $fame_groove.css('background-color', 'red');
     .on('click', 'img[alt="戻る"]', ajaxStopUpdate)
     .on('click', 'img[alt="ここへ部隊出陣"]', ajaxStopUpdate)
     .on('click', 'img[alt="この拠点に部隊を出陣"]', ajaxStopUpdate)
-// 2020.09.10 領地への全出陣ボタンの追加 ここから
+// 2020.09.15 領地への出陣で全出陣ボタンが消失する不具合の対応 ここから
     .on('click', 'img[alt="この拠点に攻撃出陣"]', ajaxStopUpdate)
-// 2020.09.10 領地への全出陣ボタンの追加 ここまで
+// 2020.09.15 領地への出陣で全出陣ボタンが消失する不具合の対応 ここまで
     .on('click', 'img[alt="この拠点に加勢出陣"]', ajaxStopUpdate)
     .on('change', 'select[name="select_village_id"]', ajaxStopUpdate)
     .on('click', 'img[alt="出陣！"]', addMapUnitStatus)
@@ -16419,17 +16540,17 @@ $fame_groove.css('background-color', 'red');
       }
       var href = (login_data.chapter < 20)
           ? '/' + $(this).attr('href')
-// 2020.08.21 内政パネル右クリック修正 ここから
+// 2020.09.15 内政パネル右クリック修正 ここから
 //          : '/' + $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim(),
-        : $(this).attr('href') ? '/' + $(this).attr('href') : '/' + $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim(),
-// 2020.08.21 内政パネル右クリック修正 ここまで
+          : $(this).attr('href') ? '/' + $(this).attr('href') : '/' + $(this).attr('onclick').toString().split(',')[7].replace(/'/g, "").trim(),
+// 2020.09.15 内政パネル右クリック修正 ここまで
         title = $(this).attr('title'),
         data = getFacilityStatus(href);
       return createTooltip(e, data, title, href);
     });
   }
-// 2020.08.21 内政の19章化 ここから
-  // 内政 操作方法
+// 2020.09.15 内政の19章化 ここから
+// 内政 操作方法
   function operationMethod() {
     if (!options.operation_method_19 || location.pathname != '/village.php') {
       return;
@@ -16440,9 +16561,8 @@ $fame_groove.css('background-color', 'red');
     .removeAttr('onclick');
     });
   }
-// 2020.08.21 内政の19章化 ここまで
-
 // ^ 内政
+// 2020.09.15 内政の19章化 ここまで
 
 // === 施設 ===
   
@@ -16496,12 +16616,12 @@ $fame_groove.css('background-color', 'red');
     for (vid in facilitys) {
       for (key in facilitys[vid]) {
         if (key == '市') {
-// 2020.08.31 最後に建てた所領の市情報が使われていた不具合の再修正 ここから
+// 2020.09.15 最後に建てた所領の市情報が使われていた不具合の修正 ここから
 //          obj = facilitys[vid][key];
           let obj_lv = (obj.lv === undefined) ? 0 : obj.lv;
           let facility_lv = facilitys[vid][key].lv;
           obj = (obj_lv < facility_lv) ? facilitys[vid][key] : obj;
-// 2020.08.31 最後に建てた所領の市情報が使われていた不具合の再修正 ここまで
+// 2020.09.15 最後に建てた所領の市情報が使われていた不具合の修正 ここまで
           break;
         }
       }
@@ -17901,10 +18021,10 @@ $fame_groove.css('background-color', 'red');
       average = [];
       for (var i = 0, len = kind.length; i < len; i++) {
         need[i] = parseInt(need[i]);
-// 2020.09.01 市を使って建築する際に在庫が取れていない不具合の修正 ここから
+// 2020.09.15 市を使って建築するのに在庫が取れてなかった ここから
 //        stock[i] = parseInt($('#' + kind[i]).text());
         stock[i] = parseInt($('#' + kind[i]).text().replace(/,/g, ''));
-// 2020.09.01 市を使って建築する際に在庫が取れていない不具合の修正 ここまで
+// 2020.09.15 市を使って建築するのに在庫が取れてなかった ここまで
         average[i] = parseInt($('#output_' + kind[i]).text());
       }
       syushi.need = need;
@@ -17951,11 +18071,11 @@ $fame_groove.css('background-color', 'red');
       var $div = $(this).find('tr').eq(0).find('td div[class^="icon_"]');
       $div.each(function(idx) {
         var need = parseInt($(this).text().match(/\d+/)[0], 10);
-// 2020.09.01 施設の資源が足りていても文字がライム色にならない不具合の修正 ここから
+// 2020.09.15 施設の次のレベルまでの資源が足りていても文字が緑色にならない不具合の対応 ここから
 //        var stock = parseInt($('#status_left').find('span.normal').eq(idx).text(), 10);
         if (idx == 0) {
           var stock = parseInt($('#status_left').find('#wood').text().replace(/,/g, ''),10);
-        }
+          }
         if (idx == 1) {
           var stock = parseInt($('#status_left').find('#stone').text().replace(/,/g, ''),10);
         }
@@ -17968,7 +18088,7 @@ $fame_groove.css('background-color', 'red');
         if (need <= stock) {
           $(this).css('color', 'lime');
         }
-// 2020.09.01 施設の資源が足りていても文字がライム色にならない不具合の修正 ここまで
+// 2020.09.15 施設の次のレベルまでの資源が足りていても文字が緑色にならない不具合の対応 ここまで
         if (need <= stock) {
           $(this).css('color', 'lime');
         }
@@ -17985,6 +18105,17 @@ $fame_groove.css('background-color', 'red');
     if (location.pathname != '/facility/unit_status.php') {
       return;
     }
+// 2020.09.15 出陣状況の部隊表示で、通常部隊を最上位に表示する様対応 ここから
+    $('div.home_defense_formation').css('display', 'none');
+    $('div.ig_decksection_top').append(
+    '<label style="float: right; margin: 4px 40px 0px 0px;">' +
+    '<input type="checkbox" id="home_defense" style="vertical-align: bottom;" />' +
+    '本丸防御陣形表示</label>');
+
+    $('#home_defense').change( function() {
+    $('div.home_defense_formation').toggle();
+    });
+// 2020.09.15 出陣状況の部隊表示で、通常部隊を最上位に表示する様対応 ここまで
     $('table.table_fightlist').each(function() {
       
       // 陣張り画像に変更
@@ -18216,13 +18347,13 @@ $fame_groove.css('background-color', 'red');
       login_data.time = new_time;
       setStorage('ixamoko_login_data', login_data);
     });
-// 2020.09.10 報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここから
+// 2020.09.15 城主切替ボタンの他に、報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここから
     $('.btn_alert').on('click', function() {
       var new_time = ~~(new Date() / 1000);
       login_data.time = new_time;
       setStorage('ixamoko_login_data', login_data);
     });
-// 2020.09.10 報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここまで
+// 2020.09.15 城主切替ボタンの他に、報告書・書状ボタンクリックでもタイムアウトまでの時間をリセット可能にできる様対応 ここまで
   }
   
   // 城主プロフィール
@@ -20240,12 +20371,12 @@ $fame_groove.css('background-color', 'red');
     
     /* 43スレ200修正 */
     var $lottery = $('input[value="戦国くじ【白】を引く"]');
-// 2020.08.21 白くじn枚引き完了のお知らせ音を追加 ここから
+// 2020.09.15 白くじn枚引き完了のお知らせ音対応 ここから
 //    var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, *'(.*)'\)/)[1];
 //    if(alertString === undefined || alertString.length === 0) {
-      var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, '(.*)'\)/);
-      if(Array.isArray(alertString) && alertString[1].length === 0){
-// 2020.08.21 白くじn枚引き完了のお知らせ音を追加 ここまで
+    var alertString = $lottery[0].outerHTML.match(/confirmSengokuKuji\(.+?, '(.*)'\)/);
+    if(Array.isArray(alertString) && alertString[1].length === 0){
+// 2020.09.15 白くじn枚引き完了のお知らせ音対応 ここまで
       $lottery.parents('form').on('submit', function(e){
         return false;
       });
@@ -21228,10 +21359,10 @@ $fame_groove.css('background-color', 'red');
 
     var target = null,
       select_card_group = $('#select_card_group').val();
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //    if (location.pathname == '/card/deck.php') {
     if (location.pathname == '/card/deck.php' || location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
       if (select_card_group != 6) {
         target = $('div.ig_deck_smallcardarea');
       } else {
@@ -21288,18 +21419,15 @@ $fame_groove.css('background-color', 'red');
     }
 
     if (location.pathname == '/card/deck.php' || location.pathname == '/facility/set_unit_list.php' ||
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
-        location.pathname == '/card/defense_formation_deck.php' ||
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
+      location.pathname == '/card/defense_formation_deck.php' ||
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
         location.pathname == '/union/levelup.php' || location.pathname == '/union/additional.php' || location.pathname == '/union/learn.php') {
       if (reality.indexOf('bake') != -1) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
         $tooltip.append(toolMenu);
       } else {
-// 2020.08.21 オートページャーの修正 ここから
-//        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
-        var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1);
-// 2020.08.21 オートページャーの修正 ここまで
+        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
         if (target.hasClass('deck_leader')) {
           var select_base = '',
             base_list = '';
@@ -21338,11 +21466,11 @@ $fame_groove.css('background-color', 'red');
           var $area;
           if (location.pathname == '/facility/set_unit_list.php') {
             $area = target.find('td').slice(1, 3);
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //          } else if (location.pathname == '/card/deck.php') {
           } else if (location.pathname == '/card/deck.php' ||
             location.pathname == '/card/defense_formation_deck.php') {
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
             if (select_card_group != 6) {
               $area = target.closest('div.ig_deck_smallcardarea').find('div.ig_deck_smallcardtitle');
             } else {
@@ -21403,9 +21531,9 @@ $fame_groove.css('background-color', 'red');
         }
 
         if (location.pathname == '/card/deck.php' || location.pathname == '/facility/set_unit_list.php' ||
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここから
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
             location.pathname == '/card/defense_formation_deck.php' ||
-// 2020.09.07 本丸防御の精鋭配置や待機武将ツールチップ等の表示 ここまで
+// 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
             location.pathname == '/union/levelup.php' || location.pathname == '/union/additional.php' || location.pathname == '/union/learn.php') {
 
           var conf_rankup = '/card/lead_info.php?cid=' + data.card_id + '&p=0&ano=0',
@@ -21904,11 +22032,10 @@ $fame_groove.css('background-color', 'red');
       if (!checked) {
         return $('#area_dummy span.grid_line').remove();
       } else {
-// 2020.09.04 19章～グリッドスケール再修正 ここから
+// 2020.09.15 19章～グリッドスケール修正 ここから
 //        var grid_scale = 28.5 * AM_MAGNI,
-//        var grid_scale = 35.5 * AM_MAGNI, // 19章～グリッドスケール修正
-        var grid_scale = 35 * AM_MAGNI, // 19章～グリッドスケール修正
-// 2020.09.04 19章～グリッドスケール再修正 ここまで
+        var grid_scale = 35 * AM_MAGNI,
+// 2020.09.15 19章～グリッドスケール修正 ここまで
         punctuation = Math.ceil(AM_SCALE / grid_scale),
         fraction = ((AM_SCALE - 1) / 2) % grid_scale,
         cssNum = 0,
@@ -21916,10 +22043,10 @@ $fame_groove.css('background-color', 'red');
         increment, borderC;
         for (var i = 0; i < punctuation; i++) {
           increment = (i === 0) ? fraction : grid_scale;
-// 2020.09.04 19章～グリッドスケール再修正 ここから
+// 2020.09.15 19章～グリッドスケールの修正 ここから
 //          borderC = (i === 5) ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.1)';
           borderC = (i === 6) ? 'rgba(0, 0, 0, 0.2)' : 'rgba(0, 0, 0, 0.1)';
-// 2020.09.04 19章～グリッドスケール再修正 ここまで
+// 2020.09.15 19章～グリッドスケールの修正 ここまで
           cssNum += increment;
           html += '<span class="grid_line" style="position:absolute; top:' + cssNum + 'px; width: ' + AM_SCALE + 'px; border-bottom: 1px solid ' + borderC + ';" />' +
           '<span class="grid_line" style="position:absolute; left:' + cssNum + 'px; height: ' + AM_SCALE + 'px; border-right: 1px solid ' + borderC + ';" />';
@@ -22560,18 +22687,18 @@ $fame_groove.css('background-color', 'red');
         $td, $img, type, num;
       for (var i = 0, len = $tr.length; i < len; i++) {
         $td = $tr.eq(i).find('td');
-// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここから
+// 2020.09.15 [兵士状況]ダイアログに訓練中の兵士数が反映されない不具合の対応 ここから
 //        $img = $td.eq(0).find('img');
         $img = $td.eq(1).find('img');
-// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここまで
+// 2020.09.15 [兵士状況]ダイアログに訓練中の兵士数が反映されない不具合の対応 ここまで
         if (!$img.length) {
           continue;
         }
         type = $img.attr('alt');
-// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここから
+// 2020.09.15 [兵士状況]ダイアログに訓練中の兵士数が反映されない不具合の対応 ここから
 //        num = parseInt($td.eq(1).text());
         num = parseInt($td.eq(2).text());
-// 2020.08.21 [兵士状況]ダイアログに訓練中の兵士数が反映されなかった不具合の修正 ここまで
+// 2020.09.15 [兵士状況]ダイアログに訓練中の兵士数が反映されない不具合の対応 ここまで
         for (var key in list) {
           if (key == type) {
             num += list[key];
@@ -23049,10 +23176,10 @@ $fame_groove.css('background-color', 'red');
     if (!dungeon_step) {
       return;
     }
-// 2020.08.21 Uキーバインドの修正 ここから
+// 2020.09.15 Uキーバインドの修正 ここから
 //    var free_deck = $('#ig_unitchoice')
     var free_deck = $('ul.unit_normal')
-// 2020.08.21 Uキーバインドの修正 ここまで
+// 2020.09.15 Uキーバインドの修正 ここまで
       .find('li:contains("[---新規部隊を作成---]")').length;
     if (free_deck != 6 && dungeon_step == 1) {
       setStorage('ixamoko_dungeon_step', 2);
@@ -23187,9 +23314,9 @@ $fame_groove.css('background-color', 'red');
   getFacilitys();               // village
   villageCheck();               // village
   facilityTool();               // village
-  // 2020.08.21 内政の19章化 ここから
+  // 2020.09.15 内政の19章化 ここから
   operationMethod();            // village
-  // 2020.08.21 内政の19章化 ここまで
+  // 2020.09.15 内政の19章化 ここまで
   hermes();                     // village && facility/facility
 
   facilityPaneLreverse();       // facility/facility
@@ -23444,19 +23571,16 @@ window.addEventListener('DOMContentLoaded', function() {
     'ul.side_make > li.last { margin-bottom: 3px !important; }' +
     
     /* 資源バー */
-// 2020.09.05 資源バーの改修 ここから
+// 2020.09.15 資源バーの改善 ここから
+//    '.raid_mode { background: url("data:image/png;base64,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") no-repeat 0 0 / 936px 50px !important; }' +
 //    '.raid_mode { background: url("data:image/png;base64,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") no-repeat 0 0 !important; }' +
-//    '.raid_mode { background: url("・・・") no-repeat 0 0 !important; }' +
     '#status.raid_mode {' +
-    'background: url("../img/common/resources_bar/border.png"),url("../img/common/resources_bar/border.png"),url("../img/common/resources_bar/decoration.png"),url("＜base64画像＞");' +
+    'background: url("../img/common/resources_bar/border.png"),url("../img/common/resources_bar/border.png"),url("../img/common/resources_bar/decoration.png"),url("data:image/png;base64,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");' +
     'background-repeat:repeat-x,repeat-x,no-repeat,repeat;' +
     'background-position: top center,bottom center,center center, center center;' +
     '}' +
-// 2020.09.05 資源バーの改修 ここまで
-// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここから
-//    '#status { height: 50px; }' +
-//    '#status_left ul li div.groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: #6B5C50; }' +
-// 2020.09.07 地図をドラッグするとモヤっとする症状の改善 ここまで
+// 2020.09.15 資源バーの改善 ここまで
+    '#status_left ul li div.groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: #6B5C50; }' +
     '#status_left span[id$="_advance"] { display: block; width: 0; height: 2px; background-color: cadetblue; }' +
     '#status_left ul li div#fame_groove { width: 100%; height: 2px; margin: 0; background-image: none; background-color: transparent; }' +
     
@@ -23714,20 +23838,20 @@ window.addEventListener('DOMContentLoaded', function() {
     'div.mk_category_04 { background: url("/img/deck/btn_category.png") no-repeat -30px -80px; }' +
     'div.mk_category_05 { background: url("/img/deck/btn_category.png") no-repeat -30px -100px; }' +
     '#normal_unit_state_head { width: 262px; }' + /* 43スレ:230>237修整 */
-// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここから
+// 2020.09.15 部隊編成画面での表示の改善 ここから
 //    '#record_favorites_troops { position: absolute; z-index: 100; width: 38px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; }' +
     '#record_favorites_troops { position: absolute; z-index: 100; width: 80px; margin-left: 0px; line-height: 1.5; font-size: 8px; font-weight: normal; margin-top: 0px; }' +
-// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここまで
+// 2020.09.15 部隊編成画面での表示の改善 ここまで
     '#new_troops_container { margin-bottom: 10px; }'+
     '#new_troops_container p { margin-top: 15px; font-size: 14px; font-weight: bold; }'+
     '#new_troops_container p span { margin-right: 1em; color: red; }'+
     'input[name="troops_save"] { margin-right: 10px; }'+
     'a[id^="favorites_id_"] { cursor: pointer; color: aqua; text-decoration: underline; line-height: inherit; }' +
     'a[id^="favorites_id_"]:hover { text-decoration: none; }' +
-// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここから
+// 2020.09.15 部隊編成画面での表示の改善 ここから
 //    '#deck_cost_add_btn_img { position: inherit; right: -40px; }' +
     '#deck_cost_add_btn_img { display: none; }' + /* デッキコスト課金ボタン隠す */
-// 2020.08.21 「お気に入り登録」の文字列の外観の改善 ここまで
+// 2020.09.15 部隊編成画面での表示の改善 ここまで
     
     /* 登録部隊配置 */
     '#moko_virtual_grouping { height: 20px; width: 721px; margin: 0 auto 7px; }' +
@@ -23882,10 +24006,11 @@ window.addEventListener('DOMContentLoaded', function() {
     'li[class^="movedeck_"]:hover { box-shadow: 0 2px 0px #8D7225; }' +
     
     /* 兵士詳細 */
-// 2020.09.01 レイアウトの調整(カード収容数の移動) ここから
+// 2020.09.15 兵士詳細の外観の修正 ここから
 //    '#soldier_details { position: absolute; top: 5px; right: 10px; z-index: 1; }' +
-    '#soldier_details { position: absolute; top: 10px; right: 600px; z-index: 1; }' +
-// 2020.09.01 レイアウトの調整(カード収容数の移動) ここまで
+//    '#soldier_details { position: absolute; top: 10px; right: 600px; z-index: 1; }' +
+    '#soldier_details { position: absolute; top: 1px; right: 500px; z-index: 1; }' +
+// 2020.09.15 兵士詳細の外観の修正 ここまで
     '#detail_view { cursor: pointer; width: 8em; text-align: center; line-height: 2.2; background: #F3F2DE; border: 1px solid #76601d; }' +
     '#detail_view:hover { background-color: #F9DEA1; }' +
     'div.sub_box { display: inline-block; padding-right: 10px; }' +
@@ -23913,12 +24038,12 @@ window.addEventListener('DOMContentLoaded', function() {
     '#unit_list_bar span#bar_grps_all:hover, img.bar_grps_img:hover { opacity: 1; }' +
     
     /* 兵セット */
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここから
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここから
 //    '#soldierset { float: right;margin: 4px 24px 0 0; }' +
 //    '#constant { width: 120px; margin: 0 10px 0 35px; }' +
     '.soldierset { float: right;margin: 4px 24px 0 0; }' +
     '.constant { width: 120px; margin: 0 10px 0 35px; }' +
-// 2020.08.21 兵士編成画面で本丸防御陣形を行った時の外観の修正 ここまで
+// 2020.09.15 本丸防御陣形の表示ズレの不具合の対応 ここまで
     
     /* 兵数表示(サイドボックス) */
     '#detail_table { background: #F3F2DE; font-size: inherit !important; }' +
@@ -24039,12 +24164,11 @@ window.addEventListener('DOMContentLoaded', function() {
     '#missive_keyword { width: 20em; }' +
   
   /* button */
-// 2020.09.01 レイアウトの調整 ここから
-//    '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
-//    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
     '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
+// 2020.09.15 ボタンの外観の修正 ここから
+//    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
     '#dech_button_box { position: absolute; top: 25px; left: 4px; }' +
-// 2020.09.01 レイアウトの調整 ここまで
+// 2020.09.15 ボタンの外観の修正 ここまで
     '#dech_button_box span { visibility: hidden; min-width: 110px; padding: 6px 0; margin-right: 10px; }' +
     '.moko_btn { cursor: pointer; text-align: center; font-size: 12px; font-family: Arial; font-weight: normal; border-radius: 3px; border:1px solid rgba(255, 255, 255, 0.9); text-decoration: none; display: inline-block; text-shadow: 0 0 4px dimgray; box-shadow:inset 0 0 1px 0 white, 0 0 3px rgba(0, 0, 0, 0.9); }' +
     '.btn_diss { color:white; background: linear-gradient(to bottom, #3c7b9f 5%, #28526b 100%); }' +
@@ -24172,15 +24296,15 @@ window.addEventListener('DOMContentLoaded', function() {
     '.ig_skill_desc { letter-spacing: -1px; }' +
     
     // 部隊編成初期メニュー消去
-// 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここから
-//    '#deck #ig_deckbackgroundmenu { display: none; }' +
-//    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
-// 2020.09.01 レイアウトの調整 ここから
-//    '#deck #ig_deckbackgroundmenu { position: absolute; top: -6px; right: 110px; width: initial; background: initial; }' +
+// 2020.09.15 部隊編成初期メニュー消去 ここから
+    // '#deck #ig_deckbackgroundmenu { display: none; }' +
+//    '#deck #ig_deckbackgroundmenu { position: absolute; top: 10px; right: 70px; width: initial; background: initial; }' +
     '#deck #ig_deckbackgroundmenu { position: absolute; top: -4px; right: 50px; width: initial; background: initial; }' +
-// 2020.09.01 レイアウトの調整 ここまで
+// 2020.09.15 部隊編成初期メニュー消去 ここまで
+// 2020.09.15 兵士編成から全員を最大補充出来る様対応 ここから
+//    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
     '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
-// 2020.08.31 兵士編成から全員を最大補充出来る様対応 ここまで
+// 2020.09.15 兵士編成から全員を最大補充出来る様対応 ここまで
     
     // 出陣時距離強調
     '.distance_long:before { content: "●"; font-size: 120%; text-decoration: none; color: #ff0000; margin-right: 5px; }' +

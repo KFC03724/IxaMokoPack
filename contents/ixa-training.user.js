@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaTraining
 // @description  戦国IXA用ツール 一括兵士訓練
-// @version      10.20.202008.1
+// @version      10.20.202009.1
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
@@ -859,24 +859,24 @@
             pool = $this.next().text().toInt();
           data.pool[type] = pool;
         });
-// 2020.09.02 一括兵士訓練で総合情報取得中に停止する不具合の対応 ここから
-//         $table.eq(1).find('.table_fightlist2').each(function () {
-          var $training_table = $html.find('h3:contains("訓練中の兵士")').closest('div.ig_fight_statusarea').find('.ig_fight_dotbox');
-          $training_table.find('.table_fightlist2').each(function () {
-// 2020.09.02 一括兵士訓練で総合情報取得中に停止する不具合の対応 ここまで
+// 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここから
+//        $table.eq(1).find('.table_fightlist2').each(function () {
+        var $training_table = $html.find('h3:contains("訓練中の兵士")').closest('div.ig_fight_statusarea').find('.ig_fight_dotbox');
+        $training_table.find('.table_fightlist2').each(function () {
+// 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここまで
           var $tr = $(this).find('TR'),
             name = $tr.first().find('A').text(),
             village = Util.getVillageByName(name);
           $tr.slice(1).each(function () {
             var $td = $(this).find('TD'),
-// 2020.08.21 一括兵士訓練の修正 ここから
+// 2020.09.15 一括兵士訓練ができない不具合の対応 ここから
 //              type = Soldier.getType($td.eq(0).find('IMG').attr('alt')),
 //              num = $td.eq(1).text().toInt(),
 //              finish = $td.eq(3).text().getTime();
               type = Soldier.getType($td.eq(1).find('IMG').attr('alt')),
               num = $td.eq(2).text().toInt(),
               finish = $td.eq(4).text().getTime();
-// 2020.08.21 一括兵士訓練の修正 ここまで
+// 2020.09.15 一括兵士訓練ができない不具合の対応 ここまで
             data.training.push({
               id: village.id,
               type: type,
