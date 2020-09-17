@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.13
+// @version      10.20.202009.14
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.13";
+  var VERSION_NAME = "ver 10.20.202009.14";
 
 // === Plugin ===
 
@@ -18112,17 +18112,6 @@ function MokoMain($) {
     if (location.pathname != '/facility/unit_status.php') {
       return;
     }
-// 2020.09.15 出陣状況の部隊表示で、通常部隊を最上位に表示する様対応 ここから
-    $('div.home_defense_formation').css('display', 'none');
-    $('div.ig_decksection_top').append(
-    '<label style="float: right; margin: 4px 40px 0px 0px;">' +
-    '<input type="checkbox" id="home_defense" style="vertical-align: bottom;" />' +
-    '本丸防御陣形表示</label>');
-
-    $('#home_defense').change( function() {
-    $('div.home_defense_formation').toggle();
-    });
-// 2020.09.15 出陣状況の部隊表示で、通常部隊を最上位に表示する様対応 ここまで
     $('table.table_fightlist').each(function() {
       
       // 陣張り画像に変更
