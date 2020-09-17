@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.12
+// @version      10.20.202009.13
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.12";
+  var VERSION_NAME = "ver 10.20.202009.13";
 
 // === Plugin ===
 
@@ -24121,7 +24121,12 @@ window.addEventListener('DOMContentLoaded', function() {
     '#enemyMenu div.view { cursor: pointer;  width: 120px; padding: 5px 2px; min-height: 16px; line-height: 1.5; font-size: 12px; font-weight: normal; }' +
     '#enemyMenu li { cursor: pointer; float: left; padding: 4px; width: 10em; min-height: 16px; font-size: 12px; border-bottom: 1px solid #8e7425; border-left: 1px solid #8e7425; border-right: 1px solid #8e7425; color: white; background: url(../img/glovalnavi/s5_bg_globalnavi_ul.png) repeat-y #000; text-decoration: none; line-height: 1.5em; }' +
     '#enemyMenu li:hover { background-position: 0 -30px; color: #E2E2E2; }' +
-  
+// 2020.09.18 出陣状況の部隊表示で通常部隊を最上位にする様対応 ここから
+    '#enemy_filter_replace { display: flex; flex-direction: column;}' +
+    '#enemy_filter_replace div.ig_fight_statusarea.home_defense_formation { order: 2; }' +
+    '#enemy_filter_replace div.ig_fight_statusarea { order: 1; }' +
+// 2020.09.18 出陣状況の部隊表示で通常部隊を最上位にする様対応 ここまで
+
   /* 出陣・秘境 */
     'span.mk_organize_link { float: right; white-space: nowrap; margin: 2px 10px 0 0; font-size: 12px; font-weight: normal; }' +
     'span.mk_organize_link a { font-weight: normal; }' +
