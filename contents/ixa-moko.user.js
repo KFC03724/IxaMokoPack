@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.15
+// @version      10.20.202009.16
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.15";
+  var VERSION_NAME = "ver 10.20.202009.16";
 
 // === Plugin ===
 
@@ -11408,6 +11408,9 @@ function MokoMain($) {
           type: 'post',
           url: '/card/deck.php',
           data: data,
+// 2020.09.20 兵士編成画面でのページャーの不具合対応 ここから
+          async: false,
+// 2020.09.20 兵士編成画面でのページャーの不具合対応 ここまで
           beforeSend: xrwStatusText,
         }).then(function(html) {
 // 2020.09.15 兵士編成から解散が機能しない不具合の対応 ここから
