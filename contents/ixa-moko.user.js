@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.15
+// @version      10.20.202009.16
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.15";
+  var VERSION_NAME = "ver 10.20.202009.16";
 
 // === Plugin ===
 
@@ -11902,7 +11902,10 @@ function MokoMain($) {
         pool_unit[type] = parseInt($(this).text()); // 数値
       });
 
-      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
+// 2020.09.20 オートページャー周りの不具合対応 ここから
+//      var $tr = $('#busho_info').find('tr.tr_gradient').slice(1),
+      var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1),
+// 2020.09.20 オートページャー周りの不具合対応 ここまで
       
       // 兵種変更の指揮兵数があれば全て0にする
       numReduction = function(keys) {
@@ -12708,7 +12711,10 @@ function MokoMain($) {
     };
     
     // 実行
-    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
+// 2020.09.20 オートページャー周りの不具合対応 ここから
+//    var elem = $('#busho_info').find('TR.tr_gradient').slice(1).hide(),
+    var elem = $('table.busho_info').find('TR.tr_gradient').slice(1).hide(),
+// 2020.09.20 オートページャー周りの不具合対応 ここまで
       text = $('#category_filter_menu').find('SPAN.now_branch').text(),
       type = $('#type_filter_menu').find('SPAN.now_branch').text();
 
@@ -12958,7 +12964,10 @@ function MokoMain($) {
     $('#grp_default_set').on('click', function() {
       var group = $('#grp_img').attr('group'),
         type = $('#grp_default').val();
-      $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+// 2020.09.20 オートページャー周りの不具合対応 ここから
+//      $('#busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+      $('table.busho_info').find('img[id^="ixamoko_grp_' + group + '_"]').each(function() {
+// 2020.09.20 オートページャー周りの不具合対応 ここまで
         $(this).closest('tr').find('select[id^="unit_default_select_"]').val(type);
         defaultUnitSet();
       });
@@ -21429,7 +21438,10 @@ function MokoMain($) {
         toolMenu += '<li id="special_synthetic">特殊合成</li>';
         $tooltip.append(toolMenu);
       } else {
-        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
+// 2020.09.20 オートページャー周りの不具合対応 ここから
+//        var $tr = $('#busho_info').find('tr.tr_gradient').slice(1);
+        var $tr = $('table.busho_info').find('tr.tr_gradient').slice(1);
+// 2020.09.20 オートページャー周りの不具合対応 ここまで
         if (target.hasClass('deck_leader')) {
           var select_base = '',
             base_list = '';
