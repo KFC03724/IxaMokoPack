@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "IxaMoko",
   "author": "hoge",
-  "version": "10.20.202009.14",
+  "version": "10.20.202009.15",
   "description": "Tool of Sengoku-ixa",
 
   "content_scripts": [
@@ -29,7 +29,11 @@
        ],
       "js": [
         "contents/ixa-moko.user.js",
-        "contents/ixa-training.user.js"
+// 2020.09.20 本丸防御陣形の配備状況を表示する様対応 ここから
+//        "contents/ixa-training.user.js"
+        "contents/ixa-training.user.js",
+        "userscript/defense_formation_info.js"
+// 2020.09.20 本丸防御陣形の配備状況を表示する様対応 ここまで
       ],
       "css": [
         "css/main.css"
