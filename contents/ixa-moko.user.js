@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.16
+// @version      10.20.202009.17
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.16";
+  var VERSION_NAME = "ver 10.20.202009.17";
 
 // === Plugin ===
 
@@ -22653,20 +22653,34 @@ function MokoMain($) {
       $th = $table.find('th');
       $th.eq(3).width('60px');
       $th.eq(4).html('<span>訓練中</span>').width('60px');
-      $th.eq(5).attr('colspan', '2').html('<span>兵セット</span>');
-      $th.eq(6).remove();
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+//      $th.eq(5).attr('colspan', '2').html('<span>兵セット</span>');
+//      $th.eq(6).remove();
+//      $th.eq(7).remove();
+//      $th.eq(8).html('<span>陣屋</span>');
+      $th.eq(5).html('<span>治療中</span>').width('60px');
+      $th.eq(6).attr('colspan', '2').html('<span>兵セット</span>');
       $th.eq(7).remove();
       $th.eq(8).html('<span>陣屋</span>');
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
       $table.find('tr').each(function() {
         var $td_left_posi = $(this).find('td.td_left_posi');
-        $td_left_posi.eq(5).remove();
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+//        $td_left_posi.eq(5).remove();
+        $td_left_posi.eq(6).remove();
         $td_left_posi.slice(2).empty();
-        $td_left_posi.eq(3).append('<input type="button" class="soldiers_open" value="兵1">');
-        $td_left_posi.eq(4).append('<input type="button" class="soldiers_pack" value="最大">');
+//        $td_left_posi.eq(3).append('<input type="button" class="soldiers_open" value="兵1">');
+//        $td_left_posi.eq(4).append('<input type="button" class="soldiers_pack" value="最大">');
+        $td_left_posi.eq(4).append('<input type="button" class="soldiers_open" value="兵1">');
+        $td_left_posi.eq(5).append('<input type="button" class="soldiers_pack" value="最大">');
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
       });
       $table.find('td.td_border_right').remove();
       var len = $table.find('tr').slice(1).length + 1;
-      $table.find('td').eq(6).after('<td class ="td_border_right" rowspan="' + len + '" />');
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+//      $table.find('td').eq(6).after('<td class ="td_border_right" rowspan="' + len + '" />');
+      $table.find('td').eq(7).after('<td class ="td_border_right" rowspan="' + len + '" />');
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
       var tmpl = '' +
         '<tr>' +
           '<td />' +
@@ -22677,9 +22691,12 @@ function MokoMain($) {
         tmpl += '<option value="' + GROUPS_MENU[i][0] +'">' + GROUPS_MENU[i][1] + '</option>';
       }
       tmpl += '' +
-            '</select>' +
+          '</select>' +
           '</td>' +
-          '<td>全兵種</td>' +
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+//          '<td>全兵種</td>' +
+          '<td colspan="2">全兵種</td>' +
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
           '<td><input type="button" id="soldiers_all_open" value="兵1" /></td>' +
           '<td><input type="button" id="soldiers_all_pack" value="最大"></td>' +
         '</tr>';
@@ -22751,6 +22768,35 @@ function MokoMain($) {
         }
       });
       $soldiers_catalog.find('td.td_border_right').text(status);
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+      // 診療所で治療中
+      var $tr2 = $(html).find('table.paneltable.table_fightlist2').slice(5).find('tr').slice(1);
+      var hei_syu;
+      var hei_suu;
+      var list2 = [];
+      if ($tr2.length) {
+        for (i = 0; i < $tr2.length; i++) {
+          hei_syu = $tr2.eq(i).find('td>img').attr('alt');
+          hei_suu = $tr2.eq(i).find('td').eq(1).text() * 1;
+          console.debug(hei_syu + ':' + hei_suu);
+          for (var key in list2) {
+            if (key == hei_syu) {
+              hei_suu += list2[key];
+            }
+          }
+          list2[hei_syu] = hei_suu;
+        }
+        console.debug(list2);
+        $soldiers_catalog.find('img[src*="/card/icon/icon_"]').each(function() {
+          for (var i in list2) {
+            if ($(this).attr('alt') != i) {
+              continue;
+            }
+            $(this).closest('tr').find('td.td_left_posi').eq(3).text(list2[i]);
+          }
+        });
+      }
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
     }, null);
   }
 
