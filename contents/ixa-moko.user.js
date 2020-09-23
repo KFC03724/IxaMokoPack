@@ -22770,7 +22770,10 @@ function MokoMain($) {
       $soldiers_catalog.find('td.td_border_right').text(status);
 // 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
       // 診療所で治療中
-      var $tr2 = $(html).find('table.paneltable.table_fightlist2').slice(5).find('tr').slice(1);
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここから
+//      var $tr2 = $(html).find('table.paneltable.table_fightlist2').slice(5).find('tr').slice(1);
+      var $tr2 = $(html).find('table.paneltable.table_fightlist2').slice($(html).find('table.paneltable.table_fightlist2').length - 1).find('tr').slice(1);
+// 2020.09.24 兵士状況に治療中の兵士数を表示する様対応 ここまで
       var hei_syu;
       var hei_suu;
       var list2 = [];
