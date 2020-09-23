@@ -7186,16 +7186,29 @@ function MokoMain($) {
     };
 
     $('#bar_card_elite').each(function() {
-      var html = '<div id="elite_bulk_box">現状兵種で ' +
-              '<select id="elite_bulk_num">' +
-                '<option value="0">兵数最大</option>' +
-                '<option value="1">兵数 1</option>' +
-              '</select>' +
-              '<input type="button" id="elite_bulk_set" value="一括セット" />' +
-            '</div>';
-      $('div.maisuu').after(html);
+// 2020.09.23 兵士編成画面 精鋭部隊で現状兵種で兵数最大機能を追加 ここから
+//      var html = '<div id="elite_bulk_box">現状兵種で ' +
+//              '<select id="elite_bulk_num">' +
+//                '<option value="0">兵数最大</option>' +
+//                '<option value="1">兵数 1</option>' +
+//              '</select>' +
+//              '<input type="button" id="elite_bulk_set" value="一括セット" />' +
+//            '</div>';
+//      $('div.maisuu').after(html);
+//
+//      $('#elite_bulk_set').click(elite_bulk);
+    var html = '<div id="change_all">現状兵種で ' +
+    '<select id="elite_bulk_num" style="margin: 0px 10px 0px 5px;">' +
+    '<option value="0">兵数最大</option>' +
+    '<option value="1">兵数 1</option>' +
+    '</select>' +
+    '<input type="button" id="elite_bulk_set" value="　一括セット　" />' +
+    '</div>';
+    $('#deck_file').find('h3:eq(0)').before( html );
 
-      $('#elite_bulk_set').click(elite_bulk);
+    $('#change_all').css({'margin': '8px 50px 0px 0px', 'float':'right'});
+    $('#elite_bulk_set').click( elite_bulk );
+// 2020.09.23 兵士編成画面 精鋭部隊で現状兵種で兵数最大機能を追加 ここまで
     });
 
 // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
@@ -10034,6 +10047,12 @@ function MokoMain($) {
       var url;
       if (location.pathname == '/card/deck.php') {
         url = '/card/deck.php?ano=' + $('#select_assign_no').val() + '&select_card_group=6';
+// 2020.09.23 兵士編成画面 精鋭部隊で現状兵種で兵数最大機能を追加 ここから
+      } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
+        url = '/card/defense_formation_deck.php?select_card_group=6#deck_file';
+      } else if ( $('#select_assign_no').val() == 9 ) {
+        url = '/facility/set_unit_list.php?ano=9';
+// 2020.09.23 兵士編成画面 精鋭部隊で現状兵種で兵数最大機能を追加 ここまで
       } else {
         url = '/facility/set_unit_list.php?show_num=' + $('input[name="show_num"]').val() + '&select_card_group=6';
       }
@@ -16662,7 +16681,10 @@ function MokoMain($) {
     var resource = (function() {
       var a = [];
       $('#wood, #stone, #iron, #rice').each(function() {
-        a.push(parseInt($(this).text(), 10));
+// 2020.09.23 市の最大作成兵数の表示を機能させる様対応 ここから
+//        a.push(parseInt($(this).text(), 10));
+        a.push(parseInt($(this).text().replace(/\,/,''), 10));
+// 2020.09.23 市の最大作成兵数の表示を機能させる様対応 ここまで
       });
       return a;
     })();
