@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.17
+// @version      10.20.202009.18
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.17";
+  var VERSION_NAME = "ver 10.20.202009.18";
 
 // === Plugin ===
 
@@ -3473,42 +3473,68 @@ function MokoMain($) {
   }
 
   // 部隊配置 (拠点選択 & 空きスロットに移動) 防衛側の盟主用に役職者の直配備を考慮
+// 2020.09.26 空きデッキではなく、先頭デッキが選ばれる問題の修正 ここから
+//  function base_placement(target, grp) {
+//    var lordSiteArea = $('#lordSiteArea').text(),
+//    change = getSelectBaseData(target).url,
+//    search_ano = function() {
+//      var html = $.ajax({
+//        type: 'post',
+//        url: '/card/deck.php',
+//// 2020.09.15 部隊配置が失敗する不具合の修正 ここから
+////        async: false,
+//// 2020.09.15 部隊配置が失敗する不具合の修正 ここまで
+//        beforeSend: xrwStatusText,
+//      }).responseText;
+//      var $a = $(html).find('#us_list_normal li:contains("[---新規部隊を作成---]")').eq(0).children('a'),
+//      filter = '&select_filter_num=0',
+//      ano = '0';
+//      if ($a.length) {
+//        ano = $a.attr('onClick').match(/\d+/)[0];
+//      }
+//      return ano;
+//    }();
+//    if (search_ano == 6) {
+//      if (!confirm('配置可能なデッキがありません\n部隊編成へ移動しますか？')) {
+//        return;
+//      }
+//      search_ano = 0;
+//    }
+//    var str = '/card/deck.php?ano=' + search_ano,
+//    filter = '&select_filter_num=0',
+//    href;
+//    if (target == lordSiteArea) {
+//      href = str + '&select_card_group=' + grp + filter;
+//    } else {
+//      href = change + '&from=menu&page=' + encodeURIComponent('/map.php') + '&from=menu&page=' + encodeURIComponent(str + '&select_card_group=' + grp + filter);
+//    }
+//    location.href = href;
+//  }
   function base_placement(target, grp) {
     var lordSiteArea = $('#lordSiteArea').text(),
-    change = getSelectBaseData(target).url,
-    search_ano = function() {
-      var html = $.ajax({
-        type: 'post',
-        url: '/card/deck.php',
-// 2020.09.15 部隊配置が失敗する不具合の修正 ここから
-//        async: false,
-// 2020.09.15 部隊配置が失敗する不具合の修正 ここまで
-        beforeSend: xrwStatusText,
-      }).responseText;
-      var $a = $(html).find('#us_list_normal li:contains("[---新規部隊を作成---]")').eq(0).children('a'),
-      filter = '&select_filter_num=0',
+    change = getSelectBaseData(target).url;
+    $.ajax({
+      type: 'post',
+      url: '/card/deck.php',
+      beforeSend: xrwStatusText,
+    }).then(function(html) {
+      var $a = $(html).find('ul.us_list.unit_normal li:contains("[---新規部隊を作成---]")').eq(0).children('a'),
       ano = '0';
       if ($a.length) {
         ano = $a.attr('onClick').match(/\d+/)[0];
       }
-      return ano;
-    }();
-    if (search_ano == 6) {
-      if (!confirm('配置可能なデッキがありません\n部隊編成へ移動しますか？')) {
-        return;
+      var str = '/card/deck.php?ano=' + ano,
+      filter = '&select_filter_num=0',
+      href;
+      if (target == lordSiteArea) {
+        href = str + '&select_card_group=' + grp + filter;
+      } else {
+        href = change + '&from=menu&page=' + encodeURIComponent(str + '&select_card_group=' + grp + filter);
       }
-      search_ano = 0;
-    }
-    var str = '/card/deck.php?ano=' + search_ano,
-    filter = '&select_filter_num=0',
-    href;
-    if (target == lordSiteArea) {
-      href = str + '&select_card_group=' + grp + filter;
-    } else {
-      href = change + '&from=menu&page=' + encodeURIComponent('/map.php') + '&from=menu&page=' + encodeURIComponent(str + '&select_card_group=' + grp + filter);
-    }
-    location.href = href;
+      location.href = href;
+    });
   }
+// 2020.09.26 空きデッキではなく、先頭デッキが選ばれる問題の修正 ここまで
 
   function getScrollBottom() {
     return $(document).height() - $(window).height() - $(window).scrollTop();
