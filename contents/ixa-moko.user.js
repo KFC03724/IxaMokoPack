@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.18
+// @version      10.20.202009.19
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.18";
+  var VERSION_NAME = "ver 10.20.202009.19";
 
 // === Plugin ===
 
@@ -15321,6 +15321,16 @@ function MokoMain($) {
         
         // 全出陣 実行
         $('#mk-all-submit_btn').on('click', conf_all_troop);
+// 2020.09.27 地図画面から「ここへ部隊を配置」で配置しようとするとデッキに武将が居るのに空いてるデッキが選択されず1番上のデッキが選択されている問題の修正 ここから
+// 部隊編成ボタン・空きスロットに移動
+        var $img = $('img[alt="部隊編成へ"]');
+        if ( $img.length ) {
+          $img.parent().attr('href', 'javascript:void(0);')
+          .click(function(){
+            base_placement($.trim($('option').filter(':selected').text().replace(/\[.+\]/,'')), 0);
+          });
+        }
+// 2020.09.27 地図画面から「ここへ部隊を配置」で配置しようとするとデッキに武将が居るのに空いてるデッキが選択されず1番上のデッキが選択されている問題の修正 ここまで
       }
 
       // テーブル
@@ -15443,6 +15453,10 @@ function MokoMain($) {
 // 2020.09.15 領地への出陣で全出陣ボタンが消失する不具合の対応 ここまで
     .on('click', 'img[alt="この拠点に加勢出陣"]', ajaxStopUpdate)
     .on('change', 'select[name="select_village_id"]', ajaxStopUpdate)
+// 2020.09.27 地図画面から「ここへ部隊を配置」で配置しようとするとデッキに武将が居るのに空いてるデッキが選択されず1番上のデッキが選択されている問題の修正 ここから
+    .on('change', 'select[name="select_village"]', ajaxStopUpdate)
+    .on('click', 'img[alt="最寄拠点に変更"]', ajaxStopUpdate)
+// 2020.09.27 地図画面から「ここへ部隊を配置」で配置しようとするとデッキに武将が居るのに空いてるデッキが選択されず1番上のデッキが選択されている問題の修正 ここまで
     .on('click', 'img[alt="出陣！"]', addMapUnitStatus)
     .on('click', 'li[class^="f_menu"] a', function() {
       if ($(this).attr('href') == void 0) {
