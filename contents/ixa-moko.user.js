@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202009.19
+// @version      10.20.202010.1
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202009.19";
+  var VERSION_NAME = "ver 10.20.202010.1";
 
 // === Plugin ===
 
@@ -4056,6 +4056,9 @@ function MokoMain($) {
           '<a href="/card/exhibit_list.php">出品中</a>' +
           '<a href="/card/bid_list.php">入札中</a>' +
           '<a href="/card/trade_card.php">出品</a>' +
+// 2020.10.02 レベルアップ合成の追加に対応 ここから
+          '<a href="/union/expadd.php">合成【レベルアップ】</a>' +
+// 2020.10.02 レベルアップ合成の追加に対応 ここまで
           '<a href="javascript:void(0);" id="comp_1">合成【スキル強化】</a>' +
           '<a href="javascript:void(0);" id="comp_2">合成【スキル追加】</a>' +
           '<a href="javascript:void(0);" id="comp_3">合成【スキル削除】</a>' +
@@ -6111,8 +6114,13 @@ function MokoMain($) {
     
     $(this).find('div.ig_deck_smallcardimage').each(function(){
     var card_id = $(this).attr('data-card_id');
-    var target = $('#NewcardWindow_' + card_id),
-    data = get_card_data( target );
+// 2020.10.02 本丸防御陣形デッキの兵法表示に対応 ここから
+//    var target = $('#NewcardWindow_' + card_id),
+//    data = get_card_data( target );
+    var target = $('#card_window_' + card_id),
+    data = {};
+    data.int = parseInt(target.text().split('ig_card_status_int')[1].match(/\d+/g)[0]);
+// 2020.10.02 本丸防御陣形デッキの兵法表示に対応 ここまで
     data_list.push( data );
     });
     
@@ -8750,10 +8758,19 @@ function MokoMain($) {
 // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
 //            var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
             if ( location.pathname == '/card/defense_formation_deck.php' ) {
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここから
               var $parameta = $($html).find('div[id^="NewcardWindow_"] div.parameta_area');
+              var $last = $($html).find('div[data-sort="0"] a').last();
+              var $div = $last.parents('div.home_defense_formation_line').find('div.ig_deck_smallcardimage');
+              if (list.length > $div.length - 1) {
+              Info.ng((list.length - $div.length - 1) + '武将登録失敗');
+              }
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここまで
             } else {
               var $parameta = $($html).find('div[class^="ig_deck_subcardarea_out"] div.parameta_area');
-            }
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここから
+//            }
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここから
 // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
 // 2020.09.15 全部隊配置の不具合対応 ここまで
             if (list.length > $parameta.length) {
@@ -8769,6 +8786,9 @@ function MokoMain($) {
                 Info.ng('[' + failure[i] + ']登録失敗');
               }
             }
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここから
+            }
+// 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここまで
             if (type == 'all') {
               
               // 全部隊配置の処理
@@ -10224,6 +10244,28 @@ function MokoMain($) {
       $('#material_arr_data input[name^="material_arr"]').each(function(idx) {
         data['material_arr[' + idx + ']'] = $(this).val();
       });
+// 2020.10.02 付与画面のページャーの不具合の修正 ここから
+    } else if (location.pathname == '/union/expadd.php') {
+      var added_cid = (function(){
+      var array = [];
+      $('input[name="added_cid_arr[]"]').each(function(){
+      array.push($(this).val());
+    });
+    return array;
+    }());
+    data = {
+    base_cid: $('#base_cid').val(),
+    'added_cid_arr[]': added_cid,
+    select_card_group: $('input[name="select_card_group"]').val(),
+    select_filter_num: $('input[name="select_filter_num"]').val(),
+    add_flg: '',
+    new_cid: '',
+    remove_cid: '',
+    p: page,
+    union_type: 7,
+    btn_change_flg: ''
+  };
+// 2020.10.02 付与画面のページャーの不具合の修正 ここまで
     }
 
     $.ajax({
@@ -10365,7 +10407,10 @@ function MokoMain($) {
     function collectiveLevelupPage(list, scg, ano, page, max_page, flag) {
       var data;
       if (!flag) {
-        if (ano > 6) {
+// 2020.10.02 カード一括レベルアップで、強襲部隊まで有効にする様対応 ここから
+//        if (ano > 6) {
+        if (ano > 8) {
+// 2020.10.02 カード一括レベルアップで、強襲部隊まで有効にする様対応 ここまで
           msgInfo.comp('デッキの処理が完了しました');
           if (!confirm('待機武将のレベルアップも実行しますか？')) {
             collectiveLevelup.flag = false;
@@ -21257,7 +21302,10 @@ function MokoMain($) {
       return r;
     };
     $.ajax({
-      url: '/union/special.php',
+// 2020.10.02 経験値ツールチップに対応 ここから
+//      url: '/union/special.php',
+      url: '/union/expadd.php',
+// 2020.10.02 経験値ツールチップに対応 ここまで
       type: 'post',
       data: {
         select_card_group: 0,
@@ -21265,7 +21313,10 @@ function MokoMain($) {
         'sort_order[]': [4,3,0],
         'sort_order_type[]': [0,0,0],
         show_deck_card_count: 15,
-        union_type: 5,
+// 2020.10.02 経験値ツールチップに対応 ここから
+//        union_type: 5,
+        union_type: 7,
+// 2020.10.02 経験値ツールチップに対応 ここまで
         btn_change_flg: 1,
         p: page
       },
@@ -21308,12 +21359,20 @@ function MokoMain($) {
   function setMaterial(card_id_arr, card_id) {
     var param = {
       base_cid: card_id_arr.shift(),
+// 2020.10.02 経験値ツールチップに対応 ここから
       added_cid: card_id,
+      'added_cid_arr[]': card_id,
+      select_card_group: $('input[name="select_card_group"]').val(),
+      select_filter_num: $('input[name="select_filter_num"]').val(),
+// 2020.10.02 経験値ツールチップに対応 ここまで
       add_flg: '',
       new_cid: '',
       remove_cid: '',
       p: 1,
-      union_type: 5,
+// 2020.10.02 経験値ツールチップに対応 ここから
+//      union_type: 5,
+      union_type: 7,
+// 2020.10.02 経験値ツールチップに対応 ここまで
       btn_change_flg: ''
     };
     if (!param.base_cid) {
@@ -21353,7 +21412,10 @@ function MokoMain($) {
     }).then(function(html){
       return $.form({
         type: 'post',
-        url: '/union/special_confirm.php',
+// 2020.10.02 経験値ツールチップに対応 ここから
+//        url: '/union/special_confirm.php',
+        url: '/union/expadd.php',
+// 2020.10.02 経験値ツールチップに対応 ここまで
         data: param
       });
     }, function(){
