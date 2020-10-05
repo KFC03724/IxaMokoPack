@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202010.1
+// @version      10.20.202010.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202010.1";
+  var VERSION_NAME = "ver 10.20.202010.2";
 
 // === Plugin ===
 
@@ -3304,11 +3304,16 @@ function MokoMain($) {
       kiba = $p_2.eq(1).text().match(/[ -~]+/)[0];
       yumi = $p_2.eq(2).text().match(/[ -~]+/)[0];
       heiki = $p_2.eq(3).text().match(/[ -~]+/)[0];
-      var src = target.find('img[alt="選択中の部隊へ"]').attr('src') || '';
-      btn = '0';
-      if (src.indexOf('butai_off') == -1) {
-        btn = '1';
-      }
+// 2020.10.05 本丸側で、デッキ配置出来ない武将も選べてしまう不具合の対応 ここから
+//      var src = target.find('img[alt="選択中の部隊へ"]').attr('src') || '';
+//      btn = '0';
+//      if (src.indexOf('butai_off') == -1) {
+//        btn = '1';
+//      }
+      var $btn = target.find('#btn_gounit_' + card_id);
+      btn = $btn.length ? '1' : '0';
+      btn = $btn.hasClass('off') ? '0' : btn;
+// 2020.10.05 本丸側で、デッキ配置出来ない武将も選べてしまう不具合の対応 ここまで
       for (i = 0, len = $p_3.length; i < len; i++) {
         text = $p_3.eq(i).text();
         if (text == 'スキル空') {
@@ -8740,7 +8745,21 @@ function MokoMain($) {
       }
       return diff;
     };
-
+// 2020.10.05 登録失敗武将数のカウントがマイナスになる不具合の対応 ここから
+    var init_count = 0;
+    if (location.pathname == '/card/defense_formation_deck.php') {
+      var $div = $('#deck_bg').find('div[data-sort="0"] a');
+      var init_count = 0, target_unit = 0;
+      $div.each(function() {
+      init_count = $(this).parents('div.home_defense_formation_line').find('div.ig_deck_smallcardimage').length;
+      if ( init_count < 4 ) {
+        return false;
+      }
+      target_unit++;
+    });
+    if (init_count == 0 || init_count == 4) { init_count = 1; }
+    }
+// 2020.10.05 登録失敗武将数のカウントがマイナスになる不具合の対応 ここまで
     var remain = list.length,
       post_query = function(data) {
         $.ajax({
@@ -8769,10 +8788,16 @@ function MokoMain($) {
             if ( location.pathname == '/card/defense_formation_deck.php' ) {
 // 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここから
               var $parameta = $($html).find('div[id^="NewcardWindow_"] div.parameta_area');
-              var $last = $($html).find('div[data-sort="0"] a').last();
-              var $div = $last.parents('div.home_defense_formation_line').find('div.ig_deck_smallcardimage');
-              if (list.length > $div.length - 1) {
-              Info.ng((list.length - $div.length - 1) + '武将登録失敗');
+// 2020.10.05 登録失敗武将数のカウントがマイナスになる不具合の対応 ここから
+//              var $last = $($html).find('div[data-sort="0"] a').last();
+//              var $div = $last.parents('div.home_defense_formation_line').find('div.ig_deck_smallcardimage');
+//              if (list.length > $div.length - 1) {
+//              Info.ng((list.length - $div.length - 1) + '武将登録失敗');
+              var $comp_deck = $($html).find('div[data-sort="0"] a').eq(target_unit);
+              var $div = $comp_deck.parents('div.home_defense_formation_line').find('div.ig_deck_smallcardimage');
+              if (list.length > $div.length - init_count) {
+                Info.ng((list.length - $div.length + init_count) + '武将登録失敗');
+// 2020.10.05 登録失敗武将数のカウントがマイナスになる不具合の対応 ここまで
               }
 // 2020.10.02 本丸防御陣形への一括配置の不具合の修正 ここまで
             } else {
@@ -9130,7 +9155,12 @@ function MokoMain($) {
             var set_assign_id = $('img[alt="解散"]').parent().attr('onClick').match(/\d+/g)[0];
           }
 // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
-          platoonRegistration('usually', list, start_deck, set_assign_id, select_card_group, page);
+// 2020.10.05 ボタンを押してもダイアログがすぐ表示されない不具合の対応 ここから
+//          platoonRegistration('usually', list, start_deck, set_assign_id, select_card_group, page);
+          setTimeout(function() {
+            platoonRegistration('usually', list, start_deck, set_assign_id, select_card_group, page);
+          }, 100);
+// 2020.10.05 ボタンを押してもダイアログがすぐ表示されない不具合の対応 ここまで
         }
 
       }
