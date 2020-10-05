@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202010.2
+// @version      10.20.202010.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202010.2";
+  var VERSION_NAME = "ver 10.20.202010.3";
 
 // === Plugin ===
 
@@ -3994,36 +3994,47 @@ function MokoMain($) {
   function statusLeftMenu() {
 // 2020.09.15 横書き対応 ここから
 //    $('#status_left').width('870px');
-    $('#status_left').width('1000px');
+    $('#status_left').width('884px');
 // 2020.09.15 横書き対応 ここまで
     var i, len;
     var html = '' +
-      
+
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
-    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+//    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+    '<li id="敵襲" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="2">敵</font></a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
 
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
-      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
+//      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
+      '<li id="全部隊" class="mk_sub_menu" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=all"><font size="2">部隊</a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
           '<a href="/facility/unit_list.php">待機兵士一覧</a>' +
         '</div>' +
       '</li>' +
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
-      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
+//      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
+      '<li id="合流" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="2">合流</font></a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
       
-      '<li id="全編成" class="mk_sub_menu">' +
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
+      '<li id="全編成" class="mk_sub_menu" style="padding-top:12px;">' +
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
         '<a href="/facility/set_unit_list.php?show_num=' + options.unit_link_mod +
 // 2020.09.15 フォントサイズの指定 ここから
 //        '&select_card_group=0&select_filter_num=0">編成</a>' +
-        '&select_card_group=0&select_filter_num=0"><font size="1.5">編成</a>' +
+        '&select_card_group=0&select_filter_num=0"><font size="2">編成</a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
         '<div>';
       for (i = 0, len = GROUPS_MENU.length; i < len; i++) {
@@ -4041,30 +4052,42 @@ function MokoMain($) {
     html += '</div>' +
         '</li>'+
 
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //        '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
-        '<li><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
+//        '<li><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
+        '<li style="padding-top:12px;"><a href="/war/war_ranking.php"><font color="chartreuse" font size="2">順</a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
 
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //        '<li><a href="/war/village_search.php">探</a></li>';
-        '<li><a href="/war/village_search.php"><font size="1.5">探</a></li>';
+//        '<li><a href="/war/village_search.php"><font size="1.5">探</a></li>';
+        '<li style="padding-top:12px;"><a href="/war/village_search.php"><font size="2">探</a></li>';
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
+
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 資源バー横に本丸防御の直リンを追加 ここから
 // 2020.09.15 フォントサイズの指定 ここから
 //    html += '<li id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>' +
-    html += '<li id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red" font size="1.5">本丸</a>' +
+    html += '<li style="padding-top:12px;" id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red" font size="2">本丸</a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
     '<div>' +
     '<a href="/facility/set_unit_list.php?ano=9&p=1">本丸兵士編成</a>' +
     '</div>' +
     '</li>';
 // 2020.09.15 資源バー横に本丸防御の直リンを追加 ここまで
 
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここから
 // 2020.09.15 資源バー横に本丸防御の直リンを追加 ここから
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
-    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
+//    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
+    html += '<li style="padding-top:12px;" id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="2">くじ他</a>' +
 // 2020.09.15 資源バー横に本丸防御の直リンを追加 ここまで
+// 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
         '<div>' +
           '<a href="/card/trade.php">取引</a>' +
           '<a href="/card/exhibit_list.php">出品中</a>' +
