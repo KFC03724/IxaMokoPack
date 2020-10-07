@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202010.3
+// @version      10.20.202010.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202010.3";
+  var VERSION_NAME = "ver 10.20.202010.4";
 
 // === Plugin ===
 
@@ -4104,6 +4104,9 @@ function MokoMain($) {
           '<a href="javascript:void(0);" id="comp_3">合成【スキル削除】</a>' +
           '<a href="javascript:void(0);" id="comp_4">合成【ランクアップ】</a>' +
           '<a href="javascript:void(0);" id="comp_5">合成【特殊合成】</a>' +
+// 2020.10.07 従来の関数を利用してレベルアップ合成に飛べる様に改善 ここから
+          '<a href="javascript*void(0);" id="comp_6">合成【レベルアップ】</a>' +
+// 2020.10.07 従来の関数を利用してレベルアップ合成に飛べる様に改善 ここまで
           '<a href="/union/union_history.php">合成履歴</a>' +
           '<a href="/card/card_album.php">カードアルバム</a>' +
         '</div>' +
@@ -4145,6 +4148,10 @@ function MokoMain($) {
             break;
         case '5': url = '/union/special.php';
             break;
+// 2020.10.07 従来の関数を利用してレベルアップ合成に飛べる様に改善 ここから
+        case '6': url = '/union/expadd.php';
+            break;
+// 2020.10.07 従来の関数を利用してレベルアップ合成に飛べる様に改善 ここまで
         default: url = '/union/levelup.php';
             break;
       }
