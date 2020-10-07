@@ -4096,9 +4096,6 @@ function MokoMain($) {
           '<a href="/card/exhibit_list.php">出品中</a>' +
           '<a href="/card/bid_list.php">入札中</a>' +
           '<a href="/card/trade_card.php">出品</a>' +
-// 2020.10.02 レベルアップ合成の追加に対応 ここから
-          '<a href="/union/expadd.php">合成【レベルアップ】</a>' +
-// 2020.10.02 レベルアップ合成の追加に対応 ここまで
           '<a href="javascript:void(0);" id="comp_1">合成【スキル強化】</a>' +
           '<a href="javascript:void(0);" id="comp_2">合成【スキル追加】</a>' +
           '<a href="javascript:void(0);" id="comp_3">合成【スキル削除】</a>' +
