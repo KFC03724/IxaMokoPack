@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202010.4
+// @version      10.20.202010.5
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202010.4";
+  var VERSION_NAME = "ver 10.20.202010.5";
 
 // === Plugin ===
 
@@ -6734,15 +6734,30 @@ function MokoMain($) {
   // 合成カード チェック (onload)
   function unionCardCheck() {
     if (location.pathname != '/union/levelup.php' && location.pathname != '/union/remove.php' &&
+// 2020.10.12 スキル追加合成で上部にも合成実行ボタンを配置する様対応 ここから
+        location.pathname != '/union/expadd.php' &&
+        location.pathname != '/union/learn_confirm.php' &&
+// 2020.10.12 スキル追加合成で上部にも合成実行ボタンを配置する様対応 ここまで
         location.pathname != '/union/rankup.php' && location.pathname != '/union/learn.php' && location.pathname != '/union/additional.php') {
       return;
     }
+// 2020.10.12 スキル追加合成で上部にも合成実行ボタンを配置する様対応 ここから
+    if ( location.pathname == '/union/learn_confirm.php' ) {
+      var $box3 = $('div.common_box3bottom');
+      var $clone = $box3.find('a.new_union_btn_point').parent('p').clone();
+      $box3.find('table.cardslot_table.union_multi').before( $clone.css('margin', '15px 0px') );
+      return;
+    }
+// 2020.10.12 スキル追加合成で上部にも合成実行ボタンを配置する様対応 ここまで
     $('div.ig_deck_smallcardarea').each(smallcardarea_check);
     resurrectToggle();
     widthDisplay();
     
     // 変更点ここから
     // 表示中カードから枚数選択セット
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここから
+    if ( location.pathname == '/union/rankup.php' || location.pathname == '/union/expadd.php' ) {
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここまで
     if ( location.pathname == '/union/rankup.php' ) {
       var tmpl = '<div id="set_card"><select id="set_num">';
       for (i = 12; i > 0; i--) {
@@ -6759,10 +6774,23 @@ function MokoMain($) {
       'float': 'right',
       'margin-right': '12px'
       });
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここから
+    } else if ( $('div.ig_deck_subcardarea img').length ) {
+      var tmpl = '<input type="button" id="set_card_stock" value="表示中カードから最大セット" />';
+      $('#ig_deck_cardlistmenu_for_ui_change').before(tmpl);
+      $('#set_card_stock').css({
+      'float': 'right',
+      'margin': '0px 25px 3px'
+      });
+    }
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここまで
 
       $('#set_card_stock').on('click', function() {
         var $table = $('table.cardslot_table');
-        var max_num = $('#set_num').val();
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここから
+//        var max_num = $('#set_num').val();
+        var max_num = $('#set_num').length ? $('#set_num').val() : $table.find('div.union_material').length;
+// 2020.10.12 レベルアップ合成に表示中カードから最大セットを可能にする様対応 ここまで
         var arranged = $table.find('div.busho a').length;
         var $img = $('#ig_deck_smallcardarea_out img[alt="セットする"]:visible');
         var capacity = max_num - arranged;
