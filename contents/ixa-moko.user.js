@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202010.5
+// @version      10.20.202011.1
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202010.5";
+  var VERSION_NAME = "ver 10.20.202011.1";
 
 // === Plugin ===
 
@@ -5960,18 +5960,31 @@ function MokoMain($) {
 
     $('#ig_deckmenu').remove();
 
-    $('<div id="dech_button_box">' +
+// 2020.11.04 全部隊配置の表示の改善 ここから
+//    $('<div id="dech_button_box">' +
+//      '<div id="radio_box">' + '全配置モード：' +
+//        '<label class="mode_select"><input type="radio" name="mode" value="region" />秘境</label>' +
+//        '<label class="mode_select"><input type="radio" name="mode" value="normal" />通常</label>' +
+//        '1部隊計[ ' +
+//        '<label><input type="radio" name="people" value="4" checked />4名</label>' +
+//        '<label><input type="radio" name="people" value="3"/>3名</label>' +
+//        '<label><input type="radio" name="people" value="2"/>2名</label>' +
+//        '<label><input type="radio" name="people" value="1"/>1名</label>' +
+//        ' ]' +
+//      '</div>' +
+//      '<span id="all_set" class="moko_btn">全部隊配置</span>' +
+      $('<div id="dech_button_box">' +
       '<div id="radio_box">' + '全配置モード：' +
-        '<label class="mode_select"><input type="radio" name="mode" value="region" />秘境</label>' +
-        '<label class="mode_select"><input type="radio" name="mode" value="normal" />通常</label>' +
-        '1部隊計[ ' +
-        '<label><input type="radio" name="people" value="4" checked />4名</label>' +
-        '<label><input type="radio" name="people" value="3"/>3名</label>' +
-        '<label><input type="radio" name="people" value="2"/>2名</label>' +
-        '<label><input type="radio" name="people" value="1"/>1名</label>' +
-        ' ]' +
-      '</div>' +
-      '<span id="all_set" class="moko_btn">全部隊配置</span>' +
+      '<label class="mode_select"><input type="radio" name="mode" value="region" />秘境</label>' +
+      '<label class="mode_select"><input type="radio" name="mode" value="normal" />通常</label>' +
+      '<div id="radio_box position: absolute; left: 4px;">' +'1部隊計[ ' +
+      '<label><input type="radio" name="people" value="4" checked />4名</label>' +
+      '<label><input type="radio" name="people" value="3"/>3名</label>' +
+      '<label><input type="radio" name="people" value="2"/>2名</label>' +
+      '<label><input type="radio" name="people" value="1"/>1名</label>' +
+      ' ]' +
+'<span id="all_set" class="moko_btn">全部隊配置</span>' +
+// 2020.11.04 全部隊配置の表示の改善 ここまで
       '<span id="deck_dissolution" class="moko_btn btn_diss">全部隊解散</span>' +
       '<span id="all_platoon" class="moko_btn btn_a_diss" title="全部隊の小隊長をすべて外す">外す 全部隊</span>' +
       '<span id="platoon_remove" class="moko_btn btn_p_diss" title="この部隊の小隊長をすべて外す">外す この部隊</span>' +
@@ -24456,12 +24469,17 @@ window.addEventListener('DOMContentLoaded', function() {
     '#missive_keyword { width: 20em; }' +
   
   /* button */
+// 2020.11.04 全部隊配置の表示の改善 ここから
+//    '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
+//// 2020.09.15 ボタンの外観の修正 ここから
+////    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
+//    '#dech_button_box { position: absolute; top: 25px; left: 4px; }' +
+//// 2020.09.15 ボタンの外観の修正 ここまで
+//    '#dech_button_box span { visibility: hidden; min-width: 110px; padding: 6px 0; margin-right: 10px; }' +
     '.mk-button { cursor: pointer; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 12px; color: #050505; padding: 7px 8px; background: linear-gradient(to bottom, #ffffff 0%, #b5b5b5 100%); box-shadow: 0px 1px 3px rgba(000,000,000,0.5), inset 0px 0px 9px rgba(255,255,255,0.5); text-shadow: 0px -1px 0px rgba(000,000,000,0), 0px 1px 0px rgba(255,255,255,0.8); border-radius: 4px; }' +
-// 2020.09.15 ボタンの外観の修正 ここから
-//    '#dech_button_box { position: absolute; top: 20px; left: 4px; }' +
-    '#dech_button_box { position: absolute; top: 25px; left: 4px; }' +
-// 2020.09.15 ボタンの外観の修正 ここまで
-    '#dech_button_box span { visibility: hidden; min-width: 110px; padding: 6px 0; margin-right: 10px; }' +
+    '#dech_button_box { position: absolute; top: 29px; left: 4px; }' +
+    '#dech_button_box span { visibility: hidden; min-width: 100px; padding: 6px 0; margin-right: 10px; }' +
+// 2020.11.04 全部隊配置の表示の改善 ここまで
     '.moko_btn { cursor: pointer; text-align: center; font-size: 12px; font-family: Arial; font-weight: normal; border-radius: 3px; border:1px solid rgba(255, 255, 255, 0.9); text-decoration: none; display: inline-block; text-shadow: 0 0 4px dimgray; box-shadow:inset 0 0 1px 0 white, 0 0 3px rgba(0, 0, 0, 0.9); }' +
     '.btn_diss { color:white; background: linear-gradient(to bottom, #3c7b9f 5%, #28526b 100%); }' +
     '.btn_diss:hover { background: linear-gradient(to bottom, #28526b 5%, #3c7b9f 100%); }' +
@@ -24588,16 +24606,19 @@ window.addEventListener('DOMContentLoaded', function() {
     '.ig_skill_desc { letter-spacing: -1px; }' +
     
     // 部隊編成初期メニュー消去
-// 2020.09.15 部隊編成初期メニュー消去 ここから
-    // '#deck #ig_deckbackgroundmenu { display: none; }' +
-//    '#deck #ig_deckbackgroundmenu { position: absolute; top: 10px; right: 70px; width: initial; background: initial; }' +
-    '#deck #ig_deckbackgroundmenu { position: absolute; top: -4px; right: 50px; width: initial; background: initial; }' +
-// 2020.09.15 部隊編成初期メニュー消去 ここまで
-// 2020.09.15 兵士編成から全員を最大補充出来る様対応 ここから
-//    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
-    '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
+// 2020.11.04 全部隊配置の表示の改善 ここから
+//// 2020.09.15 部隊編成初期メニュー消去 ここから
+//    // '#deck #ig_deckbackgroundmenu { display: none; }' +
+////    '#deck #ig_deckbackgroundmenu { position: absolute; top: 10px; right: 70px; width: initial; background: initial; }' +
+//    '#deck #ig_deckbackgroundmenu { position: absolute; top: -4px; right: 50px; width: initial; background: initial; }' +
+//// 2020.09.15 部隊編成初期メニュー消去 ここまで
+//// 2020.09.15 兵士編成から全員を最大補充出来る様対応 ここから
+////    '#deck #ig_deckbackgroundmenu li:nth-child(n+3){ display: none; }' +
+//    '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
 // 2020.09.15 兵士編成から全員を最大補充出来る様対応 ここまで
-    
+    '#deck #ig_deckbackgroundmenu { position: absolute; top: 10px; right: 70px; width: initial; background: initial; }' +
+    '#deck #ig_deckbackgroundmenu li:nth-child(n+5){ display: none; }' +
+// 2020.11.04 全部隊配置の表示の改善 ここまで
     // 出陣時距離強調
     '.distance_long:before { content: "●"; font-size: 120%; text-decoration: none; color: #ff0000; margin-right: 5px; }' +
     '.distance_middle:before { content: "●"; font-size: 120%; text-decoration: none; color: #ff9900; margin-right: 5px; }' +
