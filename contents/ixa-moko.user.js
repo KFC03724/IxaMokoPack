@@ -5983,7 +5983,7 @@ function MokoMain($) {
       '<label><input type="radio" name="people" value="2"/>2名</label>' +
       '<label><input type="radio" name="people" value="1"/>1名</label>' +
       ' ]' +
-'<span id="all_set" class="moko_btn">全部隊配置</span>' +
+      '<span id="all_set" class="moko_btn">全部隊配置</span>' +
 // 2020.11.04 全部隊配置の表示の改善 ここまで
       '<span id="deck_dissolution" class="moko_btn btn_diss">全部隊解散</span>' +
       '<span id="all_platoon" class="moko_btn btn_a_diss" title="全部隊の小隊長をすべて外す">外す 全部隊</span>' +
