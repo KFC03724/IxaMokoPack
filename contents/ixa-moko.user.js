@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202011.1
+// @version      10.20.202011.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202011.1";
+  var VERSION_NAME = "ver 10.20.202011.2";
 
 // === Plugin ===
 
@@ -454,8 +454,17 @@ function MokoMain($) {
   "防.真：微塵流.D":["防.真：微塵流.D","防.槍隊守備.F","防.大金星.D","特.仁将無双.B","特.美意延年.D"],
   "防.羆廻師.D":["防.羆廻師.D","特.臥籠.D","防.不屈ノ闘臣.D","防.鳰の払暁.B","防.五龍王.D"],
 
+  //2020.11
+  "特.鎮西ノ不死鳥.B":["特.鎮西ノ不死鳥.B","特.惜別ノ叛逆.D","特.乾為天.B","特.鬼滅刺.A","特.土佐ノ暴君.B"],
+  "防.冥軍雷迅.B": ["防.冥軍雷迅.B","防.羆廻師.D","防.開運ノ狼煙.D","防.川並衆.B","特.戦陣 勝鬨.A"],
+  "防.柳生新陰当流.A": ["攻.戦陣 一閃.A","防.戦陣 龍馬.A","防.籠城の妙技.A","特.布都御魂ノ鬨.SS","特.眠り猫.A"],
+  "攻.絡繰傀儡.A": ["特.戦陣 破軍.A","特.遁世影武者.B","攻.夜叉源氏轟.A","攻.絡繰傀儡.A","攻.戦陣 一閃.A"],
+  "特.仏鬼.D": ["特.仏鬼.D","特.臥籠.D","特.戦場妙技.B","特.虎嘯.B","特.烈侵滅国.B"],
+  "防.鎌鼬.D": ["防.鎌鼬.D","防.羆廻師.D","特.戦場妙技.B","防.白夜ノ才姫.B","防.美龍泰天.B"],
+  "攻.骸武.D":["攻.骸武.D","攻.力餅.D","攻.源氏蛍.D","攻.双刃九龍.B","攻.戦鬼侵軍.B"],
+
   // 合成専用
-  "特.戦場妙技.B":["..","..","..","特.戦陣 破軍.B",".."],
+  "特.戦場妙技.B":["..","..","..","特.戦陣 破軍.A",".."],
 
   };
 
@@ -5334,7 +5343,10 @@ function MokoMain($) {
     } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
       nomal_deck = 5;
       now = parseFloat(html.find('span.deck_cost_current').text());
-      max = parseFloat(html.find('span.deck_cost_add_total').text());
+// 2020.11.06 一括配置の時NaN表示されてコスオーバーしたときに武将登録失敗する不具合の対応 ここから
+//      max = parseFloat(html.find('span.deck_cost_add_total').text());
+      max = parseFloat(html.find('span.deck_cost_max').text());
+// 2020.11.06 一括配置の時NaN表示されてコスオーバーしたときに武将登録失敗する不具合の対応 ここまで
       str = now + '/' + max;
       free = max - now;
 // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここまで
