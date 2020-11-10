@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202011.2
+// @version      10.20.202011.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202011.2";
+  var VERSION_NAME = "ver 10.20.202011.3";
 
 // === Plugin ===
 
@@ -5230,8 +5230,13 @@ function MokoMain($) {
     removeBushodrama();      // 大殿のアニメーションを無効にする
     
     // 変更点 銅銭・金に桁上がり(カンマ)を追加
-    $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
-    $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
+// 2020.11.10 銅銭エリアのレイアウトの修正 ここから
+//    $('.substatus span[class^="money_"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
+//    $('.substatus span[class^="money_c"]').insertAfter('.substatus span[class^="money_b"]');
+      + $('.substatus span[class^="money_"],.substatus span[class^="silver_b"]').each(function() { $(this).text(parseInt($(this).text(), 10).toLocaleString()); })
+      + $('.substatus span[class^="money_b"]').insertBefore('.substatus span[class^="money_c"]');
+      + $('.substatus span[class^="silver_b"]').insertBefore('.substatus span[class^="money_c"]');
+// 2020.11.10 銅銭エリアのレイアウトの修正 ここまで
       if (location.pathname === '/alliance/list.php' || location.pathname === '/user/ranking.php') {
 // 2020.09.15 全体格付から同盟、城主へのリンクが死んでいる不具合の対応 ここから
 //        $('#ranking_table td:nth-child(n+4)').each(function(){ $(this).html($(this).html().replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,'));});
