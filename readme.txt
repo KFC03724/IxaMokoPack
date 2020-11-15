@@ -28,7 +28,7 @@
 【更新履歴】
 IxaMokoPack ver 10.20.202011.4 Chrome版
 2020/11/16
-　・出品補助機能の修正の修正
+　・出品補助機能の修正
 　※戦国IXA ツールスレPart46 126 までの改修点を反映済
 
 IxaMokoPack ver 10.20.202011.3 Chrome版
