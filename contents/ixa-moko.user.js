@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202011.3
+// @version      10.20.202011.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202011.3";
+  var VERSION_NAME = "ver 10.20.202011.4";
 
 // === Plugin ===
 
@@ -11142,10 +11142,17 @@ function MokoMain($) {
   
   // 出品 補助
   function tradeAuxiliaryPreparation(target, x, y) {
-    target.css('height', '396px');
-    var $tradebtn = target.find('p.tradebtn').hide();
+// 2020.11.16 出品補助機能の修正の修正 ここから
+//    target.css('height', '396px');
+//    var $tradebtn = target.find('p.tradebtn').hide();
+    target.css('height', '428px');
+    var $tradebtn = target.find('p.tradebtn');
+// 2020.11.16 出品補助機能の修正の修正 ここまで
     var html = '' +
-      '<table class="mk_tradeBtnTable">' +
+// 2020.11.16 出品補助機能の修正の修正 ここから
+//      '<table class="mk_tradeBtnTable">' +
+      '<table class="mk_tradeBtnTable" style="bottom:32px;">' +
+// 2020.11.16 出品補助機能の修正の修正 ここまで
         '<tbody>' +
           '<tr>' +
             '<th class="display"><a href="javascript:void(0);" class="immediate">落札額を検索</a></th>' +
