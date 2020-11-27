@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202011.4
+// @version      10.20.202011.5
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202011.4";
+  var VERSION_NAME = "ver 10.20.202011.5";
 
 // === Plugin ===
 
@@ -6774,7 +6774,10 @@ function MokoMain($) {
 // 2020.10.12 スキル追加合成で上部にも合成実行ボタンを配置する様対応 ここから
     if ( location.pathname == '/union/learn_confirm.php' ) {
       var $box3 = $('div.common_box3bottom');
-      var $clone = $box3.find('a.new_union_btn_point').parent('p').clone();
+// 2020.11.28 スキル追加合成で合成素材2枚だとで上部にボタンが無い問題の修正 ここから
+//      var $clone = $box3.find('a.new_union_btn_point').parent('p').clone();
+      var $clone = $box3.find('a[class^="new_union_btn_"]').parent('p').clone();
+// 2020.11.28 スキル追加合成で合成素材2枚だとで上部にボタンが無い問題の修正 ここまで
       $box3.find('table.cardslot_table.union_multi').before( $clone.css('margin', '15px 0px') );
       return;
     }
