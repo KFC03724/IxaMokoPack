@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202011.5
+// @version      10.20.202011.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202011.5";
+  var VERSION_NAME = "ver 10.20.202011.6";
 
 // === Plugin ===
 
@@ -15101,7 +15101,10 @@ function MokoMain($) {
 
       // ツールチップ 座標をチャットへ入力する
       $('#enter_into_chat').on('click', function(){
-        return inputToChat('(' + data.x + ', ' + data.y + ')');
+// 2020.11.28 座標をチャットへ入力する機能の改善 ここから
+//        return inputToChat('(' + data.x + ', ' + data.y + ')');
+        return inputToChat(data.x + ', ' + data.y + ' ');
+// 2020.11.28 座標をチャットへ入力する機能の改善 ここまで
       });
 
       return false;
