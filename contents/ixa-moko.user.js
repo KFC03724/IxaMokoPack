@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202012.2
+// @version      10.20.202012.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202012.2";
+  var VERSION_NAME = "ver 10.20.202012.3";
 
 // === Plugin ===
 
@@ -476,6 +476,9 @@ function MokoMain($) {
   "防.凶天殺界.SSS": ["特.布都御魂ノ鬨.SS","防.茅纒之矟ノ煌.SS","防.天弓星宿陣.SS","防.神勅賢母.S","特.高津姫神.SS"],
   "防.天浮橋.S": ["防.天浮橋.S","攻.天之瓊矛ノ雫.SS","防.天弓星宿陣.SS","防.幽冥主宰大神.SS","特.布都御魂ノ鬨.SS"],
   "特.天羽衣.S": ["特.布都御魂ノ鬨.SS","攻.破軍星 皇.SS","攻.覇王征軍.SS","特.神屋楯比売命.SS","特.布都御魂ノ鬨.SS"],
+
+  //クリスマスの贈り物 3440 特 高山ジェスタ
+  "防.聖夜の貴婦人.C": ["防.聖夜の貴婦人.C","防.騏驥華憐.D","防.翼包囲陣.D","防.白夜ノ才姫.B","特.足鼎賢女.B"],
 
   // 合成専用
   "特.戦場妙技.B":["..","..","..","特.戦陣 破軍.A",".."],
