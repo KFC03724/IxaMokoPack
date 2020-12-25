@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202012.4
+// @version      10.20.202012.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202012.4";
+  var VERSION_NAME = "ver 10.20.202012.3";
 
 // === Plugin ===
 
@@ -10532,10 +10532,7 @@ function MokoMain($) {
 
       var max_page = get_max_page();
       var free_deck = $('#ig_deckchoice li:contains("[---新規部隊を作成---]")');
-// 2020.012.26 デッキにセットしたカードがレベルアップしない不具合の修正 ここから
-//      var max_vacancy = $('#us_list_assault').length ? 7 : 6; // 強襲部隊デッキ ? 有 : 無;
-      var max_vacancy = $('.us_list.unit_assault').length ? 7 : 6; // 強襲部隊デッキ ? 有 : 無;
-// 2020.012.26 デッキにセットしたカードがレベルアップしない不具合の修正 ここまで
+      var max_vacancy = $('#us_list_assault').length ? 7 : 6; // 強襲部隊デッキ ? 有 : 無;
       var flag = false; // デッキチェックフラグ
 
       if (free_deck.length === max_vacancy) {
