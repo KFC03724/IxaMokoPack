@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202101.1
+// @version      10.20.202101.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202101.1";
+  var VERSION_NAME = "ver 10.20.202101.2";
 
 // === Plugin ===
 
@@ -481,7 +481,7 @@ function MokoMain($) {
   "防.聖夜の貴婦人.C": ["防.聖夜の貴婦人.C","防.騏驥華憐.D","防.翼包囲陣.D","防.白夜ノ才姫.B","特.足鼎賢女.B"],
 
   //6101 雅 武田のお年玉
-  "-.武田のお年玉.-": ["特.戦陣 破軍.A","攻.戦神雷霆.S","攻.覇神雷霆.S","攻.神光征軍.SS","-"],
+  "-.武田のお年玉.SS": ["特.戦陣 破軍.A","攻.戦神雷霆.S","攻.覇神雷霆.S","攻.神光征軍.SS","-"],
 
   // 合成専用
   "特.戦場妙技.B":["..","..","..","特.戦陣 破軍.A",".."],
