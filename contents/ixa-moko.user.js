@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202101.2
+// @version      10.20.202101.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202101.2";
+  var VERSION_NAME = "ver 10.20.202101.3";
 
 // === Plugin ===
 
@@ -20886,6 +20886,12 @@ function MokoMain($) {
           html += '<td>' + (array[i][h[j]] ? array[i][h[j]] : 0) + '</td>';
         }
         html += '</tr>';
+        // 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここから
+        html += '<tr>' + '<td><font size=1>' + '確率' + '</font></td>';
+        for (var j = 0, jlen = h.length; j < jlen; j++) {
+          var ratetmp = array[i][h[j]] / array[i][h[8]] * 1000 / 10;
+          html += '<td><font size=1>' + (array[i][h[j]]&&j!=8 ? ratetmp.toFixed(2) +'%' : '-') + '</font></td>';
+         }// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここまで
       }
       html += '</tbody>' + '</table>';
       $('div.ig_tilesection_innermid').prepend(html);
