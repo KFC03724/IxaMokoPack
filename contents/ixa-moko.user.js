@@ -20897,7 +20897,10 @@ function MokoMain($) {
       $('div.ig_tilesection_innermid').prepend(html);
       var list = ['', 0, 0, 0, 0, 0, 0, 0, 0, 0],
         rate = [],
-        $tr = $('#agg_table tr').slice(1);
+// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここから
+//        $tr = $('#agg_table tr').slice(1);
+        $tr = $('#agg_table tr:odd'); //追加
+// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここまで
       $tr.each(function() {
         for (i = 1, len = list.length; i < len; i++) {
           var x = parseInt($(this).find('td').eq(i).text());
