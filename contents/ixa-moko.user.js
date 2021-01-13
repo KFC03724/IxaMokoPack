@@ -20886,12 +20886,13 @@ function MokoMain($) {
           html += '<td>' + (array[i][h[j]] ? array[i][h[j]] : 0) + '</td>';
         }
         html += '</tr>';
-        // 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここから
+// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここから
         html += '<tr>' + '<td><font size=1>' + '確率' + '</font></td>';
         for (var j = 0, jlen = h.length; j < jlen; j++) {
           var ratetmp = array[i][h[j]] / array[i][h[8]] * 1000 / 10;
           html += '<td><font size=1>' + (array[i][h[j]]&&j!=8 ? ratetmp.toFixed(2) +'%' : '-') + '</font></td>';
-         }// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここまで
+         }
+// 2021.01.14 くじ集計時の各くじごとの確率表記機能を実装 ここまで
       }
       html += '</tbody>' + '</table>';
       $('div.ig_tilesection_innermid').prepend(html);
