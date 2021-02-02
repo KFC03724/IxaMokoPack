@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202101.5
+// @version      10.20.202101.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202101.5";
+  var VERSION_NAME = "ver 10.20.202101.6";
 
 // === Plugin ===
 
@@ -494,6 +494,9 @@ function MokoMain($) {
   "防.隠棲退陣.D": ["防.隠棲退陣.D","特.針薬方.E","特.惜別ノ叛逆.D","防.凍土ノ女神.B","防.羆廻師.D"],
   "攻.林火斬.D": ["攻.林火斬.D","攻.弓隊進撃.F","攻.眉月進軍.D","特.野太刀.C","攻.班寅集.B"],
   "攻.誉ノ戦功.D": ["攻.誉ノ戦功.D","攻.鉄砲隊進撃.F","攻.雑賀ノ闇鉄砲.D","攻.火将ノ熊手.B","攻.戦鬼侵軍.B"],
+
+  //2021.1「驚天宿星～蘇りし神将～」のシーズン報酬
+  ".驚天宿星.": ["特.戦陣 破軍.A","攻.覇王征軍.SS","..","..",".."],
 
   };
 
