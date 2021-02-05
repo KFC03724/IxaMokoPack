@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202101.6
+// @version      10.20.202101.7
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202101.6";
+  var VERSION_NAME = "ver 10.20.202101.7";
 
 // === Plugin ===
 
@@ -513,6 +513,9 @@ function MokoMain($) {
     var data = {
       19: { 1:"蘆名家", 2:"尼子家", 3: "上杉家", 4: "武田家", 5: "北条家", 6: "北畠家", 7: "今川家", 8: "六角家", 9: "一条家", 10: "島津家", 11: "大友家", 12: "龍造寺家" },
       20: { 1:"織田家", 2:"豊臣家", 3: "徳川家", 4: "長宗我部家", 5: "三好家", 6: "北条家", 7: "武田家", 8: "上杉家", 9: "伊達家", 10: "浅井家", 11: "島津家", 12: "毛利家" },
+// 2021.02.05 21章表示対応 ここから
+      21: { 1:"足利家", 2:"本願寺家", 3: "安東家", 4: "南部家", 5: "佐竹家", 6: "里美家", 7: "武田家", 8: "前田家", 9: "鈴木家", 10: "宇喜多家", 11: "有馬家", 12: "相良家" },
+// 2021.02.05 21章表示対応 ここまで
     }[login_data.chapter];
 
     function COUNTRY() { return $.extend({}, data); }
@@ -588,6 +591,54 @@ function MokoMain($) {
         "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
       },
 
+        20: {
+          "足軽"    : { number: 321, attack: 18, defense: 18, moving: 15, destroy:  4, tp1: "t1", tp2: "t1", command: "yari1" , skilltype: "槍", cost: [ 8, 10, 6, 6] },
+          "長槍足軽": { number: 322, attack: 23, defense: 23, moving: 16, destroy:  4, tp1: "t1", tp2: "t1", command: "yari2" , skilltype: "槍", cost: [14, 17, 12, 12] },
+          "武士"    : { number: 323, attack: 26, defense: 26, moving: 17, destroy:  5, tp1: "t1", tp2: "t3", command: "yari3" , skilltype: "槍", cost: [24, 30, 18, 18] },
+          "国人衆"  : { number: 324, attack: 23, defense: 22, moving: 16, destroy:  6, tp1: "t1", tp2: "t1", command: "yari4" , skilltype: "槍", cost: [] },
+          "弓足軽"  : { number: 325, attack: 17, defense: 19, moving: 16, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi1" , skilltype: "弓", cost: [10, 8, 6, 6] },
+          "長弓兵"  : { number: 326, attack: 22, defense: 24, moving: 17, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi2" , skilltype: "弓", cost: [17, 14, 12, 12] },
+          "弓騎馬"  : { number: 327, attack: 25, defense: 27, moving: 20, destroy:  3, tp1: "t2", tp2: "t3", command: "yumi3" , skilltype: "弓", cost: [30, 24, 18, 18] },
+          "海賊衆"  : { number: 328, attack: 22, defense: 23, moving: 17, destroy:  4, tp1: "t3", tp2: "t3", command: "yumi4" , skilltype: "弓", cost: [] },
+          "騎馬兵"  : { number: 329, attack: 19, defense: 17, moving: 18, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba1" , skilltype: "馬", cost: [ 6, 6, 8, 10] },
+          "精鋭騎馬": { number: 330, attack: 24, defense: 21, moving: 19, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba2" , skilltype: "馬", cost: [ 12, 12, 14, 17] },
+          "赤備え"  : { number: 331, attack: 27, defense: 25, moving: 21, destroy:  3, tp1: "t1", tp2: "t2", command: "kiba3" , skilltype: "馬", cost: [18, 18, 24, 30] },
+          "母衣衆"  : { number: 332, attack: 24, defense: 21, moving: 20, destroy:  4, tp1: "t2", tp2: "t2", command: "kiba4" , skilltype: "馬", cost: [] },
+          "破城鎚"  : { number: 333, attack: 18, defense: 16, moving: 13, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki1", skilltype: "器", cost: [12, 7, 9, 7] },
+          "攻城櫓"  : { number: 334, attack: 23, defense: 20, moving: 14, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki2", skilltype: "器", cost: [18, 10, 12, 15] },
+          "大筒兵"  : { number: 335, attack: 28, defense: 26, moving: 14, destroy: 20, tp1: "t3", tp2: "t4", command: "heiki3", skilltype: "器", cost: [30, 30, 35, 25] },
+          "穴太衆"  : { number: 346, attack: 25, defense: 25, moving: 15, destroy: 15, tp1: "t4", tp2: "t4", command: "heiki8", skilltype: "器", cost: [30, 20, 23, 22] },
+          "鉄砲足軽": { number: 336, attack: 28, defense: 30, moving: 15, destroy:  8, tp1: "t1", tp2: "t4", command: "heiki4", skilltype: "砲", cost: [35, 25, 50, 40] },
+          "騎馬鉄砲": { number: 337, attack: 30, defense: 28, moving: 17, destroy:  8, tp1: "t2", tp2: "t4", command: "heiki5", skilltype: "砲", cost: [25, 50, 35, 40] },
+          "焙烙火矢": { number: 345, attack: 29, defense: 29, moving: 16, destroy:  9, tp1: "t3", tp2: "t4", command: "heiki7", skilltype: "砲", cost: [35, 40, 25, 50] },
+          "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
+        },
+
+// 2021.02.05 21章表示対応 ここから
+          21: {
+            "足軽"    : { number: 321, attack: 18, defense: 18, moving: 15, destroy:  4, tp1: "t1", tp2: "t1", command: "yari1" , skilltype: "槍", cost: [ 8, 10, 6, 6] },
+            "長槍足軽": { number: 322, attack: 23, defense: 23, moving: 16, destroy:  4, tp1: "t1", tp2: "t1", command: "yari2" , skilltype: "槍", cost: [14, 17, 12, 12] },
+            "武士"    : { number: 323, attack: 26, defense: 26, moving: 17, destroy:  5, tp1: "t1", tp2: "t3", command: "yari3" , skilltype: "槍", cost: [24, 30, 18, 18] },
+            "国人衆"  : { number: 324, attack: 23, defense: 22, moving: 16, destroy:  6, tp1: "t1", tp2: "t1", command: "yari4" , skilltype: "槍", cost: [] },
+            "弓足軽"  : { number: 325, attack: 17, defense: 19, moving: 16, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi1" , skilltype: "弓", cost: [10, 8, 6, 6] },
+            "長弓兵"  : { number: 326, attack: 22, defense: 24, moving: 17, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi2" , skilltype: "弓", cost: [17, 14, 12, 12] },
+            "弓騎馬"  : { number: 327, attack: 25, defense: 27, moving: 20, destroy:  3, tp1: "t2", tp2: "t3", command: "yumi3" , skilltype: "弓", cost: [30, 24, 18, 18] },
+            "海賊衆"  : { number: 328, attack: 22, defense: 23, moving: 17, destroy:  4, tp1: "t3", tp2: "t3", command: "yumi4" , skilltype: "弓", cost: [] },
+            "騎馬兵"  : { number: 329, attack: 19, defense: 17, moving: 18, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba1" , skilltype: "馬", cost: [ 6, 6, 8, 10] },
+            "精鋭騎馬": { number: 330, attack: 24, defense: 21, moving: 19, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba2" , skilltype: "馬", cost: [ 12, 12, 14, 17] },
+            "赤備え"  : { number: 331, attack: 27, defense: 25, moving: 21, destroy:  3, tp1: "t1", tp2: "t2", command: "kiba3" , skilltype: "馬", cost: [18, 18, 24, 30] },
+            "母衣衆"  : { number: 332, attack: 24, defense: 21, moving: 20, destroy:  4, tp1: "t2", tp2: "t2", command: "kiba4" , skilltype: "馬", cost: [] },
+            "破城鎚"  : { number: 333, attack: 18, defense: 16, moving: 13, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki1", skilltype: "器", cost: [12, 7, 9, 7] },
+            "攻城櫓"  : { number: 334, attack: 23, defense: 20, moving: 14, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki2", skilltype: "器", cost: [18, 10, 12, 15] },
+            "大筒兵"  : { number: 335, attack: 28, defense: 26, moving: 14, destroy: 20, tp1: "t3", tp2: "t4", command: "heiki3", skilltype: "器", cost: [30, 30, 35, 25] },
+            "穴太衆"  : { number: 346, attack: 25, defense: 25, moving: 15, destroy: 15, tp1: "t4", tp2: "t4", command: "heiki8", skilltype: "器", cost: [30, 20, 23, 22] },
+            "鉄砲足軽": { number: 336, attack: 28, defense: 30, moving: 15, destroy:  8, tp1: "t1", tp2: "t4", command: "heiki4", skilltype: "砲", cost: [35, 25, 50, 40] },
+            "騎馬鉄砲": { number: 337, attack: 30, defense: 28, moving: 17, destroy:  8, tp1: "t2", tp2: "t4", command: "heiki5", skilltype: "砲", cost: [25, 50, 35, 40] },
+            "焙烙火矢": { number: 345, attack: 29, defense: 29, moving: 16, destroy:  9, tp1: "t3", tp2: "t4", command: "heiki7", skilltype: "砲", cost: [35, 40, 25, 50] },
+            "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
+// 2021.02.05 21章表示対応 ここまで
+          },
+
     };
 
     function SOLDIER() { return $.extend({}, data); }
@@ -646,6 +697,9 @@ function MokoMain($) {
       "20_20": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
       "20_8": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
 // 2020.09.15 空き地戦力の表示対応 ここまで
+// 2021.02.05. 21章表示対応 ここから
+      "20_21": [{ "star": 1, "value": "10100", "npc": { "農民": 25, "抜け忍": 5 } }, { "star": 1, "value": "01100", "npc": { "農民": 25, "野盗": 5 } }, { "star": 2, "value": "00201", "npc": { "農民": 20, "浪人": 5, "抜け忍": 5, "野盗": 15 } }, { "star": 2, "value": "11020", "npc": { "農民": 20, "浪人": 10, "抜け忍": 10, "野盗": 10 } }, { "star": 3, "value": "11101", "npc": { "農民": 45, "野盗": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "浪人": 85 } }, { "star": 3, "value": "11110", "npc": { "農民": 45, "抜け忍": 85 } }, { "star": 4, "value": "21101", "npc": { "雑賀衆": 225, "農民": 675 } }, { "star": 4, "value": "13100", "npc": { "海賊衆": 180, "農民": 630, "抜け忍": 90 } }, { "star": 4, "value": "11310", "npc": { "国人衆": 195, "農民": 635, "浪人": 135 } }, { "star": 4, "value": "31141", "npc": { "母衣衆": 215, "農民": 645, "野盗": 45 } }, { "star": 5, "value": "60201", "npc": { "国人衆": 260, "母衣衆": 1125, "農民": 430 } }, { "star": 5, "value": "32010", "npc": { "雑賀衆": 225, "浪人": 1095, "抜け忍": 545 } }, { "star": 5, "value": "24010", "npc": { "国人衆": 1005, "海賊衆": 170, "農民": 500, "浪人": 420 } }, { "star": 5, "value": "10601", "npc": { "雑賀衆": 675, "浪人": 340, "抜け忍": 340, "野盗": 340 } }, { "star": 5, "value": "02620", "npc": { "海賊衆": 1060, "母衣衆": 180, "農民": 530 } }, { "star": 5, "value": "04160", "npc": { "国人衆": 305, "農民": 305, "浪人": 500, "野盗": 1005 } }, { "star": 6, "value": "32210", "npc": { "国人衆": 2060, "浪人": 2060, "抜け忍": 2060 } }, { "star": 6, "value": "53311", "npc": { "国人衆": 3150, "雑賀衆": 395, "浪人": 2365 } }, { "star": 6, "value": "46232", "npc": { "武士": 1565, "国人衆": 975, "抜け忍": 2935 } }, { "star": 6, "value": "26132", "npc": { "母衣衆": 2760, "雑賀衆": 190, "野盗": 2390 } }, { "star": 6, "value": "33531", "npc": { "海賊衆": 2505, "農民": 1500, "野盗": 2175 } }, { "star": 6, "value": "11450", "npc": { "海賊衆": 2735, "雑賀衆": 170, "抜け忍": 2220 } }, { "star": 7, "value": "15152", "npc": { "赤備え": 2520, "野盗": 15065 } }, { "star": 7, "value": "22230", "npc": { "農民": 2360, "野盗": 16535, "鬼": 240 } }, { "star": 7, "value": "12610", "npc": { "武士": 2570, "浪人": 15400 } }, { "star": 7, "value": "910651", "npc": { "農民": 975, "浪人": 3905, "抜け忍": 3905, "野盗": 3905, "鬼": 975 } }, { "star": 7, "value": "52222", "npc": { "弓騎馬": 2715, "抜け忍": 13595, "野盗": 1365 } }, { "star": 7, "value": "33341", "npc": { "農民": 1090, "抜け忍": 10845, "鬼": 1090 } }, { "star": 8, "value": "72221", "npc": { "国人衆": 4200, "母衣衆": 2100, "雑賀衆": 3140, "浪人": 12575, "鬼": 215, "天狗": 10 } }, { "star": 8, "value": "27213", "npc": { "国人衆": 885, "海賊衆": 2650, "雑賀衆": 885, "抜け忍": 7055, "鬼": 1760, "天狗": 10 } }, { "star": 8, "value": "22700", "npc": { "母衣衆": 3780, "野盗": 7080, "鬼": 1895, "天狗": 10 } }, { "star": 8, "value": "33342", "npc": { "鬼": 2170, "天狗": 1090 } }],
+// 2021.02.05. 21章表示対応 ここまで
     };
 
     // NPC "期"
@@ -671,10 +725,17 @@ function MokoMain($) {
       "18": [], // 18期
       "19": [], // 19期
       "20": [], // 20期暫定
+// 2021.02.05. 21章表示対応 ここから
+      "21": [], // 21期暫定
+// 2021.02.05. 21章表示対応 ここmade
+
     };
     npc_data_old["9"] = npc_data_old["8"] = npc_data_old["7"] = npc_data_old["6"]; // 6期と同じ
     npc_data_old["16"] = npc_data_old["15"]; // 15期と同じ
     npc_data_old["20"] = npc_data_old["19"] = npc_data_old["18"] = npc_data_old["17"]; // 17期と同じ
+// 2021.02.05. 21章表示対応 ここから
+    npc_data_old["21"] = npc_data_old["20"] = npc_data_old["19"] = npc_data_old["17"]; // 17期と同じ
+// 2021.02.05. 21章表示対応 ここまで
     
     // 空き地戦力 集計
     var duplicateCheck = function (v) {
@@ -1803,6 +1864,9 @@ function MokoMain($) {
 // 2020.09.15 20章表示対応 ここから
                   '20': '驚天宿星～蘇りし神将～',
 // 2020.09.15 20章表示対応 ここまで
+// 2021.02.05. 21章表示対応 ここから
+                  '21': '虚星封天～不倶戴天の烈将～',
+// 2021.02.05. 21章表示対応 ここまで
                 };
                 setting_list += '<li><label>' + this.optionsKeys[key].caption + ':</label>&nbsp;' +
                   '<select class="ixamoko_setting" key="' + key + '">' +
