@@ -615,27 +615,27 @@ function MokoMain($) {
         },
 
 // 2021.02.05 21章表示対応 ここから
-          21: {
-            "足軽"    : { number: 321, attack: 18, defense: 18, moving: 15, destroy:  4, tp1: "t1", tp2: "t1", command: "yari1" , skilltype: "槍", cost: [ 8, 10, 6, 6] },
-            "長槍足軽": { number: 322, attack: 23, defense: 23, moving: 16, destroy:  4, tp1: "t1", tp2: "t1", command: "yari2" , skilltype: "槍", cost: [14, 17, 12, 12] },
-            "武士"    : { number: 323, attack: 26, defense: 26, moving: 17, destroy:  5, tp1: "t1", tp2: "t3", command: "yari3" , skilltype: "槍", cost: [24, 30, 18, 18] },
-            "国人衆"  : { number: 324, attack: 23, defense: 22, moving: 16, destroy:  6, tp1: "t1", tp2: "t1", command: "yari4" , skilltype: "槍", cost: [] },
-            "弓足軽"  : { number: 325, attack: 17, defense: 19, moving: 16, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi1" , skilltype: "弓", cost: [10, 8, 6, 6] },
-            "長弓兵"  : { number: 326, attack: 22, defense: 24, moving: 17, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi2" , skilltype: "弓", cost: [17, 14, 12, 12] },
-            "弓騎馬"  : { number: 327, attack: 25, defense: 27, moving: 20, destroy:  3, tp1: "t2", tp2: "t3", command: "yumi3" , skilltype: "弓", cost: [30, 24, 18, 18] },
-            "海賊衆"  : { number: 328, attack: 22, defense: 23, moving: 17, destroy:  4, tp1: "t3", tp2: "t3", command: "yumi4" , skilltype: "弓", cost: [] },
-            "騎馬兵"  : { number: 329, attack: 19, defense: 17, moving: 18, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba1" , skilltype: "馬", cost: [ 6, 6, 8, 10] },
-            "精鋭騎馬": { number: 330, attack: 24, defense: 21, moving: 19, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba2" , skilltype: "馬", cost: [ 12, 12, 14, 17] },
-            "赤備え"  : { number: 331, attack: 27, defense: 25, moving: 21, destroy:  3, tp1: "t1", tp2: "t2", command: "kiba3" , skilltype: "馬", cost: [18, 18, 24, 30] },
-            "母衣衆"  : { number: 332, attack: 24, defense: 21, moving: 20, destroy:  4, tp1: "t2", tp2: "t2", command: "kiba4" , skilltype: "馬", cost: [] },
-            "破城鎚"  : { number: 333, attack: 18, defense: 16, moving: 13, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki1", skilltype: "器", cost: [12, 7, 9, 7] },
-            "攻城櫓"  : { number: 334, attack: 23, defense: 20, moving: 14, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki2", skilltype: "器", cost: [18, 10, 12, 15] },
-            "大筒兵"  : { number: 335, attack: 28, defense: 26, moving: 14, destroy: 20, tp1: "t3", tp2: "t4", command: "heiki3", skilltype: "器", cost: [30, 30, 35, 25] },
-            "穴太衆"  : { number: 346, attack: 25, defense: 25, moving: 15, destroy: 15, tp1: "t4", tp2: "t4", command: "heiki8", skilltype: "器", cost: [30, 20, 23, 22] },
-            "鉄砲足軽": { number: 336, attack: 28, defense: 30, moving: 15, destroy:  8, tp1: "t1", tp2: "t4", command: "heiki4", skilltype: "砲", cost: [35, 25, 50, 40] },
-            "騎馬鉄砲": { number: 337, attack: 30, defense: 28, moving: 17, destroy:  8, tp1: "t2", tp2: "t4", command: "heiki5", skilltype: "砲", cost: [25, 50, 35, 40] },
-            "焙烙火矢": { number: 345, attack: 29, defense: 29, moving: 16, destroy:  9, tp1: "t3", tp2: "t4", command: "heiki7", skilltype: "砲", cost: [35, 40, 25, 50] },
-            "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
+        21: {
+          "足軽"    : { number: 321, attack: 18, defense: 18, moving: 15, destroy:  4, tp1: "t1", tp2: "t1", command: "yari1" , skilltype: "槍", cost: [ 8, 10, 6, 6] },
+          "長槍足軽": { number: 322, attack: 23, defense: 23, moving: 16, destroy:  4, tp1: "t1", tp2: "t1", command: "yari2" , skilltype: "槍", cost: [14, 17, 12, 12] },
+          "武士"    : { number: 323, attack: 26, defense: 26, moving: 17, destroy:  5, tp1: "t1", tp2: "t3", command: "yari3" , skilltype: "槍", cost: [24, 30, 18, 18] },
+          "国人衆"  : { number: 324, attack: 23, defense: 22, moving: 16, destroy:  6, tp1: "t1", tp2: "t1", command: "yari4" , skilltype: "槍", cost: [] },
+          "弓足軽"  : { number: 325, attack: 17, defense: 19, moving: 16, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi1" , skilltype: "弓", cost: [10, 8, 6, 6] },
+          "長弓兵"  : { number: 326, attack: 22, defense: 24, moving: 17, destroy:  2, tp1: "t3", tp2: "t3", command: "yumi2" , skilltype: "弓", cost: [17, 14, 12, 12] },
+          "弓騎馬"  : { number: 327, attack: 25, defense: 27, moving: 20, destroy:  3, tp1: "t2", tp2: "t3", command: "yumi3" , skilltype: "弓", cost: [30, 24, 18, 18] },
+          "海賊衆"  : { number: 328, attack: 22, defense: 23, moving: 17, destroy:  4, tp1: "t3", tp2: "t3", command: "yumi4" , skilltype: "弓", cost: [] },
+          "騎馬兵"  : { number: 329, attack: 19, defense: 17, moving: 18, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba1" , skilltype: "馬", cost: [ 6, 6, 8, 10] },
+          "精鋭騎馬": { number: 330, attack: 24, defense: 21, moving: 19, destroy:  2, tp1: "t2", tp2: "t2", command: "kiba2" , skilltype: "馬", cost: [ 12, 12, 14, 17] },
+          "赤備え"  : { number: 331, attack: 27, defense: 25, moving: 21, destroy:  3, tp1: "t1", tp2: "t2", command: "kiba3" , skilltype: "馬", cost: [18, 18, 24, 30] },
+          "母衣衆"  : { number: 332, attack: 24, defense: 21, moving: 20, destroy:  4, tp1: "t2", tp2: "t2", command: "kiba4" , skilltype: "馬", cost: [] },
+          "破城鎚"  : { number: 333, attack: 18, defense: 16, moving: 13, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki1", skilltype: "器", cost: [12, 7, 9, 7] },
+          "攻城櫓"  : { number: 334, attack: 23, defense: 20, moving: 14, destroy: 12, tp1: "t4", tp2: "t4", command: "heiki2", skilltype: "器", cost: [18, 10, 12, 15] },
+          "大筒兵"  : { number: 335, attack: 28, defense: 26, moving: 14, destroy: 20, tp1: "t3", tp2: "t4", command: "heiki3", skilltype: "器", cost: [30, 30, 35, 25] },
+          "穴太衆"  : { number: 346, attack: 25, defense: 25, moving: 15, destroy: 15, tp1: "t4", tp2: "t4", command: "heiki8", skilltype: "器", cost: [30, 20, 23, 22] },
+          "鉄砲足軽": { number: 336, attack: 28, defense: 30, moving: 15, destroy:  8, tp1: "t1", tp2: "t4", command: "heiki4", skilltype: "砲", cost: [35, 25, 50, 40] },
+          "騎馬鉄砲": { number: 337, attack: 30, defense: 28, moving: 17, destroy:  8, tp1: "t2", tp2: "t4", command: "heiki5", skilltype: "砲", cost: [25, 50, 35, 40] },
+          "焙烙火矢": { number: 345, attack: 29, defense: 29, moving: 16, destroy:  9, tp1: "t3", tp2: "t4", command: "heiki7", skilltype: "砲", cost: [35, 40, 25, 50] },
+          "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
 // 2021.02.05 21章表示対応 ここまで
           },
 
@@ -1858,7 +1858,9 @@ function MokoMain($) {
             switch (key) {
               case 'chapter_change_mod':
                 var stage = {
-                  '17': '日ノ本燎原～下天に棲む勇胆の将～',
+// 2021.02.05. 21章表示対応 ここから
+//                  '17': '日ノ本燎原～下天に棲む勇胆の将～',
+// 2021.02.05. 21章表示対応 ここまで
                   '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
 // 2020.09.15 20章表示対応 ここから
