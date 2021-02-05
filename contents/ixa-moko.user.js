@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202101.8
+// @version      10.20.202101.9
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202101.8";
+  var VERSION_NAME = "ver 10.20.202101.9";
 
 // === Plugin ===
 
@@ -3863,7 +3863,10 @@ function MokoMain($) {
       $(this).fadeTo(200, 1.0);
     }).on('click', Setting.createDialog.bind(Setting))
     .appendTo('#navi01 > ul');
-    $('#navi01 > ul').css('width', '270px');
+// 2021.02.06 設定ボタンの見切れ改善 ここから    
+//    $('#navi01 > ul').css('width', '270px');
+    $('#navi01 > ul').css('width', '535px');
+// 2021.02.06 設定ボタンの見切れ改善 ここまで
     $('#open_setting').css('margin-right', '4px');
 
     // 15章 合流指定の変更、拠点変更の無効化
