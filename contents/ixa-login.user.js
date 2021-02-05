@@ -35,9 +35,15 @@ function MokoLogin($) {
     //   1: '19'
     // }[chapter_num];
     // メンテナンス終了は17:00なので、UTCとの時差は考慮しない
-    var chapter = ((new Date()).toISOString().substr(0,10) < "2020-08-14")
-      ? '19'
-      : '20';
+
+// 2021.02.05 21章表示対応 ここから
+//    var chapter = ((new Date()).toISOString().substr(0,10) < "2020-08-14")
+//      ? '19'
+//      : '20'
+var chapter = ((new Date()).toISOString().substr(0,10) < "2021-02-05")
+? '20'
+: '21'
+// 2021.02.05 21章表示対応 ここまで
     
     var season = parseFloat(season_num).toString(10);
     
