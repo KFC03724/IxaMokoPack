@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202102.2
+// @version      10.20.202102.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202102.2";
+  var VERSION_NAME = "ver 10.20.202102.3";
 
 // === Plugin ===
 
@@ -499,7 +499,7 @@ function MokoMain($) {
   ".驚天宿星.": ["特.戦陣 破軍.A","攻.覇王征軍.SS","..","..",".."],
 
   //21章新天
-  "攻.天宮八卦陣.SSS": ["攻.天神破軍.SS","特.布都御魂ノ鬨.SS","攻.天岩戸ノ神域.SS","..","攻.火之迦具土神.SS"],
+  "攻.天宮八卦陣.SSS": ["攻.天神破軍.SS","特.布都御魂ノ鬨.SS","攻.天岩戸ノ神域.SS","特.高津姫神.SS","攻.火之迦具土神.SS"],
   "防.救世ノ法軍.SSS": ["防.天弓星宿陣.SS","防.幽冥主宰大神.SS","防.天衣無縫神戒.SS","防.三千世界神将.SS","防.星宿劫ノ法壁.SS"],
   "攻.天剣七星.S": ["攻.天剣七星.S","攻.天之瓊矛ノ雫.SS","攻.八千矛神.SS","攻.破軍星 皇.SS","攻.火之迦具土神.SS"],
   "攻.月読ノ冥将.S": ["攻.神光征軍.SS","特.布都御魂ノ鬨.SS","攻.覇王征軍.SS","攻.天岩戸ノ神域.SS","攻.天之尾羽張.SS"],
@@ -749,7 +749,7 @@ function MokoMain($) {
       "20": [], // 20期暫定
 // 2021.02.05. 21章表示対応 ここから
       "21": [], // 21期暫定
-// 2021.02.05. 21章表示対応 ここmade
+// 2021.02.05. 21章表示対応 ここまで
 
     };
     npc_data_old["9"] = npc_data_old["8"] = npc_data_old["7"] = npc_data_old["6"]; // 6期と同じ
