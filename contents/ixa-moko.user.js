@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202102.3
+// @version      10.20.202102.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202102.3";
+  var VERSION_NAME = "ver 10.20.202102.4";
 
 // === Plugin ===
 
@@ -658,8 +658,8 @@ function MokoMain($) {
           "騎馬鉄砲": { number: 337, attack: 30, defense: 28, moving: 17, destroy:  8, tp1: "t2", tp2: "t4", command: "heiki5", skilltype: "砲", cost: [25, 50, 35, 40] },
           "焙烙火矢": { number: 345, attack: 29, defense: 29, moving: 16, destroy:  9, tp1: "t3", tp2: "t4", command: "heiki7", skilltype: "砲", cost: [35, 40, 25, 50] },
           "雑賀衆"  : { number: 338, attack: 27, defense: 22, moving: 15, destroy:  5, tp1: "t1", tp2: "t4", command: "heiki6", skilltype: "砲", cost: [] }
-// 2021.02.05 21章表示対応 ここまで
           },
+// 2021.02.05 21章表示対応 ここまで
 
     };
 
@@ -14472,9 +14472,13 @@ function MokoMain($) {
       var $html = $(html).find('table.common_table1');
       var $td = $html.find('tr.now td');
       
+// 2020.02.13 一戦防衛の方に一戦撃破が載っていた不具合の修正 ここから
       // ↓変更点(一戦撃破・防衛):42スレ 970修整
-      data.crushing = $td.eq(12).text().trim();
-      data.defense = $td.eq(13).text().trim();
+//      data.crushing = $td.eq(12).text().trim();
+//      data.defense = $td.eq(13).text().trim();
+      data.crushing = $td.eq(13).text().trim();
+      data.defense = $td.eq(14).text().trim();
+// 2020.02.13 一戦防衛の方に一戦撃破が載っていた不具合の修正 ここまで
       setStorage('ixamoko_target_data', data);
       return createInfoPower(data);
     });
