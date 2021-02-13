@@ -3871,12 +3871,12 @@ function MokoMain($) {
       $(this).fadeTo(200, 1.0);
     }).on('click', Setting.createDialog.bind(Setting))
     .appendTo('#navi01 > ul');
-// 2021.02.06 設定ボタンの位置修正 ここから    
+// 2021.02.14 設定ボタンの位置修正 ここから    
 //    $('#navi01 > ul').css('width', '270px');
 //    $('#open_setting').css('margin-right', '4px');
     $('#navi01 > ul').css('width', '520px');
     + $('#open_setting').css('margin-left', '-450px');
-// 2021.02.06 設定ボタンの位置修正 ここまで
+// 2021.02.14 設定ボタンの位置修正 ここまで
 
     // 15章 合流指定の変更、拠点変更の無効化
     $(".js-open_meeting_dialog").each(function(){
