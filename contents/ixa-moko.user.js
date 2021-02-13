@@ -3875,7 +3875,7 @@ function MokoMain($) {
 //    $('#navi01 > ul').css('width', '270px');
 //    $('#open_setting').css('margin-right', '4px');
     $('#navi01 > ul').css('width', '520px');
-    + $('#open_setting').css('margin-right', '4px');
+    $('#open_setting').css('margin-left', '-450px');
 // 2021.02.14 設定ボタンの位置修正 ここまで
 
     // 15章 合流指定の変更、拠点変更の無効化
