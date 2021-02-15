@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202102.5
+// @version      10.20.202102.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202102.5";
+  var VERSION_NAME = "ver 10.20.202102.6";
 
 // === Plugin ===
 
@@ -4456,6 +4456,9 @@ function MokoMain($) {
   // チャットの文字を大きく
   function chatBigFont() {
     if (options.big_font_chatstring) {
+// 2021.02.15 Moko設定[チャット文字を大きくする]に設定時、20文字目が折り返さない修正 ここから
+        $('td.msg').css('width', '230px');
+// 2021.02.15 Moko設定[チャット文字を大きくする]に設定時、20文字目が折り返さない修正 ここまで
         $('td.msg span').css('fontSize', '9pt');
 // 2021.02.14 Moko設定[チャット文字を大きくする]に設定した際でも履歴等のボタンのレイアウトが崩れない様対応 ここから
 //        $('ul.commentbtn').css('right', '-45px');
