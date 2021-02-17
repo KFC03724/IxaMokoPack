@@ -10,21 +10,25 @@ ul.pager {
 	  background-color: #333 !important;
 }
 
-#ig_battle_report_mid input[type=radio] {//ラジオボタン大きく
-		-webkit-transform-origin: centert middle;
-		-webkit-transform: scale( 1.5 , 1.5 );
+/* ラジオボタン大きく */
+#ig_battle_report_mid input[type=radio] {
+		transform-origin: centert middle;
+		transform: scale( 1.5 , 1.5 );
 }
-table.table_waigintunit input[type=checkbox] {//チェックボタン大きく
-		-webkit-transform-origin: centert middle;
-		-webkit-transform: scale( 1.5 , 1.5 );
+/* チェックボタン大きく */
+table.table_waigintunit input[type=checkbox] {
+		transform-origin: centert middle;
+		transform: scale( 1.5 , 1.5 );
 }
-div.new_worldmap_merge_setting input[type=radio] {//ラジオボタン大きく
-		-webkit-transform-origin: centert middle;
-		-webkit-transform: scale( 1.2 , 1.2 );
+/* ラジオボタン大きく */
+div.new_worldmap_merge_setting input[type=radio] {
+		transform-origin: centert middle;
+		transform: scale( 1.2 , 1.2 );
 }
-div.new_worldmap_merge_setting input[type=checkbox] {//チェックボタン大きく
-		-webkit-transform-origin: centert middle;
-		-webkit-transform: scale( 1.2 , 1.2 );
+/* チェックボタン大きく */
+div.new_worldmap_merge_setting input[type=checkbox] {
+		transform-origin: centert middle;
+		transform: scale( 1.2 , 1.2 );
 }
 
 
