@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202102.6
+// @version      10.20.202102.7
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202102.6";
+  var VERSION_NAME = "ver 10.20.202102.7";
 
 // === Plugin ===
 
@@ -20617,13 +20617,24 @@ function MokoMain($) {
         if (location.pathname == '/bbs/res_view.php') {
           target = $html.find('div.chat_space').slice(1);
           elem = $html.find('.comment_wbr');
-        } else {
-          target = $html.find('div.chat_sp');
-          elem = $html.find('div.chat_text');
-        }
+// 2020.02.18 チャット履歴のオートページャーの不具合を修正 ここから
+//        } else {
+//          target = $html.find('div.chat_sp');
+//          elem = $html.find('div.chat_text');
+//        }
+// 2020.02.18 チャット履歴のオートページャーの不具合を修正 ここまで
         $pager = $('ul.pager');
         $pager.eq(2).before(spacer, target);
         $pager.eq(1).data('page', page);
+// 2020.02.18 チャット履歴のオートページャーの不具合を修正 ここから
+        } else {
+          target = $html.find('div.chat_line');
+          elem = $html.find('div.chat_line_body');
+          $('div.chat_history').append(spacer, target);
+          $pager = $('ul.pager');
+          $pager.eq(0).data('page', page);
+        }
+// 2020.02.18 チャット履歴のオートページャーの不具合を修正 ここまで
         stringsChangeLink(elem);
         hideDeletedComments();
         if (options.big_font_chatstring) {
