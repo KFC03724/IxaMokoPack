@@ -31,7 +31,10 @@ div.new_worldmap_merge_setting input[type=checkbox] {
 		transform: scale( 1.2 , 1.2 );
 }
 
-
+/* 2021.02.18 チャットのいいねや承認にマウス当てた時に出てくる名前リストが見える範囲に表示する様対応 ここから */
+li.msg_reaction_icons_item>.msg_reaction_popup_list { left: initial; right: 0px; top: 25px; }
+ul.msg_reaction_popup_list::before { left: initial; right: 5px; top: -2px; transform: rotate(135deg); }
+/* 2021.02.18 チャットのいいねや承認にマウス当てた時に出てくる名前リストが見える範囲に表示する様対応 ここまで */
 
 table[id^="moko_candidate"] td span.skill_F,
 table[id^="moko_candidate"] td span.skill_E,
