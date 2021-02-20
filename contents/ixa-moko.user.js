@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.20.202102.9
+// @version      10.20.202102.10
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.20.202102.9";
+  var VERSION_NAME = "ver 10.20.202102.10";
 
 // === Plugin ===
 
@@ -4165,6 +4165,9 @@ function MokoMain($) {
         '<div>' +
           '<a id="friendly" href="/facility/unit_status.php?dmo=help">友軍</a>' +
           '<a href="/facility/unit_status.php?dmo=recieve_reinforcement">加勢</a>' +
+// 2020.02.21 資源バーリンク「部隊」に一騎討ち追加 ここから
+          '<a href="/facility/unit_status.php?dmo=single_combat">一騎討ち</a>' +
+// 2020.02.21 資源バーリンク「部隊」に一騎討ち追加 ここまで
           '<a href="/facility/unit_list.php">待機兵士一覧</a>' +
         '</div>' +
       '</li>' +
