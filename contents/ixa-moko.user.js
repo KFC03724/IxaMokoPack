@@ -4456,7 +4456,10 @@ function MokoMain($) {
   // 投稿欄に入力リセット追加
   function addResetlink() {
     $('#commentBox, #commentBox2').find('div.commentform')
-      .append('<div id="reset_box"><a class="ms_reset" href="javascript:void(0);">入力リセット</a></div>');
+// 2021.02.20 投稿欄に入力リセット追加 ここから
+//    .append('<div id="reset_box"><a class="ms_reset" href="javascript:void(0);">入力リセット</a></div>');
+    .append('<div id="reset_box" style="margin-top: -2px;"><a class="ms_reset" href="javascript:void(0);">入力リセット</a></div>');
+// 2021.02.20 投稿欄に入力リセット追加 ここまで
     $('a.ms_reset').on('click', function() {
       $(this).parent().prev().val('');
     });
@@ -6111,17 +6114,6 @@ function MokoMain($) {
       return current_name;
     };
     General.baseMark(deck_current_base(), 'coral');
-
-// 2021.02.20 投稿欄に入力リセット追加 ここから
-function addResetlink() {
-  $('#commentBox, #commentBox2').find('div.commentform')
-  -.append('<div id="reset_box"><a class="ms_reset" href="javascript:void(0);">入力リセット</a></div>');
-  +.append('<div id="reset_box" style="margin-top: -2px;"><a class="ms_reset" href="javascript:void(0);">入力リセット</a></div>');
-  $('a.ms_reset').on('click', function() {
-  $(this).parent().prev().val('');
-  });
-}
-// 2021.02.20 投稿欄に入力リセット追加 ここまで
 
     // レイアウト
 
