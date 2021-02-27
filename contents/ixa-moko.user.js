@@ -4653,7 +4653,55 @@ function MokoMain($) {
     $worldTable.last().before($substatus_btn);
     $sideBox.last().find('DIV.sideBoxHead').remove();
     $sideBox.eq(4).after($sideBox.eq(3), $sideBox.eq(1));
-    $sideBox.eq(2).append($sideBoxInner.eq(1).append($btnReport, $btnWarReport, $information));
+// 2021.02.27 サイドバーに一騎討ち自動受諾追加 ここから
+//    $sideBox.eq(2).append($sideBoxInner.eq(1).append($btnReport, $btnWarReport, $information));
+    $sideBox.eq(2).append($sideBoxInner.eq(1).append(singleCombat(), $btnReport, $btnWarReport, $information));
+    // 一騎討ち自動受託
+    function singleCombat() {
+    let value;
+    if(location.pathname === '/facility/unit_status.php' && location.search.indexOf("dmo=single_combat") !== -1){
+    value = $('#single_combat_check').prop('checked');
+    setStorage('ixamoko_single_combat_auto_accept', value);
+    } else {
+    value = getStorage(null, 'ixamoko_single_combat_auto_accept');
+    if(value === null){
+    let html = $.ajax({
+    url: '/facility/unit_status.php?dmo=single_combat',
+    async: false,
+    beforeSend: xrwStatusText,
+    }).responseText;
+    value = $(html).find('#single_combat_check').prop('checked');
+    setStorage('ixamoko_single_combat_auto_accept', value);
+    }
+    }
+    let $checkbox = $('<input>', {type:'checkbox', id:'ixamoko_single_combat_auto_accept', checked:value});
+    if(location.pathname === '/facility/unit_status.php' && location.search.indexOf("dmo=single_combat") === 1){
+    $checkbox.on('click', function(){
+    $('#single_combat_check').click();
+    setTimeout(()=>setStorage('ixamoko_single_combat_auto_accept', $('#single_combat_check').prop('checked')), 200);
+    });
+    $('#single_combat_check').on('click', function(){
+    $('#ixamoko_single_combat_auto_accept').prop('checked', $(this).prop('checked'));
+    setStorage('ixamoko_single_combat_auto_accept', $(this).prop('checked'));
+    });
+    } else {
+    $checkbox.on('click', function(){
+    let json = $.ajax({
+    type: 'post',
+    url: '/facility/unit_status_if.php',
+    data: { change_single_combat_auto_accept: $(this).prop('checked') ? 1 : 0 },
+    dataType: 'JSON',
+    async: false,
+    beforeSend: xrwStatusText,
+    }).responseJSON;
+    $(this).prop('checked', json.single_combat_auto_accept);
+    setStorage('ixamoko_single_combat_auto_accept', json.single_combat_auto_accept);
+    });
+    }
+    return $singleCombat = $('<label>', {style:'display: block; margin-bottom: 5px; text-align: right;'})
+    .append($checkbox, $('<span>一騎討ち自動受諾</span>'));
+    }
+// 2021.02.27 サイドバーに一騎討ち自動受諾追加 ここまで
   }
   
   // IXAタイムを表示
