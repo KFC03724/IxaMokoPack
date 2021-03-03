@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.21.202102.11
+// @version      10.21.202103.1
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.21.202102.11";
+  var VERSION_NAME = "ver 10.21.202103.1";
 
 // === Plugin ===
 
@@ -13925,9 +13925,15 @@ function MokoMain($) {
     if (options.mini_map_location_mod == 1) {// (左)
       var $mini_map = $('#mini_map').css({'top': '0px', 'left': '-185px', 'z-index': '500',});
     } else if (options.mini_map_location_mod == 2) {// (ちょい上)
-      var $mini_map = $('#mini_map').css({'top': '-13px', 'right': '-15px', 'z-index': '500',});
+// 2021.03.04 地図表示時ミニマップと一騎討ちの表示が被るのでミニマップを左表示に変更 ここから
+//      var $mini_map = $('#mini_map').css({'top': '-13px', 'right': '-15px', 'z-index': '500',});
+      var $mini_map = $('#mini_map').css({'top': '0px', 'right': '585px', 'z-index': '500',});
+// 2021.03.04 地図表示時ミニマップと一騎討ちの表示が被るのでミニマップを左表示に変更 ここまで
     } else {// (初期値)
-      var $mini_map = $('#mini_map').css({'top': '10px', 'right': '8px', 'z-index': '500',});
+// 2021.03.04 地図表示時ミニマップと一騎討ちの表示が被るのでミニマップを左表示に変更 ここから
+//      var $mini_map = $('#mini_map').css({'top': '10px', 'right': '8px', 'z-index': '500',});
+      var $mini_map = $('#mini_map').css({'top': '10px', 'right': '565px', 'z-index': '500',});
+// 2021.03.04 地図表示時ミニマップと一騎討ちの表示が被るのでミニマップを左表示に変更 ここまで
     }
 
     // クリックした座標へマップ移動
