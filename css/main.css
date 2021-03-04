@@ -51,3 +51,8 @@ table[id^="moko_candidate"] td span.skill_C{color:#FFFB74;}
 table[id^="moko_candidate"] td span.skill_B{color:#FD8F4D;}
 table[id^="moko_candidate"] td span.skill_A{color:#FD2524;}
 table[id^="moko_candidate"] td span.skill_S{color:#D9C434;}
+
+/* 2021.03.04 掲示板の自投稿色修正 ここから */
+/* 掲示板自投稿色修正 */
+a.thread_owner.me { color: #f60; }
+/* 2021.03.04 掲示板の自投稿色修正 ここまで */
