@@ -1739,7 +1739,7 @@ function MokoMain($) {
           } else if (key == 'place_skip' ||
 // 2021.03.06 MOKO設定の初期値を変更 ここから
 //            key == 'raid_alarm_display' ||
-            key == 'keybind' ||
+//            key == 'keybind' ||
             key == 'menu_reversal' ||
             key == 'status_display' ||
 // 2021.03.06 MOKO設定の初期値を変更 ここまで
