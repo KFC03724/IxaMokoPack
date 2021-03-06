@@ -1586,7 +1586,10 @@ function MokoMain($) {
       // 全般2
       menu_reversal: {tag: 'all2', caption: '資源バーの位置を変更する'},
       menu_reversal_mod: {tag: 'all2', caption: '位置変更の選択'},
-      status_display: {tag: 'all2', caption: '資源バーの表示を変更変更する'},
+// 2021.03.06 MOKO設定の誤記修正 ここから
+//      status_display: {tag: 'all2', caption: '資源バーの表示を変更変更する'},
+      status_display: {tag: 'all2', caption: '資源バーの表示を変更する'},
+// 2021.03.06 MOKO設定の誤記修正 ここまで
       status_display_mod: {tag: 'all2', caption: '資源バーの表示内容の変更'},
       pulldown_right_click: {tag: 'all2', caption: 'プルダウンメニューを右クリック表示にする'},
 // 2020.09.15 誤表記修正 ここから
@@ -1738,7 +1741,7 @@ function MokoMain($) {
 //            key == 'raid_alarm_display' ||
             key == 'keybind' ||
             key == 'menu_reversal' ||
-            key == 'menu_reversal_mod' ||
+            key == 'status_display' ||
 // 2021.03.06 MOKO設定の初期値を変更 ここまで
             key == 'raid_sound' ||
             key == 'def_num_of_soldier' ||
