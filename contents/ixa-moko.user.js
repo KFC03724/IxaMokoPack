@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.21.202103.1
+// @version      10.21.202103.3
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.21.202103.1";
+  var VERSION_NAME = "ver 10.21.202103.3";
 
 // === Plugin ===
 
@@ -1734,7 +1734,12 @@ function MokoMain($) {
 
           // 初期値OFF
           } else if (key == 'place_skip' ||
-            key == 'raid_alarm_display' ||
+// 2021.03.06 MOKO設定の初期値を変更 ここから
+//            key == 'raid_alarm_display' ||
+            key == 'keybind' ||
+            key == 'menu_reversal' ||
+            key == 'menu_reversal_mod' ||
+// 2021.03.06 MOKO設定の初期値を変更 ここまで
             key == 'raid_sound' ||
             key == 'def_num_of_soldier' ||
             key == 'raid_highlighted' ||
@@ -1747,7 +1752,9 @@ function MokoMain($) {
             key == 'width_display' ||
             key == 'input_css' ||
             key == 'pager_link_all' ||
-            key == 'ixa_time' ||
+// 2021.03.06 MOKO設定の初期値を変更 ここから
+//            key == 'ixa_time' ||
+// 2021.03.06 MOKO設定の初期値を変更 ここまで
             key == 'hide_animation' ||
             key == 'unit_list_group' ||
             key == 'remove_bushodrama' ||
@@ -1762,9 +1769,11 @@ function MokoMain($) {
             || key == 'distance_caution'
             || key == 'no_charge'
             || key == 'no_balloon'
-// 2020.09.15 内政の19章化 ここから
-            || key == 'operation_method_19'
-// 2020.09.15 内政の19章化 ここまで
+// 2021.03.06 MOKO設定の初期値を変更 ここから
+//// 2020.09.15 内政の19章化 ここから
+//            || key == 'operation_method_19'
+//// 2020.09.15 内政の19章化 ここまで
+//// 2021.03.06 MOKO設定の初期値を変更 ここまで
           ){
             options[key] = false;
           } else if (key.indexOf('_mod') !== -1) {
