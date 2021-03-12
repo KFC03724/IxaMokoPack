@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.21.202103.5
+// @version      10.21.202103.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -20,7 +20,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.21.202103.5";
+  var VERSION_NAME = "ver 10.21.202103.6";
 
 // === Plugin ===
 
@@ -4062,7 +4062,8 @@ function MokoMain($) {
     
     // アイテムの追加
 // 2020.09.15 資源バーの残り時間表示 ここから
-/*
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここから
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここまで
 // 2020.09.15 資源バーの残り時間表示 ここから
 //    var html = '';
 //    for (i = 0; i < len; i++) {
@@ -4070,8 +4071,10 @@ function MokoMain($) {
     var html = '<li style="display: none;"></li>';
     for (i = 0; i < len; i++) {
 // 2020.09.15 アイコンのズレの修正 ここから
-//      html += '<li class="stock">' + $img.eq(i)[0].outerHTML + '&nbsp;' +
-      html += '<li class="stock">' + $img.eq(i*2+1)[0].outerHTML + '&nbsp;' +
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここから
+      html += '<li class="stock">' + $img.eq(i)[0].outerHTML + '&nbsp;' +
+//      html += '<li class="stock">' + $img.eq(i*2+1)[0].outerHTML + '&nbsp;' +
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここまで
 // 2020.09.15 アイコンのズレの修正 ここまで
 // 2020.09.15 資源バーの残り時間表示 ここまで
             '<span class="normal" id="' + kind[i] + '_store">' + stock[i] + '</span>&nbsp;/&nbsp;' +
@@ -4152,7 +4155,9 @@ function MokoMain($) {
     if (fame() <= 5) {
       $fame_groove.css('background-color', 'red');
     }
-*/
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここから
+
+// 2021.03.12 残り時間表示（moko方式）が正常に動作する様修正 ここまで
 // 2020.09.15 資源バーの残り時間表示 ここまで
   }
 // 2020.09.15 公式モードとmokoモードを選択可能にできる様対応 ここから
