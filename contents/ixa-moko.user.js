@@ -4179,7 +4179,7 @@ function MokoMain($) {
 //    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
 //    '<li id="敵襲"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
 //    '<li id="敵襲" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet">敵</font></a></li>' +
-    '<li id="敵襲" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1.5">敵</font></a></li>' +
+    '<li id="敵襲" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=enemy"><font color="violet" font size="1">敵</font></a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4189,8 +4189,8 @@ function MokoMain($) {
 // 2020.09.15 フォントサイズの指定 ここから
 //      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
 ////      '<li id="全部隊" class="mk_sub_menu"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</a>' +
-      '<li id="全部隊" class="mk_sub_menu" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
-      '<li id="全部隊" class="mk_sub_menu" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=all"><font size="1.5">部隊</font></a>' +
+//      '<li id="全部隊" class="mk_sub_menu" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=all">部隊</a>' +
+      '<li id="全部隊" class="mk_sub_menu" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=all"><font size="1">部隊</font></a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4209,7 +4209,7 @@ function MokoMain($) {
 //      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
 //      '<li id="合流"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
 //      '<li id="合流" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue">合流</font></a></li>' +
-      '<li id="合流" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1.5">合流</font></a></li>' +
+      '<li id="合流" style="padding-top:12px;"><a href="/facility/unit_status.php?dmo=merge"><font color="dodgerblue" font size="1">合流</font></a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4222,7 +4222,7 @@ function MokoMain($) {
 // 2020.09.15 フォントサイズの指定 ここから
 //        '&select_card_group=0&select_filter_num=0">編成</a>' +
 //        '&select_card_group=0&select_filter_num=0">編成</a>' +
-        '&select_card_group=0&select_filter_num=0"><font size="1.5">編成</font></a>' +
+        '&select_card_group=0&select_filter_num=0"><font size="1">編成</font></a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
         '<div>';
@@ -4247,7 +4247,7 @@ function MokoMain($) {
 //        '<li><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
 //        '<li><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</a></li>' +
 //        '<li style="padding-top:12px;"><a href="/war/war_ranking.php"><font color="chartreuse">順</a></li>' +
-        '<li style="padding-top:12px;"><a href="/war/war_ranking.php"><font color="chartreuse" font size="1.5">順</font></a></li>' +
+        '<li style="padding-top:12px;"><a href="/war/war_ranking.php"><font color="chartreuse" font size="1">順</font></a></li>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4258,7 +4258,7 @@ function MokoMain($) {
 //        '<li><a href="/war/village_search.php">探</a></li>';
 //        '<li><a href="/war/village_search.php"><font size="1.5">探</a></li>';
 //        '<li style="padding-top:12px;"><a href="/war/village_search.php">探</a></li>';
-        '<li style="padding-top:12px;"><a href="/war/village_search.php"><font size="1.5">探</font></a></li>';
+        '<li style="padding-top:12px;"><a href="/war/village_search.php"><font size="1">探</font></a></li>';
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4269,7 +4269,7 @@ function MokoMain($) {
 // 2020.09.15 フォントサイズの指定 ここから
 //    html += '<li id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>' +
 //    html += '<li style="padding-top:12px;" id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red">本丸</a>' +
-    html += '<li style="padding-top:12px;" id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red" font size="1.5">本丸</font></a>' +
+    html += '<li style="padding-top:12px;" id="本丸防御陣形" class="mk_sub_menu"><a href="/card/defense_formation_deck.php"><font color="red" font size="1">本丸</font></a>' +
 // 2020.09.15 フォントサイズの指定 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
@@ -4285,7 +4285,7 @@ function MokoMain($) {
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
 //    html += '<li id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</a>' +
 //    html += '<li style="padding-top:12px;" id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php">くじ他</a>' +
-    html += '<li style="padding-top:12px;" id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1.5">くじ他</font></a>' +
+    html += '<li style="padding-top:12px;" id="戦国くじ" class="mk_sub_menu"><a href="/senkuji/senkuji.php"><font size="1">くじ他</font></a>' +
 // 2020.09.15 資源バー横に本丸防御の直リンを追加 ここまで
 // 2021.03.17 資源バー横の「敵」～「くじ他」までフォントサイズを下げる ここまで
 // 2020.10.05 "敵"～"くじ他"の外観の改善 ここまで
