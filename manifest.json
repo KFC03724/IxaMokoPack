@@ -1,0 +1,74 @@
+{
+  "manifest_version": 3,
+  "name": "IxaMoko",
+  "author": "hoge",
+  "version": "10.30.202508.3",
+  "description": "Tool of Sengoku-ixa(2025/08/09)",
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "run_at": "document_start",
+      "matches": [
+        "https://*.sengokuixa.jp/world/*"
+      ],
+      "js": [
+        "inject_login.js"
+      ]
+    },
+    {
+      "all_frames": true,
+      "run_at": "document_start",
+      "matches": [
+        "https://*.sengokuixa.jp/*",
+        "https://*.sengokuixa.jp/war/war_ranking.php",
+        "https://*.sengokuixa.jp/user/ranking.php?m=",
+        "https://*.sengokuixa.jp/user/ranking.php?m=&c=0"
+      ],
+      "exclude_matches": [
+        "https://sengokuixa.jp/*&",
+        "https://cache.sengokuixa.jp/*",
+        "http://h.sengokuixa.jp/*&",
+        "https://m.sengokuixa.jp/*&",
+        "https://*.sengokuixa.jp/world/*",
+        "https://*.sengokuixa.jp/false/*",
+        "https://*.sengokuixa.jp/maintenance/"
+      ],
+      "js": [
+        "inject_moko.js"
+      ],
+      "css": [
+        "css/main.css"
+      ]
+    },
+    {
+      "all_frames": true,
+      "run_at": "document_idle",
+      "matches": [
+        "https://*.sengokuixa.jp/war/war_ranking.php"
+      ],
+      "js": [
+        "ranking.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.sengokuixa.jp/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "contents/ixa-login.user.js",
+        "contents/ixa-moko.user.js",
+        "contents/ixa-training.user.js",
+        "contents/ixa-skill_table.js",
+        "userscript/defense_formation_info.js"
+      ],
+      "matches": [
+        "https://*.sengokuixa.jp/*"
+      ]
+    }
+  ]
+}

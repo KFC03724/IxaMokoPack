@@ -1,0 +1,1 @@
+document.location.href = document.querySelector('li.ranking_pager_btn a').href;
