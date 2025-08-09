@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.3";
+    var VERSION_NAME = "ver 10.30.202508.4";
   
   // === Plugin ===
   
