@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.30.202508.3
+// @version      10.30.202508.6
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.4";
+    var VERSION_NAME = "ver 10.30.202508.6";
   
   // === Plugin ===
   
@@ -30915,29 +30915,36 @@ function dungeonMaxFillUp() {
       return (style);
     }
 
-// 2023.09.21 兵士一括訓練が常時表示される様修正 ここから
-function loadMoko() {
+// 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここから
+// function loadMoko() {
   
-  document.head.appendChild(MokoCss());
+//   document.head.appendChild(MokoCss());
       
-  const scriptMoko = document.createElement('script');
-  scriptMoko.setAttribute('type','text/javascript');
-  scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
-  document.head.appendChild(scriptMoko);
+//   const scriptMoko = document.createElement('script');
+//   scriptMoko.setAttribute('type','text/javascript');
+//   scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
+//   document.head.appendChild(scriptMoko);
 
-}
+// }
       
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadMoko);
-} else {
-  loadMoko();
+// if (document.readyState === 'loading') {
+//   document.addEventListener('DOMContentLoaded', loadMoko);
+// } else {
+//   loadMoko();
+// }
+function loadMoko() {
+  document.head.appendChild(MokoCss());
+
+  const loadCandidate = setInterval(function() {
+    if ( typeof window.SKILL_CANDIDATE2 !== 'undefined' ) {
+      clearInterval(loadCandidate);
+      const scriptMoko = document.createElement('script');
+      scriptMoko.setAttribute('type','text/javascript');
+      scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
+      document.head.appendChild(scriptMoko);
+    } else {
+      console.error("not loaded SKILL_CANDIDATE");
+    }
+  }, 10);
 }
-// 2023.09.21 兵士一括訓練が常時表示される様修正 ここまで
-//      var scriptMoko = document.createElement('script');
-//    scriptMoko.setAttribute('type','text/javascript');
-//    scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
-//    document.head.appendChild(scriptMoko);
-//    });
-//  
-//  }());
-// 2022.03.31 manifest_version 3に対応 ここまで
+// 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここまで
