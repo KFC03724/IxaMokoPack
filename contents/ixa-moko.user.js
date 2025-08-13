@@ -5500,6 +5500,15 @@ function createMemo() {
     
     // 合戦向けサイドボックス
     function sideboxChange() {
+
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
+      $('div#sideboxMain').find('div.sideBoxInner').each(function(){
+        if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
+          $(this).remove();
+        };
+      });
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
+
       if (!options.sidebox_change) {
         return;
       }
@@ -5576,14 +5585,6 @@ function createMemo() {
       // }
 // 2021.02.27 サイドバーに一騎討ち自動受諾追加 ここまで
 // 2022.08.06 24章表示対応 一騎打ち廃止に伴うコメントアウト ここまで
-
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
-    $('div#sideboxMain').find('div.sideBoxInner').each(function(){
-      if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
-        $(this).remove();
-      };
-    });
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
     }
     
     // IXAタイムを表示
