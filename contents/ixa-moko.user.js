@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.30.202508.6
+// @version      10.30.202508.7
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.6";
+    var VERSION_NAME = "ver 10.30.202508.7";
   
   // === Plugin ===
   
@@ -16665,7 +16665,15 @@ function createMemo() {
       // end
       setUnitGroupsFilter(); // グループフィルター
     }
-    
+
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
+    $('div#sideboxMain').find('div.sideBoxInner').each(function(){
+      if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
+        $(this).remove();
+      };
+    });
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
+
     // 兵士編成・精鋭部隊 チェック
     function trGradientCheck(i, element) {
       var target = $(element);
