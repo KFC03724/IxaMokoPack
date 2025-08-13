@@ -29807,13 +29807,6 @@ function dungeonMaxFillUp() {
 // 2023.10.17 防御陣形のコスト変更機能の改修 ここから
     mokoSendConvertCostAjax();    // all     防御陣形のコスト変更
 // 2023.10.17 防御陣形のコスト変更機能の改修 ここまで
-
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
-    $('div#sideboxMain').find('div.sideBoxInner').each(function(){
-      if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
-        $(this).remove();
-      };
-    });
 // 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
   
   // ^ execute function
