@@ -6583,14 +6583,6 @@ function createMemo() {
 // 2024.05.23 サイドバーでお勧めを消去 ここから
       $('img[alt^="おすすめ"]').closest('div.sideBoxInner').hide();
 // 2024.05.23 サイドバーでお勧めを消去 ここまで
-
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
-      $('div#sideboxMain').find('div.sideBoxInner').each(function(){
-        if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
-          $(this).remove();
-        };
-      });
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
     }
   
   // ^ allpage
@@ -29655,6 +29647,14 @@ function dungeonMaxFillUp() {
           }
         });
       });
+
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
+      $('div#sideboxMain').find('div.sideBoxInner').each(function(){
+        if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
+          $(this).remove();
+        };
+      });
+// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
     }
 // 2023.10.20 所領防御陣形機能の改修 ここまで
 
