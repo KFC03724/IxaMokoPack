@@ -30846,12 +30846,8 @@ function dungeonMaxFillUp() {
       return (style);
     }
 
-<<<<<<< HEAD
-function loadMoko() {
-=======
 // 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここから
 // function loadMoko() {
->>>>>>> c96dc19ef87da2faaaed0a554f61151910a36aba
   
 //   document.head.appendChild(MokoCss());
       
@@ -30862,13 +30858,6 @@ function loadMoko() {
 
 // }
       
-<<<<<<< HEAD
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadMoko);
-} else {
-  loadMoko();
-}
-=======
 // if (document.readyState === 'loading') {
 //   document.addEventListener('DOMContentLoaded', loadMoko);
 // } else {
@@ -30890,4 +30879,3 @@ function loadMoko() {
   }, 10);
 }
 // 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここまで
->>>>>>> c96dc19ef87da2faaaed0a554f61151910a36aba
