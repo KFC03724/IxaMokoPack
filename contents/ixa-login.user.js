@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMokoLogin
 // @description  戦国IXA用ツール ログイン
-// @version      10.30.202508.3
+// @version      10.30.202508.6
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/world/*
@@ -11,37 +11,6 @@
 
 // 音楽：魔王魂
 function MokoLogin($) {
-  console.debug('Load... MokoLogin');
-  "use strict";
-
-// 2023.09.17 MOKOが有効だとログイン即セッションタイムアウトになる事象の解消 ここから
-  // === Cookie ===
-
-  // クッキーに登録したログイン時間を取得
-  if (getCookie('im_st')) {
-    login_data.endtime = getCookie('im_st');
-    setStorage('ixamoko_login_data', login_data);
-    document.cookie = 'im_st=0; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
-  }
-  
-  // クッキーに登録した 章・期の取得
-  if (getCookie('chapter')) {
-    var shred = getCookie('chapter').split('-');
-    login_data.world = shred[0];
-    login_data.chapter = shred[1];
-    login_data.season = shred[2];
-    setStorage('ixamoko_login_data', login_data);
-    document.cookie = 'chapter=; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
-  }
-  
-  // login_dataがない場合
-  if (!Object.keys(login_data).length) {
-    location.href = '/false/login_sessionout.php';
-  return false;
-  }
-  
-  // ^ Cookie
-  // 2023.09.17 MOKOが有効だとログイン即セッションタイムアウトになる事象の解消 ここまで
 
   console.debug('Load... MokoLogin');
   "use strict";

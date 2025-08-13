@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.30.202508.3
+// @version      10.30.202508.5
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.4";
+    var VERSION_NAME = "ver 10.30.202508.5";
   
   // === Plugin ===
   
@@ -1257,7 +1257,34 @@
     }();
   
   // ^ 定数
-  
+
+  // === Cookie ===
+
+  // クッキーに登録したログイン時間を取得
+  if (getCookie('im_st')) {
+    login_data.endtime = getCookie('im_st');
+    setStorage('ixamoko_login_data', login_data);
+    document.cookie = 'im_st=0; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
+  }
+
+  // クッキーに登録した 章・期の取得
+  if (getCookie('chapter')) {
+    var shred = getCookie('chapter').split('-');
+    login_data.world = shred[0];
+    login_data.chapter = shred[1];
+    login_data.season = shred[2];
+    setStorage('ixamoko_login_data', login_data);
+    document.cookie = 'chapter=; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
+  }
+
+  // login_dataがない場合
+  if (!Object.keys(login_data).length) {
+    location.href = '/false/login_sessionout.php';
+    return false;
+  }
+
+  // ^ Cookie
+
   // === Global ===
 
   // 2022.08.30 部隊編成画面のフィルタをアコーディオン化 ここから
@@ -5023,153 +5050,57 @@ function get_card_data(target) {
     }
     
     // ログイン・タイムアウトのカウントダウン
-// 2023.12.02 セッションタイムアウト処理周りの改善 ここから
-    // function timeoutCountdown() {
-    //   if (!options.timeout_countdown) {
-    //     return;
-    //   }
-    //   var totime = 0;
-    //   var sec = 0;
-    //   if (login_data.endtime) {
-    //     totime = parseInt(login_data.endtime, 10) + 3 * 60 * 60;
-    //     sec = totime - getUnixTime();
-    //   }
-    //   var timeText = timeStringConvert(sec),
-    //     chapter, season, html;
-    //   if (login_data.world) {
-    //     chapter = login_data.chapter;
-    //     season = login_data.season;
-    //   } else {
-    //     chapter = ' - ';
-    //     season = ' - ';
-    //   }
-    //   html = '<div id="ixamoko_sessout">' + chapter + '章' + season + '期　セッションタイムアウトまで ' + '<span id="ixamoko_countdown" data-totime="' + totime + '">' + timeText + '</span>' + '</div>';
-    //   $('#lordSiteArea').hide();
-    //   $(html).appendTo('#lordNameBox');
-    //   var countdownTimer = 0,
-    //   countDown = function() {
-    //     $('#ixamoko_countdown').each(function() {
-    //       var totime = parseInt($(this).data('totime'), 10),
-    //         sec = totime - getUnixTime(),
-    //         timeText = timeStringConvert(sec);
-    //       $(this).html(timeText);
-          
-    //       // 残り時間による色変更
-    //       if (sec < 0) {
-    //         $('#ixamoko_sessout').css({
-    //           'background-color': 'crimson',
-    //           'color': 'white'
-    //         });
-    //         clearTimeout(countdownTimer);
-    //       } else if (sec < 600) {
-    //         $('#ixamoko_sessout').css({
-    //           'background-color': 'crimson',
-    //           'color': 'white'
-    //         });
-    //       } else if (sec < 1800) {
-    //         $('#ixamoko_sessout').css('color', 'yellow');
-    //       }
-    //     });
-    //     countdownTimer = setTimeout(countDown, 1000 - new Date().getMilliseconds());
-    //   };
-  
-    //   countDown();
-    // }
-    // ログイン・タイムアウトのカウントダウン
-function timeoutCountdown() {
-  if (!options.timeout_countdown) {
-  return;
-  }
-  var totime = 0;
-  var sec = 0;
-  if (login_data.endtime) {
-  totime = parseInt(login_data.endtime, 10) + 3 * 60 * 60;
-  sec = totime - getUnixTime();
-  }
-  var timeText = timeStringConvert(sec),
-  chapter, season, html;
-  if (login_data.world) {
-  chapter = login_data.chapter;
-  season = login_data.season;
-  } else {
-  chapter = ' - ';
-  season = ' - ';
-  }
-  html = '<div id="ixamoko_sessout" style="font-size: 11px;">' + chapter + '章' + season + '期　セッションタイムアウトまで ' + '<span id="ixamoko_countdown" data-totime="' + totime + '">' + timeText + '</span>' + '</div>';
-  $('#lordSiteArea').hide();
-  $(html).appendTo('#lordNameBox');
-  var countdownTimer = 0,
-  countDown = function() {
-  $('#ixamoko_countdown').each(function() {
-  var totime = parseInt($(this).data('totime'), 10),
-  sec = totime - getUnixTime(),
-  timeText = timeStringConvert(sec);
-  $(this).html(timeText);
-  
-  // 残り時間による色変更
-  if (sec < 0) {
-  $('#ixamoko_sessout').css({
-  'background-color': 'crimson',
-  'color': 'white'
-  });
-  clearTimeout(countdownTimer);
-  } else if (sec < 600) {
-  $('#ixamoko_sessout').css({
-  'background-color': 'crimson',
-  'color': 'white'
-  });
-  } else if (sec < 1800) {
-  $('#ixamoko_sessout').css('color', 'yellow');
-  }
-  });
-  countdownTimer = setTimeout(countDown, 1000 - new Date().getMilliseconds());
-  };
-  
-  countDown();
-  }
-// 2023.12.02 // 2023.12.02 セッションタイムアウト処理周りの改善 ここまで
-    // セッションタイムアウト更新(影城主登録必須)
-// 2023.11.28 影城主を表示している状態で[時間リセット]ボタンをクリックすると「影城主の登録がありません」のエラーダイアログが表示される事象の対応 ここから
-//     function resetSessout() {
-//       var $resetbutton = $('<input type="button" value="時間リセット" />');
-//       $resetbutton.css({
-//         'border': '.5px #fff solid',
-//         'font-family': '"ＭＳ Ｐ明朝","細明朝体","ヒラギノ明朝 Pro W3"',
-//         'font-weight': 'bold',
-//         'color': '#f5f5f5',
-//         'background-color': '#9A2B25',
-//         'border-radius': '4px',
-//         'box-shadow': '0 0 1px #000',
-//         'text-shadow': '0 0 2px #000',
-//         'font-size': '8px',
-//         'width': '58px',
-//         'height': '16px',
-//         'margin-left': '6px'
-//       });
-//       $resetbutton.on('click', function() {
-//         if (!Object.keys(getStorage({}, 'zs_ixamoko_options')).length) {
-//           alert('影城主の登録がありません');
-//           return false;
-//         }
-//         $(this).prop('disabled', true);
-//         $(this).css('background-color', 'gray');
-//         nowLoading();
-//         Info.title('セッションタイムアウトを更新中...');
-//         userChange();
-//         sleep(2).done(function() {userChange();});
-//         var new_time = ~~(new Date() / 1000);
-//         login_data.endtime = new_time;
-//         setStorage('ixamoko_login_data', login_data);
-//         window.document.getElementById('ixamoko_sessout').remove();
-//         timeoutCountdown();
-//         $(this).appendTo('#ixamoko_sessout');
-// // 2023.02.15 セッション残り時間リセットボタン機能訂正 ここから
-// //        setTimeout(Info.title, 3000, '完了', location.href);
-//         setTimeout(Info.title, 3000, '完了', location.href.split('#')[0]);
-// // 2023.02.15 セッション残り時間リセットボタン機能訂正 ここまで
-//       });
-//       $resetbutton.appendTo('#ixamoko_sessout');
-//     }
+    function timeoutCountdown() {
+      if (!options.timeout_countdown) {
+        return;
+      }
+      var totime = 0;
+      var sec = 0;
+      if (login_data.endtime) {
+        totime = parseInt(login_data.endtime, 10) + 3 * 60 * 60;
+        sec = totime - getUnixTime();
+      }
+      var timeText = timeStringConvert(sec),
+      chapter, season, html;
+      if (login_data.world) {
+        chapter = login_data.chapter;
+        season = login_data.season;
+      } else {
+        chapter = ' - ';
+        season = ' - ';
+      }
+      html = '<div id="ixamoko_sessout" style="font-size: 11px;">' + chapter + '章' + season + '期　セッションタイムアウトまで ' + '<span id="ixamoko_countdown" data-totime="' + totime + '">' + timeText + '</span>' + '</div>';
+      $('#lordSiteArea').hide();
+      $(html).appendTo('#lordNameBox');
+      var countdownTimer = 0,
+      countDown = function() {
+        $('#ixamoko_countdown').each(function() {
+          var totime = parseInt($(this).data('totime'), 10),
+          sec = totime - getUnixTime(),
+          timeText = timeStringConvert(sec);
+          $(this).html(timeText);
+
+          // 残り時間による色変更
+          if (sec < 0) {
+            $('#ixamoko_sessout').css({
+              'background-color': 'crimson',
+              'color': 'white'
+            });
+            clearTimeout(countdownTimer);
+          } else if (sec < 600) {
+            $('#ixamoko_sessout').css({
+            'background-color': 'crimson',
+            'color': 'white'
+            });
+          } else if (sec < 1800) {
+            $('#ixamoko_sessout').css('color', 'yellow');
+          }
+        });
+        countdownTimer = setTimeout(countDown, 1000 - new Date().getMilliseconds());
+      };
+      countDown();
+    }
+
 // セッションタイムアウト更新(影城主登録必須)
 function resetSessout() {
   if ($('p.profile_head.unregist').length) {
@@ -30915,7 +30846,6 @@ function dungeonMaxFillUp() {
       return (style);
     }
 
-// 2023.09.21 兵士一括訓練が常時表示される様修正 ここから
 function loadMoko() {
   
   document.head.appendChild(MokoCss());
@@ -30932,12 +30862,3 @@ if (document.readyState === 'loading') {
 } else {
   loadMoko();
 }
-// 2023.09.21 兵士一括訓練が常時表示される様修正 ここまで
-//      var scriptMoko = document.createElement('script');
-//    scriptMoko.setAttribute('type','text/javascript');
-//    scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
-//    document.head.appendChild(scriptMoko);
-//    });
-//  
-//  }());
-// 2022.03.31 manifest_version 3に対応 ここまで
