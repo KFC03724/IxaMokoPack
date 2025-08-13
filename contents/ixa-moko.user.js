@@ -30846,36 +30846,19 @@ function dungeonMaxFillUp() {
       return (style);
     }
 
-// 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここから
-// function loadMoko() {
-  
-//   document.head.appendChild(MokoCss());
-      
-//   const scriptMoko = document.createElement('script');
-//   scriptMoko.setAttribute('type','text/javascript');
-//   scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
-//   document.head.appendChild(scriptMoko);
-
-// }
-      
-// if (document.readyState === 'loading') {
-//   document.addEventListener('DOMContentLoaded', loadMoko);
-// } else {
-//   loadMoko();
-// }
 function loadMoko() {
+  
   document.head.appendChild(MokoCss());
+      
+  const scriptMoko = document.createElement('script');
+  scriptMoko.setAttribute('type','text/javascript');
+  scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
+  document.head.appendChild(scriptMoko);
 
-  const loadCandidate = setInterval(function() {
-    if ( typeof window.SKILL_CANDIDATE2 !== 'undefined' ) {
-      clearInterval(loadCandidate);
-      const scriptMoko = document.createElement('script');
-      scriptMoko.setAttribute('type','text/javascript');
-      scriptMoko.textContent = '(' + MokoMain.toString() + ')(j213$);';
-      document.head.appendChild(scriptMoko);
-    } else {
-      console.error("not loaded SKILL_CANDIDATE");
-    }
-  }, 10);
 }
-// 2025.08.12 スキルテーブルが表示されない時がある事象の対応 ここまで
+      
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadMoko);
+} else {
+  loadMoko();
+}
