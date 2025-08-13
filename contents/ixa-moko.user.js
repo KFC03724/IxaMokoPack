@@ -5501,25 +5501,13 @@ function createMemo() {
     // 合戦向けサイドボックス
     function sideboxChange() {
 
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
-      $('div#sideboxMain').find('div.sideBoxInner').each(function(){
-        if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
-          $(this).remove();
-        };
-      });
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
-
       if (!options.sidebox_change) {
         return;
       }
       var $sidebox = $('#sideboxMain');
       var $substatus_btn = $('#substatus_btn');
-// 2023.11.15 合戦向けサイドボックスのレイアウトを微調整 ここから
-      // var $sideBox = $sidebox.find('DIV.sideBox');
-      // var $sideBoxInner = $sidebox.find('DIV.sideBoxInner');
       var $sideBox = $sidebox.find('DIV.sideBox:not(:has(img[alt="派閥"]))');
       var $sideBoxInner = $substatus_btn.parents('div.sideBox').find('DIV.sideBoxInner');
-// 2023.11.15 合戦向けサイドボックスのレイアウトを微調整 ここまで
       var $worldTable = $sidebox.find('TABLE.situationWorldTable');
       var $btnUranai = $sidebox.find('TABLE.situationBtnTable:has(img[alt="IXA占い"])');
       var $btnReport = $sidebox.find('TABLE.situationBtnTable:has(img[alt="報告書"])');
@@ -5529,62 +5517,16 @@ function createMemo() {
       $worldTable.last().before($substatus_btn);
       $sideBox.last().find('DIV.sideBoxHead').remove();
       $sideBox.eq(4).after($sideBox.eq(3), $sideBox.eq(1));
-// 2023.11.11 サイドボックスのレイアウトを微調整 ここから
       $btnReport.css('margin', '3px 0 0 3px').insertAfter($sidebox.find('span.medal_b').closest('dl.substatus'));
-// 2023.11.11 サイドボックスのレイアウトを微調整 ここまで
-// 2022.08.06 24章表示対応 一騎打ち廃止に伴う修正 ここから
-// 2021.02.27 サイドバーに一騎討ち自動受諾追加 ここから
       $sideBox.eq(2).append($sideBoxInner.eq(1).append($btnReport, $btnWarReport, $information));
-//      $sideBox.eq(2).append($sideBoxInner.eq(1).append(singleCombat(), $btnReport, $btnWarReport, $information));
-// 2022.08.06 24章表示対応 一騎打ち廃止に伴う修正 ここまで
-// 2022.08.06 24章表示対応 一騎打ち廃止に伴うコメントアウト ここから
-      // // 一騎討ち自動受託
-      // function singleCombat() {
-      //   let value;
-      //   if(location.pathname === '/facility/unit_status.php' && location.search.indexOf("dmo=single_combat") !== -1){
-      //     value = $('#single_combat_check').prop('checked');
-      //     setStorage('ixamoko_single_combat_auto_accept', value);
-      //   } else {
-      //     value = getStorage(null, 'ixamoko_single_combat_auto_accept');
-      //     if(value === null){
-      //       let html = $.ajax({
-      //       url: '/facility/unit_status.php?dmo=single_combat',
-      //       async: false,
-      //       beforeSend: xrwStatusText,
-      //       }).responseText;
-      //       value = $(html).find('#single_combat_check').prop('checked');
-      //       setStorage('ixamoko_single_combat_auto_accept', value);
-      //     }
-      //   }
-      //   let $checkbox = $('<input>', {type:'checkbox', id:'ixamoko_single_combat_auto_accept', checked:value});
-      //   if(location.pathname === '/facility/unit_status.php' && location.search.indexOf("dmo=single_combat") === 1){
-      //     $checkbox.on('click', function(){
-      //     $('#single_combat_check').click();
-      //     setTimeout(()=>setStorage('ixamoko_single_combat_auto_accept', $('#single_combat_check').prop('checked')), 200);
-      //     });
-      //     $('#single_combat_check').on('click', function(){
-      //     $('#ixamoko_single_combat_auto_accept').prop('checked', $(this).prop('checked'));
-      //     setStorage('ixamoko_single_combat_auto_accept', $(this).prop('checked'));
-      //     });
-      //   } else {
-      //     $checkbox.on('click', function(){
-      //     let json = $.ajax({
-      //     type: 'post',
-      //     url: '/facility/unit_status_if.php',
-      //     data: { change_single_combat_auto_accept: $(this).prop('checked') ? 1 : 0 },
-      //     dataType: 'JSON',
-      //     async: false,
-      //     beforeSend: xrwStatusText,
-      //     }).responseJSON;
-      //     $(this).prop('checked', json.single_combat_auto_accept);
-      //     setStorage('ixamoko_single_combat_auto_accept', json.single_combat_auto_accept);
-      //   });
-      // }
-      // return $singleCombat = $('<label>', {style:'display: block; margin-bottom: 5px; text-align: right;'})
-      // .append($checkbox, $('<span>一騎討ち自動受諾</span>'));
-      // }
-// 2021.02.27 サイドバーに一騎討ち自動受諾追加 ここまで
-// 2022.08.06 24章表示対応 一騎打ち廃止に伴うコメントアウト ここまで
+
+      // 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここから
+      $('div#sideboxMain').find('div.sideBoxInner').each(function(){
+        if ($(this).find('a').find('img').attr('title') === '友達招待キャンペーン') {
+          $(this).remove();
+        };
+      });
+      // 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
     }
     
     // IXAタイムを表示
@@ -29808,7 +29750,6 @@ function dungeonMaxFillUp() {
 // 2023.10.17 防御陣形のコスト変更機能の改修 ここから
     mokoSendConvertCostAjax();    // all     防御陣形のコスト変更
 // 2023.10.17 防御陣形のコスト変更機能の改修 ここまで
-// 2025.08.14 [お友達紹介キャンペーン]ボタンの消去 ここまで
   
   // ^ execute function
   
