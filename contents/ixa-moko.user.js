@@ -6658,7 +6658,9 @@ function createMemo() {
       var $ig_unitchoice = $(html).find('ul.unit_normal');
       var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
       var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
-  // 2020.09.15 武将一括配置の不具合対応 ここまで
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      var $ig_unitchoice_support = $(html).find('ul.unit_support');
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       var free_deck;  // 空き数
       var start_deck; // 配置開始
       var use_deck;   // 使用数
@@ -6670,6 +6672,12 @@ function createMemo() {
         free_deck = $ig_unitchoice_assault.find('li:contains("[---新規部隊を作成---]")').length;
         start_deck = 8;
         use_deck = 1 - free_deck;
+      } else if (select_assign_no == 9) {
+        free_deck = $ig_unitchoice_support.find('li:contains("[---新規部隊を作成---]")').length;
+        start_deck = 9;
+        use_deck = 1 - free_deck;
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
 // 2023.10.11 部隊長の一括セット機能の修正 ここから
   // 2020.09.15 本丸防御の精鋭配置や待機武将ツールチップ等の表示対応 ここから
       // } else if ( location.pathname == '/card/defense_formation_deck.php' ) {
@@ -14222,6 +14230,9 @@ function createMemo() {
       var $a = $('ul#deck_navi li > a');
       var $reinforce = $('div.tab_on_reinforce, div.tab_off_reinforce');
       var $assault = $('div.tab_on_assault, div.tab_off_assault');
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      var $support = $('div.tab_on_support, div.tab_off_support');
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       $('ul#deck_navi li').css('margin-right', '2px');
       $dfirst.css('width', '57px');
       $dlast.css('width', '8px');
@@ -14238,6 +14249,12 @@ function createMemo() {
         'position': 'absolute',
         'margin-left': '651px'
       });
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      $support.css({
+        'position': 'absolute',
+        'margin-left': '651px'
+      });
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
   
       $('li[class^="movedeck_"] a').on('click', function(){
         var ano = $(this).parent().attr('class').match(/\d+/g);
@@ -30772,6 +30789,9 @@ function dungeonMaxFillUp() {
       '#map_status_table th.all_diss_troops { cursor: pointer; background-image: none; background-color: darkcyan; text-shadow: none; -webkit-user-select: none; -moz-user-select: none; }' +
       '#map_status_table td.reinforce { background-color: #091D35; }' +
       '#map_status_table td.assault { background-color: #37090B; }' +
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      '#map_status_table td.support { background-color: #595e64ff; }' +
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       '#map_status_table td.diss_troops { cursor: default; color: dimgray; -webkit-user-select: none; -moz-user-select: none; }' +
       '#map_status_table td.diss_troops.active { cursor: pointer; color: white; background-color: darkslategray; }' +
       '#map_status_table td.rest_time { font-weight: bold; font-family: verdana; }' +
