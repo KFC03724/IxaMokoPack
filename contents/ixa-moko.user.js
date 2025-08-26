@@ -6656,11 +6656,11 @@ function createMemo() {
   //    var $ig_unitchoice_reinforce = $(html).find('#ig_unitchoice_reinforce');
   //    var $ig_unitchoice_assault = $(html).find('#ig_unitchoice_assault');
       var $ig_unitchoice = $(html).find('ul.unit_normal');
-      var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
-      var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
       var $ig_unitchoice_support = $(html).find('ul.unit_support');
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
+      var $ig_unitchoice_reinforce = $(html).find('ul.unit_defense');
+      var $ig_unitchoice_assault = $(html).find('ul.unit_assault');
       var free_deck;  // 空き数
       var start_deck; // 配置開始
       var use_deck;   // 使用数
@@ -7706,16 +7706,16 @@ function createMemo() {
         $base;
       if (howto.length && select_assign_no < 6) {
         $base = $('#select_village').children('option:selected').text();
+// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      } else if (howto.length && select_assign_no == 9) {
+        $base = 'サポート専用部隊';
+// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       } else if (howto.length && select_assign_no == 6) {
         $base = '加勢専用部隊';
       } else if (howto.length && select_assign_no == 7) {
         $base = '加勢専用部隊';
       } else if (howto.length && select_assign_no == 8) {
         $base = '強襲専用部隊';
-// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
-      } else if (howto.length && select_assign_no == 9) {
-        $base = 'サポート専用部隊';
-// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       } else {
         $base = $('#unit_assign').next().text().trim();
       }
@@ -14215,7 +14215,7 @@ function createMemo() {
       //   html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       // }
       for (var i = 0; i <= 10; i++) {
-        text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : (i == 9) ? 'サポート専用' : 'デッキ ' + (i + 1);
+        text =  (i == 9) ? 'サポート専用' : (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
         html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       }
 
@@ -14228,15 +14228,21 @@ function createMemo() {
       var $dfirst = $('.dfirst');
       var $dlast = $('.dlast');
       var $a = $('ul#deck_navi li > a');
-      var $reinforce = $('div.tab_on_reinforce, div.tab_off_reinforce');
-      var $assault = $('div.tab_on_assault, div.tab_off_assault');
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
       var $support = $('div.tab_on_support, div.tab_off_support');
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
+      var $reinforce = $('div.tab_on_reinforce, div.tab_off_reinforce');
+      var $assault = $('div.tab_on_assault, div.tab_off_assault');
       $('ul#deck_navi li').css('margin-right', '2px');
       $dfirst.css('width', '57px');
       $dlast.css('width', '8px');
       $a.css('width', '72px');
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      $support.css({
+        'position': 'absolute',
+        'margin-left': '651px'
+      });
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       $reinforce.eq(0).css({
         'position': 'absolute',
         'margin-left': '503px'
@@ -14249,12 +14255,6 @@ function createMemo() {
         'position': 'absolute',
         'margin-left': '651px'
       });
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
-      $support.css({
-        'position': 'absolute',
-        'margin-left': '651px'
-      });
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
   
       $('li[class^="movedeck_"] a').on('click', function(){
         var ano = $(this).parent().attr('class').match(/\d+/g);
@@ -19301,14 +19301,14 @@ function createMemo() {
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         if (i < 6) {
           str = '';
-        } else if (i === 6 || i === 7) {
-          str = ' reinforce';
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
-        } else if (i === 8) {
-          str = ' assault';
         } else if (i === 9) {
           str = ' support';
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
+        } else if (i === 6 || i === 7) {
+          str = ' reinforce';
+        } else if (i === 8) {
+          str = ' assault';
         } else {
           str = ' assault';
         }
@@ -30787,11 +30787,11 @@ function dungeonMaxFillUp() {
       '#map_status_table th, #map_status_table td { line-height: 1.3; padding: 5px 8px; text-align: center; vertical-align: middle; background-color: black; }' +
       '#map_status_table th { padding: 4px 8px; background: linear-gradient(to bottom, #C0AE89 0%, #8E7E5C 100%); text-shadow: black 1px 1px 2px, black -1px -1px 2px; }' +
       '#map_status_table th.all_diss_troops { cursor: pointer; background-image: none; background-color: darkcyan; text-shadow: none; -webkit-user-select: none; -moz-user-select: none; }' +
-      '#map_status_table td.reinforce { background-color: #091D35; }' +
-      '#map_status_table td.assault { background-color: #37090B; }' +
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
       '#map_status_table td.support { background-color: #595e64ff; }' +
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
+      '#map_status_table td.reinforce { background-color: #091D35; }' +
+      '#map_status_table td.assault { background-color: #37090B; }' +
       '#map_status_table td.diss_troops { cursor: default; color: dimgray; -webkit-user-select: none; -moz-user-select: none; }' +
       '#map_status_table td.diss_troops.active { cursor: pointer; color: white; background-color: darkslategray; }' +
       '#map_status_table td.rest_time { font-weight: bold; font-family: verdana; }' +
