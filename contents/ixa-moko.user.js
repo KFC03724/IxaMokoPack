@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.30.202508.7
+// @version      10.30.202508.8
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.7";
+    var VERSION_NAME = "ver 10.30.202508.8";
   
   // === Plugin ===
   
@@ -7704,6 +7704,10 @@ function createMemo() {
         $base = '加勢専用部隊';
       } else if (howto.length && select_assign_no == 8) {
         $base = '強襲専用部隊';
+// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      } else if (howto.length && select_assign_no == 9) {
+        $base = 'サポート専用部隊';
+// 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       } else {
         $base = $('#unit_assign').next().text().trim();
       }
@@ -14262,7 +14266,10 @@ function createMemo() {
       // 組分けボタンに逆参照のプルダウンメニュー
       $('li[class^="btn_category_"]').on('contextmenu', function(e) {
         e.preventDefault();
-        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', '加勢専用', '加勢専用', '強襲専用' ];
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+//        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', '加勢専用', '加勢専用', '強襲専用' ];
+        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', '加勢専用', '加勢専用', '強襲専用', 'サポート専用' ];
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         var grp = $(this).attr('onClick').match(/\d+/);
         var html = '<div class="menu_list">';
         for (var i = 0; i <= 8; i++) {
@@ -19323,9 +19330,14 @@ function createMemo() {
         if (data[i].status == '待機' || data[i].status == '探索' ||data[i].status == '討伐') {
           dest_elm = data[i].desti_text;
         }
-        if (data[i].unit_name != '[編成]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]') {
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+        // if (data[i].unit_name != '[編成]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]') {
+        //   data[i].unit_name += '部隊';
+        // }
+        if (data[i].unit_name != '[編成]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]' && data[i].unit_name != '[サポート専用]') {
           data[i].unit_name += '部隊';
         }
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
   
         $name_troops.html('<a href="/card/deck.php?ano=' + i + '">' + data[i].unit_name + '</a>');
         $affi_base.html(affi_elm);
@@ -19442,10 +19454,16 @@ function createMemo() {
           deck_href = '/card/deck.php?ano=' + ano + '&select_card_group=' + scg;
         }
         var mt_menu = '<ul id="mt_list">';
-        if (status == '編成' || status == '加勢専用' || status == '強襲専用') {
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+        // if (status == '編成' || status == '加勢専用' || status == '強襲専用') {
+        //   for (var i = 0, len = GROUPS_MENU.length; i < len; i++) {
+        //     mt_menu += '<li><a href="' + aff_coord.replace(/\/detail/, '') + '&select_card_group=' + GROUPS_MENU[i][0] + filter + '">' + GROUPS_MENU[i][1] + 'から編成</a></li>';
+        //   }
+        if (status == '編成' || status == '加勢専用' || status == '強襲専用' || status == 'サポート専用') {
           for (var i = 0, len = GROUPS_MENU.length; i < len; i++) {
             mt_menu += '<li><a href="' + aff_coord.replace(/\/detail/, '') + '&select_card_group=' + GROUPS_MENU[i][0] + filter + '">' + GROUPS_MENU[i][1] + 'から編成</a></li>';
           }
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         } else {
           var ahr = false,
               bhr = false;
@@ -19672,9 +19690,18 @@ function createMemo() {
             data[i].unit_name = '[編成]';
           } else if (i === 6 || i === 7) {
             data[i].unit_name = '[加勢専用]';
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+          // } else {
+          //   data[i].unit_name = '[強襲専用]';
+          // }
+          } else if (i === 8) {
+            data[i].unit_name = '[強襲専用]';
+          } else if (i === 9) {
+            data[i].unit_name = '[サポート専用]';
           } else {
             data[i].unit_name = '[強襲専用]';
           }
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
           data[i].status = '';
           state_flg = false;
           $mt_unit.css({
