@@ -14201,10 +14201,18 @@ function createMemo() {
       var target = $('#frame_00_top');
       var html = '<ul id="deck_navi"><li class="dummy dfirst" />';
       var text;
-      for (var i = 0; i <= 8; i++) {
-        text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
+      // for (var i = 0; i <= 8; i++) {
+      //   text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
+      //   html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
+      // }
+      for (var i = 0; i <= 10; i++) {
+        text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : (i == 9) ? 'サポート専用' : 'デッキ ' + (i + 1);
         html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       }
+
+// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
+
       html += '<li class="dummy dlast" />' +
               '</ul>';
       target.append(html);
