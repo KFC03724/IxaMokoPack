@@ -7707,14 +7707,14 @@ function createMemo() {
       if (howto.length && select_assign_no < 6) {
         $base = $('#select_village').children('option:selected').text();
 // 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
-      } else if (howto.length && select_assign_no == 9) {
+      } else if (howto.length && select_assign_no == 6) {
         $base = 'サポート専用部隊';
 // 2025.08.26 [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
-      } else if (howto.length && select_assign_no == 6) {
-        $base = '加勢専用部隊';
       } else if (howto.length && select_assign_no == 7) {
         $base = '加勢専用部隊';
       } else if (howto.length && select_assign_no == 8) {
+        $base = '加勢専用部隊';
+      } else if (howto.length && select_assign_no == 9) {
         $base = '強襲専用部隊';
       } else {
         $base = $('#unit_assign').next().text().trim();
@@ -14214,8 +14214,8 @@ function createMemo() {
       //   text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
       //   html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       // }
-      for (var i = 0; i <= 10; i++) {
-        text =  (i == 9) ? 'サポート専用' : (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
+      for (var i = 0; i <= 8; i++) {
+        text =  (i == 6) ? 'サポート専用' : (i == 7 || i == 8) ? '加勢専用' : (i == 9) ? '強襲専用' : 'デッキ ' + (i + 1);
         html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       }
 
@@ -14293,7 +14293,7 @@ function createMemo() {
         e.preventDefault();
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
 //        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', '加勢専用', '加勢専用', '強襲専用' ];
-        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', '加勢専用', '加勢専用', '強襲専用', 'サポート専用' ];
+        var list = [ 'デッキ1', 'デッキ2', 'デッキ3', 'デッキ4', 'デッキ5', 'デッキ6', 'サポート専用', '加勢専用', '加勢専用', '強襲専用' ];
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         var grp = $(this).attr('onClick').match(/\d+/);
         var html = '<div class="menu_list">';
@@ -19297,7 +19297,7 @@ function createMemo() {
       var str;
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
 //      for (var i = 0; i < 9; i++) {
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 10; i++) {
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         if (i < 6) {
           str = '';
@@ -19368,7 +19368,7 @@ function createMemo() {
         // if (data[i].unit_name != '[編成]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]') {
         //   data[i].unit_name += '部隊';
         // }
-        if (data[i].unit_name != '[編成]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]' && data[i].unit_name != '[サポート専用]') {
+        if (data[i].unit_name != '[編成]' && data[i].unit_name != '[サポート専用]' && data[i].unit_name != '[加勢専用]' && data[i].unit_name != '[強襲専用]') {
           data[i].unit_name += '部隊';
         }
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
@@ -19466,7 +19466,7 @@ function createMemo() {
       var tmp = '';
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
 //      for (var i = 0; i < 9; i++) {
-      for (var i = 0; i < 11; i++) {
+      for (var i = 0; i < 10; i++) {
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         tmp += '' +
           '<div class="mt_troops" name="' + i + '">' +
@@ -19496,7 +19496,7 @@ function createMemo() {
         //   for (var i = 0, len = GROUPS_MENU.length; i < len; i++) {
         //     mt_menu += '<li><a href="' + aff_coord.replace(/\/detail/, '') + '&select_card_group=' + GROUPS_MENU[i][0] + filter + '">' + GROUPS_MENU[i][1] + 'から編成</a></li>';
         //   }
-        if (status == '編成' || status == '加勢専用' || status == '強襲専用' || status == 'サポート専用') {
+        if (status == '編成' || status == 'サポート加勢専用' || status == '加勢専用' || status == '強襲専用') {
           for (var i = 0, len = GROUPS_MENU.length; i < len; i++) {
             mt_menu += '<li><a href="' + aff_coord.replace(/\/detail/, '') + '&select_card_group=' + GROUPS_MENU[i][0] + filter + '">' + GROUPS_MENU[i][1] + 'から編成</a></li>';
           }
@@ -19728,16 +19728,16 @@ function createMemo() {
         if (!data[i].unit_name) {
           if (i < 6) {
             data[i].unit_name = '[編成]';
-          } else if (i === 6 || i === 7) {
+          } else if (i === 6) {
+            data[i].unit_name = '[サポート専用]';
+          } else if (i === 7 || i === 8) {
             data[i].unit_name = '[加勢専用]';
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
           // } else {
           //   data[i].unit_name = '[強襲専用]';
           // }
-          } else if (i === 8) {
-            data[i].unit_name = '[強襲専用]';
           } else if (i === 9) {
-            data[i].unit_name = '[サポート専用]';
+            data[i].unit_name = '[強襲専用]';
           } else {
             data[i].unit_name = '[強襲専用]';
           }
@@ -19883,7 +19883,7 @@ function createMemo() {
     // 部隊行動 status
     function getUnitStatus(html) {
       var $html = $(html).find('div.ig_decksection_innermid');
-      var deck_num = 8; // デッキ数
+      var deck_num = 10; // デッキ数
       var data = [];
       var target;
       var object;
@@ -29081,13 +29081,16 @@ function dungeonMaxFillUp() {
       '<td>' + 'デッキ画面(6部隊目)へ遷移' + '</td>' +
       '<td>' + '7' + '</td>' +
       '<td>' + '全画面' + '</td>' +
-      '<td>' + 'デッキ画面(加勢専用1部隊目)へ遷移' + '</td>' +
+      '<td>' + 'デッキ画面(サポート部隊目)へ遷移' + '</td>' +
       '</tr>' +
       '<tr>' +
       '<td>' + '8' + '</td>' +
       '<td>' + '全画面' + '</td>' +
-      '<td>' + 'デッキ画面(加勢専用2部隊目)へ遷移' + '</td>' +
+      '<td>' + 'デッキ画面(加勢専用1部隊目)へ遷移' + '</td>' +
       '<td>' + '9' + '</td>' +
+      '<td>' + '全画面' + '</td>' +
+      '<td>' + 'デッキ画面(加勢専用2部隊目)へ遷移' + '</td>' +
+      '<td>' + '10' + '</td>' +
       '<td>' + '全画面' + '</td>' +
       '<td>' + 'デッキ画面(強襲専用)へ遷移' + '</td>' +
       '</tr>' +
