@@ -14209,18 +14209,10 @@ function createMemo() {
       var target = $('#frame_00_top');
       var html = '<ul id="deck_navi"><li class="dummy dfirst" />';
       var text;
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
-      // for (var i = 0; i <= 8; i++) {
-      //   text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
-      //   html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
-      // }
       for (var i = 0; i <= 9; i++) {
         text =  (i == 6) ? 'サポート専用' : (i == 7 || i == 8) ? '加勢専用' : (i == 9) ? '強襲専用' : 'デッキ ' + (i + 1);
         html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       }
-
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
-
       html += '<li class="dummy dlast" />' +
               '</ul>';
       target.append(html);
@@ -14228,21 +14220,19 @@ function createMemo() {
       var $dfirst = $('.dfirst');
       var $dlast = $('.dlast');
       var $a = $('ul#deck_navi li > a');
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
       var $support = $('div.tab_on_support, div.tab_off_support');
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       var $reinforce = $('div.tab_on_reinforce, div.tab_off_reinforce');
       var $assault = $('div.tab_on_assault, div.tab_off_assault');
       $('ul#deck_navi li').css('margin-right', '2px');
-      $dfirst.css('width', '57px');
-      $dlast.css('width', '8px');
+//      $dfirst.css('width', '57px');
+      $dfirst.css('width', '2px');
+//      $dlast.css('width', '8px');
+      $dlast.css('width', '2px');
       $a.css('width', '72px');
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここから
       $support.css({
         'position': 'absolute',
         'margin-left': '651px'
       });
-// [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
       $reinforce.eq(0).css({
         'position': 'absolute',
         'margin-left': '503px'
