@@ -14214,7 +14214,7 @@ function createMemo() {
       //   text = (i == 6 || i == 7) ? '加勢専用' : (i == 8) ? '強襲専用' : 'デッキ ' + (i + 1);
       //   html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       // }
-      for (var i = 0; i <= 8; i++) {
+      for (var i = 0; i <= 9; i++) {
         text =  (i == 6) ? 'サポート専用' : (i == 7 || i == 8) ? '加勢専用' : (i == 9) ? '強襲専用' : 'デッキ ' + (i + 1);
         html += '<li class="movedeck_' + i + '"><a href="javascript:void(0);">' + text + '</a></li>';
       }
