@@ -14297,7 +14297,7 @@ function createMemo() {
 // [全般2][サイドボックスを合戦向け表示にする]がチェックされている時に強襲専用/サポート専用部隊を追加 ここまで
         var grp = $(this).attr('onClick').match(/\d+/);
         var html = '<div class="menu_list">';
-        for (var i = 0; i <= 8; i++) {
+        for (var i = 0; i <= 9; i++) {
           html += '<a href="/card/deck.php?ano=' + i + '&select_card_group=' +
             grp + '&select_filter_num=0">' + list[i] + '</a>';
         }
