@@ -31,7 +31,11 @@ function injectionJSON(obj, idName) {
     });
 }
 
-injectionCode(chrome.runtime.getURL('/contents/ixa-moko.user.js'));
-injectionCode(chrome.runtime.getURL('/contents/ixa-training.user.js'));
-//injectionCode(chrome.runtime.getURL('/userscript/defense_formation_info.js'));
-injectionCode(chrome.runtime.getURL('/contents/ixa-skill_table.js'));
+new Promise((resolve) => {
+  injectionCode(chrome.runtime.getURL('/contents/ixa-skill_table.js'));
+  return resolve();
+}).then(() => {
+  injectionCode(chrome.runtime.getURL('/contents/ixa-moko.user.js'));
+  injectionCode(chrome.runtime.getURL('/contents/ixa-training.user.js'));
+  injectionCode(chrome.runtime.getURL('/userscript/defense_formation_info.js'));
+});

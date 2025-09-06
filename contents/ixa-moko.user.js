@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.30.202508.8
+// @version      10.30.202509.1
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function MokoMain($) {
     console.debug('Load... MokoMain');
     "use strict";
-    var VERSION_NAME = "ver 10.30.202508.8";
+    var VERSION_NAME = "ver 10.30.202509.1";
   
   // === Plugin ===
   
@@ -19883,7 +19883,7 @@ function createMemo() {
     // 部隊行動 status
     function getUnitStatus(html) {
       var $html = $(html).find('div.ig_decksection_innermid');
-      var deck_num = 10; // デッキ数
+      var deck_num = 9; // デッキ数
       var data = [];
       var target;
       var object;
