@@ -3252,9 +3252,9 @@
   // 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここから
   //              '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>';
                 '<li><a href="/card/deck_card_delete.php?tmp_show_num=100">カード一括破棄</a></li>' +
-                '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>';
+                '<li><a href="/card/defense_formation_deck.php">本丸防御陣形</a></li>' +
+                '<li><a href="/card/sub_area_defense_formation_deck.php">所領防御陣形</a></li>';
   // 2020.09.15 部隊メニュープルダウンから本丸防御陣形にアクセスできる様改善 ここまで
-        menu02.find('li').remove();
         menu02.find('ul').append(html);
         menu07.find('ul').append('<li><a href="/alliance/alliance_gold_mine_history.php">発掘履歴</a></li>');
         
