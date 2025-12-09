@@ -4,11 +4,6 @@
   "author": "hoge",
   "version": "10.30.202511.2",
   "description": "Tool of Sengoku-ixa(2025/12/09)",
-  "icons": {
-    "16": "/assets/ixanyan16.png",
-    "48": "/assets/ixanyan48.png",
-    "128": "/assets/ixanyan128.png"
-  },
   "permissions": ["contextMenus"],
   "content_scripts": [
     {
