@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaTraining
 // @description  戦国IXA用ツール 一括兵士訓練
-// @version      10.30.202512.1
+// @version      10.31.202608.1
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
@@ -23,7 +23,7 @@
   function IxaTraining($) {
     console.debug('Load... IxaTraining');
     'use strict';
-    
+
     // ■ プロトタイプ {
     var XRWstext = function (xhr) {
       return xhr.setRequestHeader('X-Requested-With', 'statusText');
@@ -31,17 +31,17 @@
 
     // . String.prototype
     $.extend(String.prototype, {
-      
+
       // .. toInt
       toInt: function () {
         return parseInt(this.replace(/,/g, ''), 10);
       },
-      
+
       // .. toFloat
       toFloat: function () {
         return parseFloat(this.replace(/,/g, ''));
       },
-      
+
       // .. repeat
       repeat: function (num) {
         var str = this,
@@ -53,7 +53,7 @@
         }
         return result;
       },
-      
+
       // .. getTime - yyyy-mm-dd hh:mi:ss
       getTime: function () {
         if (!/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/.test(this)) {
@@ -62,7 +62,7 @@
         var date = this.replace(/-/g, '/');
         return ~~(new Date(date).getTime() / 1000);
       },
-      
+
       // ..String 'hh:mm:ss' --> Number ss
       toSecond: function () {
         var array = this.match(/\d+/g).map(function (v, i) {
@@ -76,31 +76,31 @@
 
     // . Number.prototype
     $.extend(Number.prototype, {
-      
+
       // .. toInt
       toInt: function () {
         return this;
       },
-      
+
       // .. toFloat
       toFloat: function () {
         return this;
       },
-      
+
       // .. toRound
       toRound: function (decimal) {
         decimal = (decimal === undefined) ? 0 : decimal;
         var num = Math.pow(10, decimal);
         return Math.round(this * num) / num;
       },
-      
+
       // .. toFloor
       toFloor: function (decimal) {
         decimal = (decimal === undefined) ? 0 : decimal;
         var num = Math.pow(10, decimal);
         return Math.floor(this * num) / num;
       },
-      
+
       // .. toFormatNumber - 9,999,999
       toFormatNumber: function (decimal, replaceNaN) {
         decimal = (decimal === undefined) ? 0 : decimal;
@@ -115,13 +115,13 @@
         }
         return result;
       },
-      
+
       // .. toFormatDate - 0000/00/00 00:00:00
       toFormatDate: function (format) {
         var date = new Date(this * 1000);
         return date.toFormatDate(format);
       },
-      
+
       // .. toFormatTime - 00:00:00
       toFormatTime: function (format) {
         format = format || 'hh:mi:ss';
@@ -146,7 +146,7 @@
 
     // . Date.prototype
     $.extend(Date.prototype, {
-      
+
       // .. toFormatDate - 0000/00/00 00:00:00
       toFormatDate: function (format) {
         format = format || 'yyyy/mm/dd hh:mi:ss';
@@ -159,12 +159,12 @@
         return format;
       }
     });
-    
+
     // } プロトタイプ
 
     // . Array.prototype
     $.extend(Array.prototype, {
-      
+
       // .. unique
       unique: function () {
         var result = [],
@@ -177,7 +177,7 @@
         }
         return result;
       },
-      
+
       // .. reduce
       reduce: function reduce(accumulator) {
         if (!this) {
@@ -187,11 +187,11 @@
           l = this.length >> 0,
           curr;
         if (typeof (accumulator) !== 'function') {
-          
+
           // ES5 : "If IsCallable(callbackfn) is false, throw a TypeError exception."
           throw new TypeError("First argument is not callable");
         }
-        
+
         if (arguments.length < 2) {
           if (l === 0) {
             throw new TypeError("Array length is 0 and no second argument");
@@ -201,7 +201,7 @@
         } else {
           curr = arguments[1];
         }
-        
+
         while (i < l) {
           if (i in this) {
             curr = accumulator.call(undefined, curr, this[i], i, this);
@@ -213,27 +213,122 @@
     });
 
     // JSON Plugin
-    var toJSON = function (o) { var type = typeof (o); if (o === null) { return 'null'; } if (type == 'undefined') { return undefined; } if (type == 'number' || type == 'boolean') { return o + ''; } if (type == 'string') { return quoteString(o); } if (type == 'object') { if (o.constructor === Date) { var month = o.getUTCMonth() + 1; if (month < 10) { month = '0' + month; } var day = o.getUTCDate(); if (day < 10) { day = '0' + day; } var year = o.getUTCFullYear(); var hours = o.getUTCHours(); if (hours < 10) { hours = '0' + hours; } var minutes = o.getUTCMinutes(); if (minutes < 10) { minutes = '0' + minutes; } var seconds = o.getUTCSeconds(); if (seconds < 10) { seconds = '0' + seconds; } var milli = o.getUTCMilliseconds(); if (milli < 100) { milli = '0' + milli; } if (milli < 10) { milli = '0' + milli; } return '"' + year + '-' + month + '-' + day + 'T' + hours + ':' + minutes + ':' + seconds + '.' + milli + 'Z"'; } if (o.constructor === Array) { var ret = []; for (var i = 0, len = o.length; i < len; i++) { ret.push(toJSON(o[i]) || 'null'); } return '[' + ret.join(',') + ']'; } var pairs = []; for (var k in o) { var name; type = typeof k; if (type == "number") { name = '"' + k + '"'; } else if (type == "string") { name = quoteString(k); } else { continue; } if (typeof o[k] == "function") { continue; } var val = toJSON(o[k]); pairs.push(name + ":" + val); } return '{' + pairs.join(', ') + '}'; } }, quoteString = function (s) { var _escapeable = /["\\\x00-\x1f\x7f-\x9f]/g; var _meta = { '\b': '\\b', '\t': '\\t', '\n': '\\n', '\f': '\\f', '\r': '\\r', '"': '\\"', '\\': '\\\\' }; if (s.match(_escapeable)) { return '"' + s.replace(_escapeable, function (a) { var c = _meta[a]; if (typeof c === 'string') { return c; } c = a.charCodeAt(); return '\\u00' + Math.floor(c / 16).toString(16) + (c % 16).toString(16); }) + '"'; } return '"' + s + '"'; };
+    var toJSON = function (o) {
+        var type = typeof (o);
+        if (o === null) {
+          return 'null';
+        }
+        if (type == 'undefined') {
+          return undefined;
+        }
+        if (type == 'number' || type == 'boolean') {
+          return o + '';
+        }
+        if (type == 'string') {
+          return quoteString(o);
+        }
+        if (type == 'object') {
+          if (o.constructor === Date) {
+            var month = o.getUTCMonth() + 1;
+            if (month < 10) {
+              month = '0' + month;
+            }
+            var day = o.getUTCDate();
+            if (day < 10) {
+              day = '0' + day;
+            }
+            var year = o.getUTCFullYear();
+            var hours = o.getUTCHours();
+            if (hours < 10) {
+              hours = '0' + hours;
+            }
+            var minutes = o.getUTCMinutes();
+            if (minutes < 10) {
+              minutes = '0' + minutes;
+            }
+            var seconds = o.getUTCSeconds();
+            if (seconds < 10) {
+              seconds = '0' + seconds;
+            }
+            var milli = o.getUTCMilliseconds();
+            if (milli < 100) {
+              milli = '0' + milli;
+            }
+            if (milli < 10) {
+              milli = '0' + milli;
+            }
+            return '"' + year + '-' + month + '-' + day + 'T' + hours + ':' + minutes + ':' + seconds + '.' + milli + 'Z"';
+          }
+          if (o.constructor === Array) {
+            var ret = [];
+            for (var i = 0, len = o.length; i < len; i++) {
+              ret.push(toJSON(o[i]) || 'null');
+            }
+            return '[' + ret.join(',') + ']';
+          }
+          var pairs = [];
+          for (var k in o) {
+            var name;
+            type = typeof k;
+            if (type == "number") {
+              name = '"' + k + '"';
+            } else if (type == "string") {
+              name = quoteString(k);
+            } else {
+              continue;
+            }
+            if (typeof o[k] == "function") {
+              continue;
+            }
+            var val = toJSON(o[k]);
+            pairs.push(name + ":" + val);
+          }
+          return '{' + pairs.join(', ') + '}';
+        }
+      },
+      quoteString = function (s) {
+        var _escapeable = /["\\\x00-\x1f\x7f-\x9f]/g;
+        var _meta = {
+          '\b': '\\b',
+          '\t': '\\t',
+          '\n': '\\n',
+          '\f': '\\f',
+          '\r': '\\r',
+          '"': '\\"',
+          '\\': '\\\\'
+        };
+        if (s.match(_escapeable)) {
+          return '"' + s.replace(_escapeable, function (a) {
+            var c = _meta[a];
+            if (typeof c === 'string') {
+              return c;
+            }
+            c = a.charCodeAt();
+            return '\\u00' + Math.floor(c / 16).toString(16) + (c % 16).toString(16);
+          }) + '"';
+        }
+        return '"' + s + '"';
+      };
 
-// 2022.01.13 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の再修正 ここから
-// 2022.01.12 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の対応 ここから
-//    // 通常・影城主のフラグ
-//    var ownerMode = (function () {
-//      return document.body.className == 'current_owner_sub' ? '1' : '0';
-////    return document.body.className == 'current_owner_sub bg_image_snow' ? '1' : '0';
-//    })();
-// 通常・影城主のフラグ
+    // 2022.01.13 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の再修正 ここから
+    // 2022.01.12 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の対応 ここから
+    //    // 通常・影城主のフラグ
+    //    var ownerMode = (function () {
+    //      return document.body.className == 'current_owner_sub' ? '1' : '0';
+    ////    return document.body.className == 'current_owner_sub bg_image_snow' ? '1' : '0';
+    //    })();
+    // 通常・影城主のフラグ
     var ownerMode = (function () {
       // return document.body.className == 'current_owner_sub' ? '1' : '0';
       // return document.body.className == 'current_owner_sub bg_image_snow' ? '1' : '0';
-//      return document.body.className == 'current_owner_sub bg_image_snow' ? '1'
-//      : document.body.className == 'current_owner_sub' ? '1'
-//      : document.body.className == 'current_owner_sub ' ? '1'
-//      : '0';
+      //      return document.body.className == 'current_owner_sub bg_image_snow' ? '1'
+      //      : document.body.className == 'current_owner_sub' ? '1'
+      //      : document.body.className == 'current_owner_sub ' ? '1'
+      //      : '0';
       return document.body.className.indexOf("current_owner_sub") >= 0 ? '1' : '0';
     })();
-// 2021.01.12 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の対応 ここまで
-// 2022.01.13 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の再修正 ここまで
+    // 2021.01.12 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の対応 ここまで
+    // 2022.01.13 影城主で「訓練可能な施設は見つかりませんでした。」のエラーになる現象の再修正 ここまで
 
     // ■ metaStorage {
     // ixa内ではArrayがJSON.stringify()で正しく文字列化されないのでtoJSON()で文字列化
@@ -293,7 +388,7 @@
               exportData[value] = stringData;
             }
           });
-          
+
           // return JSON.stringify(exportData);
           return toJSON(exportData);
         },
@@ -384,13 +479,13 @@
         if (stringData) {
           try {
             parseData = JSON.parse(stringData);
-          } catch (e) { }
+          } catch (e) {}
         }
         return parseData;
       }
 
       function save(storageArea, storageName, data) {
-        
+
         // var stringData = JSON.stringify(data),
         var stringData = toJSON(data),
           storage;
@@ -425,7 +520,7 @@
     'ENVIRONMENT VILLAGE FACILITY TRAINING'.split(' ').forEach(function (value) {
       metaStorage.registerStorageName(value);
     });
-    
+
     // } metaStorage
 
     // 通常・影城主 Storageデータの選択
@@ -448,7 +543,7 @@
         start = (document.cookie.match(new RegExp('im_st=(\\d+)')) || [])[1] || login_data.endtime,
         login = false,
         season, newseason, chapter, war, server_time, local_time, timeDiff, endtime;
-      
+
       // storageから取得
       endtime = storage.get('endtime');
       season = storage.get('season');
@@ -456,7 +551,7 @@
       if ($server.length === 0) {
         timeDiff = 0;
       } else {
-        
+
         // 鯖との時差取得
         server_time = new Date($server.text().replace(/-/g, '/')).getTime();
         local_time = new Date().getTime();
@@ -464,19 +559,19 @@
       }
       if (world && start) {
         login = true;
-        
+
         // moko設定から取得
         newseason = login_data.season;
         chapter = login_data.chapter;
-        
+
         // 鯖との時差も含めてタイムアウト時間を設定（カウントダウンで鯖時間を使用する為）
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+        // 2022.03.07 一括兵士訓練を使用可能に ここから
+        // 2024.08.10 toInt()をMath.trunc()に置換 ここから
         endtime = Math.trunc(start) + (3 * 60 * 60) + Math.floor(timeDiff / 1000);
         newseason = Math.trunc(newseason);
         chapter = Math.trunc(chapter);
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+        // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+        // 2022.03.07 一括兵士訓練を使用可能に ここまで
         storage.begin();
         storage.set('endtime', endtime);
         storage.set('season', newseason);
@@ -486,7 +581,7 @@
         document.cookie = world + '_s=0; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
         document.cookie = world + '_c=0; expires=Fri, 31-Dec-1999 23:59:59 GMT; domain=.sengokuixa.jp; path=/;';
         if (newseason !== season) {
-          
+
           // 期が変わった場合
           'VILLAGE FACILITY FACILITY TRAINING'.split(' ').forEach(function (value) {
             metaStorage(value).clear();
@@ -506,35 +601,35 @@
         // metaStorage('USER_INFO').clear();
       }
       return {
-        
+
         // . loginProcess
         loginProcess: login,
-        
+
         // . world - 鯖
         world: world,
-        
+
         // . season - 期
         season: season,
-        
+
         // . chapter - 章
         chapter: chapter,
-        
+
         // . war - 合戦 0:無し 1:通常合戦 2:新合戦
         war: war,
-        
+
         // . timeDiff - 鯖との時差
         timeDiff: timeDiff,
-        
+
         // . path - アクセスパス
         path: location.pathname.match(/[^\/]+(?=(\/|\.))/g) || [],
-        
+
         // . externalFilePath - 外部ファイルへのパス
         externalFilePath: (function () {
           var href = $('LINK[type="image/x-icon"][href^="https://cache"]').attr('href') || '';
           href = href.match(/^.+(?=\/)/) || '';
           return href;
         })(),
-        
+
         // . loginState - ログイン状態
         loginState: (function () {
           var path = location.pathname;
@@ -555,20 +650,20 @@
           }
           return -1;
         })(),
-        
+
         // . endtime - タイムアウト期限
         endtime: endtime,
-        
+
         // . ajax - 一部のajax通信の判定に使用
         ajax: false
       };
     })();
-    
+
     // } Env
 
     // ■ BaseList {
     var BaseList = (function () {
-      
+
       // . base
       function base(country) {
         var list = [],
@@ -595,7 +690,7 @@
         });
         return list;
       }
-      
+
       // . home
       function home() {
         var list = [];
@@ -616,7 +711,7 @@
         });
         return list;
       }
-      
+
       // . away
       function away() {
         var list = [];
@@ -637,7 +732,7 @@
         });
         return list;
       }
-      
+
       // . return
       return {
         all: function (country) {
@@ -654,62 +749,190 @@
         }
       };
     })();
-    
+
     // BaseList }
 
     // ■ Soldier {
     var Soldier = (function () {
       var data_14s = {
-        
+
         // 槍
-        '足軽': { type: 321, training: [82], order: 1 },
-        '長槍足軽': { type: 322, training: [97], order: 2 },
-        '武士': { type: 323, training: [112], order: 3 },
-        
+        '足軽': {
+          type: 321,
+          training: [82],
+          order: 1
+        },
+        '長槍足軽': {
+          type: 322,
+          training: [97],
+          order: 2
+        },
+        '武士': {
+          type: 323,
+          training: [112],
+          order: 3
+        },
+
         // 弓
-        '弓足軽': { type: 325, training: [87], order: 1 },
-        '長弓兵': { type: 326, training: [102], order: 2 },
-        '弓騎馬': { type: 327, training: [117], order: 3 },
-        
+        '弓足軽': {
+          type: 325,
+          training: [87],
+          order: 1
+        },
+        '長弓兵': {
+          type: 326,
+          training: [102],
+          order: 2
+        },
+        '弓騎馬': {
+          type: 327,
+          training: [117],
+          order: 3
+        },
+
         // 馬
-        '騎馬兵': { type: 329, training: [92], order: 1 },
-        '精鋭騎馬': { type: 330, training: [107], order: 2 },
-        '赤備え': { type: 331, training: [122], order: 3 },
-        
+        '騎馬兵': {
+          type: 329,
+          training: [92],
+          order: 1
+        },
+        '精鋭騎馬': {
+          type: 330,
+          training: [107],
+          order: 2
+        },
+        '赤備え': {
+          type: 331,
+          training: [122],
+          order: 3
+        },
+
         // 器
-        '破城鎚': { type: 333, training: [95], order: 1 },
-        '攻城櫓': { type: 334, training: [109], order: 2 },
-        '穴太衆': { type: 346, training: [200], order: 3 },
-        '大筒兵': { type: 335, training: [195], order: 4 },
-        '鉄砲足軽': { type: 336, training: [170], order: 5 },
-        '騎馬鉄砲': { type: 337, training: [190], order: 6 },
-        '焙烙火矢': { type: 345, training: [180], order: 7 }
+        '破城鎚': {
+          type: 333,
+          training: [95],
+          order: 1
+        },
+        '攻城櫓': {
+          type: 334,
+          training: [109],
+          order: 2
+        },
+        '穴太衆': {
+          type: 346,
+          training: [200],
+          order: 3
+        },
+        '大筒兵': {
+          type: 335,
+          training: [195],
+          order: 4
+        },
+        '鉄砲足軽': {
+          type: 336,
+          training: [170],
+          order: 5
+        },
+        '騎馬鉄砲': {
+          type: 337,
+          training: [190],
+          order: 6
+        },
+        '焙烙火矢': {
+          type: 345,
+          training: [180],
+          order: 7
+        }
       };
       var data_15s = {
-        
+
         // 槍
-        '足軽': { type: 321, training: [82], order: 1 },
-        '長槍足軽': { type: 322, training: [97], order: 2 },
-        '武士': { type: 323, training: [112], order: 3 },
-        
+        '足軽': {
+          type: 321,
+          training: [82],
+          order: 1
+        },
+        '長槍足軽': {
+          type: 322,
+          training: [97],
+          order: 2
+        },
+        '武士': {
+          type: 323,
+          training: [112],
+          order: 3
+        },
+
         // 弓
-        '弓足軽': { type: 325, training: [87], order: 1 },
-        '長弓兵': { type: 326, training: [102], order: 2 },
-        '弓騎馬': { type: 327, training: [117], order: 3 },
-        
+        '弓足軽': {
+          type: 325,
+          training: [87],
+          order: 1
+        },
+        '長弓兵': {
+          type: 326,
+          training: [102],
+          order: 2
+        },
+        '弓騎馬': {
+          type: 327,
+          training: [117],
+          order: 3
+        },
+
         // 馬
-        '騎馬兵': { type: 329, training: [92], order: 1 },
-        '精鋭騎馬': { type: 330, training: [107], order: 2 },
-        '赤備え': { type: 331, training: [122], order: 3 },
-        
+        '騎馬兵': {
+          type: 329,
+          training: [92],
+          order: 1
+        },
+        '精鋭騎馬': {
+          type: 330,
+          training: [107],
+          order: 2
+        },
+        '赤備え': {
+          type: 331,
+          training: [122],
+          order: 3
+        },
+
         // 器
-        '破城鎚': { type: 333, training: [95], order: 1 },
-        '攻城櫓': { type: 334, training: [105], order: 2 },
-        '穴太衆': { type: 346, training: [120], order: 3 },
-        '大筒兵': { type: 335, training: [180], order: 4 },
-        '鉄砲足軽': { type: 336, training: [170], order: 5 },
-        '騎馬鉄砲': { type: 337, training: [190], order: 6 },
-        '焙烙火矢': { type: 345, training: [180], order: 7 }
+        '破城鎚': {
+          type: 333,
+          training: [95],
+          order: 1
+        },
+        '攻城櫓': {
+          type: 334,
+          training: [105],
+          order: 2
+        },
+        '穴太衆': {
+          type: 346,
+          training: [120],
+          order: 3
+        },
+        '大筒兵': {
+          type: 335,
+          training: [180],
+          order: 4
+        },
+        '鉄砲足軽': {
+          type: 336,
+          training: [170],
+          order: 5
+        },
+        '騎馬鉄砲': {
+          type: 337,
+          training: [190],
+          order: 6
+        },
+        '焙烙火矢': {
+          type: 345,
+          training: [180],
+          order: 7
+        }
       };
 
       var data;
@@ -738,19 +961,19 @@
         nameKeys: {},
         typeKeys: {},
         dataKeys: {},
-        
+
         // . getByName
         getByName: function (name) {
           name = (name == '鉄砲騎馬') ? '騎馬鉄砲' : name;
           return data[name];
         },
-        
+
         // . getByType
         getByType: function (type) {
           var name = Soldier.typeKeys[type];
           return this.getByName(name);
         },
-        
+
         // . getType
         getType: function (name) {
           return Soldier.nameKeys[name] || null;
@@ -767,22 +990,22 @@
       });
       return Soldier;
     })();
-    
+
     // Soldier }
 
     // ■ Util {
     var Util = {
-      
+
       // . getLocalTime
       getLocalTime: function () {
         return ~~(new Date().getTime() / 1000);
       },
-      
+
       // . getServerTime
       getServerTime: function () {
         return ~~((new Date().getTime() + Env.timeDiff) / 1000);
       },
-      
+
       // . getVillageByName
       getVillageByName: function (name) {
         var list, i, len;
@@ -793,7 +1016,7 @@
           }
           return list[i];
         }
-        
+
         // キャッシュで見つからない場合は最新情報取得
         list = Util.getVillageList();
         for (i = 0, len = list.length; i < len; i++) {
@@ -804,7 +1027,7 @@
         }
         return null;
       },
-      
+
       // . getVillageById
       getVillageById: function (id) {
         var list, i, len;
@@ -815,7 +1038,7 @@
           }
           return list[i];
         }
-        
+
         // キャッシュで見つからない場合は最新情報取得
         list = Util.getVillageList();
         for (i = 0, len = list.length; i < len; i++) {
@@ -826,7 +1049,7 @@
         }
         return null;
       },
-      
+
       // . getVillageList
       getVillageList: function () {
         var list = [];
@@ -844,40 +1067,40 @@
         return list;
       },
 
-// 2023.09.19 兵士一括訓練の不具合解消 ここから
-// // 2022.08.16 本領情報の取得関数追加 ここから
-//       //. getCapitalVid
-//       getCapital: function () {
-// //        let vid = $('#sideboxMain').find('div.my_capital').find('li:first').attr('data-village_id');
-//         const vid = $('#sideboxMain').find('div.my_capital').find('li:first').attr('data-village_id');
-// //        if ( ! vid ) {
-// //          vid = $('#sideboxMain').find('div.my_country').find('li:first').attr('data-village_id');
-// //        }
-//         return Util.getVillageById(vid);
-//       },
-// // 2022.08.16 本領情報の取得関数追加 ここまで
+      // 2023.09.19 兵士一括訓練の不具合解消 ここから
+      // // 2022.08.16 本領情報の取得関数追加 ここから
+      //       //. getCapitalVid
+      //       getCapital: function () {
+      // //        let vid = $('#sideboxMain').find('div.my_capital').find('li:first').attr('data-village_id');
+      //         const vid = $('#sideboxMain').find('div.my_capital').find('li:first').attr('data-village_id');
+      // //        if ( ! vid ) {
+      // //          vid = $('#sideboxMain').find('div.my_country').find('li:first').attr('data-village_id');
+      // //        }
+      //         return Util.getVillageById(vid);
+      //       },
+      // // 2022.08.16 本領情報の取得関数追加 ここまで
       getCapital: function () {
         let vid = $('#sideboxMain').find('div.my_capital').find('li:first').attr('data-village_id');
-        if ( ! vid ) {
+        if (!vid) {
           vid = $('#sideboxMain').find('div.my_country').find('li:first').attr('data-village_id');
         }
         return Util.getVillageById(vid);
       },
-// 2023.09.19 // 2023.09.19 兵士一括訓練の不具合解消 ここまで
+      // 2023.09.19 // 2023.09.19 兵士一括訓練の不具合解消 ここまで
 
       // . getVillageCurrent
       getVillageCurrent: function () {
         var name = $('.sideBoxInner.basename .on > SPAN').text();
         return Util.getVillageByName(name);
       },
-      
+
       // . getVillageChangeUrl
       getVillageChangeUrl: function (village_id, returnUrl) {
         return '/village_change.php?village_id=' + village_id + '&from=menu&page=' + encodeURIComponent(returnUrl);
       },
-      
+
       // . getPoolSoldiers
-// 2021.10.17 兵士一括訓練の修正漏れの修正 ここから
+      // 2021.10.17 兵士一括訓練の修正漏れの修正 ここから
       getPoolSoldiers: function () {
         var data = {};
         var setlist_html = $.ajax({
@@ -890,8 +1113,8 @@
         // $(setlist_html).find('#unit_count_348').text().toInt() +
         // $(setlist_html).find('#unit_count_349').text().toInt();// 2022.03.07 兵士一括訓練の改善 ここから
         var type_training_soldier = Math.trunc($(setlist_html).find('#unit_count_347').text()) +
-        Math.trunc($(setlist_html).find('#unit_count_348').text()) +
-        Math.trunc($(setlist_html).find('#unit_count_349').text());// 2022.03.07 兵士一括訓練の改善 ここから
+          Math.trunc($(setlist_html).find('#unit_count_348').text()) +
+          Math.trunc($(setlist_html).find('#unit_count_349').text()); // 2022.03.07 兵士一括訓練の改善 ここから
 
         // var setlist_html = $.ajax({
         //   type: 'post',
@@ -899,46 +1122,46 @@
         //   async: false,
         //   beforeSend: XRWstext
         // }).responseText;
-// 2022.03.07 兵士一括訓練の修正 ここから
-//        var type_training_soldier = $(setlist_html).find('#unit_count_347').text().toInt() +
-//        $(setlist_html).find('#unit_count_348').text().toInt() +
-//        $(setlist_html).find('#unit_count_349').text().toInt();
-//        var type_training_soldier = $(setlist_html).find('#pool_unit_cnt_347').val().toInt() +
-//        $(setlist_html).find('#pool_unit_cnt_348').val().toInt() +
-//        $(setlist_html).find('#pool_unit_cnt_349').val().toInt();
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
-//        var type_training_soldier = $(setlist_html).find('#unit_count_347').text().toInt() +
-//          $(setlist_html).find('#unit_count_348').text().toInt() +
-//          $(setlist_html).find('#unit_count_349').text().toInt();
-// 202410.01 一括兵士訓練を使用可能に ここから
+        // 2022.03.07 兵士一括訓練の修正 ここから
+        //        var type_training_soldier = $(setlist_html).find('#unit_count_347').text().toInt() +
+        //        $(setlist_html).find('#unit_count_348').text().toInt() +
+        //        $(setlist_html).find('#unit_count_349').text().toInt();
+        //        var type_training_soldier = $(setlist_html).find('#pool_unit_cnt_347').val().toInt() +
+        //        $(setlist_html).find('#pool_unit_cnt_348').val().toInt() +
+        //        $(setlist_html).find('#pool_unit_cnt_349').val().toInt();
+        // 2024.08.10 toInt()をMath.trunc()に置換 ここから
+        //        var type_training_soldier = $(setlist_html).find('#unit_count_347').text().toInt() +
+        //          $(setlist_html).find('#unit_count_348').text().toInt() +
+        //          $(setlist_html).find('#unit_count_349').text().toInt();
+        // 202410.01 一括兵士訓練を使用可能に ここから
         // var type_training_soldier = Math.trunc($(setlist_html).find('#unit_count_347').text()) +
         // Math.trunc($(setlist_html).find('#unit_count_348').text()) +
         // Math.trunc($(setlist_html).find('#unit_count_349').text());
         var type_training_soldier = $(setlist_html).find('#unit_count_347').text().Math.trunc() +
-        $(setlist_html).find('#unit_count_348').text().Math.trunc() +
-        $(setlist_html).find('#unit_count_349').text().Math.trunc();
-// 202410.01 一括兵士訓練を使用可能に ここまで
+          $(setlist_html).find('#unit_count_348').text().Math.trunc() +
+          $(setlist_html).find('#unit_count_349').text().Math.trunc();
+        // 202410.01 一括兵士訓練を使用可能に ここまで
         var type_training_soldier = 0;
-// 202410.01 一括兵士訓練を使用可能に ここから
+        // 202410.01 一括兵士訓練を使用可能に ここから
         var tmp_soldier = $(setlist_html).find('#unit_count_347').text().Math.trunc();
-// 202410.01 一括兵士訓練を使用可能に ここまで
+        // 202410.01 一括兵士訓練を使用可能に ここまで
         if (!isNaN(tmp_soldier)) {
           type_training_soldier += tmp_soldier;
         }
-// 202410.01 一括兵士訓練を使用可能に ここから
+        // 202410.01 一括兵士訓練を使用可能に ここから
         tmp_soldier = $(setlist_html).find('#unit_count_348').text().Math.trunc();
-// 202410.01 一括兵士訓練を使用可能に ここまで
+        // 202410.01 一括兵士訓練を使用可能に ここまで
         if (!isNaN(tmp_soldier)) {
           type_training_soldier += tmp_soldier;
         }
-// 202410.01 一括兵士訓練を使用可能に ここから
+        // 202410.01 一括兵士訓練を使用可能に ここから
         tmp_soldier = $(setlist_html).find('#unit_count_349').text().Math.trunc();
-// 202410.01 一括兵士訓練を使用可能に ここまで
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+        // 202410.01 一括兵士訓練を使用可能に ここまで
+        // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
         if (!isNaN(tmp_soldier)) {
           type_training_soldier += tmp_soldier;
         }
-// 2022.03.07 兵士一括訓練の改善 ここまで
+        // 2022.03.07 兵士一括訓練の改善 ここまで
         var html = $.ajax({
           type: 'get',
           url: '/facility/unit_list.php',
@@ -947,66 +1170,66 @@
         }).responseText;
         var $html = $(html),
           $table, $cell, text;
-          text = $html.find('.ig_solder_commentarea').text().split('/')[1].trim();
-// 2024.10.01 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
-          data.capacity = Math.trunc(text);
-// 2024.10.01 一括兵士訓練を使用可能に ここまで
-// 2024.10.01 一括兵士訓練を使用可能に ここから
-// // 2022.03.07 兵士一括訓練の改善 ここから
-// //          data.soldier = $html.find('#all_pool_unit_cnt').text().toInt();
-//           data.soldier = $html.find('#all_pool_unit_cnt').text().Math.trunc() - type_training_soldier;
-// // 2022.03.07 兵士一括訓練の改善 ここまで
-          data.soldier = Math.trunc($html.find('#all_pool_unit_cnt').text()) - type_training_soldier;
-// 2024.10.01 一括兵士訓練を使用可能に ここまで
-          data.pool = {};
-          data.training = [];
-          $table = $html.find('.ig_fight_dotbox');
-          $table.first().find('TH').each(function () {
-        var $this = $(this),
-          type = Soldier.getType($this.text()),
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-          pool = $this.next().text().Math.trunc();
-// 2022.03.07 一括兵士訓練を使用可能に ここから
+        text = $html.find('.ig_solder_commentarea').text().split('/')[1].trim();
+        // 2024.10.01 一括兵士訓練を使用可能に ここから
+        // 2024.08.10 toInt()をMath.trunc()に置換 ここから
+        data.capacity = Math.trunc(text);
+        // 2024.10.01 一括兵士訓練を使用可能に ここまで
+        // 2024.10.01 一括兵士訓練を使用可能に ここから
+        // // 2022.03.07 兵士一括訓練の改善 ここから
+        // //          data.soldier = $html.find('#all_pool_unit_cnt').text().toInt();
+        //           data.soldier = $html.find('#all_pool_unit_cnt').text().Math.trunc() - type_training_soldier;
+        // // 2022.03.07 兵士一括訓練の改善 ここまで
+        data.soldier = Math.trunc($html.find('#all_pool_unit_cnt').text()) - type_training_soldier;
+        // 2024.10.01 一括兵士訓練を使用可能に ここまで
+        data.pool = {};
+        data.training = [];
+        $table = $html.find('.ig_fight_dotbox');
+        $table.first().find('TH').each(function () {
+          var $this = $(this),
+            type = Soldier.getType($this.text()),
+            // 2022.03.07 一括兵士訓練を使用可能に ここから
+            pool = $this.next().text().Math.trunc();
+          // 2022.03.07 一括兵士訓練を使用可能に ここから
           data.pool[type] = pool;
         });
-// 2024.08.10 Math.trunc()をMath.trunc()に置換 ここまで
-// 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここから
-//        $table.eq(1).find('.table_fightlist2').each(function () {
+        // 2024.08.10 Math.trunc()をMath.trunc()に置換 ここまで
+        // 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここから
+        //        $table.eq(1).find('.table_fightlist2').each(function () {
         var $training_table = $html.find('h3:contains("訓練中の兵士")').closest('div.ig_fight_statusarea').find('.ig_fight_dotbox');
         $training_table.find('.table_fightlist2').each(function () {
-// 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここまで
-        var $tr = $(this).find('TR'),
-          name = $tr.first().find('A').text(),
-          village = Util.getVillageByName(name);
+          // 2020.09.15 一括兵士訓練で総合情報取得中で停止する不具合の修正 ここまで
+          var $tr = $(this).find('TR'),
+            name = $tr.first().find('A').text(),
+            village = Util.getVillageByName(name);
           $tr.slice(1).each(function () {
-        var $td = $(this).find('TD'),
-// 2020.09.15 一括兵士訓練ができない不具合の対応 ここから
-//              type = Soldier.getType($td.eq(0).find('IMG').attr('alt')),
-//              num = $td.eq(1).text().toInt(),
-//              finish = $td.eq(3).text().getTime();
-          type = Soldier.getType($td.eq(1).find('IMG').attr('alt')),
+            var $td = $(this).find('TD'),
+              // 2020.09.15 一括兵士訓練ができない不具合の対応 ここから
+              //              type = Soldier.getType($td.eq(0).find('IMG').attr('alt')),
+              //              num = $td.eq(1).text().toInt(),
+              //              finish = $td.eq(3).text().getTime();
+              type = Soldier.getType($td.eq(1).find('IMG').attr('alt')),
 
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
-//          num = Math.trunc($td.eq(2).text()),
-          num = Math.trunc($td.eq(2).text()),
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
-          finish = $td.eq(4).text().getTime();
-// 2020.09.15 一括兵士訓練ができない不具合の対応 ここまで
-        data.training.push({
-          id: village.id,
-          type: type,
-          num: num,
-          finish: finish
+              // 2022.03.07 一括兵士訓練を使用可能に ここから
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここから
+              //          num = Math.trunc($td.eq(2).text()),
+              num = Math.trunc($td.eq(2).text()),
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+              // 2022.03.07 一括兵士訓練を使用可能に ここまで
+              finish = $td.eq(4).text().getTime();
+            // 2020.09.15 一括兵士訓練ができない不具合の対応 ここまで
+            data.training.push({
+              id: village.id,
+              type: type,
+              num: num,
+              finish: finish
+            });
+          });
         });
-      });
-    });
-    return data;
-  },
-// 2021.10.17 兵士一括訓練の修正漏れの修正 ここまで
-      
+        return data;
+      },
+      // 2021.10.17 兵士一括訓練の修正漏れの修正 ここまで
+
       // . getConsumption
       getConsumption: function (materials, number) {
         var modRate = 1,
@@ -1022,7 +1245,7 @@
           return (value * modRate).toRound(0) * number;
         });
       },
-      
+
       // . getFacility
       getFacility: function (name) {
         var data = selectFacilitys();
@@ -1046,12 +1269,12 @@
         })();
         return list;
       },
-      
+
       // . getMarket
       getMarket: function () {
         var rates = [0, 0.40, 0.43, 0.46, 0.49, 0.52, 0.55, 0.60, 0.65, 0.70, 0.75],
-        list = Util.getFacility('市'),
-        market;
+          list = Util.getFacility('市'),
+          market;
         if (list.length === 0) {
           return null;
         }
@@ -1059,24 +1282,24 @@
           return (b.lv > a.lv);
         });
         var sKey = ownerMode ? 'zs_' : '',
-        bonus = JSON.parse(localStorage.getItem(sKey + 'ixamoko_userbonus') || {});
+          bonus = JSON.parse(localStorage.getItem(sKey + 'ixamoko_userbonus') || {});
         list[0].rate = rates[list[0].lv] + ((bonus.marketprice || 0) / 100);
         return list[0];
-      },      
+      },
       // . getResource
       getResource: function () {
         return [
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+          // 2022.03.07 一括兵士訓練を使用可能に ここから
+          // 2024.08.10 toInt()をMath.trunc()に置換 ここから
           $('#wood').text().Math.trunc(),
           $('#stone').text().Math.trunc(),
           $('#iron').text().Math.trunc(),
           $('#rice').text().Math.trunc()
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+          // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+          // 2022.03.07 一括兵士訓練を使用可能に ここまで
         ];
       },
-      
+
       // . checkExchange
       checkExchange: function (resource, requirements, rate) {
         var shortage = 0,
@@ -1095,7 +1318,7 @@
         }
         return (shortage === 0) ? 2 : (surplus * rate >= shortage) ? 1 : 0;
       },
-      
+
       // . getExchangePlan
       getExchangePlan: function (resource, requirements, rate, type) {
         var surplus = [],
@@ -1127,8 +1350,8 @@
         }
         if (type == 'A') {
           var modify = surplus.sort(function (a, b) {
-            return (b.value > a.value);
-          })
+              return (b.value > a.value);
+            })
             .reduce(function (prev, curr, idx) {
               if (curr.value > prev.avg) {
                 prev.value = prev.value + curr.value;
@@ -1179,7 +1402,7 @@
         });
         return plans;
       },
-      
+
       // . getValidSoldiers
       getValidSoldiers: function (facility) {
         var url = Util.getVillageChangeUrl(facility.id, '/facility/facility.php?x=' + facility.x + '&y=' + facility.y),
@@ -1206,22 +1429,22 @@
           if ($this.find('H3').length === 0) {
             return;
           }
-// 2022.09.07 一括訓練が出来る様修正 ここから
-//          if ($this.find('H3 A').length > 0) {
+          // 2022.09.07 一括訓練が出来る様修正 ここから
+          //          if ($this.find('H3 A').length > 0) {
           if ($this.find('H3:contains("施設")').length > 0) {
-// 2022.09.07 一括訓練が出来る様修正 ここまで
+            // 2022.09.07 一括訓練が出来る様修正 ここまで
             return;
           }
           name = $this.find('H3').text().match(/\[(.*)\]/)[1];
           materials = [
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+            // 2022.03.07 一括兵士訓練を使用可能に ここから
+            // 2024.08.10 toInt()をMath.trunc()に置換 ここから
             $this.find('.icon_wood').text().match(/(\d+)/)[1].Math.trunc(),
             $this.find('.icon_cotton').text().match(/(\d+)/)[1].Math.trunc(),
             $this.find('.icon_iron').text().match(/(\d+)/)[1].Math.trunc(),
             $this.find('.icon_food').text().match(/(\d+)/)[1].Math.trunc()
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+            // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+            // 2022.03.07 一括兵士訓練を使用可能に ここまで
           ];
           soldata = Soldier.getByName(name);
           var image = $this.find('.ig_tilesection_iconarea IMG').attr('src');
@@ -1237,7 +1460,7 @@
 
         return soldiers.reverse();
       },
-      
+
       // . getMaxTraining
       getMaxTraining: function (resource, requirements, rate, max, min) {
         var c, materials, check, result = min;
@@ -1254,7 +1477,7 @@
         }
         return result;
       },
-      
+
       // . divide
       divide: function (list, soldata, solnum) {
         var facilities = [],
@@ -1273,7 +1496,7 @@
           }
         })();
         if (facilities.length == 1) {
-          
+
           // 施設が１つの場合、分配しない
           facilities[0].solnum = solnum;
         } else {
@@ -1290,7 +1513,7 @@
             }
           })();
           if (soltotal != solnum) {
-            
+
             // 小数点以下を切り捨てているので、不足分はLVが一番高い施設で調整
             facilities[maxidx].solnum += (solnum - soltotal);
           }
@@ -1305,7 +1528,7 @@
         })();
         return facilities;
       },
-      
+
       // . divide2
       divide2: function (list, soldata, time) {
         var facilities = [],
@@ -1326,7 +1549,7 @@
         facilities.totalnum = total;
         return facilities;
       },
-      
+
       // . wait
       wait: function (ms) {
         var dfd = $.Deferred();
@@ -1336,12 +1559,13 @@
         return dfd;
       }
     };
-    
+
     // Util }
 
     // ■ Display {
     var Display = (function () {
       var $sysmessage;
+
       function Dialog(options) {
         var $overlay = $('<div id="imi_overlay"><div class="imc_overlay" /><div id="imi_dialog_container" /></div>'),
           $container = $overlay.find('#imi_dialog_container'),
@@ -1415,7 +1639,7 @@
           $sysmessage = null;
         }
       }
-      
+
       // . return
       return {
         info: function (msg, sound, timeout) {
@@ -1432,7 +1656,7 @@
     })();
 
     $.extend(Display, {
-      
+
       // . dialogExchange
       dialogExchange: function (resource, requirements, currentVillage) {
         var market = Util.getMarket(),
@@ -1483,11 +1707,11 @@
           .on('metaupdate', function () {
             var $tr = $('#imi_ex_table').find('TR'),
               type = $(this).find('#imi_ex_type .imc_selected').data('type'),
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+              // 2022.03.07 一括兵士訓練を使用可能に ここから
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここから
               warehouse = $('#wood_max').text().Math.trunc(),
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+              // 2022.03.07 一括兵士訓練を使用可能に ここまで
               ex = [0, 0, 0, 0],
               button = true;
             plans = Util.getExchangePlan(resource, requirements, market.rate, type);
@@ -1508,17 +1732,17 @@
               $('#imi_exchange_message').text('資源が不足しています');
               button = false;
             }
-            
+
             // 現在資源量
             $tr.eq(1).find('TD').each(function (idx) {
               $(this).text(resource[idx]);
             });
-            
+
             // 必要資源量
             $tr.eq(2).find('TD').each(function (idx) {
               $(this).text(requirements[idx]);
             });
-            
+
             // 過不足
             $tr.eq(3).find('TD').each(function (idx) {
               var $this = $(this),
@@ -1531,7 +1755,7 @@
                 $this.addClass('imc_shortage');
               }
             });
-            
+
             // 取引資源量
             $tr.eq(4).find('TD').each(function (idx) {
               var $this = $(this),
@@ -1544,7 +1768,7 @@
                 $this.addClass('imc_shortage');
               }
             });
-            
+
             // 取引後資源量
             $tr.eq(6).find('TD').each(function (idx) {
               var $this = $(this),
@@ -1556,12 +1780,12 @@
                 button = false;
               }
             });
-            
+
             // 必要資源量
             $tr.eq(7).find('TD').each(function (idx) {
               $(this).text(requirements[idx]);
             });
-            
+
             // 消費後資源量
             $tr.eq(9).find('TD').each(function (idx) {
               var $this = $(this),
@@ -1604,14 +1828,14 @@
               }
               ol = Display.dialog();
               $.Deferred().resolve().then(function () {
-                ol.message('取引開始...');
-                var href = Util.getVillageChangeUrl(market.id, '/facility/facility.php?x=' + market.x + '&y=' + market.y);
-                return $.ajax({
-                  type: 'get',
-                  url: href,
-                  beforeSend: XRWstext
-                });
-              })
+                  ol.message('取引開始...');
+                  var href = Util.getVillageChangeUrl(market.id, '/facility/facility.php?x=' + market.x + '&y=' + market.y);
+                  return $.ajax({
+                    type: 'get',
+                    url: href,
+                    beforeSend: XRWstext
+                  });
+                })
                 .then(function (html) {
                   if ($(html).find('#market_form').length === 0) {
                     Display.alert('市情報が見つかりませんでした。');
@@ -1625,20 +1849,20 @@
                   var plan = plans.shift();
                   ol.message('【' + plan.from + '】' + plan.value + ' を【' + plan.to + '】' + plan.receive + 'と取引中...');
                   $.ajax({
-                    type: 'post',
-                    url: '/facility/facility.php',
-                    data: {
-                      x: market.x,
-                      y: market.y,
-                      village_id: market.id,
-                      tf_id: materialid[plan.from],
-                      tc: plan.value,
-                      tt_id: materialid[plan.to],
-                      st: 1,
-                      change_btn: true
-                    },
-                    beforeSend: XRWstext
-                  })
+                      type: 'post',
+                      url: '/facility/facility.php',
+                      data: {
+                        x: market.x,
+                        y: market.y,
+                        village_id: market.id,
+                        tf_id: materialid[plan.from],
+                        tc: plan.value,
+                        tt_id: materialid[plan.to],
+                        st: 1,
+                        change_btn: true
+                      },
+                      beforeSend: XRWstext
+                    })
                     .then(function () {
                       return Util.wait(100);
                     })
@@ -1673,12 +1897,12 @@
         $html.trigger('metaupdate');
         return dfd;
       },
-      
+
       // . getLocaleDate
       getLocaleDate: function () {
         return new Date().toLocaleDateString();
       },
-      
+
       // . toTrainingTime
       toTrainingTime: function () {
         var obj = metaStorage('TRAINING').get('time');
@@ -1686,7 +1910,7 @@
           Soldier.dataKeys[key].training = obj.value[key];
         }
       },
-      
+
       // . preDialogTraining
       preDialogTraining: function () {
         var ol = Display.dialog();
@@ -1694,10 +1918,10 @@
         '足軽兵舎 弓兵舎 厩舎 兵器鍛冶'.split(' ').forEach(function (key) {
           var flist = Util.getFacility(key);
           if (flist.length) {
-// 2022.08.16 情報取得関連修正 ここから
-//            obj[key] = flist;
+            // 2022.08.16 情報取得関連修正 ここから
+            //            obj[key] = flist;
             obj[key] = flist.concat(Util.getFacility('支城'));
-// 2022.08.16 情報取得関連修正 ここまで
+            // 2022.08.16 情報取得関連修正 ここまで
           }
         });
         if (!Object.keys(obj).length) {
@@ -1705,9 +1929,12 @@
           Util.wait(1000).then(ol.close);
           return false;
         }
-        
+
         // 占い結果で毎日訓練時間が変わるので日付が違う場合のみ更新
-        var data = metaStorage('TRAINING').get('time') || { update: null, value: {} };
+        var data = metaStorage('TRAINING').get('time') || {
+          update: null,
+          value: {}
+        };
         if (data.update != Display.getLocaleDate()) {
           return Display.getTrainingTime(0, 0, obj, ol, data);
         } else {
@@ -1716,7 +1943,7 @@
           return setTimeout(Display.dialogTraining, 100, ol);
         }
       },
-      
+
       // . getTrainingTime
       getTrainingTime: function (key_idx, arr_idx, obj, ol, data) {
         if (Object.keys(obj).length == key_idx) {
@@ -1733,10 +1960,10 @@
         var facility = obj[key][arr_idx];
         var url = Util.getVillageChangeUrl(facility.id, '/facility/facility.php?x=' + facility.x + '&y=' + facility.y);
         $.ajax({
-          type: 'get',
-          url: url,
-          beforeSend: XRWstext
-        })
+            type: 'get',
+            url: url,
+            beforeSend: XRWstext
+          })
           .then(function (html) {
             $(html).find('.ig_tilesection_innermid, .ig_tilesection_innermid2').each(function () {
               var $this = $(this),
@@ -1749,43 +1976,43 @@
               if ($this.find('H3').length === 0) {
                 return;
               }
-// 2022.09.07 一括訓練が出来る様修正 ここから
-//              if ($this.find('H3 A').length > 0) {
+              // 2022.09.07 一括訓練が出来る様修正 ここから
+              //              if ($this.find('H3 A').length > 0) {
               if ($this.find('H3:contains("施設")').length > 0) {
-// 2022.09.07 一括訓練が出来る様修正 ここまで
+                // 2022.09.07 一括訓練が出来る様修正 ここまで
                 return;
               }
               name = $this.find('H3').text().match(/\[(.*)\]/)[1];
-              
+
               // 訓練時間を取得
               var $tr = $this.find('FORM[name="createUnitForm"]').closest('TR');
               if (!data.value[name]) {
                 data.value[name] = Soldier.dataKeys[name].training;
               }
-// 2022.08.16 情報取得関連修正 ここから
-//              data.value[name][facility.lv - 1] = $tr.find('TD:eq(0) SPAN').text().toSecond();
-              for ( let i = 0; i < obj[key].length; i++ ) {
+              // 2022.08.16 情報取得関連修正 ここから
+              //              data.value[name][facility.lv - 1] = $tr.find('TD:eq(0) SPAN').text().toSecond();
+              for (let i = 0; i < obj[key].length; i++) {
                 data.value[name][obj[key][i].lv - 1] = $tr.find('span.vid_' + obj[key][i].id).text().toSecond();
               }
-// 2022.08.16 情報取得関連修正 ここまで
+              // 2022.08.16 情報取得関連修正 ここまで
             });
-// 2022.08.16 情報取得関連修正 ここから
-//            arr_idx++;
-//            if (obj[key].length == arr_idx) {
-// 2022.08.16 情報取得関連修正 ここまで
-              key_idx++;
-// 2022.08.16 情報取得関連修正 ここから
-//              arr_idx = 0;
-//            }
-// 2022.08.16 情報取得関連修正 ここまで
+            // 2022.08.16 情報取得関連修正 ここから
+            //            arr_idx++;
+            //            if (obj[key].length == arr_idx) {
+            // 2022.08.16 情報取得関連修正 ここまで
+            key_idx++;
+            // 2022.08.16 情報取得関連修正 ここから
+            //              arr_idx = 0;
+            //            }
+            // 2022.08.16 情報取得関連修正 ここまで
             return Display.getTrainingTime(key_idx, arr_idx, obj, ol, data);
           });
       },
-      
+
       // . dialogTraining
       dialogTraining: function (ol) {
         var current = Util.getVillageCurrent(); // 選択中拠点obj
-        
+
         // 所領以外の拠点選択中の場合データが取得できないので改めて取得する
         if (!current) {
           var $li = $('#sideboxMain li.on');
@@ -1809,9 +2036,9 @@
           if (flist.length === 0) {
             return;
           }
-// 2022.08.16 情報取得関連修正 ここから
+          // 2022.08.16 情報取得関連修正 ここから
           flist = Util.getFacility(key).concat(Util.getFacility('支城'));
-// 2022.08.16 情報取得関連修正 ここまで
+          // 2022.08.16 情報取得関連修正 ここまで
           slist = Util.getValidSoldiers(flist[0]);
           if (slist.length === 0) {
             return;
@@ -1849,10 +2076,10 @@
             prev[curr.id]++;
             return prev;
           }, {
-              0: 0
-            }) : {
-              0: 0
-            };
+            0: 0
+          }) : {
+            0: 0
+          };
           facility.count = Math.max.apply(null, $.map(counts, function (value) {
             return value;
           }));
@@ -1998,21 +2225,21 @@
         });
 
         $html.on('click', '.imc_input_type LI', function () {
-          var $this = $(this),
-            type = $this.attr('class'),
-            $td = $this.closest('TD'),
-            $intype = $td.find('.imc_input_type');
-          $intype.removeClass('imc_solnum imc_solfinish imc_soltime imc_solinput').addClass(type);
-          $intype.find('SPAN').text($this.text());
-          $td.find('.imc_input').attr('disabled', false).trigger('metaupdate');
-          if ($this.hasClass('imc_solinput')) {
-            $td.find('.imc_input').hide();
-            $td.find('.imc_input_val').show();
-          } else {
-            $td.find('.imc_input').show();
-            $td.find('.imc_input_val').hide();
-          }
-        })
+            var $this = $(this),
+              type = $this.attr('class'),
+              $td = $this.closest('TD'),
+              $intype = $td.find('.imc_input_type');
+            $intype.removeClass('imc_solnum imc_solfinish imc_soltime imc_solinput').addClass(type);
+            $intype.find('SPAN').text($this.text());
+            $td.find('.imc_input').attr('disabled', false).trigger('metaupdate');
+            if ($this.hasClass('imc_solinput')) {
+              $td.find('.imc_input').hide();
+              $td.find('.imc_input_val').show();
+            } else {
+              $td.find('.imc_input').show();
+              $td.find('.imc_input_val').hide();
+            }
+          })
           .on('change', '.imc_soltype', function () {
             var $this = $(this),
               fname = $this.attr('fname'),
@@ -2043,7 +2270,7 @@
               return (elem.type == type);
             })[0];
             if ($intype.hasClass('imc_solnum')) {
-              
+
               // 人数
               val = 0;
               step = 100;
@@ -2076,7 +2303,7 @@
                 }
               })();
             } else if ($intype.hasClass('imc_solfinish')) {
-              
+
               // 時刻
               basetime = facilities[fname].finish;
               basetime = (basetime) ? basetime : Util.getServerTime() + 60;
@@ -2104,7 +2331,7 @@
                 }
               })();
             } else if ($intype.hasClass('imc_soltime')) {
-              
+
               // 時間
               options.push('<option value="0">00h00m</option>');
               (function () {
@@ -2130,7 +2357,7 @@
               })();
             }
             $this.empty().append(options.join(''));
-            
+
             // 手入力の場合options.length == 0になる
             if (options.length === 0) {
               disabled = (overnum === 0 || facilities[fname].count == 10);
@@ -2147,11 +2374,11 @@
           })
           .on('change', '.imc_input_val', function () {
             var $this = $(this),
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+              // 2022.03.07 一括兵士訓練を使用可能に ここから
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここから
               num = $this.val().Math.trunc(),
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+              // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+              // 2022.03.07 一括兵士訓練を使用可能に ここまで
               fname = $this.attr('fname'),
               type = $html.find('.imc_soltype[fname="' + fname + '"]').val(),
               count = $html.find('.imc_create_count[fname="' + fname + '"]').val(),
@@ -2227,7 +2454,7 @@
                 backgroundColor: '#77692F'
               });
             }
-            
+
             // 資源
             $this.find('.imc_resource').each(function (idx) {
               $(this).text(resource[idx]);
@@ -2271,30 +2498,30 @@
             '訓練開始': function () {
               var self = this,
                 ol, total, plans, workid;
-// 2022.08.16 訓練実行関連修正 ここから
+              // 2022.08.16 訓練実行関連修正 ここから
               const facility = {};
               const capital = Util.getCapital();
-// 2022.08.16 訓練実行関連修正 ここまで
+              // 2022.08.16 訓練実行関連修正 ここまで
               total = $html.find('.imc_total_material').map(function () {
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+                // 2022.03.07 一括兵士訓練を使用可能に ここから
+                // 2024.08.10 toInt()をMath.trunc()に置換 ここから
                 return $(this).text().Math.trunc();
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+                // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+                // 2022.03.07 一括兵士訓練を使用可能に ここまで
               }).get();
               $.Deferred().resolve().then(function () {
-                var resource = Util.getResource();
-                var result = Util.checkExchange(resource, total);
-                if (result === 0) {
-                  return $.Deferred().reject();
-                } else if (result == 1) {
-                  return Display.dialogExchange(resource, total);
-                } else {
-                  if (!window.confirm('訓練を開始してよろしいですか？')) {
+                  var resource = Util.getResource();
+                  var result = Util.checkExchange(resource, total);
+                  if (result === 0) {
                     return $.Deferred().reject();
+                  } else if (result == 1) {
+                    return Display.dialogExchange(resource, total);
+                  } else {
+                    if (!window.confirm('訓練を開始してよろしいですか？')) {
+                      return $.Deferred().reject();
+                    }
                   }
-                }
-              })
+                })
                 .then(function () {
                   ol = Display.dialog();
                   ol.message('一括訓練登録処理開始...');
@@ -2302,18 +2529,23 @@
                     var plan = $(this).data('plan');
                     return (plan.solnum > 0) ? plan : null;
                   }).get();
-// 2022.08.16 訓練実行関連修正 ここから
-                  plans.sort(function(a, b) { return a.type - b.type; });
-                  for ( let i = 0; i < plans.length; i++ ) {
-                    if ( plans[i].id == capital.id ) {
-                      if ( ! facility[plans[i].type] ) {
-                        facility[plans[i].type] = {'x': 0, 'y': 0};
+                  // 2022.08.16 訓練実行関連修正 ここから
+                  plans.sort(function (a, b) {
+                    return a.type - b.type;
+                  });
+                  for (let i = 0; i < plans.length; i++) {
+                    if (plans[i].id == capital.id) {
+                      if (!facility[plans[i].type]) {
+                        facility[plans[i].type] = {
+                          'x': 0,
+                          'y': 0
+                        };
                       }
                       facility[plans[i].type]['x'] = plans[i].x;
                       facility[plans[i].type]['y'] = plans[i].y;
-                   }
-                 }
-// 2022.08.16 訓練実行関連修正 ここまで
+                    }
+                  }
+                  // 2022.08.16 訓練実行関連修正 ここまで
                 })
                 .then(function sendQuery() {
                   var plan = plans.shift();
@@ -2321,38 +2553,38 @@
                     return;
                   }
                   return $.Deferred().resolve().then(function () {
-// 2022.08.16 訓練実行関連修正 ここから
-//                    if (workid == plan.id) {
-                    if ( workid == capital.id ) {
-// 2022.08.16 訓練実行関連修正 ここまで
-                      return;
-                    }
-// 2022.08.16 訓練実行関連修正 ここから
-//                    workid = plan.id;
-//                    var href = Util.getVillageChangeUrl(plan.id, '/user/');
-                    workid = capital.id;
-                    var href = Util.getVillageChangeUrl(capital.id, '/user/');
-// 2022.08.16 訓練実行関連修正 ここまで
-                    return $.ajax({
-                      type: 'get',
-                      url: href,
-                      beforeSend: XRWstext
-                    });
-                  })
+                      // 2022.08.16 訓練実行関連修正 ここから
+                      //                    if (workid == plan.id) {
+                      if (workid == capital.id) {
+                        // 2022.08.16 訓練実行関連修正 ここまで
+                        return;
+                      }
+                      // 2022.08.16 訓練実行関連修正 ここから
+                      //                    workid = plan.id;
+                      //                    var href = Util.getVillageChangeUrl(plan.id, '/user/');
+                      workid = capital.id;
+                      var href = Util.getVillageChangeUrl(capital.id, '/user/');
+                      // 2022.08.16 訓練実行関連修正 ここまで
+                      return $.ajax({
+                        type: 'get',
+                        url: href,
+                        beforeSend: XRWstext
+                      });
+                    })
                     .then(function () {
-// 2022.08.16 訓練実行関連修正 ここから
-//                      var href = '/facility/facility.php?x=' + plan.x + '&y=' + plan.y,
+                      // 2022.08.16 訓練実行関連修正 ここから
+                      //                      var href = '/facility/facility.php?x=' + plan.x + '&y=' + plan.y,
                       var href = '/facility/facility.php?x=' + facility[plan.type].x + '&y=' + facility[plan.type].y,
-// 2022.08.16 訓練実行関連修正 ここまで
+                        // 2022.08.16 訓練実行関連修正 ここまで
                         data = {
                           unit_id: plan.type,
-// 2022.08.16 訓練実行関連修正 ここから
-//                          x: plan.x,
-//                          y: plan.y,
+                          // 2022.08.16 訓練実行関連修正 ここから
+                          //                          x: plan.x,
+                          //                          y: plan.y,
                           x: facility[plan.type].x,
                           y: facility[plan.type].y,
                           create_village: plan.id,
-// 2022.08.16 訓練実行関連修正 ここまで
+                          // 2022.08.16 訓練実行関連修正 ここまで
                           count: plan.solnum,
                           create_count: plan.create_count,
                           btnSend: true
@@ -2385,14 +2617,14 @@
         $html.find('.imc_soltype').trigger('change');
         var href = Util.getVillageChangeUrl(current.id, '/user/');
         $.ajax({
-          type: 'get',
-          url: href,
-          beforeSend: XRWstext
-        })
+            type: 'get',
+            url: href,
+            beforeSend: XRWstext
+          })
           .then(ol.close);
       }
     });
-    
+
     // Display }
 
     // ■ exPage {
@@ -2420,13 +2652,13 @@
 
     // . exPage
     $.extend(exPage, {
-      
+
       // .. actionList
       actionList: {},
-      
+
       // .. extentionList
       extentionList: {},
-      
+
       // .. registerAction
       registerAction: function () {
         var args = Array.prototype.slice.call(arguments),
@@ -2439,34 +2671,34 @@
           list[key] = obj;
         }
       },
-      
+
       // .. move
       move: function (url) {
         window.setTimeout(function () {
           location.href = url;
         }, 1000);
       },
-      
+
       // .. action
-      action: function () { },
-      
+      action: function () {},
+
       // .. pageaction
-      pageaction: function () { },
-      
+      pageaction: function () {},
+
       // .. noaction
-      noaction: function () { }
+      noaction: function () {}
     });
 
     // . exPage.noaction.prototype
     $.extend(exPage.noaction.prototype, {
-      
+
       // .. execute
-      execute: function () { }
+      execute: function () {}
     });
 
     //. exPage.pageaction.prototype
     $.extend(exPage.pageaction.prototype, {
-      
+
       // .. execute
       execute: function () {
         this.main();
@@ -2475,18 +2707,18 @@
         }
       },
       //.. main
-      main: function () { }
+      main: function () {}
     });
 
     // ■ /village
     exPage.registerAction('village', {
-      
+
       // . main
       main: function () {
         var moko_facilitys = ownerMode == '1' ? localStorage.zs_ixamoko_facilitys : localStorage.ixamoko_facilitys;
         moko_facilitys ? null : this.getFacilityList();
       },
-      
+
       // . getFacilityList
       getFacilityList: function () {
         var storage = metaStorage('FACILITY'),
@@ -2501,7 +2733,7 @@
         storage.begin();
         data = storage.data;
         data[village.id] = list;
-        
+
         // 表示拠点選択にある拠点だけで登録
         var baselist = BaseList.home(),
           newdata = {};
@@ -2519,11 +2751,11 @@
             href = $this.attr('href'),
             array = alt.match(/(.+) LV.(\d+)/),
             name, lv, x, y;
-          
+
           if (!array) {
             return;
           }
-          
+
           alt = array[0];
           name = array[1];
           lv = array[2];
@@ -2532,13 +2764,13 @@
           x = array[1];
           y = array[2];
           list[name] = {
-// 2022.03.07 一括兵士訓練を使用可能に ここから
-// 2024.08.10 toInt()をMath.trunc()に置換 ここから
+            // 2022.03.07 一括兵士訓練を使用可能に ここから
+            // 2024.08.10 toInt()をMath.trunc()に置換 ここから
             x: Math.trunc(x),
             y: Math.trunc(y),
             lv: Math.trunc(lv)
-// 2024.08.10 toInt()をMath.trunc()に置換 ここまで
-// 2022.03.07 一括兵士訓練を使用可能に ここまで
+            // 2024.08.10 toInt()をMath.trunc()に置換 ここまで
+            // 2022.03.07 一括兵士訓練を使用可能に ここまで
           };
         }
       }
@@ -2546,7 +2778,7 @@
 
     // ■ 実行
     exPage(Env.path).execute();
-    
+
     // exPage }
 
     // 一括兵士訓練のリンク埋め込み
@@ -2559,64 +2791,64 @@
   }
 
   // load
-// 2023.10.23 内部処理の変更 ここから
-//  window.addEventListener('DOMContentLoaded', function () {
+  // 2023.10.23 内部処理の変更 ここから
+  //  window.addEventListener('DOMContentLoaded', function () {
   function loadIxaTraining() {
-// 2023.10.23 内部処理の変更 ここまで
-    
+    // 2023.10.23 内部処理の変更 ここまで
+
     // console.debug(document.readyState);
     var style = document.createElement('style');
     style.setAttribute('type', 'text/css');
     style.innerHTML = '' +
 
-    /* テーブルスタイル */
-    '.imc_table { border-collapse: collapse; border: solid 1px dimGray; color: white; }' +
-    '.imc_table TH { padding: 4px 6px; text-align: center; vertical-align: middle; border-bottom: dotted 1px dimGray; border-left: solid 1px dimGray; background:  linear-gradient(to bottom, #949494 0%,#797979 100%); text-shadow: black 1px 1px 3px, black -1px -1px 3px; }' +
-    '.imc_table TD { padding: 4px 5px; text-align: center; vertical-align: middle; border-bottom: solid 1px dimGray; border-left: solid 1px dimGray; background-color: black; }' +
-    '.imc_table.td_right TD { text-align: right; }' +
-    '.imc_table TD img { vertical-align: text-top; }' +
-    '.imc_table TH.h100 { background-size: 100% 100%; }' +
-    '#imi_ex_type .imc_selected { background-color: #77692f; }' +
-      
-    /* overlay用 z-index: 2000 */
-    '#imi_overlay { position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2000; }' +
-    '#imi_overlay .imc_overlay { position: absolute; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }' +
-      
-    /* ダイアログメッセージ用 */
-    '#imi_dialog_container { position: relative; margin: auto; width: 500px; height: auto; background-color: rgba(0, 0, 0, 0.6); color: white; border: 4px solid #77692f; overflow: hidden; }' +
-    '#imi_dialog_container .imc_dialog_header { padding: 8px; color: white; }' +
-    '#imi_dialog_container .imc_dialog_body { margin: 8px 0px 8px 8px; padding-right: 8px; font-size: 12px; height: 200px; overflow: auto; }' +
-    '#imi_dialog_container .imc_dialog_footer { margin: 5px; padding: 5px 10px; border-top: solid 1px dimgray; text-align: right; }' +
-    '#imi_dialog_container .imc_message { margin: 4px; }' +
-    '#imi_dialog_container BUTTON { margin-left: 8px; padding: 5px; min-width: 60px; border: solid 1px dimgray; border-radius: 3px; cursor: pointer; color: #000; background: -moz-linear-gradient(top, #fff, #ccc); background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); }' +
-    '#imi_dialog_container BUTTON:hover { background: -moz-linear-gradient(bottom, #fff, #ccc); background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#ccc)); }' +
-    '#imi_dialog_container BUTTON:active { border-style: inset; }' +
-    '#imi_dialog_container BUTTON:disabled { color: #666; border-style: solid; background: none; background-color: #ccc; cursor: default; }' +
-      
-    /* 一括兵士訓練ダイアログ用 */
-    '#imi_training_dialog .imc_surplus { color: limegreen; }' +
-    '#imi_training_message { width: 350px; float: left; text-align: center; padding: 10px; font-size: 14px; color: red; }' +
-    '#imi_training_dialog .imc_input_type { position: relative; display: inline-block; margin-right: 2px; padding: 2px 3px; cursor: pointer; -moz-user-select: none; background-color: #505050; color: white; border-radius: 3px; }' +
-    '#imi_training_dialog .imc_input_type .imc_pulldown { position: absolute; margin-left: -4px; z-index: 2000; text-align: left; display: none; }' +
-    '#imi_training_dialog .imc_input_type:hover .imc_pulldown { display: block; background-color: black; border: solid 1px white; }' +
-    '#imi_training_dialog .imc_input_type .imc_pulldown LI { width: 30px; height: 20px; text-align: center; line-height: 20px; }' +
-    '#imi_training_dialog .imc_input_type .imc_pulldown LI:hover { background-color: dimGray; }' +
-    '#imi_training_dialog .imc_input_val { ime-mode: disabled; }' +
+      /* テーブルスタイル */
+      '.imc_table { border-collapse: collapse; border: solid 1px dimGray; color: white; }' +
+      '.imc_table TH { padding: 4px 6px; text-align: center; vertical-align: middle; border-bottom: dotted 1px dimGray; border-left: solid 1px dimGray; background:  linear-gradient(to bottom, #949494 0%,#797979 100%); text-shadow: black 1px 1px 3px, black -1px -1px 3px; }' +
+      '.imc_table TD { padding: 4px 5px; text-align: center; vertical-align: middle; border-bottom: solid 1px dimGray; border-left: solid 1px dimGray; background-color: black; }' +
+      '.imc_table.td_right TD { text-align: right; }' +
+      '.imc_table TD img { vertical-align: text-top; }' +
+      '.imc_table TH.h100 { background-size: 100% 100%; }' +
+      '#imi_ex_type .imc_selected { background-color: #77692f; }' +
 
-    '';
+      /* overlay用 z-index: 2000 */
+      '#imi_overlay { position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 2000; }' +
+      '#imi_overlay .imc_overlay { position: absolute; width: 100%; height: 100%; background-color: #000; opacity: 0.75; }' +
+
+      /* ダイアログメッセージ用 */
+      '#imi_dialog_container { position: relative; margin: auto; width: 500px; height: auto; background-color: rgba(0, 0, 0, 0.6); color: white; border: 4px solid #77692f; overflow: hidden; }' +
+      '#imi_dialog_container .imc_dialog_header { padding: 8px; color: white; }' +
+      '#imi_dialog_container .imc_dialog_body { margin: 8px 0px 8px 8px; padding-right: 8px; font-size: 12px; height: 200px; overflow: auto; }' +
+      '#imi_dialog_container .imc_dialog_footer { margin: 5px; padding: 5px 10px; border-top: solid 1px dimgray; text-align: right; }' +
+      '#imi_dialog_container .imc_message { margin: 4px; }' +
+      '#imi_dialog_container BUTTON { margin-left: 8px; padding: 5px; min-width: 60px; border: solid 1px dimgray; border-radius: 3px; cursor: pointer; color: #000; background: -moz-linear-gradient(top, #fff, #ccc); background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); }' +
+      '#imi_dialog_container BUTTON:hover { background: -moz-linear-gradient(bottom, #fff, #ccc); background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#ccc)); }' +
+      '#imi_dialog_container BUTTON:active { border-style: inset; }' +
+      '#imi_dialog_container BUTTON:disabled { color: #666; border-style: solid; background: none; background-color: #ccc; cursor: default; }' +
+
+      /* 一括兵士訓練ダイアログ用 */
+      '#imi_training_dialog .imc_surplus { color: limegreen; }' +
+      '#imi_training_message { width: 350px; float: left; text-align: center; padding: 10px; font-size: 14px; color: red; }' +
+      '#imi_training_dialog .imc_input_type { position: relative; display: inline-block; margin-right: 2px; padding: 2px 3px; cursor: pointer; -moz-user-select: none; background-color: #505050; color: white; border-radius: 3px; }' +
+      '#imi_training_dialog .imc_input_type .imc_pulldown { position: absolute; margin-left: -4px; z-index: 2000; text-align: left; display: none; }' +
+      '#imi_training_dialog .imc_input_type:hover .imc_pulldown { display: block; background-color: black; border: solid 1px white; }' +
+      '#imi_training_dialog .imc_input_type .imc_pulldown LI { width: 30px; height: 20px; text-align: center; line-height: 20px; }' +
+      '#imi_training_dialog .imc_input_type .imc_pulldown LI:hover { background-color: dimGray; }' +
+      '#imi_training_dialog .imc_input_val { ime-mode: disabled; }' +
+
+      '';
     document.head.appendChild(style);
 
     var scriptMoko = document.createElement('script');
     scriptMoko.setAttribute('type', 'text/javascript');
     scriptMoko.textContent = '(' + IxaTraining.toString() + ')(j213$);';
     document.head.appendChild(scriptMoko);
-    
-    }
-    
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadIxaTraining);
-    } else {
-      loadIxaTraining();
+
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadIxaTraining);
+  } else {
+    loadIxaTraining();
   }
 
 })();
