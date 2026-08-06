@@ -36,6 +36,6 @@ new Promise((resolve) => {
   return resolve();
 }).then(() => {
   injectionCode(chrome.runtime.getURL('/contents/ixa-moko.user.js'));
-  injectionCode(chrome.runtime.getURL('/contents/ixa-training.user.js'));
+//  injectionCode(chrome.runtime.getURL('/contents/ixa-training.user.js'));
   injectionCode(chrome.runtime.getURL('/userscript/defense_formation_info.js'));
 });
