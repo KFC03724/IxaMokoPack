@@ -8,7 +8,7 @@ const nullthrows = (v) => {
       // This is why it works!
       script.src = src;
       script.onload = function() {
-        console.log("ixa-user.js injected");
+        console.log("ixa-login.user.js injected");
         this.remove();
     };
     

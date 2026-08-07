@@ -4,7 +4,8 @@
   "author": "hoge",
   "version": "10.32.202608.1",
   "description": "Tool of Sengoku-ixa(2026/08/07)",
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus","tabs"],
+  "host_permissions": ["https://*.sengokuixa.jp/*"],
   "content_scripts": [
     {
       "all_frames": true,
@@ -40,8 +41,13 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "contents/*",
-        "userscript/*"
+        "contents/ixa-login.user.js",
+        "contents/ixa-moko.user.js",
+        "contents/ixa-skill_table.js",
+        "css/main.css",
+        "userscript/defense_formation_info.js",
+        "inject_login.js",
+        "inject_moko.js"
       ],
       "matches": [
         "https://*.sengokuixa.jp/*"

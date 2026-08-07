@@ -5066,7 +5066,7 @@ function MokoMain($) {
     });
 
     var data = login_data.chapter >= 19 ?
-      $.extend(true, {}, soldier_data['npc'], soldier_data[26]) :
+      $.extend(true, {}, soldier_data['npc'], soldier_data[32]) :
       $.extend(true, {}, soldier_data['npc'], soldier_data[19]);
     SOLDIER.mainData = data;
 
@@ -22497,7 +22497,6 @@ var npc_data_old = {
             switch (key) {
               case 'chapter_change_mod':
                 var stage = {
-                  '17': '日ノ本燎原～下天に棲む勇胆の将～',
                   '18': '戦国異伝～諸国に輝く将星の乱～',
                   '19': '雷雲黎明～三千世界ノ驍将～',
                   '20': '驚天宿星～蘇りし神将～',
