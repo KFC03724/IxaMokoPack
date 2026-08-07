@@ -42,6 +42,7 @@ var chapter = $(this).find('span.sho_tit img').attr('src')?.match(/s(\d+)\.png/)
 var season_img = $(this).find('span[class^="flag_"] img').attr('src');
 var season_num = season_img ? season_img.match(/flag_\w(\d+).gif/) : null;
 var season = season_num ? parseFloat(season_num[1]).toString(10) : '1';
+alert('world = ' + world + ', chapter = ' + chapter + ', season = ' + season);
 
 // 古い日付判定の固定処理は削除しました
 
