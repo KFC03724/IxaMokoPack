@@ -36,7 +36,7 @@ var world = title.replace('ワールド', '');
 
 // 画像URLから現在の正しい「章」の数字を自動取得（取得できない場合はデフォルトで'32'に）
 var chapter_match = $(this).find('span.otono_sm:first img').attr('src')?.match(/_otono_s(\d+)_\d+\.png/);
-var chapter = chapter_match ? chapter_match[1] : '32';
+var chapter = $(this).find('span.sho_tit img').attr('src')?.match(/s(\d+)\.png/)?.[1] || '32';
 
 // 「期」の取得
 var season_img = $(this).find('span[class^="flag_"] img').attr('src');
