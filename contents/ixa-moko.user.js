@@ -21458,7 +21458,7 @@ var npc_data_old = {
     //     notification.close();
     //   };
     // },
-    var apiEnemyPop = function () {
+    apiEnemyPop = function () {
       var hostName;
       if (typeof HOST !== 'undefined' && HOST == 'hm' && !MIXI_FLAG) {
         hostName = '(h)' + location.hostname;
@@ -21469,7 +21469,7 @@ var npc_data_old = {
       }
 
       // 通知を表示するインナ関数
-      var showNotification = function() {
+      showNotification = function() {
         var n = Math.floor(Math.random() * 5) + 1;
         var notification = new Notification(hostName, {
           icon: '/img/lot/img_ixadog0' + n + '.png',
