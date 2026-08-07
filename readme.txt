@@ -29,7 +29,7 @@
 IxaMokoPack ver 10.32.202608.1 Chrome版
 2026/08/07
 　・32章対応
-　※戦国IXA ツールスレPart49 818までの改修点を反映済
+　※戦国IXA ツールスレPart49 8220までの改修点を反映済
 
 IxaMokoPack ver 10.31.202608.4 Chrome版
 2026/08/06
