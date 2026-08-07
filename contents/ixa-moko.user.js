@@ -21439,25 +21439,69 @@ var npc_data_old = {
       }
     },
 
-    apiEnemyPop = function () {
+    // apiEnemyPop = function () {
+    //   var hostName;
+    //   if (HOST == 'hm' && !MIXI_FLAG) {
+    //     hostName = '(h)' + location.hostname;
+    //   } else if (HOST == 'hm' && MIXI_FLAG) {
+    //     hostName = '(m)' + location.hostname;
+    //   } else {
+    //     hostName = location.hostname;
+    //   }
+    //   var n = parseInt(Math.random() * 5) + 1;
+    //   var notification = new Notification(hostName, {
+    //     icon: '/img/lot/img_ixadog0' + n + '.png',
+    //     body: '殿！ 敵襲で御座います...',
+    //     tag: 'notification-enemy'
+    //   });
+    //   window.onunload = function () {
+    //     notification.close();
+    //   };
+    // },
+    var apiEnemyPop = function () {
       var hostName;
-      if (HOST == 'hm' && !MIXI_FLAG) {
+      if (typeof HOST !== 'undefined' && HOST == 'hm' && !MIXI_FLAG) {
         hostName = '(h)' + location.hostname;
-      } else if (HOST == 'hm' && MIXI_FLAG) {
+      } else if (typeof HOST !== 'undefined' && HOST == 'hm' && MIXI_FLAG) {
         hostName = '(m)' + location.hostname;
       } else {
         hostName = location.hostname;
       }
-      var n = parseInt(Math.random() * 5) + 1;
-      var notification = new Notification(hostName, {
-        icon: '/img/lot/img_ixadog0' + n + '.png',
-        body: '殿！ 敵襲で御座います...',
-        tag: 'notification-enemy'
-      });
-      window.onunload = function () {
-        notification.close();
+
+      // 通知を表示するインナ関数
+      var showNotification = function() {
+        var n = Math.floor(Math.random() * 5) + 1;
+        var notification = new Notification(hostName, {
+          icon: '/img/lot/img_ixadog0' + n + '.png',
+          body: '殿！ 敵襲で御座います...',
+          tag: 'notification-enemy'
+        });
+
+        // onunloadはChromeで廃止されたため、pagehideイベントをjQuery1.3.2互換で登録
+        $(window).bind('pagehide', function () {
+          notification.close();
+        });
       };
-    },
+
+      // 最新Chromeの仕様に合わせ、通知権限を確認・要求
+      if (!("Notification" in window)) {
+        // ブラウザが通知をサポートしていない場合
+        return;
+      }
+
+      if (Notification.permission === "granted") {
+        // 既に許可されている場合は即時表示
+        showNotification();
+      } else if (Notification.permission !== "denied") {
+        // 許可も拒否もされていない場合はユーザーに権限を要求
+        // ※最新のChromeでは、クリック等のユーザー操作（イベント内）から呼び出す必要があります
+        Notification.requestPermission(function (permission) {
+          if (permission === "granted") {
+            showNotification();
+          }
+        });
+      }
+    };
 
     // 敵襲音の選択
     selectRaidSound = function (mod) {
@@ -24700,29 +24744,88 @@ var npc_data_old = {
     });
   }
 
-  // Ajaxloading
-  function ajaxLoading() {
-    j$('<div id="loader"><img src="' + IMAGES.ajax_loading + '" /></div>')
-      .hide()
-      .ajaxStart(function () {
-        $(this).show();
-      })
-      .ajaxStop(function () {
-        $(this).hide();
-      })
-      .appendTo(document.body);
-    j$(document.body)
-      .bind('ajaxSend', function (c, xhr) {
-        j$(window).bind('beforeunload', function () {
-          xhr.abort();
+  // // Ajaxloading
+  // function ajaxLoading() {
+  //   j$('<div id="loader"><img src="' + IMAGES.ajax_loading + '" /></div>')
+  //     .hide()
+  //     .ajaxStart(function () {
+  //       $(this).show();
+  //     })
+  //     .ajaxStop(function () {
+  //       $(this).hide();
+  //     })
+  //     .appendTo(document.body);
+  //   j$(document.body)
+  //     .bind('ajaxSend', function (c, xhr) {
+  //       j$(window).bind('beforeunload', function () {
+  //         xhr.abort();
+  //       });
+  //     });
+  // }
+
+    // Ajaxloading
+    function ajaxLoading() {
+      // 1. グローバルAjaxイベントは document（または特定の要素）にバインドします
+      j$('<div id="loader"><img src="' + IMAGES.ajax_loading + '" /></div>')
+        .hide()
+        .appendTo(document.body);
+
+      // jQuery 1.3.2 の仕様に合わせ、document に対してイベントをバインド
+      j$(document)
+        .bind('ajaxStart', function () {
+          j$('#loader').show();
+        })
+        .bind('ajaxStop', function () {
+          j$('#loader').hide();
+        });
+
+      // 2. ajaxSend 内での window.beforeunload バインドを修正
+      // 最新の Chrome ではページ遷移時の非同期通信のライフサイクルが厳格なため、
+      // 毎回 bind するとイベントが重複登録される原因になります。一度だけ登録します。
+      var activeXhrs = [];
+
+      j$(document).bind('ajaxSend', function (event, xhr, options) {
+        activeXhrs.push(xhr);
+      }).bind('ajaxComplete', function (event, xhr, options) {
+        // 通信完了した xhr を配列から除去
+        var index = j$.inArray(xhr, activeXhrs);
+        if (index > -1) {
+          activeXhrs.splice(index, 1);
+        }
+      });
+
+      // ページ遷移（離脱）時に実行中の通信のみをすべて abort する
+      j$(window).bind('beforeunload', function () {
+        j$.each(activeXhrs, function (i, xhr) {
+          if (xhr && typeof xhr.abort === 'function') {
+            xhr.abort();
+          }
         });
       });
-  }
+    }
 
+  // function ajaxLoading213() {
+  //   var $loader = $('<div id="loader2"><img src="' + IMAGES.ajax2_loading + '" /></div>')
+  //     .hide()
+  //     .appendTo(document.body);
+  //   $(document)
+  //     .ajaxStart(function () {
+  //       $loader.show();
+  //     })
+  //     .ajaxStop(function () {
+  //       $loader.hide();
+  //     })
+  //     .on('ajaxSend', function (c, xhr) {
+  //       $(window).on('beforeunload', function () {
+  //         xhr.abort();
+  //       });
+  //     });
+  // }
   function ajaxLoading213() {
     var $loader = $('<div id="loader2"><img src="' + IMAGES.ajax2_loading + '" /></div>')
       .hide()
       .appendTo(document.body);
+
     $(document)
       .ajaxStart(function () {
         $loader.show();
@@ -24730,12 +24833,12 @@ var npc_data_old = {
       .ajaxStop(function () {
         $loader.hide();
       })
-      .on('ajaxSend', function (c, xhr) {
-        $(window).on('beforeunload', function () {
+      .ajaxSend(function (c, xhr) {
+        $(window).bind('beforeunload', function () {
           xhr.abort();
         });
       });
-  }
+    }
 
   // 資源バーの位置を変更
   function menuReversal() {
