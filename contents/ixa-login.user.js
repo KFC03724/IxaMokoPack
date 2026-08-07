@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMokoLogin
 // @description  戦国IXA用ツール ログイン
-// @version      10.31.202608.4
+// @version      10.32.202608.1
 // @namespace    hoge
 // @author       nameless
 // @include      https://*.sengokuixa.jp/world/*
@@ -41,7 +41,7 @@ function MokoLogin($) {
         $(this)
         .find("span.otono_sm:first img")
         .attr("src")
-        ?.match(/_otono_s(\d+)_\d+\.png/)[1] || "31";
+        ?.match(/_otono_s(\d+)_\d+\.png/)[1] || "32";
 
       var season = parseFloat(season_num).toString(10);
 
