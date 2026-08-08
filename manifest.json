@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "IxaMoko",
   "author": "hoge",
-  "version": "10.32.202608.2",
-  "description": "Tool of Sengoku-ixa(2026/08/08)",
+  "version": "10.32.202608.3",
+  "description": "Tool of Sengoku-ixa(2026/08/09)",
   "permissions": ["contextMenus","tabs"],
   "host_permissions": ["https://*.sengokuixa.jp/*"],
   "content_scripts": [
