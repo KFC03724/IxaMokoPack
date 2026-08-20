@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.32.202608.3
+// @version      10.32.202608.4
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -35,7 +35,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.32.202608.3";
+  var VERSION_NAME = "ver 10.32.202608.4";
 
   // === Plugin ===
 
@@ -27986,17 +27986,13 @@ var npc_data_old = {
       }
     }
 
-    // 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここから
-    // 2024.03.28 本丸及び所領である事の判定式の修正 ここから
-    //      if (location.pathname == '/card/deck.php' || location.pathname.endsWith('defense_formation_deck.php')) {
     if (location.pathname == '/card/deck.php' || location.pathname.endsWith('defense_formation_deck.php')) {
       // 2024.03.28 本丸及び所領である事の判定式の修正 ここまで
       if (location.pathname == '/card/deck.php') {
-        var exclusion_flag = $this.find('img[alt="兵士編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
+        var exclusion_flag = $this.find('img[alt="兵編成"]').length || $this.find('img[alt="選択中の部隊へ"]').length;
       } else {
         var exclusion_flag = $this.find('img[alt="兵編成"]').length || $this.find('img[alt="本丸防御陣形へ"]').length;
       }
-      // 2020.09.15 本丸防御陣形のソートやページャー等の改善 ここまで
 
       // 出品中カードを暗色表示
       if (!exclusion_flag) {
