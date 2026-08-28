@@ -44035,39 +44035,12 @@ function MokoMain($) {
     if (location.pathname != '/war/list.php') {
       return;
     }
-
-    style(`
-    th.w80 {
-      width: 100px;
-    }
-
-    .ig_battle_report_icon2 {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .ig_battle_report_text {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    .ig_battle_report_text > a {
-      display: inline-block;
-      width: 425px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      vertical-align: middle;
-    }
-  `);
-
     if ($('input[name="x"]').val() && $('input[name="y"]').val()) {
       $('<span class="moko_btn btn_place coord_send">ここへ部隊出陣！</span>').on('click', function () {
         var cord = location.search.split('map&')[1];
         location.href = '/facility/send_troop.php?' + cord;
       }).appendTo('#ig_battle_report_sort');
     }
-
     if (options.war_list_2pane) {
       return war2paneLayout();
     }
