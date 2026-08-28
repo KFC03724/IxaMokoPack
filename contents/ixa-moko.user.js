@@ -44036,19 +44036,30 @@ function MokoMain($) {
       return;
     }
 
-    style(
-      'th.w80 { width: 100px; } ' +
-      'div.ig_battle_report_icon2, ' +
-      'div.ig_battle_report_text { display: inline-block; vertical-align: middle; } ' +
-      'div.ig_battle_report_text > a { ' +
-      'display: inline-block; ' +
-      'width: 425px; ' +
-      'white-space: nowrap; ' +
-      'overflow: hidden; ' +
-      'text-overflow: ellipsis; ' +
-      'vertical-align: middle; ' +
-      '}'
-    );
+    style(`
+    th.w80 {
+      width: 100px;
+    }
+
+    .ig_battle_report_icon2 {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .ig_battle_report_text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .ig_battle_report_text > a {
+      display: inline-block;
+      width: 425px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+    }
+  `);
 
     if ($('input[name="x"]').val() && $('input[name="y"]').val()) {
       $('<span class="moko_btn btn_place coord_send">ここへ部隊出陣！</span>').on('click', function () {
