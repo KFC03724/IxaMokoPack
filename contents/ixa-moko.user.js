@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.32.202609.1
+// @version      10.32.202609.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -35,7 +35,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.32.202609.1";
+  var VERSION_NAME = "ver 10.32.202609.2";
 
   // === Plugin ===
 
@@ -27328,15 +27328,30 @@ function MokoMain($) {
     })
       .attr('title', '右クリックで兵士編成へ');
 
-    // 選択中の部隊へ」をクリック確認
-    $('body').on('click', 'img[alt="選択中の部隊へ"]', function () {
-      if ($(this).attr('src').indexOf('soldier_off') != -1) {
+    // 「選択中の部隊へ」をクリック確認
+    // $('body').on('click', 'img[alt="選択中の部隊へ"]', function () {
+    //   if ($(this).attr('src').indexOf('soldier_off') != -1) {
+    //     return false;
+    //   }
+    //   if ($('#howto_butai_hensei').length) {
+    //     $(this).closest('div.ig_deck_smallcardarea').addClass('mk_cardarea_select_first');
+    //   } else {
+    //     $(this).closest('div.ig_deck_smallcardarea').addClass('mk_cardarea_select');
+    //   }
+    // });
+    $('body').on('click', 'a[id^="btn_gounit_"]', function () {
+      // 全部隊配置で配置可能かどうかの判定
+      if ($(this).hasClass('off')) {
         return false;
       }
+
+      // 有効な全部隊配置ボタンがクリックされた
+      const target = $(this).closest('div.ig_deck_smallcardarea');
+
       if ($('#howto_butai_hensei').length) {
-        $(this).closest('div.ig_deck_smallcardarea').addClass('mk_cardarea_select_first');
+        target.addClass('mk_cardarea_select_first');
       } else {
-        $(this).closest('div.ig_deck_smallcardarea').addClass('mk_cardarea_select');
+        target.addClass('mk_cardarea_select');
       }
     });
 
