@@ -2,22 +2,35 @@
   "manifest_version": 3,
   "name": "IxaMoko",
   "author": "hoge",
-  "version": "10.32.202609.2",
-  "description": "Tool of Sengoku-ixa(2026/09/18)",
-  "permissions": ["contextMenus","tabs"],
-  "host_permissions": ["https://*.sengokuixa.jp/*"],
+  "version": "10.32.202610.2",
+  "description": "Tool of Sengoku-ixa(2026/10/24) - initialization guard",
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.sengokuixa.jp/*"
+  ],
   "content_scripts": [
     {
       "all_frames": true,
-      "matches": ["https://*.sengokuixa.jp/world/*"],
-      "exclude_matches": ["https://cache.sengokuixa.jp/world/*"],
-      "js": ["inject_login.js"],
+      "matches": [
+        "https://*.sengokuixa.jp/world/*"
+      ],
+      "exclude_matches": [
+        "https://cache.sengokuixa.jp/world/*"
+      ],
+      "js": [
+        "inject_login.js"
+      ],
       "run_at": "document_start"
     },
     {
       "all_frames": true,
       "run_at": "document_end",
-      "matches": ["https://*.sengokuixa.jp/*"],
+      "matches": [
+        "https://*.sengokuixa.jp/*"
+      ],
       "exclude_matches": [
         "https://sengokuixa.jp/*",
         "https://cache.sengokuixa.jp/*",
@@ -28,14 +41,22 @@
         "https://*.sengokuixa.jp/maintenance/",
         "https://*.sengokuixa.jp/map_if.php*"
       ],
-      "js": ["inject_moko.js"],
-      "css": ["css/main.css"]
+      "js": [
+        "inject_moko.js"
+      ],
+      "css": [
+        "css/main.css"
+      ]
     },
     {
       "all_frames": true,
       "run_at": "document_idle",
-      "matches": ["https://*.sengokuixa.jp/war/war_ranking.php"],
-      "js": ["ranking.js"]
+      "matches": [
+        "https://*.sengokuixa.jp/war/war_ranking.php"
+      ],
+      "js": [
+        "ranking.js"
+      ]
     }
   ],
   "web_accessible_resources": [

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IxaMoko
 // @description  戦国IXA用ツール コンテンツ
-// @version      10.32.202609.2
+// @version      10.32.202610.2
 // @author       nameless
 // @include      https://*.sengokuixa.jp/*
 // @exclude      https://sengokuixa.jp/*
@@ -35,7 +35,7 @@
 function MokoMain($) {
   console.debug('Load... MokoMain');
   "use strict";
-  var VERSION_NAME = "ver 10.32.202609.2";
+  var VERSION_NAME = "ver 10.32.202610.2";
 
   // === Plugin ===
 
@@ -5079,7 +5079,8 @@ function MokoMain($) {
         SOLDIER.numberCommand[data[key].number] = data[key].command;
         SOLDIER.lineupsNames.push(key);
       }
-      if (data[key].cost.length) {
+      // 新ワールド等で cost を持たない兵種データが混在しても初期化を停止させない
+      if (data[key].cost && data[key].cost.length) {
         SOLDIER.trainingNames[key] = true;
         SOLDIER.orgChecked[key] = false;
       }
@@ -21356,7 +21357,9 @@ function MokoMain($) {
     return menu;
   })();
 
-  var HOST = location.hostname.slice(0, 4).match(/[a-z]+/)[0];
+  // ホスト名の形式が従来と異なるワールドでも初期化時に例外を出さない
+  var HOST_MATCH = location.hostname.slice(0, 4).match(/[a-z]+/);
+  var HOST = HOST_MATCH ? HOST_MATCH[0] : location.hostname.split('.')[0];
   var BATTLE = $('#sideboxMain').find('img[src*="s5_icon_warnow"]').length;
   var BATTLE_MODE = $('#sideboxMain').find('img[src*="s5_icon_warnow"]').attr('title');
   var STATE_ENEMY = $('#stateEnemy IMG.fade[src*="state_enemy."]:visible'); // 14章: gif 15章: png 拡張子が違う
@@ -21370,8 +21373,14 @@ function MokoMain($) {
   var AM_SCALE = CRITE * 2 * AM_MAGNI + 1; // 広域マップ 表示スケール
 
   // cache pass
+  // 画面構成変更等で領主名画像がまだ存在しない場合も、ここで全スクリプトを停止させない
   var CACHE_PASS = function () {
-    return $('#btnLordName > a > img').attr('src').split('/img')[0];
+    var src = $('#btnLordName > a > img').attr('src');
+    if (src) {
+      return src.split('/img')[0];
+    }
+    // 画像URLから取得できない場合は現在のオリジンをキャッシュパスとして使用
+    return location.origin;
   }();
 
   // ^ 定数
