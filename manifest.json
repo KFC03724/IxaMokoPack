@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "IxaMoko",
   "author": "hoge",
-  "version": "10.32.202610.2",
-  "description": "Tool of Sengoku-ixa(2026/10/24) - initialization guard",
+  "version": "10.32.202611.1",
+  "description": "Tool of Sengoku-ixa(2026/11/03)",
   "permissions": [
     "contextMenus",
     "tabs"
