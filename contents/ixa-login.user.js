@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name IxaMokoLogin
 // @description 戦国IXA用ツール ログイン
-// @version 10.32.202611.1
+// @version 10.32.202611.2
 // @namespace hoge
 // @author nameless
 // @include https://*.sengokuixa.jp/world/*
